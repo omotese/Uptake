@@ -16,13 +16,19 @@ import javax.swing.JFrame;
  *
  */
 public class Main {
-
+	private static final int NUMBER_OF_SIMULATIONS = 2;
+	private static final int MIN_WIDTH = 200;
+	private static final int MAX_WIDTH = 600;
+	private static final int MIN_HEIGHT = 100;
+	private static final int MAX_HEIGHT = 300;
+	private static final Color[] BACKGROUND_COLORS = { Color.RED,
+			Color.BLUE, Color.GREEN };
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		ArrayList<SimulationPanel> worlds = constructSimulations();
-		JFrame frame = new GameFrame(worlds);
+		JFrame frame = new GameWorldFrame(worlds);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 	}
