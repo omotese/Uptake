@@ -1,4 +1,4 @@
 
-public class PowerUp {
+public class PowerUp extends Block {
 
 }
