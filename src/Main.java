@@ -1,3 +1,9 @@
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.Random;
+
+import javax.swing.JFrame;
+
 /**
  * The main class for your arcade game.
  * 
@@ -15,8 +21,28 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		System.out.println("Write your cool arcade game here!");
-		ControlsPanel controller = new ControlsPanel();
+		ArrayList<SimulationPanel> worlds = constructSimulations();
+		JFrame frame = new GameFrame(worlds);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+	}
+
+	/**
+	 * This helper method constructs a list of simulation objects that will each
+	 * simulate a world of bouncing balls.
+	 * 
+	 * @return a list of worlds
+	 */
+	private static ArrayList<SimulationPanel> constructSimulations() {
+		ArrayList<SimulationPanel> result = new ArrayList<SimulationPanel>();
+		for (int i = 0; i < NUMBER_OF_SIMULATIONS; i++) {
+			int width = Random.randRange(MIN_WIDTH, MAX_WIDTH);
+			int height = Random.randRange(MIN_HEIGHT, MAX_HEIGHT);
+			Color c = BACKGROUND_COLORS[i % BACKGROUND_COLORS.length];
+			SimulationPanel sp = new SimulationPanel(width, height, c);
+			result.add(sp);
+		}
+		return result;
 	}
 
 }
