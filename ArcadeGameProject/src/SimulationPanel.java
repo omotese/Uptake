@@ -5,6 +5,8 @@ import javax.swing.BoxLayout;
 
 
 public class SimulationPanel {
+	private static final int GAP_WIDTH = 10;
+	
 	public SimulationPanel(int width, int height, Color color) {
 		// Change layout so the buttons and the world are side-by-side.
 		setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
