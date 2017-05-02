@@ -2,7 +2,43 @@ import java.awt.Color;
 import java.awt.Shape;
 import java.awt.geom.Point2D;
 
-public class PowerUp extends Block {
+public class Hero extends Character {
+
+	@Override
+	public void timePassed() {
+		// TODO Auto-generated method stub.
+
+	}
+
+	@Override
+	public void die() {
+		// TODO Auto-generated method stub.
+
+	}
+
+	@Override
+	public void setIsPaused(boolean isPaused) {
+		// TODO Auto-generated method stub.
+
+	}
+
+	@Override
+	public boolean getIsPaused() {
+		// TODO Auto-generated method stub.
+		return false;
+	}
+
+	@Override
+	public void moveTo(Point2D point) {
+		// TODO Auto-generated method stub.
+
+	}
+
+	@Override
+	public Point2D getCenterPoint() {
+		// TODO Auto-generated method stub.
+		return null;
+	}
 
 	@Override
 	public Color getColor() {
@@ -14,42 +50,6 @@ public class PowerUp extends Block {
 	public Shape getShape() {
 		// TODO Auto-generated method stub.
 		return null;
-	}
-
-	@Override
-	public void moveTo(Point2D point) {
-		// TODO Auto-generated method stub.
-		
-	}
-
-	@Override
-	public Point2D getCenterPoint() {
-		// TODO Auto-generated method stub.
-		return null;
-	}
-
-	@Override
-	public void timePassed() {
-		// TODO Auto-generated method stub.
-		
-	}
-
-	@Override
-	public void die() {
-		// TODO Auto-generated method stub.
-		
-	}
-
-	@Override
-	public void setIsPaused(boolean isPaused) {
-		// TODO Auto-generated method stub.
-		
-	}
-
-	@Override
-	public boolean getIsPaused() {
-		// TODO Auto-generated method stub.
-		return false;
 	}
 
 }
