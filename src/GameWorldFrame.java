@@ -22,7 +22,7 @@ public class GameWorldFrame extends JFrame {
 	 * @param panels
 	 *            a non-empty list of simulation panels to display
 	 */
-	public GameWorldFrame(List<SimulationPanel> panels) {
+	public GameWorldFrame(SimulationPanel panel) {
 		setTitle("Game World");
 
 		JPanel content = new JPanel();
@@ -30,10 +30,7 @@ public class GameWorldFrame extends JFrame {
 		content.setLayout(new BoxLayout(content, BoxLayout.PAGE_AXIS));
 		// add "rigid stuff" to force minimum spacing
 		content.add(Box.createVerticalStrut(GAP));
-		for (SimulationPanel sp : panels) {
-			content.add(sp);
-			content.add(Box.createVerticalStrut(GAP));
-		}
+		content.add(panel);
 		add(content);
 
 		add(quitButtonComponent(), BorderLayout.PAGE_END);
