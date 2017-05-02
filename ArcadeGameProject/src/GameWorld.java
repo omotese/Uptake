@@ -5,7 +5,18 @@ import java.awt.geom.Point2D;
 import java.util.List;
 
 public class GameWorld implements Temporal, Relocatable, GameEnvironment, Drawable {
+	
+	private final int width;
+	private final int height;
+	private final Color color;
 
+	public GameWorld(int width, int height, Color color){
+		this.width=width;
+		this.height= height;
+		this.color= color;
+	}
+	
+	
 	@Override
 	public Color getColor() {
 		// TODO Auto-generated method stub.
@@ -101,5 +112,22 @@ public class GameWorld implements Temporal, Relocatable, GameEnvironment, Drawab
 		// TODO Auto-generated method stub.
 		return false;
 	}
+	// Creates a separate "thread of execution" to inform this world of the
+			// passage of time.
+			Runnable tickTock = new Runnable() {
+				@Override
+				public void run() {
+					try {
+						while (true) {
+							Thread.sleep(UPDATE_INTERVAL_MS);
+							timePassed();
+						}
+					} catch (InterruptedException exception) {
+						// Stop when interrupted
+					}
+				}
+			};
+			new Thread(tickTock).start();
+		}
 
 }
