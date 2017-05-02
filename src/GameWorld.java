@@ -2,18 +2,46 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Shape;
 import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
+import java.util.ArrayList;
 import java.util.List;
 
+
 public class GameWorld implements Temporal, Relocatable, GameEnvironment, Drawable {
-	
+	private static final long UPDATE_INTERVAL_MS = 10;
 	private final int width;
 	private final int height;
 	private final Color color;
+	private final ArrayList<Character> characterList = new ArrayList<Character>();
+	private final ArrayList<Block> blockList = new ArrayList<Block>();
+	private final List<Character> charatersToAdd = new ArrayList<Character>();
+	private final List<Character> characterToRemove = new ArrayList<Character>();
+	private final List<Block> blocksToAdd = new ArrayList<Block>();
+	private final List<Block> blocksToRemove = new ArrayList<Block>();
+	private final Shape background;
+	private boolean isPaused = false;
 
 	public GameWorld(int width, int height, Color color){
 		this.width=width;
 		this.height= height;
 		this.color= color;
+		this.background = new Rectangle2D.Double(0, 0, this.width, this.height);
+		
+		Runnable tickTock = new Runnable() {
+			@Override
+			public void run() {
+				try {
+					while (true) {
+						Thread.sleep(UPDATE_INTERVAL_MS);
+						timePassed();
+					}
+				} catch (InterruptedException exception) {
+					// Stop when interrupted
+				}
+			}
+		};
+		new Thread(tickTock).start();
+		
 	}
 	
 	
@@ -112,22 +140,6 @@ public class GameWorld implements Temporal, Relocatable, GameEnvironment, Drawab
 		// TODO Auto-generated method stub.
 		return false;
 	}
-	// Creates a separate "thread of execution" to inform this world of the
-			// passage of time.
-			Runnable tickTock = new Runnable() {
-				@Override
-				public void run() {
-					try {
-						while (true) {
-							Thread.sleep(UPDATE_INTERVAL_MS);
-							timePassed();
-						}
-					} catch (InterruptedException exception) {
-						// Stop when interrupted
-					}
-				}
-			};
-			new Thread(tickTock).start();
-		}
+
 
 }

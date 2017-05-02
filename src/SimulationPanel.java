@@ -2,9 +2,10 @@ import java.awt.Color;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.JPanel;
 
 
-public class SimulationPanel {
+public class SimulationPanel extends JPanel{
 	private static final int GAP_WIDTH = 10;
 	
 	public SimulationPanel(int width, int height, Color color) {
@@ -24,6 +25,5 @@ public class SimulationPanel {
 		// add "rigid stuff" to force minimum spacing
 		add(Box.createHorizontalStrut(GAP_WIDTH));
 	}
-}
 
 }

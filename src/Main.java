@@ -42,11 +42,11 @@ public class Main {
 	private static ArrayList<SimulationPanel> constructSimulations() {
 		ArrayList<SimulationPanel> result = new ArrayList<SimulationPanel>();
 		for (int i = 0; i < NUMBER_OF_SIMULATIONS; i++) {
-			int width = Random.randRange(MIN_WIDTH, MAX_WIDTH);
+			/*int width = Random.randRange(MIN_WIDTH, MAX_WIDTH);
 			int height = Random.randRange(MIN_HEIGHT, MAX_HEIGHT);
 			Color c = BACKGROUND_COLORS[i % BACKGROUND_COLORS.length];
 			SimulationPanel sp = new SimulationPanel(width, height, c);
-			result.add(sp);
+			result.add(sp);*/
 		}
 		return result;
 	}
