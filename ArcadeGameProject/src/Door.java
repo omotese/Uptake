@@ -2,7 +2,7 @@ import java.awt.Color;
 import java.awt.Shape;
 import java.awt.geom.Point2D;
 
-public class PowerUp extends Block {
+public class Door extends Block {
 
 	@Override
 	public Color getColor() {
@@ -19,7 +19,7 @@ public class PowerUp extends Block {
 	@Override
 	public void moveTo(Point2D point) {
 		// TODO Auto-generated method stub.
-		
+
 	}
 
 	@Override
@@ -31,19 +31,19 @@ public class PowerUp extends Block {
 	@Override
 	public void timePassed() {
 		// TODO Auto-generated method stub.
-		
+
 	}
 
 	@Override
 	public void die() {
 		// TODO Auto-generated method stub.
-		
+
 	}
 
 	@Override
 	public void setIsPaused(boolean isPaused) {
 		// TODO Auto-generated method stub.
-		
+
 	}
 
 	@Override
