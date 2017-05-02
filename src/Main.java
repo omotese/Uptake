@@ -16,6 +16,7 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		System.out.println("Write your cool arcade game here!");
+		ControlsPanel controller = new ControlsPanel();
 	}
 
 }
