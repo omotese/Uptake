@@ -13,12 +13,7 @@ public class SimulationPanel extends JPanel{
 		setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
 		GameWorld world = new GameWorld(width, height, color);
 		GameWorldComponent worldComponent = new GameWorldComponent(world);
-		ControlsPanel controlsPanel = new ControlsPanel(world);
-		// add "rigid stuff" to force minimum spacing
-		add(Box.createHorizontalStrut(GAP_WIDTH));
-		add(controlsPanel);
-		// add "rigid stuff" to force minimum spacing
-		add(Box.createHorizontalStrut(GAP_WIDTH));
+		
 		add(worldComponent);
 		// adds "stretchy stuff" to force the world to the left
 		add(Box.createGlue());

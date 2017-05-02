@@ -59,13 +59,14 @@ public class GameWorld implements Temporal, Relocatable, GameEnvironment, Drawab
 
 	@Override
 	public void addCharacter(Character character) {
-		// TODO Auto-generated method stub.
+		this.charatersToAdd.add(character);
+		
 
 	}
 
 	@Override
 	public void removeCharacter(Character character) {
-		// TODO Auto-generated method stub.
+		this.characterToRemove.add(character);
 
 	}
 
@@ -74,6 +75,8 @@ public class GameWorld implements Temporal, Relocatable, GameEnvironment, Drawab
 		// TODO Auto-generated method stub.
 		return null;
 	}
+	
+	
 
 	@Override
 	public boolean isInsideWorldX(Point2D point) {
