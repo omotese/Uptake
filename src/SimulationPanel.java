@@ -4,7 +4,6 @@ import javax.swing.JPanel;
 
 
 public class SimulationPanel extends JPanel{
-	private static final int GAP_WIDTH = 10;
 	
 	public SimulationPanel(int width, int height, Color color) {
 
