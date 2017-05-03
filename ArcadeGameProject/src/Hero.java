@@ -3,11 +3,10 @@ import java.awt.Shape;
 import java.awt.geom.Point2D;
 
 public class Hero extends Character {
-	private static final int SIZE = 30;
 	private double x;
 	private double y;
-	private double xMove;
-	private double yMove;
+	private double xVelocity;
+	private double yVelocity;
 	
 	public Hero(GameEnvironment world) {
 		super(world);
@@ -66,12 +65,12 @@ public class Hero extends Character {
 
 	@Override
 	public void updatePosition(double dx, double dy) {
-		this.x += dx;
-		this.y += dy;
 		Point2D.Double newPos = new Point2D.Double(this.x, this.y);
 		
 	}
 
+	
+	
 	@Override
 	public void updateSize() {
 		// TODO Auto-generated method stub.
@@ -84,16 +83,8 @@ public class Hero extends Character {
 		
 	}
 
-	@Override
-	public double getDiameter() {
-		// TODO Auto-generated method stub.
-		return 0;
-	}
 
-	@Override
-	public void updatePosition() {
-		// TODO Auto-generated method stub.
-		
-	}
+
+
 
 }
