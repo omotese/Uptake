@@ -1,15 +1,15 @@
 	import java.awt.geom.Point2D;
-public abstract class Block implements Drawable, Temporal {
+public abstract class Block extends GameObject implements Drawable, Temporal {
 
 //		private double dx;
 //		private double dy;
 		private Point2D centerPoint;
-		private GameEnvironment world;
+		private GameWorld world;
 		private boolean isPaused = false;
-		public Block(GameEnvironment world) {
-			this(world, world.getCenterPoint());
+		public Block(GameWorld world) {
+			super(world);
 		}
-		public Block(GameEnvironment world, Point2D centerPoint) {
+		public Block(GameWorld world, Point2D centerPoint) {
 			// TODO Auto-generated constructor stub.
 			this.centerPoint= centerPoint;
 			this.world= world;

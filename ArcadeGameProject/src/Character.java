@@ -4,12 +4,13 @@ import java.awt.geom.Point2D;
 
 public abstract class Character implements Temporal, Relocatable, Drawable {
 	private double xPosition;
-	private double yPosition
-	private GameEnvironment world;
-	public Character(GameEnvironment world) {
+	private double yPosition;
+	private GameWorld world;
+	
+	public Character(GameWorld world) {
 		this(world, world.getCenterPoint());
 	}
-	public Character(GameEnvironment world, Point2D centerPoint) {
+	public Character(GameWorld world, Point2D centerPoint) {
 		this.centerPoint= centerPoint;
 		this.world= world;
 	}

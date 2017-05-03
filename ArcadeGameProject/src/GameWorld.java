@@ -1,5 +1,4 @@
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Shape;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
@@ -7,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class GameWorld implements Temporal, Relocatable, GameEnvironment, Drawable {
+public class GameWorld implements Temporal, Relocatable, Drawable {
 	private static final long UPDATE_INTERVAL_MS = 10;
 	private final int width;
 	private final int height;
@@ -60,55 +59,14 @@ public class GameWorld implements Temporal, Relocatable, GameEnvironment, Drawab
 		return this.background;
 	}
 
-	@Override
-	public void addCharacter(Character character) {
-		this.charatersToAdd.add(character);
-		
 
-	}
-
-	@Override
-	public void removeCharacter(Character character) {
-		this.characterToRemove.add(character);
-
-	}
-
-	@Override
-	public Character nearestCharacter(Point2D point) {
-		// TODO Auto-generated method stub.
-		return null;
-	}
-	
-	
-
-	@Override
-	public boolean isInsideWorldX(Point2D point) {
-		// TODO Auto-generated method stub.
-		return false;
-	}
-
-	@Override
-	public boolean isInsideWorldY(Point2D point) {
-		// TODO Auto-generated method stub.
-		return false;
-	}
-
-	@Override
-	public boolean isInsideWorld(Point2D point) {
-		// TODO Auto-generated method stub.
-		return false;
-	}
-
-	@Override
-	public Dimension getSize() {
-		return new Dimension(this.width, this.height);
-	}
 
 	@Override
 	public void moveTo(Point2D point) {
 		// TODO Auto-generated method stub.
-
+		
 	}
+
 
 	@Override
 	public Point2D getCenterPoint() {
@@ -116,42 +74,32 @@ public class GameWorld implements Temporal, Relocatable, GameEnvironment, Drawab
 		return null;
 	}
 
+
 	@Override
 	public void timePassed() {
 		// TODO Auto-generated method stub.
-
+		
 	}
+
 
 	@Override
 	public void die() {
 		// TODO Auto-generated method stub.
-
+		
 	}
+
 
 	@Override
 	public void setIsPaused(boolean isPaused) {
 		// TODO Auto-generated method stub.
-
+		
 	}
+
 
 	@Override
 	public boolean getIsPaused() {
 		// TODO Auto-generated method stub.
 		return false;
-	}
-
-
-	@Override
-	public List<Drawable> getDrawableCharacters() {
-		// TODO Auto-generated method stub.
-		return new ArrayList<Drawable>(this.characterList);
-	}
-
-
-	@Override
-	public List<Drawable> getDrawableBlocks() {
-		// TODO Auto-generated method stub.
-		return new ArrayList<Drawable>(this.blockList);
 	}
 
 
