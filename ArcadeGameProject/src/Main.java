@@ -20,24 +20,9 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		SimulationPanel world = constructSimulation();
+		SimulationPanel world = new SimulationPanel(600, 700, Color.GREEN);
 		JFrame frame = new GameWorldFrame(world);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 	}
-
-	/**
-	 * Construct a single simulation of the game.
-	 * 
-	 * @return a world
-	 */
-	private static SimulationPanel constructSimulation() {
-		int width = 600;
-		int height = 700;
-		Color c = BACKGROUND_COLOR;
-		SimulationPanel sp = new SimulationPanel(width, height,c);
-		return sp;
-		
-	}
-
 }

@@ -76,13 +76,14 @@ public interface GameEnvironment {
 	 * 
 	 * @return a possibly-empty list
 	 */
-	public List<Drawable> getDrawableParts();
 
 	/**
 	 * Returns the center point of the world
 	 * 
 	 * @return the center point
 	 */
+	public List<Drawable> getDrawableCharacters();
+	public List<Drawable> getDrawableBlocks();
 	Point2D getCenterPoint();
 
 }
