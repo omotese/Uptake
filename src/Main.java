@@ -14,8 +14,6 @@ import javax.swing.JFrame;
  *
  */
 public class Main {
-	
-	private static final Color BACKGROUND_COLOR= Color.GREEN;
 	/**
 	 * @param args
 	 */
