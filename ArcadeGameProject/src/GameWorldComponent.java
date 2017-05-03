@@ -2,10 +2,15 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Shape;
+import java.awt.event.KeyEvent;
 import java.util.List;
 
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
+
+
+
+
 
 
 public class GameWorldComponent extends JComponent {
@@ -15,7 +20,8 @@ public class GameWorldComponent extends JComponent {
 
 	private static final int FRAMES_PER_SECOND = 30;
 	private static final long REPAINT_INTERVAL_MS = 1000 / FRAMES_PER_SECOND;
-
+	private Character selectedCharacter = null;
+	
 	public GameWorldComponent(GameWorld world) {
 		this.world = world;
 		
@@ -78,5 +84,25 @@ public class GameWorldComponent extends JComponent {
 					"Null pointer exception", JOptionPane.ERROR_MESSAGE);
 		}
 	}
+	public void keyPressed(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_UP) {
+			GameWorldComponent.this.selectedCharacter.updatePosition(0, 0.1);
+		}
+		if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+			GameWorldComponent.this.selectedCharacter.updatePosition(0, -0.1);
+		}
+		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+			GameWorldComponent.this.selectedCharacter.updatePosition(-0.1, 0);
+		}
+		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			GameWorldComponent.this.selectedCharacter.updatePosition(0.1, 0);
+		}
+		
+//		if (GameWorldComponent.this.selectedCharacter != null) {
+//			GameWorldComponent.this.selectedCharacter.moveTo(e.getPoint());
+//			GameWorldComponent.this.selectedCharacter.setIsPaused(true);
+//		}
+	}
+	
 
 }
