@@ -29,10 +29,9 @@ public class Main {
 	}
 
 	/**
-	 * This helper method constructs a list of simulation objects that will each
-	 * simulate a world of bouncing balls.
+	 * Construct a single simulation of the game.
 	 * 
-	 * @return a list of worlds
+	 * @return a world
 	 */
 	private static SimulationPanel constructSimulation() {
 		int width = 600;
@@ -41,16 +40,6 @@ public class Main {
 		SimulationPanel sp = new SimulationPanel(width, height,c);
 		return sp;
 		
-		/*ArrayList<SimulationPanel> result = new ArrayList<SimulationPanel>();
-		
-		for (int i = 0; i < NUMBER_OF_SIMULATIONS; i++) {
-			int width = Random.randRange(MIN_WIDTH, MAX_WIDTH);
-			int height = Random.randRange(MIN_HEIGHT, MAX_HEIGHT);
-			Color c = BACKGROUND_COLORS[i % BACKGROUND_COLORS.length];
-			SimulationPanel sp = new SimulationPanel(width, height, c);
-			result.add(sp);
-		}
-		return result;*/
 	}
 
 }
