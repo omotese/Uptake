@@ -47,7 +47,6 @@ public class GameWorld implements Temporal, Relocatable, GameEnvironment, Drawab
 	
 	@Override
 	public Color getColor() {
-		// TODO Auto-generated method stub.
 		return null;
 	}
 
@@ -98,14 +97,12 @@ public class GameWorld implements Temporal, Relocatable, GameEnvironment, Drawab
 
 	@Override
 	public Dimension getSize() {
-		// TODO Auto-generated method stub.
-		return null;
+		return new Dimension(this.width, this.height);
 	}
 
 	@Override
 	public List<Drawable> getDrawableParts() {
-		// TODO Auto-generated method stub.
-		return null;
+		return new ArrayList<Drawable>(this.characterList);
 	}
 
 	@Override
