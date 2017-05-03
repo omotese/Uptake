@@ -83,7 +83,9 @@ public interface GameEnvironment {
 	 * @return the center point
 	 */
 	public List<Drawable> getDrawableCharacters();
+	
 	public List<Drawable> getDrawableBlocks();
+	
 	Point2D getCenterPoint();
 
 }
