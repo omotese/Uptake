@@ -2,17 +2,14 @@ import java.awt.geom.Point2D;
 
 
 
-public abstract class Character implements Temporal,Relocatable, Drawable {
-//	private double dx;
-//	private double dy;
-	private Point2D centerPoint;
+public abstract class Character implements Temporal, Relocatable, Drawable {
+	private double xPosition;
+	private double yPosition
 	private GameEnvironment world;
-	private boolean isPaused = false;
 	public Character(GameEnvironment world) {
 		this(world, world.getCenterPoint());
 	}
 	public Character(GameEnvironment world, Point2D centerPoint) {
-		// TODO Auto-generated constructor stub.
 		this.centerPoint= centerPoint;
 		this.world= world;
 	}
@@ -29,37 +26,9 @@ public abstract class Character implements Temporal,Relocatable, Drawable {
 
 	@Override
 	public void die() {
-		world.removeCharacter(Character.this);
+		this.world.removeCharacter(Character.this);
 	}
 
-	@Override
-	public boolean getIsPaused() {
-		// not yet implemented
-		return false;
-	}
-
-	@Override
-	public void setIsPaused(boolean isPaused) {
-		this.isPaused= isPaused;
-	}
-	// Drawable interface (partial implementation, subclasses must help)
-
-//	@Override
-//	public Shape getShape() {
-//		double x = getCenterPoint().getX();
-//		double y = getCenterPoint().getY();
-//		double size = getDiameter();
-//		return new Ellipse2D.Double(x - size / 2, y - size / 2, size, size);
-//	}
-
-	// -------------------------------------------------------------------------
-	// Relocatable interface
-
-	/**
-	 * Re-centers this ball at the given point.
-	 * 
-	 * @param point
-	 */
 	@Override
 	public void moveTo(Point2D point) {
 		double x= point.getX();
@@ -72,29 +41,13 @@ public abstract class Character implements Temporal,Relocatable, Drawable {
 		return this.centerPoint;
 	}
 
-	/**
-	 * Updates the position of this object, if necessary, due to the passing of
-	 * a "moment" in time.
-	 */
-	public abstract void updatePosition(double x, double y);
+	public abstract void updatePosition();
 
-	/**
-	 * Updates the size of this object, if necessary, due to the passing of a
-	 * "moment" in time.
-	 */
+
 	public abstract void updateSize();
 
-	/**
-	 * Updates the color of this object, if necessary, due to the passing of a
-	 * "moment" in time.
-	 */
 	public abstract void updateColor();
 
-	/**
-	 * Returns the diameter of this ball.
-	 * 
-	 * @return the diameter
-	 */
 	public abstract double getDiameter();
 
 }
