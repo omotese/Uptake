@@ -8,7 +8,7 @@ public class Hero extends Character {
 	private double xVelocity;
 	private double yVelocity;
 	
-	public Hero(GameEnvironment world) {
+	public Hero(GameWorld world) {
 		super(world);
 		this.x= 50;
 		this.y=50;
