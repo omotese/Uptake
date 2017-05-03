@@ -1,6 +1,4 @@
 import java.awt.Color;
-import java.util.ArrayList;
-import java.util.Random;
 
 import javax.swing.JFrame;
 
@@ -17,7 +15,7 @@ import javax.swing.JFrame;
  */
 public class Main {
 	
-	private static final Color BACKGROUND_COLOR =Color.GREEN;
+	private static final Color BACKGROUND_COLOR= Color.GREEN;
 	/**
 	 * @param args
 	 */
