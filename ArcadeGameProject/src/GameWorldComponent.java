@@ -9,10 +9,6 @@ import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
 
-
-
-
-
 public class GameWorldComponent extends JComponent {
 	
 	private GameWorld world;
@@ -68,6 +64,8 @@ public class GameWorldComponent extends JComponent {
 		if (shape == null) {
 			showNullPointerMessage("shape", c);
 			return;
+		} else {
+			g2.setColor(color);
 		}
 
 		
