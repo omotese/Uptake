@@ -3,6 +3,10 @@ import java.awt.Shape;
 import java.awt.geom.Point2D;
 
 public class Hero extends Character {
+	
+	public Hero(){
+		
+	}
 
 	@Override
 	public void timePassed() {

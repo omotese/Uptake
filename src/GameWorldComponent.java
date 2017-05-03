@@ -45,22 +45,22 @@ public class GameWorldComponent extends JComponent {
 		Graphics2D g2 = (Graphics2D) g;
 
 		drawDrawable(g2, this.world);
-
-		List<Drawable> drawableParts = this.world.getDrawableParts();
-		for (Drawable d : drawableParts) {
-			drawDrawable(g2, d);
+		
+		List<Drawable> characterParts= this.world.getDrawableCharacters(); 
+		for (Drawable c : characterParts) {
+			drawDrawable(g2, c);
 		}
 	}
 	
-	private void drawDrawable(Graphics2D g2, Drawable d) {
-		Color color = d.getColor();
+	private void drawDrawable(Graphics2D g2, Drawable c) {
+		Color color = c.getColor();
 		if (color == null) {
-			showNullPointerMessage("color", d);
+			showNullPointerMessage("color", c);
 			return;
 		}
-		Shape shape = d.getShape();
+		Shape shape = c.getShape();
 		if (shape == null) {
-			showNullPointerMessage("shape", d);
+			showNullPointerMessage("shape", c);
 			return;
 		}
 

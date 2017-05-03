@@ -12,10 +12,14 @@ public class GameWorld implements Temporal, Relocatable, GameEnvironment, Drawab
 	private final int width;
 	private final int height;
 	private final Color color;
-	private final ArrayList<Character> characterList = new ArrayList<Character>();
-	private final ArrayList<Block> blockList = new ArrayList<Block>();
+	
+	private final List<Character> characterList = new ArrayList<Character>();
+	
+	private final List<Block> blockList = new ArrayList<Block>();
+	
 	private final List<Character> charatersToAdd = new ArrayList<Character>();
 	private final List<Character> characterToRemove = new ArrayList<Character>();
+	
 	private final List<Block> blocksToAdd = new ArrayList<Block>();
 	private final List<Block> blocksToRemove = new ArrayList<Block>();
 	private final Shape background;
@@ -101,11 +105,6 @@ public class GameWorld implements Temporal, Relocatable, GameEnvironment, Drawab
 	}
 
 	@Override
-	public List<Drawable> getDrawableParts() {
-		return new ArrayList<Drawable>(this.characterList);
-	}
-
-	@Override
 	public void moveTo(Point2D point) {
 		// TODO Auto-generated method stub.
 
@@ -139,6 +138,20 @@ public class GameWorld implements Temporal, Relocatable, GameEnvironment, Drawab
 	public boolean getIsPaused() {
 		// TODO Auto-generated method stub.
 		return false;
+	}
+
+
+	@Override
+	public List<Drawable> getDrawableCharacters() {
+		// TODO Auto-generated method stub.
+		return new ArrayList<Drawable>(this.characterList);
+	}
+
+
+	@Override
+	public List<Drawable> getDrawableBlocks() {
+		// TODO Auto-generated method stub.
+		return new ArrayList<Drawable>(this.blockList);
 	}
 
 
