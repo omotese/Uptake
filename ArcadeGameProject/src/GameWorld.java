@@ -47,13 +47,13 @@ public class GameWorld implements Temporal, Relocatable, GameEnvironment, Drawab
 	
 	@Override
 	public Color getColor() {
-		return null;
+		return this.color;
 	}
 
 	@Override
 	public Shape getShape() {
 		// TODO Auto-generated method stub.
-		return null;
+		return this.background;
 	}
 
 	@Override
