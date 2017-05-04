@@ -83,6 +83,7 @@ public class GameWorldComponent extends JComponent {
 				
 								
 	
+		
 	}
 
 	private void drawDrawable(Graphics2D g2, Drawable c) {
