@@ -5,8 +5,6 @@ import java.awt.geom.Point2D;
 public class Hero extends Character {
 	private double x;
 	private double y;
-	private double xVelocity;
-	private double yVelocity;
 	
 	public Hero(GameWorld world) {
 		super(world);
@@ -15,73 +13,51 @@ public class Hero extends Character {
 		
 	}
 	
-	@Override
-	public void timePassed() {
-		// TODO Auto-generated method stub.
-
+	public void moveUp() {
+		
+		
 	}
-
-	@Override
-	public void die() {
-		// TODO Auto-generated method stub.
-
+	public void moveDown() {
+		
 	}
-
-	@Override
-	public void setIsPaused(boolean isPaused) {
-		// TODO Auto-generated method stub.
-
+	public void moveLeft() {
+		
 	}
-
-	@Override
-	public boolean getIsPaused() {
-		// TODO Auto-generated method stub.
-		return false;
-	}
-
-	@Override
-	public void moveTo(Point2D point) {
-		// TODO Auto-generated method stub.
-
-	}
-
-	@Override
-	public Point2D getCenterPoint() {
-		// TODO Auto-generated method stub.
-		return null;
+	public void moveRight() {
+		
 	}
 
 	@Override
 	public Color getColor() {
-		// TODO Auto-generated method stub.
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Shape getShape() {
-		// TODO Auto-generated method stub.
-		return null;
-	}
-
-	@Override
-	public void updatePosition(double dx, double dy) {
-		Point2D.Double newPos = new Point2D.Double(this.x, this.y);
+	public void updatePosition() {
+		// TODO Auto-generated method stub
 		
 	}
 
-	
-	
 	@Override
 	public void updateSize() {
-		// TODO Auto-generated method stub.
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void updateColor() {
-		// TODO Auto-generated method stub.
+		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public double getDiameter() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	
 
 
 
