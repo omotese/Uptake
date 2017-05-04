@@ -3,53 +3,42 @@ import java.awt.Shape;
 import java.awt.geom.Point2D;
 
 public class Door extends Block {
+	private Color doorColor;
+	private static final int SIZE = 30;
+	
+	public Door(GameWorld world) {
+		super(world);
+		this.doorColor = Color.pink;
+	}
+
 
 	@Override
 	public Color getColor() {
-		// TODO Auto-generated method stub.
-		return null;
+		return this.doorColor;
 	}
 
 	@Override
-	public Shape getShape() {
-		// TODO Auto-generated method stub.
-		return null;
+	public void updateSize() {
+		
 	}
+
 
 	@Override
-	public void moveTo(Point2D point) {
-		// TODO Auto-generated method stub.
-
+	public void updateColor() {
+		
 	}
+
 
 	@Override
-	public Point2D getCenterPoint() {
-		// TODO Auto-generated method stub.
-		return null;
+	public double getDiameter() {
+		return SIZE;
 	}
+
 
 	@Override
-	public void timePassed() {
-		// TODO Auto-generated method stub.
-
+	public void updatePosition() {
+		
 	}
 
-	@Override
-	public void die() {
-		// TODO Auto-generated method stub.
-
-	}
-
-	@Override
-	public void setIsPaused(boolean isPaused) {
-		// TODO Auto-generated method stub.
-
-	}
-
-	@Override
-	public boolean getIsPaused() {
-		// TODO Auto-generated method stub.
-		return false;
-	}
 
 }

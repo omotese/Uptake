@@ -3,10 +3,14 @@ import java.awt.Shape;
 import java.awt.geom.Point2D;
 
 public class Monster extends Character {
+	private double x;
+	private double y;
 
-	public Monster(GameEnvironment world) {
+	public Monster(GameWorld world) {
 		super(world);
-		// TODO Auto-generated constructor stub.
+		this.x = 0;//need to change
+		this.y = 0;//change!
+				
 	}
 
 	@Override

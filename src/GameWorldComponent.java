@@ -3,10 +3,17 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.util.List;
 
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
+
+import ballworlds.Ball;
+import ballworlds.BallWorldComponent;
 
 
 public class GameWorldComponent extends JComponent {
@@ -48,8 +55,8 @@ public class GameWorldComponent extends JComponent {
 
 		drawDrawable(g2, this.world);
 		
-		List<Drawable> characterParts= this.world.getDrawableCharacters(); 
-		for (Drawable c : characterParts) {
+		List<Drawable> drawableParts= this.world.getDrawableParts(); 
+		for (Drawable c : drawableParts) {
 			drawDrawable(g2, c);
 		}
 	}
@@ -82,25 +89,38 @@ public class GameWorldComponent extends JComponent {
 					"Null pointer exception", JOptionPane.ERROR_MESSAGE);
 		}
 	}
-	public void keyPressed(KeyEvent e) {
-		if (e.getKeyCode() == KeyEvent.VK_UP) {
-			GameWorldComponent.this.selectedCharacter.updatePosition(0, 0.1);
+	
+	/*public class GameWorldMouseHandler implements KeyListener {
+		@Override
+		public void keyPressed(KeyEvent e) {
+			if (e.getKeyCode() == KeyEvent.VK_UP) {
+			
+			}
+			if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+				GameWorldComponent.this.selectedCharacter.moveDown();
+			}
+			if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+				GameWorldComponent.this.selectedCharacter.moveLeft();
+			}
+			if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+				GameWorldComponent.this.selectedCharacter.moveRight();
+			}
 		}
-		if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-			GameWorldComponent.this.selectedCharacter.updatePosition(0, -0.1);
+
+		@Override
+		public void keyReleased(KeyEvent e) {
+			// TODO Auto-generated method stub
+			
 		}
-		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-			GameWorldComponent.this.selectedCharacter.updatePosition(-0.1, 0);
+
+		@Override
+		public void keyTyped(KeyEvent e) {
+			// TODO Auto-generated method stub
+			
 		}
-		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			GameWorldComponent.this.selectedCharacter.updatePosition(0.1, 0);
-		}
-		
-//		if (GameWorldComponent.this.selectedCharacter != null) {
-//			GameWorldComponent.this.selectedCharacter.moveTo(e.getPoint());
-//			GameWorldComponent.this.selectedCharacter.setIsPaused(true);
-//		}
-	}
+	
+	
+	}*/
 	
 
 }

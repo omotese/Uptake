@@ -3,53 +3,41 @@ import java.awt.Shape;
 import java.awt.geom.Point2D;
 
 public class Brick extends Block {
+	private Color brickColor;
+	private static final int SIZE = 30;
+	
+	public Brick(GameWorld world) {
+		super(world);
+		this.brickColor = Color.black;
+	}
+
 
 	@Override
 	public Color getColor() {
-		// TODO Auto-generated method stub.
-		return null;
+		return this.brickColor;
 	}
 
 	@Override
-	public Shape getShape() {
-		// TODO Auto-generated method stub.
-		return null;
+	public void updateSize() {
+		
 	}
 
-	@Override
-	public void moveTo(Point2D point) {
-		// TODO Auto-generated method stub.
 
+	@Override
+	public void updateColor() {
+		
 	}
 
+
 	@Override
-	public Point2D getCenterPoint() {
-		// TODO Auto-generated method stub.
-		return null;
+	public double getDiameter() {
+		return SIZE;
 	}
 
-	@Override
-	public void timePassed() {
-		// TODO Auto-generated method stub.
-
-	}
 
 	@Override
-	public void die() {
-		// TODO Auto-generated method stub.
-
-	}
-
-	@Override
-	public void setIsPaused(boolean isPaused) {
-		// TODO Auto-generated method stub.
-
-	}
-
-	@Override
-	public boolean getIsPaused() {
-		// TODO Auto-generated method stub.
-		return false;
+	public void updatePosition() {
+		
 	}
 
 }
