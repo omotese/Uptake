@@ -3,6 +3,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Shape;
+import java.awt.event.KeyListener;
 import java.util.List;
 
 import javax.swing.JComponent;
@@ -13,13 +14,13 @@ public class GameWorldComponent extends JComponent {
 	private GameWorld world;
 	private boolean hasShownNullErrorMessage = false;
 
-	private static final int FRAMES_PER_SECOND = 30;
+	private static final int FRAMES_PER_SECOND = 1;
 	private static final long REPAINT_INTERVAL_MS = 1000 / FRAMES_PER_SECOND;
 	private Hero hero;
 
 	public GameWorldComponent(GameWorld world) {
 		this.world = world;
-
+		this.hero= new Hero(world);
 		setPreferredSize(world.getSize());
 		setMaximumSize(world.getSize());
 
@@ -74,7 +75,10 @@ public class GameWorldComponent extends JComponent {
 				}
 				
 		}		*/
-		
+		KeyListener hl = new HeroListener(hero,this);
+		this.addKeyListener(hl);
+		drawableParts.add(this.hero);
+		System.out.println(hero.getCenterPoint());
 		Wall newWall= new Wall(this.world);
 		drawableParts.add(newWall);
 			for(Drawable c: drawableParts) {
@@ -83,7 +87,6 @@ public class GameWorldComponent extends JComponent {
 				
 								
 	
-		
 	}
 
 	private void drawDrawable(Graphics2D g2, Drawable c) {
@@ -133,32 +136,5 @@ public class GameWorldComponent extends JComponent {
 			JOptionPane.showMessageDialog(null, message, "Null pointer exception", JOptionPane.ERROR_MESSAGE);
 		}
 	}
-
-	/*
-	 * public class GameWorldMouseHandler implements KeyListener {
-	 * 
-	 * @Override public void keyPressed(KeyEvent e) { if (e.getKeyCode() ==
-	 * KeyEvent.VK_UP) {
-	 * 
-	 * } if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-	 * GameWorldComponent.this.selectedCharacter.moveDown(); } if
-	 * (e.getKeyCode() == KeyEvent.VK_LEFT) {
-	 * GameWorldComponent.this.selectedCharacter.moveLeft(); } if
-	 * (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-	 * GameWorldComponent.this.selectedCharacter.moveRight(); } }
-	 * 
-	 * @Override public void keyReleased(KeyEvent e) { // TODO Auto-generated
-	 * method stub
-	 * 
-	 * }
-	 * 
-	 * @Override public void keyTyped(KeyEvent e) { // TODO Auto-generated
-	 * method stub
-	 * 
-	 * }
-	 * 
-	 * 
-	 * }
-	 */
 
 }
