@@ -1,3 +1,4 @@
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -12,8 +13,6 @@ import java.util.List;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
-import ballworlds.Ball;
-import ballworlds.BallWorldComponent;
 
 
 public class GameWorldComponent extends JComponent {
