@@ -32,7 +32,7 @@ public class Hero extends Character {
 		dx=0.5;
 	}
 	public Shape getShape(){
-		return new Ellipse2D.Double(20,20,10,10);
+		return new Ellipse2D.Double(20,20,50,50);
 	}
 	@Override
 	public Color getColor() {
