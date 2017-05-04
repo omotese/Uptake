@@ -24,13 +24,7 @@ public class GameWorldFrame extends JFrame {
 	public GameWorldFrame(SimulationPanel panel) {
 		setTitle("Game World");
 
-		JPanel content = new JPanel();
-		// Changes the layout of the panel so the worlds will stack vertically
-		content.setLayout(new BoxLayout(content, BoxLayout.PAGE_AXIS));
-		// add "rigid stuff" to force minimum spacing
-		content.add(Box.createVerticalStrut(GAP));
-		content.add(panel);
-		add(content);
+		add(panel);
 
 		add(quitButtonComponent(), BorderLayout.PAGE_END);
 		setResizable(false);
