@@ -22,10 +22,11 @@ public class GameWorldComponent extends JComponent {
 
 	private static final int FRAMES_PER_SECOND = 30;
 	private static final long REPAINT_INTERVAL_MS = 1000 / FRAMES_PER_SECOND;
-	private Character selectedCharacter = null;
+	private Hero hero;
 	
 	public GameWorldComponent(GameWorld world) {
 		this.world = world;
+		
 		
 		setPreferredSize(world.getSize());
 		setMaximumSize(world.getSize());

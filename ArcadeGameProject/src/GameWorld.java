@@ -101,8 +101,7 @@ public class GameWorld implements Temporal, Drawable {
 	}
 
 	public Dimension getSize() {
-		// TODO Auto-generated method stub
-		return null;
+		return new Dimension(this.width, this.height);
 	}
 	
 	public synchronized List<Drawable> getDrawableParts() {
