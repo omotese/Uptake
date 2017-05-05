@@ -45,7 +45,6 @@ public class Hero extends Character {
 
 	@Override
 	public Color getColor() {
-		// TODO Auto-generated method stub
 		return Color.yellow;
 	}
 
