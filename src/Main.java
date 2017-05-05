@@ -24,5 +24,9 @@ public class Main {
 		frame.add(worldPanel);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
+		HeroListener myListener = new HeroListener(hero, world);
+		// we need to pass it a hero and a world, and I know they exist because
+		// they are getting drawn, but I can't figure out where they're getting
+		// constructed?
 	}
 }
