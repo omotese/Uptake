@@ -5,24 +5,17 @@ import java.awt.geom.Point2D;
 
 public abstract class GameObject implements Drawable, Temporal, Relocatable{
 	private Point2D centerPoint;
-	private GameWorld world;
 	private boolean isPaused = false;
 	
-	public GameObject(GameWorld world) {
-		this(world, world.getCenterPoint());
+	public GameObject() {
 	}
 
-	public GameObject(GameWorld world2, Point2D centerPoint2) {
+	public GameObject(Point2D centerPoint) {
 		this.centerPoint= centerPoint;
-		this.world= world;
 	}
 	
 	protected void setCenterPoint(Point2D centerPoint) {
 		this.centerPoint = centerPoint;
-	}
-	
-	protected GameWorld getWorld() {
-		return this.world;
 	}
 	
 	@Override
@@ -34,10 +27,6 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable{
 		}
 	}
 
-	@Override
-	public void die() {
-		this.world.removeGameObject(this);
-	}
 
 	@Override
 	public boolean getIsPaused() {
@@ -47,14 +36,6 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable{
 	@Override
 	public void setIsPaused(boolean isPaused) {
 		isPaused = isPaused;
-	}
-	
-	@Override
-	public Shape getShape() {
-		double x = getCenterPoint().getX();
-		double y = getCenterPoint().getY();
-		double size = getDiameter();
-		return new Ellipse2D.Double(x - size / 2, y - size / 2, size, size);
 	}
 	
 	@Override

@@ -21,7 +21,7 @@ public class GameWorldComponent extends JComponent {
 
 	public GameWorldComponent(GameWorld world) {
 		this.world = world;
-		this.hero = new Hero(world);
+		this.hero = new Hero();
 		this.world.addGameObject(hero);
 		setPreferredSize(world.getSize());
 		setMaximumSize(world.getSize());
@@ -70,7 +70,7 @@ public class GameWorldComponent extends JComponent {
 		 * }
 		 */
 		
-		//drawableParts.add(this.hero);
+		drawableParts.add(this.hero);
 		// drawableParts.add(newWall);
 		for (Drawable c : drawableParts) {
 			drawDrawable(g2, c);
