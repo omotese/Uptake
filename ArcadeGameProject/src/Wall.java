@@ -20,6 +20,15 @@ public class Wall implements Drawable {
 		
 		return myRect ;
 	}
+	
+	public boolean isWithin(double xCheck, double yCheck){
+		if(this.x<=xCheck && xCheck<=this.x+50 && this.y<=yCheck && yCheck <=this.y+50) {
+			return true;
+		}
+		return false;
+		
+	}
+	
 	@Override
 	public Color getColor() {
 		// TODO Auto-generated method stub.
