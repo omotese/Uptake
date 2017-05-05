@@ -25,6 +25,10 @@ public class HeroListener implements KeyListener {
 		if (e.getKeyCode() == KeyEvent.VK_S) {
 			myHero.moveDown();
 		}
+		if(e.getKeyCode() == KeyEvent.VK_B) {
+			myHero.setBomb();
+			
+		}
 	}
 
 	
