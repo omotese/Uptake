@@ -3,14 +3,13 @@ import java.awt.Shape;
 import java.awt.geom.Point2D;
 
 public class Monster extends Character {
-	private double x;
-	private double y;
 
-	public Monster(GameWorld world) {
-		super(world);
-		this.x = 0;//need to change
-		this.y = 0;//change!
-				
+
+	public Monster() {
+	}
+	
+	public Monster(Point2D centerPoint) {
+		this.setCenterPoint(centerPoint);
 	}
 
 	@Override
@@ -64,7 +63,7 @@ public class Monster extends Character {
 	@Override
 	public void updatePosition() {
 		// TODO Auto-generated method stub.
-		
+		//randomize the position of the monsters
 	}
 
 	@Override

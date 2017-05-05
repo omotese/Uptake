@@ -1,28 +1,23 @@
 import java.awt.Color;
 import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
+import java.awt.geom.Point2D;
 
 public class Bomb extends Block {
 	private double x;
 	private double y;
-	private Color blockColor;
-	private static int size;
+	private double size;
 
-	public Bomb(GameWorld world, double x, double y) {
-		super(world);
-		this.blockColor = Color.black;
+	public Bomb(Point2D centerPoint) {
+		this.setCenterPoint(centerPoint);
 		this.size = 30;
-
-		// these next two lines actually need to include some sort of rounding
-		// to the nearest whole cell but idk how big you guys have made the
-		// cells. It should be pretty easy to do, can you do it?
-		this.x = x;
-		this.y = y;
+		this.x = this.getCenterPoint().getX();
+		this.y = this.getCenterPoint().getY();
 	}
 
 	@Override
 	public Color getColor() {
-		return this.blockColor;
+		return Color.RED;
 	}
 
 	@Override
@@ -49,6 +44,12 @@ public class Bomb extends Block {
 	public void updateColor() {
 		// TODO Auto-generated method stub.
 
+	}
+
+	@Override
+	public void die() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

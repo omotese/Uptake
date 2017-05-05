@@ -6,21 +6,15 @@ import java.awt.geom.Point2D;
 public class Hero extends Character {
 	private double x;
 	private double y;
-	private double dx;
-	private double dy;
-	private Point2D centerPoint;
+	private double size;
 
-	public Hero(GameWorld world) {
-		super(world);
-		this.x = 50;
-		this.y = 50;
-		this.dx = 1;
-		this.dy = 1;
-		this.centerPoint = new Point2D.Double(x, y);
+	public Hero() {
+		this.size = 50;
+		this.setCenterPoint(new Point2D.Double(55,55));
+		this.x=this.getCenterPoint().getX();
+		this.y=this.getCenterPoint().getY();
 	}
 	
-
-
 	public void moveUp() {
 		if (this.y-10 >= 50) {
 			this.y -= 10;
@@ -46,12 +40,12 @@ public class Hero extends Character {
 	}
 
 	public void setBomb() {
-		Bomb newBomb = new Bomb(getWorld(), x, y);
-		this.getWorld().addGameObject(newBomb);
+		/*Bomb newBomb = new Bomb(getWorld(), x, y);
+		this.getWorld().addGameObject(newBomb);*/
 	}
 
 	public Shape getShape() {
-		return new Ellipse2D.Double(x, y, 50, 50);
+		return new Ellipse2D.Double(this.x, this.y, this.size, this.size);
 	}
 
 	@Override
@@ -85,7 +79,13 @@ public class Hero extends Character {
 
 	@Override
 	public Point2D getCenterPoint() {
-		return centerPoint;
+		return new Point2D.Double(x, y);
+	}
+
+	@Override
+	public void die() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
