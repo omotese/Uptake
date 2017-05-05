@@ -4,15 +4,21 @@ import java.awt.geom.Rectangle2D;
 
 public class Wall implements Drawable {
 	private Color wallColor;
-
-	private static final int SIZE = 30;
+	private double x;
+	private double y;
 	
-	public Wall(GameWorld world) {
+	private int wallSize;
+	
+	public Wall(double x, double y) {
 		this.wallColor = Color.gray;
-
+		this.x= x;
+		this.y= y;
+		this.wallSize=50;
 	}
 	public Shape getShape(){
-		return new Rectangle2D.Double(30,30,SIZE,SIZE);
+		Rectangle2D.Double myRect= new Rectangle2D.Double(x,y,wallSize,wallSize);
+		
+		return myRect ;
 	}
 	@Override
 	public Color getColor() {
