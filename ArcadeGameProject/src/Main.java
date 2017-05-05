@@ -19,7 +19,7 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		SimulationPanel worldPanel = new SimulationPanel(500, 500, Color.LIGHT_GRAY);
+		SimulationPanel worldPanel = new SimulationPanel(850, 650, Color.LIGHT_GRAY);
 		JFrame frame = new GameWorldFrame(worldPanel);
 		frame.add(worldPanel);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
