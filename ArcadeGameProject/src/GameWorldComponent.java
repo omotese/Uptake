@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JComponent;
@@ -20,7 +21,7 @@ public class GameWorldComponent extends JComponent {
 
 	public GameWorldComponent(GameWorld world) {
 		this.world = world;
-		this.hero= new Hero(world);
+		this.hero = new Hero(world);
 		setPreferredSize(world.getSize());
 		setMaximumSize(world.getSize());
 
@@ -48,45 +49,54 @@ public class GameWorldComponent extends JComponent {
 		Graphics2D g2 = (Graphics2D) g;
 		drawDrawable(g2, this.world);
 		List<Drawable> drawableParts = this.world.getDrawableParts();
-/*
-		FileReader file;
-		try {
-			file = new FileReader("ArcadeGameLevels.txt");
-		} catch (FileNotFoundException exception) {
-			// TODO Auto-generated catch-block stub.
-			exception.printStackTrace();
-		}
-		Scanner s = new Scanner(file);
-		while(s.hasNext()){
-			try{
-				String level= s.next();
-				if(level.equals("Level 1")){
-					for(int i =0; i<=16; i++){
-						for(int j=0; j<=13; j++){
-							if(s.equals('W')){
-							Wall newWall= new Wall(this.world);
-							drawableParts.add(newWall);
-							}
-						}
-					}
-				}	
-				}catch(IllegalArgumentException e){
-					System.err.println("Bad");
-				}
-				
-		}		*/
-		KeyListener hl = new HeroListener(hero,this);
+		/*drawableParts.addAll(wallHolder());*/
+		/*
+		 * FileReader file; try { file = new FileReader("ArcadeGameLevels.txt");
+		 * } catch (FileNotFoundException exception) { // TODO Auto-generated
+		 * catch-block stub. exception.printStackTrace(); } Scanner s = new
+		 * Scanner(file); while(s.hasNext()){ try{ String level= s.next();
+		 * if(level.equals("Level 1")){ for(int i =0; i<=16; i++){ for(int j=0;
+		 * j<=13; j++){ if(s.equals('W')){ Wall newWall= new Wall(this.world);
+		 * drawableParts.add(newWall); } } } } }catch(IllegalArgumentException
+		 * e){ System.err.println("Bad"); }
+		 * 
+		 * }
+		 */
+		KeyListener hl = new HeroListener(hero, this);
 		this.addKeyListener(hl);
 		drawableParts.add(this.hero);
 		System.out.println(hero.getCenterPoint());
-		Wall newWall= new Wall(this.world);
-		drawableParts.add(newWall);
-			for(Drawable c: drawableParts) {
-				drawDrawable(g2, c);
-			}
-				
-								
-	
+		// drawableParts.add(newWall);
+		for (Drawable c : drawableParts) {
+			drawDrawable(g2, c);
+		}
+		for(Wall w: wallHolder()) {/*
+			g2.setColor(Color.black);*/
+			g2.draw(w.getShape());
+		}
+
+	}
+
+	public ArrayList<Wall> wallHolder() {
+		ArrayList<Wall> walls = new ArrayList<Wall>();
+		for (int i = 0; i < 13; i++) {
+			Wall newWall = new Wall(0, 50 * i);
+			walls.add(newWall);
+		}
+		for (int j = 0; j < 16; j++) {
+			Wall newWall = new Wall(50 * j, 0);
+			walls.add(newWall);
+		}
+		for(int k=0; k<16; k++){
+			Wall newWall= new Wall(50*k,650 );
+			walls.add(newWall);
+		}
+		for(int j=0; j<13; j++){
+			Wall newWall= new Wall(800, 50*j);
+			walls.add(newWall);
+			
+		}
+		return walls;
 	}
 
 	private void drawDrawable(Graphics2D g2, Drawable c) {
@@ -102,7 +112,7 @@ public class GameWorldComponent extends JComponent {
 		} else {
 			g2.setColor(color);
 		}
-
+		
 		g2.fill(shape);
 	}
 
