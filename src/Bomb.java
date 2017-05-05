@@ -6,12 +6,12 @@ public class Bomb extends Block {
 	private double x;
 	private double y;
 	private Color blockColor;
-	private static int SIZE;
+	private static int size;
 
 	public Bomb(GameWorld world, double x, double y) {
 		super(world);
 		this.blockColor = Color.black;
-		this.SIZE = 30;
+		this.size = 30;
 
 		// these next two lines actually need to include some sort of rounding
 		// to the nearest whole cell but idk how big you guys have made the
@@ -27,7 +27,7 @@ public class Bomb extends Block {
 
 	@Override
 	public double getDiameter() {
-		return SIZE;
+		return this.size;
 	}
 
 	@Override
@@ -36,7 +36,7 @@ public class Bomb extends Block {
 	}
 
 	public Shape getShape() {
-		return new Ellipse2D.Double(x - 15, y - 15, x + 15, y + 15);
+		return new Ellipse2D.Double(x, y, size, size);
 	}
 
 	@Override

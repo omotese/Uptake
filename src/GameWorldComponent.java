@@ -70,7 +70,7 @@ public class GameWorldComponent extends JComponent {
 		 * }
 		 */
 		
-		drawableParts.add(this.hero);
+		//drawableParts.add(this.hero);
 		// drawableParts.add(newWall);
 		for (Drawable c : drawableParts) {
 			drawDrawable(g2, c);
