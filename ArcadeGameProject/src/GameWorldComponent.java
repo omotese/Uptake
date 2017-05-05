@@ -49,7 +49,7 @@ public class GameWorldComponent extends JComponent {
 		Graphics2D g2 = (Graphics2D) g;
 		drawDrawable(g2, this.world);
 		List<Drawable> drawableParts = this.world.getDrawableParts();
-		/*drawableParts.addAll(wallHolder());*/
+		drawableParts.addAll(wallHolder());
 		/*
 		 * FileReader file; try { file = new FileReader("ArcadeGameLevels.txt");
 		 * } catch (FileNotFoundException exception) { // TODO Auto-generated
@@ -70,10 +70,6 @@ public class GameWorldComponent extends JComponent {
 		for (Drawable c : drawableParts) {
 			drawDrawable(g2, c);
 		}
-		for(Wall w: wallHolder()) {/*
-			g2.setColor(Color.black);*/
-			g2.draw(w.getShape());
-		}
 
 	}
 
@@ -84,7 +80,7 @@ public class GameWorldComponent extends JComponent {
 			walls.add(newWall);
 		}
 		for (int j = 0; j < 16; j++) {
-			Wall newWall = new Wall(50 * j, 0);
+			Wall newWall = new Wall(50 * (j+1), 0);
 			walls.add(newWall);
 		}
 		for(int k=0; k<16; k++){
@@ -92,7 +88,7 @@ public class GameWorldComponent extends JComponent {
 			walls.add(newWall);
 		}
 		for(int j=0; j<13; j++){
-			Wall newWall= new Wall(800, 50*j);
+			Wall newWall= new Wall(800, 50*(j+1));
 			walls.add(newWall);
 			
 		}
