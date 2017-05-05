@@ -118,28 +118,6 @@ public class GameWorldComponent extends JComponent {
 		g2.fill(shape);
 	}
 
-	// public void drawGame(Graphics2D g2) throws FileNotFoundException{
-	// FileReader file;
-	// file = new FileReader("ArcadeGameLevels.txt");
-	// Scanner s = new Scanner(file);
-	// while(s.hasNext()){
-	// try{
-	// String level= s.next();
-	// if(level.equals("Level 1")){
-	// for(int i =0; i<=16; i++){
-	// for(int j=0; j<=13; j++){
-	// if(s.equals('W')){
-	// drawWall(g2);
-	// }
-	// }
-	// }
-	// }
-	// }
-	//
-	// }
-	//
-	// }
-
 	private void showNullPointerMessage(String nullAttribute, Drawable d) {
 		if (!this.hasShownNullErrorMessage) {
 			this.hasShownNullErrorMessage = true;
