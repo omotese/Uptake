@@ -28,6 +28,8 @@ public class HeroListener implements KeyListener {
 		}
 	}
 
+	//need a listener for setting bomb
+	
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub.
