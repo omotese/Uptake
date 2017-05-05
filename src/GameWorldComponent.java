@@ -76,21 +76,27 @@ public class GameWorldComponent extends JComponent {
 	public ArrayList<Wall> wallHolder() {
 		ArrayList<Wall> walls = new ArrayList<Wall>();
 		for (int i = 0; i < 13; i++) {
-			Wall newWall = new Wall(0, 50 * i);
+			Wall newWall = new Wall(0, 50 *i);
 			walls.add(newWall);
 		}
 		for (int j = 0; j < 16; j++) {
 			Wall newWall = new Wall(50 * (j+1), 0);
 			walls.add(newWall);
 		}
-		for(int k=0; k<16; k++){
-			Wall newWall= new Wall(50*k,650 );
+		for(int k=0; k<15; k++){
+			Wall newWall= new Wall(50*(k+1),600 );
 			walls.add(newWall);
 		}
-		for(int j=0; j<13; j++){
+		for(int j=0; j<12; j++){
 			Wall newWall= new Wall(800, 50*(j+1));
 			walls.add(newWall);
 			
+		}
+		for(int j=0; j<7; j++){
+			for(int k=0; k<5; k++ ){
+			Wall newWall = new Wall(100*(j+1),(k+1)*100);
+			walls.add(newWall);
+		}
 		}
 		return walls;
 	}
