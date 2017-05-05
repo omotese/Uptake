@@ -20,27 +20,35 @@ public class Hero extends Character {
 	}
 
 	public void moveUp() {
-		this.y -= 20;
+		if (this.y-10 >= 50) {
+			this.y -= 10;
+		}
 	}
 
 	public void moveDown() {
-		this.y+=20;
+		if (this.y + 10 <= 550) {
+			this.y += 10;
+		}
 	}
 
 	public void moveLeft() {
-		this.x-=20;
+		if (this.x - 10 >= 50) {
+			this.x -= 10;
+		}
 	}
 
 	public void moveRight() {
-		this.x+=20;
+		if (this.x + 10 <= 750) {
+			this.x += 10;
+		}
 	}
 
 	public void setBomb() {
-		new Bomb(getWorld(), x, y);//?
+		new Bomb(getWorld(), x, y);// ?
 	}
 
 	public Shape getShape() {
-		return new Ellipse2D.Double(x,y,50,50);
+		return new Ellipse2D.Double(x, y, 50, 50);
 	}
 
 	@Override
@@ -53,7 +61,6 @@ public class Hero extends Character {
 		Point2D.Double myPoint = new Point2D.Double(x, y);
 		this.setCenterPoint(myPoint);
 	}
-
 
 	@Override
 	public void updateSize() {
