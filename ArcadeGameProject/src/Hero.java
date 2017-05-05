@@ -46,7 +46,8 @@ public class Hero extends Character {
 	}
 
 	public void setBomb() {
-		new Bomb(getWorld(), x, y);// ?
+		Bomb newBomb = new Bomb(getWorld(), x, y);
+		this.getWorld().addGameObject(newBomb);
 	}
 
 	public Shape getShape() {
