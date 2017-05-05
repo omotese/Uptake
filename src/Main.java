@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 
@@ -19,14 +20,16 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		SimulationPanel worldPanel = new SimulationPanel(850, 650, Color.LIGHT_GRAY);
-		JFrame frame = new GameWorldFrame(worldPanel);
-		frame.add(worldPanel);
+		GameWorld world = new GameWorld(850, 650, Color.LIGHT_GRAY);
+		GameWorldComponent worldComponent = new GameWorldComponent(world);
+		
+		JFrame frame = new JFrame();
+		frame.setSize(850, 650);
+		
+		frame.add(worldComponent);
+		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
-		// HeroListener myListener = new HeroListener(hero, world);
-		// we need to pass it a hero and a world, and I know they exist because
-		// they are getting drawn, but I can't figure out where they're getting
-		// constructed?
+
 	}
 }

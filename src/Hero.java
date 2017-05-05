@@ -20,24 +20,23 @@ public class Hero extends Character {
 	}
 
 	public void moveUp() {
-		y+= -dy;
-//I know this looks backward but positive is down. I promise.-Lee
+		this.y -= 20;
 	}
 
 	public void moveDown() {
-		y += dy;
+		this.y+=20;
 	}
 
 	public void moveLeft() {
-		x += -dx;
+		this.x-=20;
 	}
 
 	public void moveRight() {
-		y += dx;
+		this.x+=20;
 	}
 
 	public void setBomb() {
-		new Bomb(getWorld(), x, y);
+		new Bomb(getWorld(), x, y);//?
 	}
 
 	public Shape getShape() {
@@ -56,10 +55,6 @@ public class Hero extends Character {
 		this.setCenterPoint(myPoint);
 	}
 
-	public void stopHero() {
-		dx = 0;
-		dy = 0;
-	}
 
 	@Override
 	public void updateSize() {

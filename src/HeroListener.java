@@ -13,9 +13,8 @@ public class HeroListener implements KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub.
 		if (e.getKeyCode() == KeyEvent.VK_W) {
-			myHero.moveDown();
+			myHero.moveUp();
 		}
 		if (e.getKeyCode() == KeyEvent.VK_A) {
 			myHero.moveLeft();
@@ -23,16 +22,15 @@ public class HeroListener implements KeyListener {
 		if (e.getKeyCode() == KeyEvent.VK_D) {
 			myHero.moveRight();
 		}
-		if (e.getKeyCode() == KeyEvent.VK_W) {
-			myHero.moveUp();
+		if (e.getKeyCode() == KeyEvent.VK_S) {
+			myHero.moveDown();
 		}
 	}
 
-	//need a listener for setting bomb
 	
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub.
+		
 		
 	}
 

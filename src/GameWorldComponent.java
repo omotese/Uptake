@@ -15,15 +15,22 @@ public class GameWorldComponent extends JComponent {
 	private GameWorld world;
 	private boolean hasShownNullErrorMessage = false;
 
-	private static final int FRAMES_PER_SECOND = 1;
+	private static final int FRAMES_PER_SECOND = 30;
 	private static final long REPAINT_INTERVAL_MS = 1000 / FRAMES_PER_SECOND;
 	private Hero hero;
 
 	public GameWorldComponent(GameWorld world) {
 		this.world = world;
 		this.hero = new Hero(world);
+		this.world.addGameObject(hero);
 		setPreferredSize(world.getSize());
 		setMaximumSize(world.getSize());
+		
+		KeyListener hl = new HeroListener(hero, this);
+		this.addKeyListener(hl);
+		this.setFocusable(true);
+		this.requestFocus();
+		
 
 		Runnable repainter = new Runnable() {
 			@Override
@@ -62,15 +69,13 @@ public class GameWorldComponent extends JComponent {
 		 * 
 		 * }
 		 */
-		KeyListener hl = new HeroListener(hero, this);
-		this.addKeyListener(hl);
+		
 		drawableParts.add(this.hero);
-		System.out.println(hero.getCenterPoint());
 		// drawableParts.add(newWall);
 		for (Drawable c : drawableParts) {
 			drawDrawable(g2, c);
 		}
-
+		
 	}
 
 	public ArrayList<Wall> wallHolder() {
