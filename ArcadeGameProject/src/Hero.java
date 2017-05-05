@@ -18,6 +18,8 @@ public class Hero extends Character {
 		this.dy = 1;
 		this.centerPoint = new Point2D.Double(x, y);
 	}
+	
+
 
 	public void moveUp() {
 		if (this.y-10 >= 50) {
