@@ -20,20 +20,20 @@ public class Hero extends Character {
 	}
 
 	public void moveUp() {
-		dy = 0.5;
-
+		y+= -0.5;
+//I know this looks backward but positive is down. I promise.-Lee
 	}
 
 	public void moveDown() {
-		dy = -0.5;
+		y += 0.5;
 	}
 
 	public void moveLeft() {
-		dx = -0.5;
+		x += -0.5;
 	}
 
 	public void moveRight() {
-		dx = 0.5;
+		y += 0.5;
 	}
 
 	public void setBomb() {
