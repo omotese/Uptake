@@ -14,26 +14,26 @@ public class Hero extends Character {
 		super(world);
 		this.x = 50;
 		this.y = 50;
-		this.dx = 0;
-		this.dy = 0;
+		this.dx = 1;
+		this.dy = 1;
 		this.centerPoint = new Point2D.Double(x, y);
 	}
 
 	public void moveUp() {
-		y+= -0.5;
+		y+= -dy;
 //I know this looks backward but positive is down. I promise.-Lee
 	}
 
 	public void moveDown() {
-		y += 0.5;
+		y += dy;
 	}
 
 	public void moveLeft() {
-		x += -0.5;
+		x += -dx;
 	}
 
 	public void moveRight() {
-		y += 0.5;
+		y += dx;
 	}
 
 	public void setBomb() {
@@ -41,7 +41,7 @@ public class Hero extends Character {
 	}
 
 	public Shape getShape() {
-		return new Ellipse2D.Double(20, 20, 50, 50);
+		return new Ellipse2D.Double(x,y,50,50);
 	}
 
 	@Override
@@ -52,8 +52,6 @@ public class Hero extends Character {
 
 	@Override
 	public void updatePosition() {
-		x += dx;
-		y += dy;
 		Point2D.Double myPoint = new Point2D.Double(x, y);
 		this.setCenterPoint(myPoint);
 	}
