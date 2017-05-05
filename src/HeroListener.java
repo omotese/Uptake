@@ -11,18 +11,19 @@ public class HeroListener implements KeyListener {
 		this.component = comp;
 	}
 
+	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub.
-		if (e.getKeyCode() == KeyEvent.VK_KP_DOWN) {
+		if (e.getKeyCode() == KeyEvent.VK_W) {
 			myHero.moveDown();
 		}
-		if (e.getKeyCode() == KeyEvent.VK_KP_LEFT) {
+		if (e.getKeyCode() == KeyEvent.VK_A) {
 			myHero.moveLeft();
 		}
-		if (e.getKeyCode() == KeyEvent.VK_KP_RIGHT) {
+		if (e.getKeyCode() == KeyEvent.VK_D) {
 			myHero.moveRight();
 		}
-		if (e.getKeyCode() == KeyEvent.VK_KP_UP) {
+		if (e.getKeyCode() == KeyEvent.VK_W) {
 			myHero.moveUp();
 		}
 	}
