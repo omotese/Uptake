@@ -31,13 +31,16 @@ public class Hero extends Character {
 	public void moveRight() {
 		dx=0.5;
 	}
+	public void setBomb() {
+		new Bomb(getWorld(),x,y);
+	}
 	public Shape getShape(){
 		return new Ellipse2D.Double(20,20,50,50);
 	}
 	@Override
 	public Color getColor() {
 		// TODO Auto-generated method stub
-		return Color.black;
+		return Color.yellow;
 	}
 
 	@Override
