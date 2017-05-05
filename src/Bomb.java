@@ -12,9 +12,10 @@ public class Bomb extends Block {
 		super(world);
 		this.blockColor = Color.black;
 		this.SIZE = 30;
-		
-//these next two lines actually need to include some sort of rounding to the nearest whole cell but
-//idk how big you guys have made the cells. It should be pretty easy to do, can you do it?
+
+		// these next two lines actually need to include some sort of rounding
+		// to the nearest whole cell but idk how big you guys have made the
+		// cells. It should be pretty easy to do, can you do it?
 		this.x = x;
 		this.y = y;
 	}
@@ -33,21 +34,21 @@ public class Bomb extends Block {
 	public void updatePosition() {
 
 	}
-	
-	public Shape getShape(){
-		return new Ellipse2D.Double(x-15,y-15,x+15,y+15);
+
+	public Shape getShape() {
+		return new Ellipse2D.Double(x - 15, y - 15, x + 15, y + 15);
 	}
 
 	@Override
 	public void updateSize() {
 		// TODO Auto-generated method stub.
-		
+
 	}
 
 	@Override
 	public void updateColor() {
 		// TODO Auto-generated method stub.
-		
+
 	}
 
 }
