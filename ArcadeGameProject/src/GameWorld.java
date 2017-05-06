@@ -18,6 +18,7 @@ public class GameWorld implements Temporal, Drawable {
 	private final List<GameObject> objectToAdd = new ArrayList<GameObject>();
 	private final List<GameObject> objectToRemove = new ArrayList<GameObject>();
 	
+	
 	private final Shape background;
 	private boolean isPaused = false;
 
@@ -59,7 +60,9 @@ public class GameWorld implements Temporal, Drawable {
 		double y = this.height / 2;
 		return new Point2D.Double(x, y);
 	}
+	
 
+	
 	@Override
 	public void timePassed() {
 		if(!this.isPaused) {

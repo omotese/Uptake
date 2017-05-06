@@ -1,17 +1,22 @@
-import java.awt.Shape;
-import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
 
 
 public abstract class GameObject implements Drawable, Temporal, Relocatable{
 	private Point2D centerPoint;
 	private boolean isPaused = false;
+	private GameWorld world;
 	
 	public GameObject() {
 	}
 
-	public GameObject(Point2D centerPoint) {
+	public GameObject(GameWorld world,Point2D centerPoint) {
 		this.centerPoint= centerPoint;
+		this.world=world;
+		
+	}
+	
+	public GameWorld getWorld() {
+		return this.world;
 	}
 	
 	protected void setCenterPoint(Point2D centerPoint) {

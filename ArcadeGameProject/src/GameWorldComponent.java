@@ -4,8 +4,12 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.event.KeyListener;
+import java.awt.geom.Point2D;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
@@ -21,16 +25,16 @@ public class GameWorldComponent extends JComponent {
 
 	public GameWorldComponent(GameWorld world) {
 		this.world = world;
-		this.hero = new Hero();
+		this.hero = new Hero(world, new Point2D.Double(50, 50));
 		this.world.addGameObject(hero);
+
 		setPreferredSize(world.getSize());
 		setMaximumSize(world.getSize());
-		
+
 		KeyListener hl = new HeroListener(hero, this);
 		this.addKeyListener(hl);
 		this.setFocusable(true);
 		this.requestFocus();
-		
 
 		Runnable repainter = new Runnable() {
 			@Override
@@ -57,51 +61,67 @@ public class GameWorldComponent extends JComponent {
 		drawDrawable(g2, this.world);
 		List<Drawable> drawableParts = this.world.getDrawableParts();
 		drawableParts.addAll(wallHolder());
-		/*
-		 * FileReader file; try { file = new FileReader("ArcadeGameLevels.txt");
-		 * } catch (FileNotFoundException exception) { // TODO Auto-generated
-		 * catch-block stub. exception.printStackTrace(); } Scanner s = new
-		 * Scanner(file); while(s.hasNext()){ try{ String level= s.next();
-		 * if(level.equals("Level 1")){ for(int i =0; i<=16; i++){ for(int j=0;
-		 * j<=13; j++){ if(s.equals('W')){ Wall newWall= new Wall(this.world);
-		 * drawableParts.add(newWall); } } } } }catch(IllegalArgumentException
-		 * e){ System.err.println("Bad"); }
-		 * 
-		 * }
-		 */
-		
-		drawableParts.add(this.hero);
-		// drawableParts.add(newWall);
+
+		FileReader file = null;
+		try {
+			file = new FileReader("ArcadeGameLevels.txt");
+		} catch (FileNotFoundException exception) {
+			exception.printStackTrace();
+		}
+		Scanner s = new Scanner(file);
+		while (s.hasNext()) {
+			try {
+				String level = s.nextLine();
+				if (level.equals("Level 1")) {
+					while (s.hasNext()) {
+						String current = s.next();
+						if (current.equals("End")) {
+							break;
+						}
+						int x = s.nextInt();
+						int y = s.nextInt();
+						Wall currentWall = new Wall(this.world, (double) x*50, (double) y*50);
+						drawableParts.add(currentWall);
+					}
+
+				}
+
+			} catch (IllegalArgumentException e) {
+				System.err.println("Bad");
+			}
+
+		}
+
 		for (Drawable c : drawableParts) {
 			drawDrawable(g2, c);
 		}
-		
+
 	}
 
 	public ArrayList<Wall> wallHolder() {
 		ArrayList<Wall> walls = new ArrayList<Wall>();
 		for (int i = 0; i < 13; i++) {
-			Wall newWall = new Wall(0, 50 *i);
+			Wall newWall = new Wall(this.world,0, 50 * i);
 			walls.add(newWall);
 		}
 		for (int j = 0; j < 16; j++) {
-			Wall newWall = new Wall(50 * (j+1), 0);
+			Wall newWall = new Wall(this.world,50 * (j + 1), 0);
 			walls.add(newWall);
 		}
-		for(int k=0; k<15; k++){
-			Wall newWall= new Wall(50*(k+1),600 );
+		for (int k = 0; k < 15; k++) {
+			Wall newWall = new Wall(this.world,50 * (k + 1), 600);
 			walls.add(newWall);
 		}
-		for(int j=0; j<12; j++){
-			Wall newWall= new Wall(800, 50*(j+1));
+		for (int j = 0; j < 12; j++) {
+			Wall newWall = new Wall(this.world,800, 50 * (j + 1));
 			walls.add(newWall);
-			
+
 		}
-		for(int j=0; j<7; j++){
-			for(int k=0; k<5; k++ ){
-			Wall newWall = new Wall(100*(j+1),(k+1)*100);
-			walls.add(newWall);
-		}
+		for (int j = 0; j < 7; j++) {
+			for (int k = 0; k < 5; k++) {
+				Wall newWall = new Wall(this.world,100 * (j + 1), (k + 1) * 100);
+				walls.add(newWall);
+			}
 		}
 		return walls;
 	}
@@ -119,7 +139,7 @@ public class GameWorldComponent extends JComponent {
 		} else {
 			g2.setColor(color);
 		}
-		
+
 		g2.fill(shape);
 	}
 
