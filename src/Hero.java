@@ -4,15 +4,19 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
 
 public class Hero extends Character {
-	private double x;
-	private double y;
+	private Point2D centerPoint;
 	private double size;
+	private GameWorld world;
+	private int x;
+	private int y;
 
-	public Hero() {
+	public Hero(GameWorld world, Point2D centerPoint) {
+		super(world,centerPoint);
+		this.world=world;
 		this.size = 50;
-		this.setCenterPoint(new Point2D.Double(55,55));
-		this.x=this.getCenterPoint().getX();
-		this.y=this.getCenterPoint().getY();
+		this.y = (int) centerPoint.getY();
+		this.x = (int) centerPoint.getX();
+		
 	}
 	
 	public void moveUp() {
@@ -40,8 +44,8 @@ public class Hero extends Character {
 	}
 
 	public void setBomb() {
-		/*Bomb newBomb = new Bomb(getWorld(), x, y);
-		this.getWorld().addGameObject(newBomb);*/
+		Bomb newBomb = new Bomb(this.world, new Point2D.Double(this.x, this.y));
+		this.world.addGameObject(newBomb);
 	}
 
 	public Shape getShape() {

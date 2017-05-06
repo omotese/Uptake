@@ -6,10 +6,11 @@ public class Wall implements Drawable {
 	private Color wallColor;
 	private double x;
 	private double y;
+	private GameWorld world;
 	
 	private int wallSize;
 	
-	public Wall(double x, double y) {
+	public Wall(GameWorld world, double x, double y) {
 		this.wallColor = Color.gray;
 		this.x= x;
 		this.y= y;

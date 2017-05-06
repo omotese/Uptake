@@ -4,8 +4,8 @@ public abstract class Block extends GameObject {
 		public Block() {
 		}
 		
-		public Block(Point2D centerPoint) {
-			super(centerPoint);
+		public Block(GameWorld world,Point2D centerPoint) {
+			super(world,centerPoint);
 		}
 			
 		

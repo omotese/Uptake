@@ -8,11 +8,12 @@ public class Bomb extends Block {
 	private double y;
 	private double size;
 
-	public Bomb(Point2D centerPoint) {
-		this.setCenterPoint(centerPoint);
+	public Bomb(GameWorld world, Point2D centerPoint){
+		super(world,centerPoint);
 		this.size = 30;
-		this.x = this.getCenterPoint().getX();
-		this.y = this.getCenterPoint().getY();
+		//maybe for a fun extra thing we could make the bombs grow before they explode
+		this.x = centerPoint.getX()+12.5;
+		this.y = centerPoint.getY()+12.5;
 	}
 
 	@Override
