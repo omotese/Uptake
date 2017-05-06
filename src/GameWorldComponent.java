@@ -5,8 +5,8 @@ import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.event.KeyListener;
 import java.awt.geom.Point2D;
+import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -62,13 +62,15 @@ public class GameWorldComponent extends JComponent {
 		List<Drawable> drawableParts = this.world.getDrawableParts();
 		drawableParts.addAll(wallHolder());
 
-		FileReader file = null;
+		File file = null;
+		file = new File("ArcadeGameLevels.txt");
+
+		Scanner s=null;
 		try {
-			file = new FileReader("ArcadeGameLevels.txt");
+			s = new Scanner(file);
 		} catch (FileNotFoundException exception) {
 			exception.printStackTrace();
 		}
-		Scanner s = new Scanner(file);
 		while (s.hasNext()) {
 			try {
 				String level = s.nextLine();
