@@ -67,6 +67,11 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable{
 	
 	abstract void collideWithMonster(Monster m);
 	
+	@Override
+	public void die() {
+		this.getWorld().removeGameObject(this);
+	}
+	
 	//abstract void collideWithPowerUp(PowerUp m);
 
 
