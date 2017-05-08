@@ -7,6 +7,7 @@ import java.awt.event.KeyListener;
 import java.awt.geom.Point2D;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -29,11 +30,23 @@ public class GameWorldComponent extends JComponent {
 		this.world = world;
 		this.hero = new Hero(world, new Point2D.Double(50, 50));
 		this.world.addGameObject(hero);
+		this.levelNum = 1;
 
 		setPreferredSize(world.getSize());
 		setMaximumSize(world.getSize());
 		KeyListener level= new LevelListener(levelNum);
 		this.addKeyListener(level);
+		String levelString = "Level" +levelNum;
+		System.out.println(levelString);
+		try {
+			getLevel(levelString);
+			System.out.println(levelString);
+		} catch(FileNotFoundException e) {
+			System.err.println("File " + levelString + " not found.  Exiting.");
+		} catch(IOException e) {
+			System.err.println("Error closing file.");
+		}
+		
 		
 		KeyListener hl = new HeroListener(hero, this);
 		this.addKeyListener(hl);
