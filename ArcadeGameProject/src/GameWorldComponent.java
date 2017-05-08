@@ -36,7 +36,7 @@ public class GameWorldComponent extends JComponent {
 		setMaximumSize(world.getSize());
 		KeyListener level= new LevelListener(levelNum);
 		this.addKeyListener(level);
-		String levelString = "Level" +levelNum;
+		String levelString = "Level" +levelNum+ ".txt";
 		System.out.println(levelString);
 		try {
 			getLevel(levelString);
