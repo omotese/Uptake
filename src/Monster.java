@@ -84,4 +84,22 @@ public class Monster extends Character {
 		return 0;
 	}
 
+	@Override
+	void collide(GameObject m) {
+		// TODO Auto-generated method stub.
+		
+	}
+
+	@Override
+	void collideWithHero(Hero m) {
+		// TODO Auto-generated method stub.
+		
+	}
+
+	@Override
+	void collideWithMonster(Monster m) {
+		// TODO Auto-generated method stub.
+		
+	}
+
 }

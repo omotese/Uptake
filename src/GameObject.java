@@ -61,5 +61,14 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable{
 
 	public abstract double getDiameter();
 	
+	abstract void collide(GameObject m);
+
+	abstract void collideWithHero(Hero m);
+	
+	abstract void collideWithMonster(Monster m);
+	
+	//abstract void collideWithPowerUp(PowerUp m);
+
+
 
 }
