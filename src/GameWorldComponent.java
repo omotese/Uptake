@@ -5,12 +5,16 @@ import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.event.KeyListener;
 import java.awt.geom.Point2D;
-import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
+
 
 public class GameWorldComponent extends JComponent {
 
@@ -20,7 +24,7 @@ public class GameWorldComponent extends JComponent {
 	private static final int FRAMES_PER_SECOND = 30;
 	private static final long REPAINT_INTERVAL_MS = 1000 / FRAMES_PER_SECOND;
 	private Hero hero;
-	private String levelNum;
+	private int levelNum;
 
 	public GameWorldComponent(GameWorld world) {
 		this.world = world;
@@ -61,13 +65,11 @@ public class GameWorldComponent extends JComponent {
 		List<Drawable> drawableParts = this.world.getDrawableParts();
 		drawableParts.addAll(wallHolder());
 		
-		File file = null;
-		String fileName = "Level" + levelNum + ".txt";
-		file = new File(fileName);
-//
-//		Scanner s = null;
+		
+		
+		
 //		try {
-//			s = new Scanner(file);
+//			s = ;
 //		} catch (FileNotFoundException exception) {
 //			exception.printStackTrace();
 //		}
@@ -93,6 +95,22 @@ public class GameWorldComponent extends JComponent {
 			drawDrawable(g2, c);
 		}
 
+	}
+	
+	public void getLevel(String fileName) throws FileNotFoundException{
+		FileReader file = new FileReader(fileName);
+		Scanner s = new Scanner(file);
+		while(s.hasNext()) {
+			try {
+				double x = s.nextDouble();
+				double y = s.nextDouble();
+				BreakableBlock newBlock = new BreakableBlock(this.world, new Point2D.Double(x*50,y*50));
+				this.world.addGameObject(newBlock);
+				
+			}catch (IllegalArgumentException e) {
+				System.err.println("Bad");
+		}
+		}
 	}
 
 	public ArrayList<Wall> wallHolder() {
