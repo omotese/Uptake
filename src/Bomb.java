@@ -22,7 +22,7 @@ public class Bomb extends Block {
 	@Override
 	public Color getColor() {
 		if (fuse < 10) {
-			return new Color(200,100,20,100);
+			return Color.white;
 		}
 		return new Color(250 - fuse * 250 / 300, 10, 10);
 	}
@@ -34,13 +34,11 @@ public class Bomb extends Block {
 
 	@Override
 	public void updatePosition() {
-		if (fuse >10) {
-			
-		x-=.15;
-		y-=.15;
-		} else if (fuse ==10) {
-			x-=15;
-			y-=15;
+		x -= .03;
+		y -= .03;
+		if(fuse<120) {
+			x-=.3;
+			y-=.3;
 		}
 
 	}
@@ -59,13 +57,12 @@ public class Bomb extends Block {
 	@Override
 	public void updateSize() {
 		updateFuse();
-		size += .3;
-		if (fuse < 10) {
-			size = 150;
+		size += .06;
+		if(fuse<120) {
+			size+=.6;
 		}
-		// TODO Auto-generated method stub.
-
 	}
+	// TODO Auto-generated method stub.
 
 	@Override
 	public void updateColor() {
