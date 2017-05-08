@@ -22,6 +22,7 @@ public class GameWorldComponent extends JComponent {
 	private static final int FRAMES_PER_SECOND = 30;
 	private static final long REPAINT_INTERVAL_MS = 1000 / FRAMES_PER_SECOND;
 	private Hero hero;
+	private String levelNum;
 
 	public GameWorldComponent(GameWorld world) {
 		this.world = world;
@@ -63,9 +64,10 @@ public class GameWorldComponent extends JComponent {
 		drawableParts.addAll(wallHolder());
 
 		File file = null;
-		file = new File("ArcadeGameLevels.txt");
+		String fileName = "Level" + levelNum + ".txt";
+		file = new File(fileName);
 
-		Scanner s=null;
+		Scanner s = null;
 		try {
 			s = new Scanner(file);
 		} catch (FileNotFoundException exception) {
@@ -73,19 +75,14 @@ public class GameWorldComponent extends JComponent {
 		}
 		while (s.hasNext()) {
 			try {
-				String level = s.nextLine();
-				if (level.equals("Level 1")) {
-					while (s.hasNext()) {
-						String current = s.next();
-						if (current.equals("End")) {
-							break;
-						}
-						int x = s.nextInt();
-						int y = s.nextInt();
-						Wall currentWall = new Wall(this.world, (double) x*50, (double) y*50);
-						drawableParts.add(currentWall);
-					}
 
+				while (s.hasNext()) {
+					String current = s.next();
+
+					double x = s.nextDouble();
+					double y = s.nextDouble();
+					BreakableBlock newBlock = new BreakableBlock(this.world, new Point2D.Double(x*50, y*50));
+					drawableParts.add(newBlock);
 				}
 
 			} catch (IllegalArgumentException e) {
@@ -103,25 +100,25 @@ public class GameWorldComponent extends JComponent {
 	public ArrayList<Wall> wallHolder() {
 		ArrayList<Wall> walls = new ArrayList<Wall>();
 		for (int i = 0; i < 13; i++) {
-			Wall newWall = new Wall(this.world,0, 50 * i);
+			Wall newWall = new Wall(this.world, 0, 50 * i);
 			walls.add(newWall);
 		}
 		for (int j = 0; j < 16; j++) {
-			Wall newWall = new Wall(this.world,50 * (j + 1), 0);
+			Wall newWall = new Wall(this.world, 50 * (j + 1), 0);
 			walls.add(newWall);
 		}
 		for (int k = 0; k < 15; k++) {
-			Wall newWall = new Wall(this.world,50 * (k + 1), 600);
+			Wall newWall = new Wall(this.world, 50 * (k + 1), 600);
 			walls.add(newWall);
 		}
 		for (int j = 0; j < 12; j++) {
-			Wall newWall = new Wall(this.world,800, 50 * (j + 1));
+			Wall newWall = new Wall(this.world, 800, 50 * (j + 1));
 			walls.add(newWall);
 
 		}
 		for (int j = 0; j < 7; j++) {
 			for (int k = 0; k < 5; k++) {
-				Wall newWall = new Wall(this.world,100 * (j + 1), (k + 1) * 100);
+				Wall newWall = new Wall(this.world, 100 * (j + 1), (k + 1) * 100);
 				walls.add(newWall);
 			}
 		}
