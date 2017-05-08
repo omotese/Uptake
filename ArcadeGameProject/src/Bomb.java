@@ -53,4 +53,22 @@ public class Bomb extends Block {
 		
 	}
 
+	@Override
+	void collide(GameObject m) {
+		// TODO Auto-generated method stub.
+		
+	}
+
+	@Override
+	void collideWithHero(Hero m) {
+		// TODO Auto-generated method stub.
+		
+	}
+
+	@Override
+	void collideWithMonster(Monster m) {
+		// TODO Auto-generated method stub.
+		
+	}
+
 }
