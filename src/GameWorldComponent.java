@@ -7,7 +7,6 @@ import java.awt.event.KeyListener;
 import java.awt.geom.Point2D;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -33,7 +32,9 @@ public class GameWorldComponent extends JComponent {
 
 		setPreferredSize(world.getSize());
 		setMaximumSize(world.getSize());
-
+		KeyListener level= new LevelListener(levelNum);
+		this.addKeyListener(level);
+		
 		KeyListener hl = new HeroListener(hero, this);
 		this.addKeyListener(hl);
 		this.setFocusable(true);
