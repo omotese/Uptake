@@ -116,8 +116,8 @@ public class GameWorldComponent extends JComponent {
 		Scanner s = new Scanner(file);
 		while(s.hasNext()) {
 			try {
-				double x = s.nextDouble();
-				double y = s.nextDouble();
+				int x = s.nextInt();
+				int y = s.nextInt();
 				BreakableBlock newBlock = new BreakableBlock(this.world, new Point2D.Double(x*50,y*50));
 				this.world.addGameObject(newBlock);
 				
