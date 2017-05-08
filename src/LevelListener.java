@@ -20,6 +20,9 @@ public class LevelListener implements KeyListener {
 			}
 		}
 		if (e.getKeyCode() == KeyEvent.VK_D) {
+			if(levelNum<=0){
+				return;
+			}
 			this.levelNum--;
 			System.out.println(levelNum);
 		}
