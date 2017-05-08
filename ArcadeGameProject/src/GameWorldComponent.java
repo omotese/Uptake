@@ -6,10 +6,8 @@ import java.awt.Shape;
 import java.awt.event.KeyListener;
 import java.awt.geom.Point2D;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
@@ -62,34 +60,34 @@ public class GameWorldComponent extends JComponent {
 		drawDrawable(g2, this.world);
 		List<Drawable> drawableParts = this.world.getDrawableParts();
 		drawableParts.addAll(wallHolder());
-
+		
 		File file = null;
 		String fileName = "Level" + levelNum + ".txt";
 		file = new File(fileName);
-
-		Scanner s = null;
-		try {
-			s = new Scanner(file);
-		} catch (FileNotFoundException exception) {
-			exception.printStackTrace();
-		}
-		while (s.hasNext()) {
-			try {
-
-				while (s.hasNext()) {
-					String current = s.next();
-
-					double x = s.nextDouble();
-					double y = s.nextDouble();
-					BreakableBlock newBlock = new BreakableBlock(this.world, new Point2D.Double(x*50, y*50));
-					drawableParts.add(newBlock);
-				}
-
-			} catch (IllegalArgumentException e) {
-				System.err.println("Bad");
-			}
-
-		}
+//
+//		Scanner s = null;
+//		try {
+//			s = new Scanner(file);
+//		} catch (FileNotFoundException exception) {
+//			exception.printStackTrace();
+//		}
+//		while (s.hasNext()) {
+//			try {
+//
+//				while (s.hasNext()) {
+//					String current = s.next();
+//
+//					double x = s.nextDouble();
+//					double y = s.nextDouble();
+//					//BreakableBlock newBlock = new BreakableBlock(this.world, new Point2D.Double(x*50, y*50));
+//					//drawableParts.add(newBlock);
+//				}
+//
+//			} catch (IllegalArgumentException e) {
+//				System.err.println("Bad");
+//			}
+//
+//		}
 
 		for (Drawable c : drawableParts) {
 			drawDrawable(g2, c);
