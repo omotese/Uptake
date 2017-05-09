@@ -66,11 +66,11 @@ public class Monster extends Character {
 		int[] xpoints = new int[3];
 		int[] ypoints = new int[3];
 		xpoints[0] = x;
-		xpoints[1] = x + 50;
-		xpoints[2] = x - 50;
+		xpoints[1] = x + 25;
+		xpoints[2] = x + 50;
 		ypoints[0] = y;
-		ypoints[1] = -50;
-		ypoints[2] = -50;
+		ypoints[1] = y-50;
+		ypoints[2] = y;
 		Polygon myMonster= new Polygon(xpoints, ypoints, 3);
 		return myMonster;
 	}
