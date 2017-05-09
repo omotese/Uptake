@@ -21,6 +21,7 @@ public class Monster extends Character {
 	@Override
 	public void timePassed() {
 		// TODO Auto-generated method stub.
+		updatePosition();
 		
 	}
 
@@ -78,7 +79,8 @@ public class Monster extends Character {
 	@Override
 	public void updatePosition() {
 		// TODO Auto-generated method stub.
-		//randomize the position of the monsters
+		this.x=this.x;
+		this.y+=1;
 		
 	}
 
