@@ -13,14 +13,10 @@ public class Monster extends Character {
 
 	public Monster(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
-		this.world= world;
 		this.x= (int) centerPoint.getX();
 		this.y = (int) centerPoint.getY();
 	}
 	
-	public Monster(Point2D centerPoint) {
-		this.setCenterPoint(centerPoint);
-	}
 
 	@Override
 	public void timePassed() {
