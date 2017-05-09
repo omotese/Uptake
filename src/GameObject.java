@@ -12,7 +12,8 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable{
 	private boolean isPaused = false;
 	private GameWorld world;
 	
-	public GameObject() {
+	public GameObject(GameWorld world) {
+		this.world=world;
 	}
 
 	public GameObject(GameWorld world,Point2D centerPoint) {
