@@ -1,10 +1,4 @@
-import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
 
 
 public abstract class GameObject implements Drawable, Temporal, Relocatable{
@@ -68,12 +62,6 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable{
 	public abstract void updateColor();
 
 	public abstract double getDiameter();
-	
-	abstract void collide(GameObject m);
-
-	abstract void collideWithHero(Hero m);
-	
-	abstract void collideWithMonster(Monster m);
 	
 	@Override
 	public void die() {
