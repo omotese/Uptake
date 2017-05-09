@@ -15,7 +15,6 @@ import java.util.Scanner;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
-
 public class GameWorldComponent extends JComponent {
 
 	private GameWorld world;
@@ -34,20 +33,19 @@ public class GameWorldComponent extends JComponent {
 
 		setPreferredSize(world.getSize());
 		setMaximumSize(world.getSize());
-		KeyListener level= new LevelListener(levelNum);
+
+		KeyListener level = new LevelListener(this);
 		this.addKeyListener(level);
-		String levelString = "Level" +levelNum+ ".txt";
-		System.out.println(levelString);
+
+		String levelString = "Level" + levelNum + ".txt";
 		try {
 			getLevel(levelString);
-			System.out.println(levelString);
-		} catch(FileNotFoundException e) {
+		} catch (FileNotFoundException e) {
 			System.err.println("File " + levelString + " not found.  Exiting.");
-		} catch(IOException e) {
+		} catch (IOException e) {
 			System.err.println("Error closing file.");
 		}
-		
-		
+
 		KeyListener hl = new HeroListener(hero, this);
 		this.addKeyListener(hl);
 		this.setFocusable(true);
@@ -71,6 +69,32 @@ public class GameWorldComponent extends JComponent {
 
 	}
 
+	public void levelUp() {
+		if (levelNum >= 1 && levelNum < 3) {
+			this.levelNum++;
+			this.updateLevel();
+		}
+	}
+
+	public void levelDown() {
+		if (levelNum > 1 && levelNum <= 3) {
+			this.levelNum--;
+			this.updateLevel();
+		}
+
+	}
+
+	public void updateLevel() {
+		String levelString = "Level" + levelNum + ".txt";
+		try {
+			getLevel(levelString);
+		} catch (FileNotFoundException e) {
+			System.err.println("File " + levelString + " not found.  Exiting.");
+		} catch (IOException e) {
+			System.err.println("Error closing file.");
+		}
+	}
+
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -78,53 +102,26 @@ public class GameWorldComponent extends JComponent {
 		drawDrawable(g2, this.world);
 		List<Drawable> drawableParts = this.world.getDrawableParts();
 		drawableParts.addAll(wallHolder());
-		
-		
-		
-		
-//		try {
-//			s = ;
-//		} catch (FileNotFoundException exception) {
-//			exception.printStackTrace();
-//		}
-//		while (s.hasNext()) {
-//			try {
-//
-//				while (s.hasNext()) {
-//					String current = s.next();
-//
-//					double x = s.nextDouble();
-//					double y = s.nextDouble();
-//					//BreakableBlock newBlock = new BreakableBlock(this.world, new Point2D.Double(x*50, y*50));
-//					//drawableParts.add(newBlock);
-//				}
-//
-//			} catch (IllegalArgumentException e) {
-//				System.err.println("Bad");
-//			}
-//
-//		}
 
 		for (Drawable c : drawableParts) {
 			drawDrawable(g2, c);
 		}
 
 	}
-	
-	public void getLevel(String fileName) throws FileNotFoundException{
+
+	public void getLevel(String fileName) throws FileNotFoundException {
 		FileReader file = new FileReader(fileName);
 		Scanner s = new Scanner(file);
-		while(s.hasNext()) {
+		while (s.hasNext()) {
 			try {
-				String letter= s.next();
 				int x = s.nextInt();
 				int y = s.nextInt();
-				BreakableBlock newBlock = new BreakableBlock(this.world, new Point2D.Double(x*50,y*50));
+				BreakableBlock newBlock = new BreakableBlock(this.world, new Point2D.Double(x * 50, y * 50));
 				this.world.addGameObject(newBlock);
-				
-			}catch (IllegalArgumentException e) {
+
+			} catch (IllegalArgumentException e) {
 				System.err.println("Bad");
-		}
+			}
 		}
 	}
 
