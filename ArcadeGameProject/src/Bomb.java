@@ -12,8 +12,8 @@ public class Bomb extends Block {
 	public Bomb(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
 			this.size = 30;
-			this.x = centerPoint.getX() + 10;
-			this.y = centerPoint.getY() + 10;
+			this.x = Math.round((centerPoint.getX())/50)*50+10;
+			this.y = Math.round((centerPoint.getY())/50)*50+10;
 			this.fuse = 400;
 			this.getWorld().bombExists = true;
 
