@@ -12,6 +12,7 @@ public class BreakableBlock extends Block {
 	public BreakableBlock(GameWorld world, Point2D centerPoint){
 		super(world, centerPoint);
 		this.world= world;
+		this.centerPoint= centerPoint;
 		this.wallSize=50;
 	}
 	@Override
