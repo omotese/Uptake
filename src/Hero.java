@@ -44,8 +44,9 @@ public class Hero extends Character {
 	}
 
 	public void setBomb() {
+		if(!this.getWorld().bombExists){
 		Bomb newBomb = new Bomb(this.world, new Point2D.Double(this.x, this.y));
-		this.world.addGameObject(newBomb);
+		this.world.addGameObject(newBomb);}
 	}
 
 	public Shape getShape() {
