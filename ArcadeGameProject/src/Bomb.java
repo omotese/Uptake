@@ -90,4 +90,10 @@ public class Bomb extends Block {
 
 	}
 
+	@Override
+	public void die() {
+		// TODO Auto-generated method stub.
+		
+	}
+
 }
