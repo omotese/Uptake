@@ -117,14 +117,14 @@ public class GameWorldComponent extends JComponent {
 	}
 
 	public void getLevel(String fileName) throws FileNotFoundException {
-
+		int numBlocks = 0;
 		FileReader file = new FileReader(fileName);
-		if(fileName.equals("Level1")) {
-			
-		}
+		if (levelNum == 1) {numBlocks = 22;}
+		if (levelNum == 2) {numBlocks = 0;}
+		if (levelNum == 3) {numBlocks=0;}
 
 		Scanner s = new Scanner(file);
-		while (s.hasNext()) {
+		for(int c = 0; c < numBlocks; c++) {
 			try {
 				int x = s.nextInt();
 				int y = s.nextInt();
@@ -133,18 +133,28 @@ public class GameWorldComponent extends JComponent {
 				for (BreakableBlock n : breakables) {
 					this.world.addGameObject(n);
 				}
-				/*
-				 * if(object.equals("MonsterNum")){ int monsterNum =
-				 * s.nextInt(); for(int i = 0; i<monsterNum; i++) { Monster
-				 * monster = new Monster(this.world);
-				 * this.monsters.add(monster); for(Monster m: monsters) {
-				 * this.world.addGameObject(m); } } } else{ object =
-				 * s.nextLine(); }
-				 */
+
 
 			} catch (IllegalArgumentException e) {
 				System.err.println("Bad");
 			}
+		}
+		while(s.hasNext()){
+			
+			try {
+				int x = s.nextInt();
+				int y = s.nextInt();
+				Monster monster = new Monster(this.world, new Point2D.Double(x*50, y*50+50));
+				this.monsters.add(monster);
+				for (Monster m : monsters) {
+					this.world.addGameObject(m);
+				}
+
+
+			} catch (IllegalArgumentException e) {
+				System.err.println("Bad");
+			}
+
 		}
 	}
 	
