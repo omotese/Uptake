@@ -1,6 +1,7 @@
 
 
 import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.Shape;
 
 
@@ -24,5 +25,6 @@ public interface Drawable {
 	 * @return the shape to draw
 	 */
 	Shape getShape();
+	
 
 }

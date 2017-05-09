@@ -1,4 +1,10 @@
+import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 
 public abstract class GameObject implements Drawable, Temporal, Relocatable{
@@ -42,6 +48,7 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable{
 	public void setIsPaused(boolean isPaused) {
 		isPaused = isPaused;
 	}
+	
 	
 	@Override
 	public void moveTo(Point2D point) {
