@@ -1,11 +1,21 @@
 import java.awt.Color;
+import java.awt.Polygon;
 import java.awt.Shape;
 import java.awt.geom.Point2D;
 
 public class Monster extends Character {
 
+	private Point2D centerPoint;
+	private double size;
+	private GameWorld world;
+	private int x;
+	private int y;
 
-	public Monster() {
+	public Monster(GameWorld world, Point2D centerPoint) {
+		super(world, centerPoint);
+		this.world= world;
+		this.x= (int) centerPoint.getX();
+		this.y = (int) centerPoint.getY();
 	}
 	
 	public Monster(Point2D centerPoint) {
@@ -51,19 +61,29 @@ public class Monster extends Character {
 	@Override
 	public Color getColor() {
 		// TODO Auto-generated method stub.
-		return null;
+		return Color.PINK;
 	}
 
 	@Override
 	public Shape getShape() {
 		// TODO Auto-generated method stub.
-		return null;
+		int[] xpoints = new int[3];
+		int[] ypoints = new int[3];
+		xpoints[0] = x;
+		xpoints[1] = x + 50;
+		xpoints[2] = x - 50;
+		ypoints[0] = y;
+		ypoints[1] = -50;
+		ypoints[2] = -50;
+		Polygon myMonster= new Polygon(xpoints, ypoints, 3);
+		return myMonster;
 	}
 
 	@Override
 	public void updatePosition() {
 		// TODO Auto-generated method stub.
 		//randomize the position of the monsters
+		
 	}
 
 	@Override
