@@ -120,8 +120,8 @@ public class GameWorldComponent extends JComponent {
 		int numBlocks = 0;
 		FileReader file = new FileReader(fileName);
 		if (levelNum == 1) {numBlocks = 22;}
-		if (levelNum == 2) {numBlocks = 0;}
-		if (levelNum == 3) {numBlocks=0;}
+		if (levelNum == 2) {numBlocks = 22;}
+		if (levelNum == 3) {numBlocks=30;}
 
 		Scanner s = new Scanner(file);
 		for(int c = 0; c < numBlocks; c++) {
