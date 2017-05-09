@@ -69,6 +69,20 @@ public class GameWorldComponent extends JComponent {
 		new Thread(repainter).start();
 
 	}
+	
+	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		Graphics2D g2 = (Graphics2D) g;
+		drawDrawable(g2, this.world);
+		List<Drawable> drawableParts = this.world.getDrawableParts();
+		drawableParts.addAll(wallHolder());
+
+		for (Drawable c : drawableParts) {
+			drawDrawable(g2, c);
+		}
+
+	}
 
 	public void levelUp() {
 		if (levelNum >= 1 && levelNum < 3) {
@@ -98,20 +112,6 @@ public class GameWorldComponent extends JComponent {
 		} catch (IOException e) {
 			System.err.println("Error closing file.");
 		}
-	}
-
-	@Override
-	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		Graphics2D g2 = (Graphics2D) g;
-		drawDrawable(g2, this.world);
-		List<Drawable> drawableParts = this.world.getDrawableParts();
-		drawableParts.addAll(wallHolder());
-
-		for (Drawable c : drawableParts) {
-			drawDrawable(g2, c);
-		}
-
 	}
 
 	public void getLevel(String fileName) throws FileNotFoundException {

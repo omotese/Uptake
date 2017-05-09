@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
@@ -111,6 +112,8 @@ public class GameWorld implements Temporal, Drawable {
 	public synchronized List<Drawable> getDrawableParts() {
 		return new ArrayList<Drawable>(this.objectList);
 	}
+
+	
 
 
 }
