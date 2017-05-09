@@ -23,12 +23,14 @@ public class GameWorldComponent extends JComponent {
 	private static final int FRAMES_PER_SECOND = 30;
 	private static final long REPAINT_INTERVAL_MS = 1000 / FRAMES_PER_SECOND;
 	private Hero hero;
+	private List<Monster> monsters;
 	private int levelNum;
 	private List<BreakableBlock> breakables = new ArrayList<BreakableBlock>();
 
 	public GameWorldComponent(GameWorld world) {
 		this.world = world;
 		this.hero = new Hero(world, new Point2D.Double(50, 50));
+		this.monsters = new ArrayList<Monster>();
 		this.world.addGameObject(hero);
 		this.levelNum = 1;
 
@@ -69,7 +71,7 @@ public class GameWorldComponent extends JComponent {
 		new Thread(repainter).start();
 
 	}
-	
+
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -117,6 +119,9 @@ public class GameWorldComponent extends JComponent {
 	public void getLevel(String fileName) throws FileNotFoundException {
 
 		FileReader file = new FileReader(fileName);
+		if(fileName.equals("Level1")) {
+			
+		}
 
 		Scanner s = new Scanner(file);
 		while (s.hasNext()) {
@@ -128,11 +133,23 @@ public class GameWorldComponent extends JComponent {
 				for (BreakableBlock n : breakables) {
 					this.world.addGameObject(n);
 				}
+				/*
+				 * if(object.equals("MonsterNum")){ int monsterNum =
+				 * s.nextInt(); for(int i = 0; i<monsterNum; i++) { Monster
+				 * monster = new Monster(this.world);
+				 * this.monsters.add(monster); for(Monster m: monsters) {
+				 * this.world.addGameObject(m); } } } else{ object =
+				 * s.nextLine(); }
+				 */
 
 			} catch (IllegalArgumentException e) {
 				System.err.println("Bad");
 			}
 		}
+	}
+	
+	public void createBreakables(){
+		
 	}
 
 	public ArrayList<Wall> wallHolder() {
