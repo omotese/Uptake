@@ -11,12 +11,13 @@ public class Bomb extends Block {
 
 	public Bomb(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
-		this.size = 30;
-		// maybe for a fun extra thing we could make the bombs grow before they
-		// explode
-		this.x = centerPoint.getX() + 10;
-		this.y = centerPoint.getY() + 10;
-		this.fuse = 300;
+			this.size = 30;
+			this.x = centerPoint.getX() + 10;
+			this.y = centerPoint.getY() + 10;
+			this.fuse = 400;
+			this.getWorld().bombExists = true;
+
+		
 	}
 
 	@Override
@@ -24,7 +25,7 @@ public class Bomb extends Block {
 		if (fuse < 10) {
 			return Color.white;
 		}
-		return new Color(250 - fuse * 250 / 300, 10, 10);
+		return new Color(250 - fuse * 250 / 400, 10, 10);
 	}
 
 	@Override
@@ -36,9 +37,9 @@ public class Bomb extends Block {
 	public void updatePosition() {
 		x -= .03;
 		y -= .03;
-		if(fuse<120) {
-			x-=.3;
-			y-=.3;
+		if (fuse < 120) {
+			x -= .3;
+			y -= .3;
 		}
 
 	}
@@ -47,6 +48,7 @@ public class Bomb extends Block {
 		fuse--;
 		if (fuse == 0) {
 			this.die();
+			this.getWorld().bombExists = false;
 		}
 	}
 
@@ -58,8 +60,8 @@ public class Bomb extends Block {
 	public void updateSize() {
 		updateFuse();
 		size += .06;
-		if(fuse<120) {
-			size+=.6;
+		if (fuse < 120) {
+			size += .6;
 		}
 	}
 	// TODO Auto-generated method stub.
