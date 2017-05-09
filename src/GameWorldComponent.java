@@ -24,7 +24,7 @@ public class GameWorldComponent extends JComponent {
 	private static final long REPAINT_INTERVAL_MS = 1000 / FRAMES_PER_SECOND;
 	private Hero hero;
 	private int levelNum;
-	private List<BreakableBlock> breakables = new ArrayList<BreakableBlock> (); 
+	private List<BreakableBlock> breakables = new ArrayList<BreakableBlock>();
 
 	public GameWorldComponent(GameWorld world) {
 		this.world = world;
@@ -86,14 +86,13 @@ public class GameWorldComponent extends JComponent {
 	}
 
 	public void updateLevel() {
-		for(BreakableBlock n: breakables) {
+		for (BreakableBlock n : breakables) {
 			this.world.removeGameObject(n);
 		}
 		breakables.clear();
 		String levelString = "Level" + levelNum + ".txt";
 		try {
 			getLevel(levelString);
-			System.out.println(breakables.size());
 		} catch (FileNotFoundException e) {
 			System.err.println("File " + levelString + " not found.  Exiting.");
 		} catch (IOException e) {
@@ -116,9 +115,9 @@ public class GameWorldComponent extends JComponent {
 	}
 
 	public void getLevel(String fileName) throws FileNotFoundException {
-		
+
 		FileReader file = new FileReader(fileName);
-		
+
 		Scanner s = new Scanner(file);
 		while (s.hasNext()) {
 			try {
@@ -126,10 +125,9 @@ public class GameWorldComponent extends JComponent {
 				int y = s.nextInt();
 				BreakableBlock newBlock = new BreakableBlock(this.world, new Point2D.Double(x * 50, y * 50));
 				this.breakables.add(newBlock);
-				for(BreakableBlock n: breakables) {
+				for (BreakableBlock n : breakables) {
 					this.world.addGameObject(n);
 				}
-				
 
 			} catch (IllegalArgumentException e) {
 				System.err.println("Bad");
