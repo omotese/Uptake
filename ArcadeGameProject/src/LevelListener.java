@@ -12,19 +12,17 @@ public class LevelListener implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub.
 		if (e.getKeyCode() == KeyEvent.VK_U) {
-			if(levelNum>=0&&levelNum<5){
+			if(levelNum>=1&&levelNum<3){
 			this.levelNum++;
 			System.out.println(levelNum);
-			}else{
-				levelNum=0;
 			}
 		}
 		if (e.getKeyCode() == KeyEvent.VK_D) {
-			if(levelNum<=0){
-				return;
-			}
+			if(levelNum>1 && levelNum <= 3){
+				
 			this.levelNum--;
 			System.out.println(levelNum);
+			}
 		}
 	}
 
