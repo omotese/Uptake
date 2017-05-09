@@ -13,6 +13,7 @@ public class GameWorld implements Temporal, Drawable {
 	private final int width;
 	private final int height;
 	private final Color backgroundColor;
+	public boolean bombExists=false;
 	
 	private final List<GameObject> objectList = new ArrayList<GameObject>();
 	private final List<GameObject> objectToAdd = new ArrayList<GameObject>();
