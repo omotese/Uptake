@@ -106,6 +106,10 @@ public class GameWorldComponent extends JComponent {
 			this.world.removeGameObject(n);
 		}
 		breakables.clear();
+		for(Monster m: monsters) {
+			this.world.removeGameObject(m);
+		}
+		monsters.clear();
 		String levelString = "Level" + levelNum + ".txt";
 		try {
 			getLevel(levelString);
