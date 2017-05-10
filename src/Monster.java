@@ -17,6 +17,7 @@ public class Monster extends GameObject {
 
 	public Monster(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
+		this.world = world;
 		this.x = (int) centerPoint.getX();
 		this.y = (int) centerPoint.getY();
 		this.dx = 2;
@@ -29,7 +30,6 @@ public class Monster extends GameObject {
 	public void die() {
 		this.world.removeGameObject(this);
 	}
-
 
 	@Override
 	public Point2D getCenterPoint() {
@@ -52,14 +52,14 @@ public class Monster extends GameObject {
 		this.x += dx;
 		this.y += dy;
 		Point2D newPoint = new Point2D.Double(x, y);
-		 
-		/*
-		 * for (int i = 0; i < this.world.getObjectList().size(); i++) { if
-		 * ((this.world.getObjectList().get(i) != this) &&
-		 * this.getShape().intersects((Rectangle2D)
-		 * this.world.getObjectList().get(i).getShape())) {
-		 * this.collide(this.world.getObjectList().get(i)); } }
-		 */
+
+		for (int i = 0; i < this.world.getObjectList().size(); i++) {
+			if ((this.world.getObjectList().get(i) != this)
+					&& this.getShape().intersects((Rectangle2D) this.world.getObjectList().get(i).getShape())) {
+				this.collide(this.world.getObjectList().get(i));
+			}
+		}
+
 		this.setCenterPoint(newPoint);
 
 	}
@@ -92,6 +92,9 @@ public class Monster extends GameObject {
 	@Override
 	public void collideWithWall(Wall w) {
 		System.out.println("monster with wall");
+		this.dx = -dx;
+		this.dy = -dy;
+		
 	}
 
 	@Override
