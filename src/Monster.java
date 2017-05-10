@@ -91,7 +91,7 @@ public class Monster extends GameObject {
 
 	@Override
 	public void collideWithWall(Wall w) {
-		System.out.println("monster with wall");
+		//System.out.println("monster with wall");
 		this.dx = -dx;
 		this.dy = -dy;
 		
