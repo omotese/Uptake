@@ -92,11 +92,11 @@ public class Monster extends GameObject {
 	@Override
 	public void collideWithWall(Wall w) {
 		Random ran = new Random();
-		if (ran.nextInt(2) == 0) {
+		if (ran.nextInt(1) == 0) {
 			this.dx = -dx;
 			this.dy = -dy;
 		}
-		if(ran.nextInt(2)==1){
+		else{
 			this.dx = -dy;
 			this.dx = -dx;
 		}
