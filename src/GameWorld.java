@@ -7,29 +7,26 @@ import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 public class GameWorld implements Temporal, Drawable {
 	private static final long UPDATE_INTERVAL_MS = 10;
 	private final int width;
 	private final int height;
 	private final Color backgroundColor;
-	public boolean bombExists=false;
-	
+	public boolean bombExists = false;
+
 	private final List<GameObject> objectList = new ArrayList<GameObject>();
 	private final List<GameObject> objectToAdd = new ArrayList<GameObject>();
 	private final List<GameObject> objectToRemove = new ArrayList<GameObject>();
-	
-	
+
 	private final Shape background;
 	private boolean isPaused = false;
 
-	public GameWorld(int width, int height, Color color){
-		this.width=width;
-		this.height= height;
-		this.backgroundColor= color;
+	public GameWorld(int width, int height, Color color) {
+		this.width = width;
+		this.height = height;
+		this.backgroundColor = color;
 		this.background = new Rectangle2D.Double(0, 0, this.width, this.height);
-		
+
 		Runnable tickTock = new Runnable() {
 			@Override
 			public void run() {
@@ -44,12 +41,17 @@ public class GameWorld implements Temporal, Drawable {
 			}
 		};
 		new Thread(tickTock).start();
-		
+
 	}
-	
+
 	@Override
 	public Color getColor() {
 		return this.backgroundColor;
+	}
+
+	public List<GameObject> getObjectList() {
+		return this.objectList;
+
 	}
 
 	@Override
@@ -62,13 +64,11 @@ public class GameWorld implements Temporal, Drawable {
 		double y = this.height / 2;
 		return new Point2D.Double(x, y);
 	}
-	
 
-	
 	@Override
 	public void timePassed() {
-		if(!this.isPaused) {
-			for(Temporal t : this.objectList) {
+		if (!this.isPaused) {
+			for (Temporal t : this.objectList) {
 				t.timePassed();
 			}
 		}
@@ -76,19 +76,19 @@ public class GameWorld implements Temporal, Drawable {
 		this.objectToRemove.clear();
 		this.objectList.addAll(this.objectToAdd);
 		this.objectToAdd.clear();
-		
+
 	}
 
 	@Override
 	public void die() {
 		// TODO Auto-generated method stub.
-		
+
 	}
 
 	@Override
 	public void setIsPaused(boolean isPaused) {
 		this.isPaused = isPaused;
-		
+
 	}
 
 	@Override
@@ -99,21 +99,18 @@ public class GameWorld implements Temporal, Drawable {
 	public void removeGameObject(GameObject gameObject) {
 		this.objectToRemove.add(gameObject);
 	}
-	
+
 	public void addGameObject(GameObject gameObject) {
 		this.objectToAdd.add(gameObject);
-		
+
 	}
 
 	public Dimension getSize() {
 		return new Dimension(this.width, this.height);
 	}
-	
+
 	public synchronized List<Drawable> getDrawableParts() {
 		return new ArrayList<Drawable>(this.objectList);
 	}
-
-	
-
 
 }

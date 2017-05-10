@@ -2,55 +2,61 @@ import java.awt.Color;
 import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
 
-public class Hero extends Character {
+public class Hero extends GameObject {
 	private Point2D centerPoint;
 	private double size;
 	private GameWorld world;
 	private int x;
 	private int y;
+	private int dx;
+	private int dy;
 
 	public Hero(GameWorld world, Point2D centerPoint) {
-		super(world,centerPoint);
-		this.world=world;
-		this.size = 50;
+		super(world, centerPoint);
+		this.world = world;
+		this.size = 40;
 		this.y = (int) centerPoint.getY();
 		this.x = (int) centerPoint.getX();
-		
+		this.dx = 0;
+		this.dy = 0;
+
 	}
-	
+
+	public void stopHero() {
+		this.dx = 0;
+		this.dy = 0;
+	}
+
 	public void moveUp() {
-		if (this.y-10 >= 50) {
-			this.y -= 10;
-		}
+		this.dy = -2;
 	}
 
 	public void moveDown() {
-		if (this.y + 10 <= 550) {
-			this.y += 10;
-		}
+		this.dy = 2;
+
 	}
 
 	public void moveLeft() {
-		if (this.x - 10 >= 50) {
-			this.x -= 10;
-		}
+		this.dx = -2;
+
 	}
 
 	public void moveRight() {
-		if (this.x + 10 <= 750) {
-			this.x += 10;
-		}
+		this.dx = 2;
+
 	}
 
 	public void setBomb() {
-		if(!this.getWorld().bombExists){
-		Bomb newBomb = new Bomb(this.world, new Point2D.Double(this.x, this.y));
-		this.world.addGameObject(newBomb);}
+		if (!this.getWorld().bombExists) {
+			Bomb newBomb = new Bomb(this.world, new Point2D.Double(this.x, this.y));
+			this.world.addGameObject(newBomb);
+		}
 	}
 
 	public Shape getShape() {
-		return new Ellipse2D.Double(this.x, this.y, this.size, this.size);
+		return new Rectangle2D.Double(this.x, this.y, this.size, this.size);
 	}
 
 	@Override
@@ -61,6 +67,15 @@ public class Hero extends Character {
 	@Override
 	public void updatePosition() {
 		Point2D.Double myPoint = new Point2D.Double(x, y);
+		for (int i = 0; i < this.world.getObjectList().size(); i++) {
+			if ((this.world.getObjectList().get(i) != this)
+					&& this.getShape().intersects((Rectangle2D) this.world.getObjectList().get(i).getShape())) {
+				this.collide(this.world.getObjectList().get(i));
+				//System.out.println("any colide");
+			}
+		}
+		this.x += this.dx;
+		this.y += this.dy;
 		this.setCenterPoint(myPoint);
 	}
 
@@ -88,27 +103,43 @@ public class Hero extends Character {
 	}
 
 	@Override
-	public void die() {
-		// TODO Auto-generated method stub
-		
+	public void collide(GameObject m) {
+		m.collideWithHero(this);
+		// System.out.println("hero colide");
 	}
 
 	@Override
-	void collide(GameObject m) {
-		// TODO Auto-generated method stub.
-		
+	public void collideWithHero(Hero h) {
+
 	}
 
 	@Override
-	void collideWithHero(Hero m) {
-		// TODO Auto-generated method stub.
-		
+	public void collideWithMonster(Monster m) {
+		this.die();
 	}
 
 	@Override
-	void collideWithMonster(Monster m) {
-		// TODO Auto-generated method stub.
-		
+	public void collideWithWall(Wall w) {
+		this.x -= this.dx;
+		this.y -= this.dy;
+		this.dx = 0;
+		this.dy = 0;
+		//System.out.println("wall colide");
+
+	}
+
+	@Override
+	public void collideWithBomb(Explosion e) {
+		this.die();
+
+	}
+
+	@Override
+	public void collideWithBreakable(BreakableBlock b) {
+		this.x -= this.dx;
+		this.y -= this.dy;
+		this.dx = 0;
+		this.dy = 0;
 	}
 
 }

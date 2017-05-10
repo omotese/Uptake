@@ -3,7 +3,7 @@ import java.awt.Shape;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
-public class BreakableBlock extends Block {
+public class BreakableBlock extends GameObject {
 	
 	private GameWorld world;
 	private Point2D centerPoint;
@@ -60,21 +60,35 @@ public class BreakableBlock extends Block {
 	}
 
 	@Override
-	void collide(GameObject m) {
-		// TODO Auto-generated method stub.
+	public void collide(GameObject m) {
+		m.collideWithBreakable(this);
 
 	}
 
 	@Override
-	void collideWithHero(Hero m) {
-		// TODO Auto-generated method stub.
-
+	public void collideWithHero(Hero m) {
+		m.collideWithBreakable(this);
 	}
 
 	@Override
-	void collideWithMonster(Monster m) {
+	public void collideWithMonster(Monster m) {
 		// TODO Auto-generated method stub.
 
+	}
+	@Override
+	public void collideWithWall(Wall w) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void collideWithBomb(Explosion e) {
+		this.die();
+		
+	}
+	@Override
+	public void collideWithBreakable(BreakableBlock b) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

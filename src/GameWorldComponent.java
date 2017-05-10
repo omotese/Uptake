@@ -32,6 +32,7 @@ public class GameWorldComponent extends JComponent {
 		this.hero = new Hero(world, new Point2D.Double(50, 50));
 		this.monsters = new ArrayList<Monster>();
 		this.world.addGameObject(hero);
+		this.addWall();
 		this.levelNum = 1;
 
 		setPreferredSize(world.getSize());
@@ -78,7 +79,6 @@ public class GameWorldComponent extends JComponent {
 		Graphics2D g2 = (Graphics2D) g;
 		drawDrawable(g2, this.world);
 		List<Drawable> drawableParts = this.world.getDrawableParts();
-		drawableParts.addAll(wallHolder());
 
 		for (Drawable c : drawableParts) {
 			drawDrawable(g2, c);
@@ -140,19 +140,23 @@ public class GameWorldComponent extends JComponent {
 
 
 			} catch (IllegalArgumentException e) {
-				System.err.println("Bad");
+				//System.err.println("Bad");
 			}
 		}
+		//System.out.println("before Monster adding "+this.world.getObjectList().size());
 		while(s.hasNext()){
 			
 			try {
 				int x = s.nextInt();
 				int y = s.nextInt();
-				Monster monster = new Monster(this.world, new Point2D.Double(x*50, y*50+50));
+				Monster monster = new Monster(this.world, new Point2D.Double(x*50, y*50));
 				this.monsters.add(monster);
 				for (Monster m : monsters) {
 					this.world.addGameObject(m);
+					//System.out.println("monster");
 				}
+				
+				
 
 
 			} catch (IllegalArgumentException e) {
@@ -160,38 +164,41 @@ public class GameWorldComponent extends JComponent {
 			}
 
 		}
+		//System.out.println("after Monster adding "+this.world.getObjectList().size());
 	}
 	
 	public void createBreakables(){
 		
 	}
 
-	public ArrayList<Wall> wallHolder() {
+	public void addWall() {
 		ArrayList<Wall> walls = new ArrayList<Wall>();
 		for (int i = 0; i < 13; i++) {
-			Wall newWall = new Wall(this.world, 0, 50 * i);
+			Wall newWall = new Wall(this.world, new Point2D.Double(0, 50 * i));
 			walls.add(newWall);
 		}
 		for (int j = 0; j < 16; j++) {
-			Wall newWall = new Wall(this.world, 50 * (j + 1), 0);
+			Wall newWall = new Wall(this.world, new Point2D.Double(50 * (j + 1), 0));
 			walls.add(newWall);
 		}
 		for (int k = 0; k < 15; k++) {
-			Wall newWall = new Wall(this.world, 50 * (k + 1), 600);
+			Wall newWall = new Wall(this.world, new Point2D.Double(50 * (k + 1), 600));
 			walls.add(newWall);
 		}
 		for (int j = 0; j < 12; j++) {
-			Wall newWall = new Wall(this.world, 800, 50 * (j + 1));
+			Wall newWall = new Wall(this.world, new Point2D.Double(800, 50 * (j + 1)));
 			walls.add(newWall);
-
 		}
 		for (int j = 0; j < 7; j++) {
 			for (int k = 0; k < 5; k++) {
-				Wall newWall = new Wall(this.world, 100 * (j + 1), (k + 1) * 100);
+				Wall newWall = new Wall(this.world, new Point2D.Double(100 * (j + 1), (k + 1) * 100));
 				walls.add(newWall);
 			}
 		}
-		return walls;
+		for(Wall w: walls){
+			this.world.addGameObject(w);
+		}
+		
 	}
 
 	private void drawDrawable(Graphics2D g2, Drawable c) {
