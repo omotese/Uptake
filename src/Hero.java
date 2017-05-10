@@ -93,7 +93,6 @@ public class Hero extends GameObject {
 
 	@Override
 	public double getDiameter() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -105,7 +104,6 @@ public class Hero extends GameObject {
 	@Override
 	public void collide(GameObject m) {
 		m.collideWithHero(this);
-		// System.out.println("hero colide");
 	}
 
 	@Override
@@ -124,7 +122,6 @@ public class Hero extends GameObject {
 		this.y -= this.dy;
 		this.dx = 0;
 		this.dy = 0;
-		//System.out.println("wall colide");
 
 	}
 
@@ -141,5 +138,6 @@ public class Hero extends GameObject {
 		this.dx = 0;
 		this.dy = 0;
 	}
+	
 
 }

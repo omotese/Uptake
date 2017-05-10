@@ -69,9 +69,5 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 	}
 
 
-	
-	//abstract void collideWithPowerUp(PowerUp m);
-
-
 
 }

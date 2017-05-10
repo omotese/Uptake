@@ -72,7 +72,7 @@ public class BreakableBlock extends GameObject {
 
 	@Override
 	public void collideWithMonster(Monster m) {
-		// TODO Auto-generated method stub.
+		m.collideWithBreakable(this);
 
 	}
 	@Override
