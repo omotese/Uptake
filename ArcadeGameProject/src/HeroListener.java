@@ -34,7 +34,7 @@ public class HeroListener implements KeyListener {
 	
 	@Override
 	public void keyReleased(KeyEvent e) {
-		
+		myHero.stopHero();
 		
 	}
 

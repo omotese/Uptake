@@ -1,7 +1,7 @@
 import java.awt.geom.Point2D;
 
 
-public abstract class GameObject implements Drawable, Temporal, Relocatable{
+public abstract class GameObject implements Drawable, Temporal, Relocatable, Collision{
 	private Point2D centerPoint;
 	private boolean isPaused = false;
 	private GameWorld world;
@@ -67,6 +67,8 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable{
 	public void die() {
 		this.getWorld().removeGameObject(this);
 	}
+
+
 	
 	//abstract void collideWithPowerUp(PowerUp m);
 

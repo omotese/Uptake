@@ -2,122 +2,114 @@ import java.awt.Color;
 import java.awt.Polygon;
 import java.awt.Shape;
 import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
+import java.util.Random;
 
-public class Monster extends Character {
+public class Monster extends GameObject {
 
 	private Point2D centerPoint;
 	private double size;
 	private GameWorld world;
 	private int x;
 	private int y;
+	private int dx;
+	private int dy;
 
 	public Monster(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
-		this.x= (int) centerPoint.getX();
+		this.x = (int) centerPoint.getX();
 		this.y = (int) centerPoint.getY();
-	}
-	
-
-	@Override
-	public void timePassed() {
-		// TODO Auto-generated method stub.
-		updatePosition();
-		
+		this.dx = 2;
+		this.dy = 0;
+		this.size = 40;
 	}
 
 	@Override
+
 	public void die() {
-		// TODO Auto-generated method stub.
-		
+		this.world.removeGameObject(this);
 	}
 
-	@Override
-	public void setIsPaused(boolean isPaused) {
-		// TODO Auto-generated method stub.
-		
-	}
-
-	@Override
-	public boolean getIsPaused() {
-		// TODO Auto-generated method stub.
-		return false;
-	}
-
-	@Override
-	public void moveTo(Point2D point) {
-		// TODO Auto-generated method stub.
-		
-	}
 
 	@Override
 	public Point2D getCenterPoint() {
-		// TODO Auto-generated method stub.
-		return null;
+		return this.centerPoint;
 	}
 
 	@Override
 	public Color getColor() {
-		// TODO Auto-generated method stub.
-		return Color.PINK;
+		return Color.red;
 	}
 
 	@Override
 	public Shape getShape() {
-		// TODO Auto-generated method stub.
-		int[] xpoints = new int[3];
-		int[] ypoints = new int[3];
-		xpoints[0] = x;
-		xpoints[1] = x + 25;
-		xpoints[2] = x + 50;
-		ypoints[0] = y;
-		ypoints[1] = y-50;
-		ypoints[2] = y;
-		Polygon myMonster= new Polygon(xpoints, ypoints, 3);
-		return myMonster;
+		return new Rectangle2D.Double(x, y, this.size, this.size);
 	}
 
 	@Override
 	public void updatePosition() {
-		// TODO Auto-generated method stub.
-		this.x=this.x;
-		this.y+=1;
-		
-	}
+		//System.out.println(this.world.getObjectList().size());
+		this.x += dx;
+		this.y += dy;
+		Point2D newPoint = new Point2D.Double(x, y);
+		 
+		/*
+		 * for (int i = 0; i < this.world.getObjectList().size(); i++) { if
+		 * ((this.world.getObjectList().get(i) != this) &&
+		 * this.getShape().intersects((Rectangle2D)
+		 * this.world.getObjectList().get(i).getShape())) {
+		 * this.collide(this.world.getObjectList().get(i)); } }
+		 */
+		this.setCenterPoint(newPoint);
 
-	@Override
-	public void updateSize() {
-		// TODO Auto-generated method stub.
-		
 	}
 
 	@Override
 	public void updateColor() {
 		// TODO Auto-generated method stub.
-		
+
 	}
 
 	@Override
 	public double getDiameter() {
-		// TODO Auto-generated method stub.
-		return 0;
+		return size;
 	}
 
 	@Override
-	void collide(GameObject m) {
-		// TODO Auto-generated method stub.
-		
+	public void collide(GameObject m) {
+		m.collideWithMonster(this);
 	}
 
 	@Override
-	void collideWithHero(Hero m) {
-		// TODO Auto-generated method stub.
-		
+	public void collideWithHero(Hero h) {
+		h.collideWithMonster(this);
 	}
 
 	@Override
-	void collideWithMonster(Monster m) {
-		// TODO Auto-generated method stub.
-		
+	public void collideWithMonster(Monster m) {
+	}
+
+	@Override
+	public void collideWithWall(Wall w) {
+		System.out.println("monster with wall");
+	}
+
+	@Override
+	public void collideWithBomb(Explosion e) {
+		this.die();
+
+	}
+
+	@Override
+	public void collideWithBreakable(BreakableBlock b) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void updateSize() {
+		// TODO Auto-generated method stub
+
 	}
 
 }

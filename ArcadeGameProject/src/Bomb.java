@@ -2,12 +2,14 @@ import java.awt.Color;
 import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
 
-public class Bomb extends Block {
+public class Bomb extends GameObject {
 	private double x;
 	private double y;
 	private double size;
 	private int fuse;
+	private int explosion;
 
 	public Bomb(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
@@ -15,6 +17,7 @@ public class Bomb extends Block {
 			this.x = Math.round((centerPoint.getX())/50)*50+10;
 			this.y = Math.round((centerPoint.getY())/50)*50+10;
 			this.fuse = 400;
+			this.explosion = 5;
 			this.getWorld().bombExists = true;
 
 		
@@ -43,17 +46,22 @@ public class Bomb extends Block {
 		}
 
 	}
+	
+	
 
 	public void updateFuse() {
 		fuse--;
 		if (fuse == 0) {
 			this.die();
-			this.getWorld().bombExists = false;
+			//this.getWorld().bombExists = false;
+			Explosion exp = new Explosion(this.getWorld(), new Point2D.Double(this.x*40, this.y*40));
 		}
 	}
+	
+	
 
 	public Shape getShape() {
-		return new Ellipse2D.Double(x, y, size, size);
+		return new Rectangle2D.Double(x, y, size, size);
 	}
 
 	@Override
@@ -64,7 +72,6 @@ public class Bomb extends Block {
 			size += .6;
 		}
 	}
-	// TODO Auto-generated method stub.
 
 	@Override
 	public void updateColor() {
@@ -73,21 +80,42 @@ public class Bomb extends Block {
 	}
 
 	@Override
-	void collide(GameObject m) {
+	public void collide(GameObject m) {
+		// TODO Auto-generated method stub.
+
+	}
+
+
+	@Override
+	public void collideWithMonster(Monster m) {
 		// TODO Auto-generated method stub.
 
 	}
 
 	@Override
-	void collideWithHero(Hero m) {
-		// TODO Auto-generated method stub.
+	public void collideWithWall(Wall w) {
+		// TODO Auto-generated method stub
+		
+	}
 
+	
+
+	@Override
+	public void collideWithBreakable(BreakableBlock b) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	void collideWithMonster(Monster m) {
-		// TODO Auto-generated method stub.
+	public void collideWithBomb(Explosion e) {
+		// TODO Auto-generated method stub
+		
+	}
 
+	@Override
+	public void collideWithHero(Hero h) {
+		// TODO Auto-generated method stub
+		
 	}
 
 
