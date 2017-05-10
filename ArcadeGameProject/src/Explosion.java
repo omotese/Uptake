@@ -1,7 +1,7 @@
+import java.awt.Shape;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
-import com.sun.javafx.geom.Shape;
 
 public class Explosion extends Bomb {
 	private int size;
@@ -20,6 +20,11 @@ public class Explosion extends Bomb {
 		h.collideWithBomb(this);
 	}
 	
+	@Override
+	public void collideWithMonster(Monster m) {
+		m.collideWithBomb(this);
+	}
+	@Override
 	public Shape getShape() {
 		return new Rectangle2D.Double(x, y, size, size);
 	}

@@ -48,7 +48,7 @@ public class Monster extends GameObject {
 
 	@Override
 	public void updatePosition() {
-		//System.out.println(this.world.getObjectList().size());
+		// System.out.println(this.world.getObjectList().size());
 		this.x += dx;
 		this.y += dy;
 		Point2D newPoint = new Point2D.Double(x, y);
@@ -91,10 +91,16 @@ public class Monster extends GameObject {
 
 	@Override
 	public void collideWithWall(Wall w) {
-		//System.out.println("monster with wall");
-		this.dx = -dx;
-		this.dy = -dy;
-		
+		Random ran = new Random();
+		if (ran.nextInt(2) == 0) {
+			this.dx = -dx;
+			this.dy = -dy;
+		}
+		if(ran.nextInt(2)==1){
+			this.dx = -dy;
+			this.dx = -dx;
+		}
+
 	}
 
 	@Override
@@ -105,7 +111,8 @@ public class Monster extends GameObject {
 
 	@Override
 	public void collideWithBreakable(BreakableBlock b) {
-		// TODO Auto-generated method stub
+		this.dx = -dx;
+		this.dy = -dy;
 
 	}
 
