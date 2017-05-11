@@ -20,8 +20,9 @@ public class Monster extends GameObject {
 		this.world = world;
 		this.x = (int) centerPoint.getX();
 		this.y = (int) centerPoint.getY();
-		this.dx = 2;
-		this.dy = 0;
+		Random ran = new Random();
+		this.dx = ran.nextInt(2) +1;
+		this.dy = ran.nextInt(2) +1;
 		this.size = 40;
 	}
 
@@ -92,14 +93,10 @@ public class Monster extends GameObject {
 	@Override
 	public void collideWithWall(Wall w) {
 		Random ran = new Random();
-		if (ran.nextInt(1) == 0) {
-			this.dx = -dx;
-			this.dy = -dy;
-		}
-		else{
-			this.dx = -dy;
-			this.dx = -dx;
-		}
+		this.x -= this.dx;
+		this.y -= this.dy;
+		this.dx = (ran.nextInt(3) - 1) * 2;
+		this.dy = (ran.nextInt(3) - 1) * 2;
 
 	}
 

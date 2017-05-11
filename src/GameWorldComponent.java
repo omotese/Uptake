@@ -22,6 +22,7 @@ public class GameWorldComponent extends JComponent {
 
 	private static final int FRAMES_PER_SECOND = 30;
 	private static final long REPAINT_INTERVAL_MS = 1000 / FRAMES_PER_SECOND;
+	
 	private Hero hero;
 	private List<Monster> monsters;
 	private int levelNum;
@@ -70,6 +71,7 @@ public class GameWorldComponent extends JComponent {
 			}
 		};
 		new Thread(repainter).start();
+		
 
 	}
 
@@ -85,6 +87,8 @@ public class GameWorldComponent extends JComponent {
 		}
 
 	}
+	
+
 
 	public void levelUp() {
 		if (levelNum >= 1 && levelNum < 3) {
@@ -153,7 +157,6 @@ public class GameWorldComponent extends JComponent {
 				this.monsters.add(monster);
 				for (Monster m : monsters) {
 					this.world.addGameObject(m);
-					//System.out.println("monster");
 				}
 				
 				
@@ -167,9 +170,6 @@ public class GameWorldComponent extends JComponent {
 		//System.out.println("after Monster adding "+this.world.getObjectList().size());
 	}
 	
-	public void createBreakables(){
-		
-	}
 
 	public void addWall() {
 		ArrayList<Wall> walls = new ArrayList<Wall>();
