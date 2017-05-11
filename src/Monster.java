@@ -103,13 +103,15 @@ public class Monster extends GameObject {
 	@Override
 	public void collideWithBomb(Explosion e) {
 		this.die();
-
 	}
 
 	@Override
 	public void collideWithBreakable(BreakableBlock b) {
-		this.dx = -dx;
-		this.dy = -dy;
+		Random ran = new Random();
+		this.x -= this.dx;
+		this.y -= this.dy;
+		this.dx = (ran.nextInt(3) - 1) * 2;
+		this.dy = (ran.nextInt(3) - 1) * 2;
 
 	}
 
