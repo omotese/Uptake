@@ -21,16 +21,20 @@ public class Monster extends GameObject {
 		this.x = (int) centerPoint.getX();
 		this.y = (int) centerPoint.getY();
 		Random ran = new Random();
-		this.dx = ran.nextInt(2) +1;
-		this.dy = ran.nextInt(2) +1;
+		if(ran.nextBoolean()){
+			this.dx = 2;
+		}else{
+			this.dx = -2;
+		}
+		if(ran.nextBoolean()){
+			this.dy = 2;
+		}else{
+			this.dy = -2;
+		
+		}
 		this.size = 40;
 	}
 
-	@Override
-
-	public void die() {
-		this.world.removeGameObject(this);
-	}
 
 	@Override
 	public Point2D getCenterPoint() {
