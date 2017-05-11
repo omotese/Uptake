@@ -87,7 +87,13 @@ public class GameWorldComponent extends JComponent {
 		}
 
 	}
-	
+	/*
+	public void startBomb(){
+		Runnable b = new Bomb(this.world,new Point2D.Double(this.x, this.y));
+		this.world.getObjectList().add((GameObject) b);
+		Thread th = new Thread(b);
+		th.start();
+	}*/
 
 
 	public void levelUp() {
