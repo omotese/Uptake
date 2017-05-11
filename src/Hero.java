@@ -57,11 +57,14 @@ public class Hero extends GameObject {
 	}*/
 	
 	public void setBomb() {
-		Runnable b = new Bomb(this.world,new Point2D.Double(this.x, this.y));
+		/*Runnable b = new Bomb(this.world,new Point2D.Double(this.x, this.y));
 		this.world.getObjectList().add((GameObject) b);
 		Thread th = new Thread(b);
-		th.start();
+		th.start();*/
 		//this.world.removeGameObject((GameObject) b);
+		
+		Bomb b = new Bomb(this.world,new Point2D.Double(this.x, this.y));
+		this.world.addGameObject(b);
 	}
 
 	public Shape getShape() {
@@ -143,10 +146,7 @@ public class Hero extends GameObject {
 
 	@Override
 	public void collideWithBreakable(BreakableWall b) {
-		this.x -= this.dx;
-		this.y -= this.dy;
-		this.dx = 0;
-		this.dy = 0;
+		collideWithWall(b);
 	}
 
 	@Override
