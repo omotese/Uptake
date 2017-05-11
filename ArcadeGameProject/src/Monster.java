@@ -57,6 +57,7 @@ public class Monster extends GameObject {
 		this.x += dx;
 		this.y += dy;
 		Point2D newPoint = new Point2D.Double(x, y);
+		this.setCenterPoint(newPoint);
 
 		for (int i = 0; i < this.world.getObjectList().size(); i++) {
 			if ((this.world.getObjectList().get(i) != this)
@@ -65,7 +66,6 @@ public class Monster extends GameObject {
 			}
 		}
 
-		this.setCenterPoint(newPoint);
 
 	}
 
@@ -99,18 +99,17 @@ public class Monster extends GameObject {
 		Random ran = new Random();
 		this.x -= this.dx;
 		this.y -= this.dy;
-		this.dx = (ran.nextInt(3) - 1) * 2;
-		this.dy = (ran.nextInt(3) - 1) * 2;
+		do {
+			this.dx = (ran.nextInt(3) - 1) * 2;
+			this.dy = (ran.nextInt(3) - 1) * 2;
+		} while (this.dx == 0 && this.dy == 0);
+		//System.out.println("m+w " + dx + " " + dy);
 
 	}
 
 	@Override
 	public void collideWithBreakable(BreakableWall b) {
-		Random ran = new Random();
-		this.x -= this.dx;
-		this.y -= this.dy;
-		this.dx = (ran.nextInt(3) - 1) * 2;
-		this.dy = (ran.nextInt(3) - 1) * 2;
+		collideWithWall(b);
 
 	}
 
