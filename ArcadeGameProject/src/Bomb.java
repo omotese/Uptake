@@ -99,26 +99,24 @@ public class Bomb extends GameObject implements Runnable{
 
 	@Override
 	public void collideWithWall(Wall w) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
-
-	@Override
-	public void collideWithBreakable(BreakableBlock b) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void collideWithBomb(Explosion e) {
-		// TODO Auto-generated method stub
-		
+	public void collideWithBreakable(BreakableWall b) {
 	}
 
 	@Override
 	public void collideWithHero(Hero h) {
+		
+	}
+	@Override
+	public void collideWithExplosion(Explosion e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void collideWithBomb(Bomb b) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -135,18 +135,25 @@ public class Hero extends GameObject {
 	}
 
 	@Override
-	public void collideWithBomb(Explosion e) {
+	public void collideWithExplosion(Explosion e) {
 		this.die();
 
 	}
 
 	@Override
-	public void collideWithBreakable(BreakableBlock b) {
+	public void collideWithBreakable(BreakableWall b) {
 		this.x -= this.dx;
 		this.y -= this.dy;
 		this.dx = 0;
 		this.dy = 0;
 	}
+
+	@Override
+	public void collideWithBomb(Bomb b) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 
 }

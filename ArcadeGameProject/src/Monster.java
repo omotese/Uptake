@@ -105,12 +105,7 @@ public class Monster extends GameObject {
 	}
 
 	@Override
-	public void collideWithBomb(Explosion e) {
-		this.die();
-	}
-
-	@Override
-	public void collideWithBreakable(BreakableBlock b) {
+	public void collideWithBreakable(BreakableWall b) {
 		Random ran = new Random();
 		this.x -= this.dx;
 		this.y -= this.dy;
@@ -124,5 +119,20 @@ public class Monster extends GameObject {
 		// TODO Auto-generated method stub
 
 	}
+
+
+	@Override
+	public void collideWithBomb(Bomb b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void collideWithExplosion(Explosion e) {
+		this.die();
+		
+	}
+
 
 }

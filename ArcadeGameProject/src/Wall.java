@@ -36,68 +36,61 @@ public class Wall extends GameObject {
 			return true;
 		}
 		return false;
-		
 	}
 	
 	@Override
 	public Color getColor() {
-		// TODO Auto-generated method stub.
 		return wallColor;
 	}
 	@Override
 	public void updatePosition() {
-		// TODO Auto-generated method stub
 		
 	}
 	@Override
 	public void updateSize() {
-		// TODO Auto-generated method stub
 		
 	}
 	@Override
 	public void updateColor() {
-		// TODO Auto-generated method stub
 		
 	}
 	@Override
 	public double getDiameter() {
-		// TODO Auto-generated method stub
-		return 0;
+		return wallSize;
 	}
+	
+	
+	
+	//Collisions
 	@Override
 	public void collide(GameObject m) {
 		m.collideWithWall(this);
-				//System.out.println("wall2 colide");
-		
 	}
+	
 	@Override
 	public void collideWithHero(Hero h) {
 		h.collideWithWall(this);
-		
 	}
+	
 	@Override
 	public void collideWithMonster(Monster m) {
 		m.collideWithWall(this);
-		
 	}
 
 	@Override
 	public void collideWithWall(Wall w) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void collideWithBreakable(BreakableBlock b) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
-	public void collideWithBomb(Explosion e) {
-		// TODO Auto-generated method stub
-		
+	public void collideWithBomb(Bomb b) {
+	}
+
+	@Override
+	public void collideWithExplosion(Explosion e) {
+	}
+
+	@Override
+	public void collideWithBreakable(BreakableWall b) {
 	}
 	
 

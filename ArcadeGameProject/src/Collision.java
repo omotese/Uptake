@@ -8,7 +8,9 @@ public interface Collision {
 	
 	abstract void collideWithWall(Wall w);
 	
-	abstract void collideWithBomb(Explosion e);
+	abstract void collideWithBomb(Bomb b);
 	
-	abstract void collideWithBreakable(BreakableBlock b);
+	abstract void collideWithExplosion(Explosion e);
+	
+	abstract void collideWithBreakable(BreakableWall b);
 }
