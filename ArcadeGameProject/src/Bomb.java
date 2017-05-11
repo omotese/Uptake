@@ -4,31 +4,44 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
-public class Bomb extends GameObject {
+public class Bomb extends GameObject implements Runnable{
 	private double x;
 	private double y;
 	private double size;
-	private int fuse;
-	private int explosion;
+	//private int fuse;
+	//private int explosion;
+	private static final int EXPAND_SECOND = 1;
 
 	public Bomb(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
 			this.size = 30;
 			this.x = Math.round((centerPoint.getX())/50)*50+10;
 			this.y = Math.round((centerPoint.getY())/50)*50+10;
-			this.fuse = 400;
-			this.explosion = 5;
+			//this.fuse = 400;
+			//this.explosion = 5;
 			this.getWorld().bombExists = true;
 
 		
 	}
+	@Override
+	public void run() {
+		try {
+			while(true){
+				updateSize();
+				Thread.sleep(EXPAND_SECOND);
+			}
+		}catch(InterruptedException exception) {
+			throw new RuntimeException("Bad?");
+		}
+	}
 
 	@Override
 	public Color getColor() {
-		if (fuse < 10) {
+		/*if (fuse < 10) {
 			return Color.white;
 		}
-		return new Color(250 - fuse * 250 / 400, 10, 10);
+		return new Color(250 - fuse * 250 / 400, 10, 10);*/
+		return Color.white;
 	}
 
 	@Override
@@ -40,15 +53,11 @@ public class Bomb extends GameObject {
 	public void updatePosition() {
 		x -= .03;
 		y -= .03;
-		if (fuse < 120) {
-			x -= .3;
-			y -= .3;
-		}
 
 	}
 	
 	
-
+/*
 	public void updateFuse() {
 		fuse--;
 		if (fuse == 0) {
@@ -56,7 +65,7 @@ public class Bomb extends GameObject {
 			//this.getWorld().bombExists = false;
 			Explosion exp = new Explosion(this.getWorld(), new Point2D.Double(this.x*40, this.y*40));
 		}
-	}
+	}*/
 	
 	
 
@@ -66,11 +75,8 @@ public class Bomb extends GameObject {
 
 	@Override
 	public void updateSize() {
-		updateFuse();
-		size += .06;
-		if (fuse < 120) {
 			size += .6;
-		}
+		
 	}
 
 	@Override

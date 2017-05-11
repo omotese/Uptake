@@ -48,11 +48,20 @@ public class Hero extends GameObject {
 
 	}
 
-	public void setBomb() {
+	/*public void setBomb() {
 		if (!this.getWorld().bombExists) {
 			Bomb newBomb = new Bomb(this.world, new Point2D.Double(this.x, this.y));
 			this.world.addGameObject(newBomb);
 		}
+		
+	}*/
+	
+	public void setBomb() {
+		Runnable b = new Bomb(this.world,new Point2D.Double(this.x, this.y));
+		this.world.getObjectList().add((GameObject) b);
+		Thread th = new Thread(b);
+		th.start();
+		//this.world.removeGameObject((GameObject) b);
 	}
 
 	public Shape getShape() {
