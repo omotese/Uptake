@@ -26,7 +26,7 @@ public class GameWorldComponent extends JComponent {
 	private Hero hero;
 	private List<Monster> monsters;
 	private int levelNum;
-	private List<BreakableBlock> breakables = new ArrayList<BreakableBlock>();
+	private List<BreakableWall> breakables = new ArrayList<BreakableWall>();
 
 	public GameWorldComponent(GameWorld world) {
 		this.world = world;
@@ -106,7 +106,7 @@ public class GameWorldComponent extends JComponent {
 	}
 
 	public void updateLevel() {
-		for (BreakableBlock n : breakables) {
+		for (BreakableWall n : breakables) {
 			this.world.removeGameObject(n);
 		}
 		breakables.clear();
@@ -136,9 +136,9 @@ public class GameWorldComponent extends JComponent {
 			try {
 				int x = s.nextInt();
 				int y = s.nextInt();
-				BreakableBlock newBlock = new BreakableBlock(this.world, new Point2D.Double(x * 50, y * 50));
-				this.breakables.add(newBlock);
-				for (BreakableBlock n : breakables) {
+				BreakableWall newWall = new BreakableWall(this.world, new Point2D.Double(x * 50, y * 50));
+				this.breakables.add(newWall);
+				for (BreakableWall n : breakables) {
 					this.world.addGameObject(n);
 				}
 
@@ -147,7 +147,6 @@ public class GameWorldComponent extends JComponent {
 				//System.err.println("Bad");
 			}
 		}
-		//System.out.println("before Monster adding "+this.world.getObjectList().size());
 		while(s.hasNext()){
 			
 			try {
@@ -167,7 +166,6 @@ public class GameWorldComponent extends JComponent {
 			}
 
 		}
-		//System.out.println("after Monster adding "+this.world.getObjectList().size());
 	}
 	
 

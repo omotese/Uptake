@@ -16,6 +16,16 @@ public class Explosion extends Bomb {
 	}
 	
 	@Override
+	public Shape getShape() {
+		return new Rectangle2D.Double(x, y, size, size);
+	}
+	
+	public void setSize(int s){
+		this.size = s;
+	}
+	
+	
+	@Override
 	public void collideWithHero(Hero h ) {
 		h.collideWithBomb(this);
 	}
@@ -24,13 +34,6 @@ public class Explosion extends Bomb {
 	public void collideWithMonster(Monster m) {
 		m.collideWithBomb(this);
 	}
-	@Override
-	public Shape getShape() {
-		return new Rectangle2D.Double(x, y, size, size);
-	}
 	
-	public void setSize(int s){
-		this.size = s;
-	}
 
 }
