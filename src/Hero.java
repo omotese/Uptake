@@ -76,6 +76,8 @@ public class Hero extends GameObject {
 	@Override
 	public void updatePosition() {
 		Point2D.Double myPoint = new Point2D.Double(x, y);
+		this.x += this.dx;
+		this.y += this.dy;
 		for (int i = 0; i < this.world.getObjectList().size(); i++) {
 			if ((this.world.getObjectList().get(i) != this)
 					&& this.getShape().intersects((Rectangle2D) this.world.getObjectList().get(i).getShape())) {
@@ -83,8 +85,7 @@ public class Hero extends GameObject {
 				//System.out.println("any colide");
 			}
 		}
-		this.x += this.dx;
-		this.y += this.dy;
+
 		this.setCenterPoint(myPoint);
 	}
 
