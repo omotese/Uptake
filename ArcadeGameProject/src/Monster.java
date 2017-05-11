@@ -100,8 +100,8 @@ public class Monster extends GameObject {
 		this.x -= this.dx;
 		this.y -= this.dy;
 		do {
-			this.dx = (ran.nextInt(3) - 1) * 2;
-			this.dy = (ran.nextInt(3) - 1) * 2;
+			this.dx = (ran.nextInt(3) - 1) ;
+			this.dy = (ran.nextInt(3) - 1) ;
 		} while (this.dx == 0 && this.dy == 0);
 		//System.out.println("m+w " + dx + " " + dy);
 
