@@ -19,19 +19,12 @@ public class Bomb extends GameObject {
 		this.size = 30;
 		this.x = Math.round((centerPoint.getX()) / 50) * 50 + 10;
 		this.y = Math.round((centerPoint.getY()) / 50) * 50 + 10;
-		this.maxSize = 100;
-		/*
-		 * this.fuse = 40; this.explosion = 5;
-		 */
+		this.maxSize = 150;
 		this.getWorld().bombExists = true;
 	}
 
 	@Override
 	public Color getColor() {
-		/*
-		 * if (fuse < 10) { return Color.white; } return new Color(250 - fuse *
-		 * 250 / 400, 10, 10);
-		 */
 		return Color.WHITE;
 	}
 
@@ -42,15 +35,9 @@ public class Bomb extends GameObject {
 
 	@Override
 	public void updatePosition() {
-		x -= .03;
-		y -= .03;
+		x -= .3;
+		y -= .3;
 	}
-
-	/*
-	 * public void updateFuse() { fuse--; if (fuse == 0) { this.die();
-	 * this.getWorld().bombExists = false; Explosion exp = new
-	 * Explosion(this.getWorld(), new Point2D.Double(this.x*40, this.y*40)); } }
-	 */
 
 	public Shape getShape() {
 		return new Rectangle2D.Double(x, y, size, size);
@@ -59,7 +46,7 @@ public class Bomb extends GameObject {
 	@Override
 	public void updateSize() {
 		size += .6;
-		if (size >= 100) {
+		if (size >= maxSize) {
 			this.die();
 		}
 
