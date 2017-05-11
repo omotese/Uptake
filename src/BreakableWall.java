@@ -13,6 +13,8 @@ public class BreakableWall extends Wall {
 	public Color getColor() {
 		return breakableColor;
 	}
+	
+	
 	//Collisions
 	@Override
 	public void collide(GameObject m) {
