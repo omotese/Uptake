@@ -9,10 +9,6 @@ public class Bomb extends GameObject {
 	private double y;
 	private double size;
 	private double maxSize;
-	/*
-	 * private int fuse; private int explosion;
-	 */
-	// private static final int EXPAND_SECOND = 1;
 
 	public Bomb(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
@@ -48,6 +44,10 @@ public class Bomb extends GameObject {
 		size += .6;
 		if (size >= maxSize) {
 			this.die();
+			Explosion exp = new Explosion(this.getWorld(), new Point2D.Double(x,y));
+			this.getWorld().addGameObject(exp);
+			System.out.println(this.getWorld().getObjectList());
+			
 		}
 
 	}

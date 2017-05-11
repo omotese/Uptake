@@ -22,14 +22,14 @@ public class Monster extends GameObject {
 		this.y = (int) centerPoint.getY();
 		Random ran = new Random();
 		if(ran.nextBoolean()){
-			this.dx = 2;
+			this.dx = 1;
 		}else{
-			this.dx = -2;
+			this.dx = -1;
 		}
 		if(ran.nextBoolean()){
-			this.dy = 2;
+			this.dy = 1;
 		}else{
-			this.dy = -2;
+			this.dy = -1;
 		
 		}
 		this.size = 40;
