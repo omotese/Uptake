@@ -1,17 +1,34 @@
 import java.awt.Color;
 import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
 
 public class BreakableWall extends Wall {
 	private Color breakableColor;
+	private GameWorld world;
 
 	public BreakableWall(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
+		this.world=world;
 		this.breakableColor = Color.blue;
 	}
 	
 	@Override
 	public Color getColor() {
 		return breakableColor;
+	}
+	
+	public void detectCollisionWithExplosion(){
+		for (int i = 0; i < this.world.getObjectList().size(); i++) {
+			if ((this.world.getObjectList().get(i) != this)
+					&& this.getShape().intersects((Rectangle2D) this.world.getObjectList().get(i).getShape())) {
+				this.collide(this.world.getObjectList().get(i));
+			}
+		}
+	}
+	
+	@Override
+	public void updatePosition() {
+		detectCollisionWithExplosion();
 	}
 	
 	
@@ -31,6 +48,7 @@ public class BreakableWall extends Wall {
 	}
 	@Override
 	public void collideWithExplosion(Explosion e) {
+		this.die();
 	}
 
 }
