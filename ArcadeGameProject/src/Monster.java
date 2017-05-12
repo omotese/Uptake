@@ -122,7 +122,13 @@ public class Monster extends GameObject {
 
 	@Override
 	public void collideWithBomb(Bomb b) {
-		// TODO Auto-generated method stub
+		Random ran = new Random();
+		this.x -= this.dx;
+		this.y -= this.dy;
+		do {
+			this.dx = (ran.nextInt(3) - 1) ;
+			this.dy = (ran.nextInt(3) - 1) ;
+		} while (this.dx == 0 && this.dy == 0);
 		
 	}
 
