@@ -30,21 +30,21 @@ public class Hero extends GameObject {
 	}
 
 	public void moveUp() {
-		this.dy = -2;
+		this.dy = -3;
 	}
 
 	public void moveDown() {
-		this.dy = 2;
+		this.dy = 3;
 
 	}
 
 	public void moveLeft() {
-		this.dx = -2;
+		this.dx = -3;
 
 	}
 
 	public void moveRight() {
-		this.dx = 2;
+		this.dx = 3;
 
 	}
 	

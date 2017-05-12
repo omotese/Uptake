@@ -15,7 +15,7 @@ public class Bomb extends GameObject {
 		this.size = 30;
 		this.x = Math.round((centerPoint.getX()) / 50) * 50 + 10;
 		this.y = Math.round((centerPoint.getY()) / 50) * 50 + 10;
-		this.maxSize = 150;
+		this.maxSize = 130;
 		this.getWorld().bombExists = true;
 	}
 
