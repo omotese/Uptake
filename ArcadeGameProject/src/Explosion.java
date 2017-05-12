@@ -50,13 +50,15 @@ public class Explosion extends Bomb {
 	
 	@Override
 	public void collideWithHero(Hero h ) {
-		h.collideWithBomb(this);
+		h.collideWithExplosion(this);
 	}
 	
 	@Override
 	public void collideWithMonster(Monster m) {
-		m.collideWithBomb(this);
+		m.collideWithExplosion(this);
 	}
+	
+	
 	
 
 }
