@@ -9,13 +9,28 @@ public class Explosion extends Bomb {
 	private double x;
 	private double y;
 	private Color explosionColor;
+	private int fuse;
 
 	public Explosion(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
-		this.size = 0;
+		this.size = 150;
 		this.x=this.getCenterPoint().getX();
 		this.y=this.getCenterPoint().getY();
 		this.explosionColor = Color.pink;
+		this.fuse = 30;
+	}
+	
+	
+	public void updateFuse(){
+		this.fuse--;
+		if(fuse<=0){
+			this.die();
+		}
+	}
+	
+	@Override
+	public void updatePosition(){
+		updateFuse();
 	}
 	
 	@Override
@@ -25,6 +40,11 @@ public class Explosion extends Bomb {
 	
 	public void setSize(int s){
 		this.size = s;
+	}
+	
+	@Override
+	public Color getColor(){
+		return this.explosionColor;
 	}
 	
 	

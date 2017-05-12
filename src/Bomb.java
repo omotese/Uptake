@@ -31,8 +31,11 @@ public class Bomb extends GameObject {
 
 	@Override
 	public void updatePosition() {
-		x -= .3;
-		y -= .3;
+		if (!(size >= maxSize)) {
+			x -= .3;
+			y -= .3;
+		}
+		
 	}
 
 	public Shape getShape() {
@@ -41,20 +44,15 @@ public class Bomb extends GameObject {
 
 	@Override
 	public void updateSize() {
-		size += .6;
+
 		if (size >= maxSize) {
-			this.die();
-			Explosion exp = new Explosion(this.getWorld(), new Point2D.Double(x,y));
+			Explosion exp = new Explosion(this.getWorld(), new Point2D.Double(x, y));
 			this.getWorld().addGameObject(exp);
-			System.out.println(this.getWorld().getObjectList());
-			
+			this.die();
+
+		} else {
+			size += .6;
 		}
-
-	}
-
-	@Override
-	public void updateColor() {
-		// TODO Auto-generated method stub.
 
 	}
 
@@ -91,6 +89,12 @@ public class Bomb extends GameObject {
 
 	@Override
 	public void collideWithBomb(Bomb b) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void updateColor() {
 		// TODO Auto-generated method stub
 
 	}
