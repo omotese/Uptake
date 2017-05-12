@@ -58,6 +58,11 @@ public class Explosion extends Bomb {
 		m.collideWithExplosion(this);
 	}
 	
+	@Override
+	public void collideWithBreakable(BreakableWall b) {
+		b.collideWithExplosion(this);
+	}
+	
 	
 	
 
