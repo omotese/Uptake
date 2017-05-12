@@ -64,6 +64,7 @@ public class Bomb extends GameObject {
 
 	@Override
 	public void collideWithMonster(Monster m) {
+		m.collideWithBomb(this);
 
 	}
 
