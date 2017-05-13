@@ -17,6 +17,8 @@ public class Seeker extends Monster {
 		this.world = world;
 		this.x = (int) centerPoint.getX();
 		this.y = (int) centerPoint.getY();
+		this.dx=0;
+		this.dy=0;
 		
 	}
 
@@ -28,5 +30,13 @@ public class Seeker extends Monster {
 	public Point2D reset(){
 		return new Point2D.Double(this.x, this.y);
 	}
+	
+	@Override
+	public void updatePosition() {
+		this.x += this.dx;
+		this.y += this.dy;
+	}
+	
+	
 
 }
