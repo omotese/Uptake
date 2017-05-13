@@ -31,35 +31,36 @@ public class Hero extends GameObject {
 		this.dx = 0;
 		this.dy = 0;
 	}
-	public void setIsFaster(boolean isFaster){
-		this.isFaster= isFaster;
+
+	public void setIsFaster(boolean isFaster) {
+		this.isFaster = isFaster;
 	}
+
 	public void moveUp() {
-		if(isFaster==true)
-			this.dy=-10;
+		if (isFaster == true)
+			this.dy = -10;
 		this.dy = -2.5;
 	}
 
-
 	public void moveDown() {
-		if(isFaster==true)
-			this.dy=10;
+		if (isFaster == true)
+			this.dy = 10;
 		this.dy = 2.5;
 	}
-	
+
 	public void moveLeft() {
-		if(isFaster==true)
-			this.dx=-10;
+		if (isFaster == true)
+			this.dx = -10;
 		this.dx = -2.5;
 
 	}
+
 	public void moveRight() {
-		if(isFaster==true)
-			this.dx=10;
+		if (isFaster == true)
+			this.dx = 10;
 		this.dx = 2.5;
 
 	}
-
 
 	public void setBomb() {
 		Bomb b = new Bomb(this.world, new Point2D.Double(this.x, this.y));
@@ -137,7 +138,7 @@ public class Hero extends GameObject {
 		this.lives--;
 		if (this.lives == 0) {
 			// I can totally restart the game but idk how to
-			// get rid of the window that it was already in. TODO	
+			// get rid of the window that it was already in. TODO
 			// Main.main(null);
 		}
 
@@ -146,19 +147,19 @@ public class Hero extends GameObject {
 	@Override
 	public void collideWithBomb(Bomb b) {
 		// TODO Auto-generated method stub.
-		
+
 	}
 
 	@Override
 	public void updateSize() {
 		// TODO Auto-generated method stub.
-		
+
 	}
 
 	@Override
 	public void updateColor() {
 		// TODO Auto-generated method stub.
-		
+
 	}
 
 	@Override
@@ -174,7 +175,7 @@ public class Hero extends GameObject {
 
 	@Override
 	public void collideWithPowerUp(PowerUp p) {
-		
+
 	}
 
 }
