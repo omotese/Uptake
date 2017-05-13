@@ -22,8 +22,6 @@ import javax.swing.JOptionPane;
 
 public class GameWorldComponent extends JComponent {
 
-	private boolean isPaused = false;
-
 	private GameWorld world;
 	private boolean hasShownNullErrorMessage = false;
 
@@ -70,7 +68,7 @@ public class GameWorldComponent extends JComponent {
 			public void run() {
 				// Periodically asks Java to repaint this component
 				try {
-					while (!isPaused) {
+					while (true) {
 						Thread.sleep(REPAINT_INTERVAL_MS);
 						repaint();
 					}
@@ -103,7 +101,12 @@ public class GameWorldComponent extends JComponent {
 	 */
 
 	public void togglePause() {
-		isPaused = !isPaused;
+		if(!this.world.getIsPaused()){
+			this.world.setIsPaused(true);
+		}else{
+			this.world.setIsPaused(false);
+		}
+		
 	}
 
 	public void levelUp() {
@@ -263,29 +266,6 @@ public class GameWorldComponent extends JComponent {
 		}
 	}
 
-	public class PauseHandler implements KeyListener {
-
-		@Override
-		public void keyPressed(KeyEvent e) {
-			if (e.getKeyCode() == KeyEvent.VK_P) {
-				GameWorldComponent.this.world.setIsPaused(true);
-			}
-			
-		}
-
-		@Override
-		public void keyReleased(KeyEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void keyTyped(KeyEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-		
-	}
-
+	
 
 }
