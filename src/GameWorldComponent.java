@@ -19,7 +19,6 @@ import java.util.Scanner;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
-
 public class GameWorldComponent extends JComponent {
 
 	private GameWorld world;
@@ -81,7 +80,8 @@ public class GameWorldComponent extends JComponent {
 		new Thread(repainter).start();
 
 	}
-	public Hero getHero(){
+
+	public Hero getHero() {
 		return this.hero;
 	}
 
@@ -99,12 +99,12 @@ public class GameWorldComponent extends JComponent {
 	}
 
 	public void togglePause() {
-		if(!this.world.getIsPaused()){
+		if (!this.world.getIsPaused()) {
 			this.world.setIsPaused(true);
-		}else{
+		} else {
 			this.world.setIsPaused(false);
 		}
-		
+
 	}
 
 	public void levelUp() {
@@ -191,7 +191,7 @@ public class GameWorldComponent extends JComponent {
 			}
 
 		}
-		for (int k = 0; k < 2; k++) {
+		for (int k = 0; k < 1; k++) {
 
 			try {
 				int x = s.nextInt();
@@ -263,7 +263,5 @@ public class GameWorldComponent extends JComponent {
 			JOptionPane.showMessageDialog(null, message, "Null pointer exception", JOptionPane.ERROR_MESSAGE);
 		}
 	}
-
-	
 
 }

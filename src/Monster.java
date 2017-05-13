@@ -34,12 +34,6 @@ public class Monster extends GameObject {
 		this.size = 40;
 	}
 
-
-	/*@Override
-	public Point2D getCenterPoint() {
-		return this.centerPoint;
-	}*/
-
 	@Override
 	public Color getColor() {
 		return Color.red;
