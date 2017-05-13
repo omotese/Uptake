@@ -40,6 +40,7 @@ public class GameWorldComponent extends JComponent {
 		this.monsters = new ArrayList<Monster>();
 		this.seekers = new ArrayList<Seeker>();
 		this.world.addGameObject(hero);
+		this.world.setHero(hero);
 		this.addWall();
 		this.levelNum = 1;
 
@@ -79,6 +80,9 @@ public class GameWorldComponent extends JComponent {
 		};
 		new Thread(repainter).start();
 
+	}
+	public Hero getHero(){
+		return this.hero;
 	}
 
 	@Override
