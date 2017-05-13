@@ -1,5 +1,4 @@
 import java.awt.Color;
-import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 
