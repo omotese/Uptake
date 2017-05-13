@@ -144,5 +144,11 @@ public class Monster extends GameObject {
 		
 	}
 
+	@Override
+	public void collideWithPowerUp(PowerUp p) {
+		// TODO Auto-generated method stub.
+		
+	}
+
 
 }

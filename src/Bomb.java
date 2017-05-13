@@ -105,4 +105,10 @@ public class Bomb extends GameObject {
 		
 	}
 
+	@Override
+	public void collideWithPowerUp(PowerUp p) {
+		// TODO Auto-generated method stub.
+		
+	}
+
 }
