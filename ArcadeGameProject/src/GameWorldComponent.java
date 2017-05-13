@@ -3,7 +3,11 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Shape;
+import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.awt.geom.Point2D;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -15,9 +19,10 @@ import java.util.Scanner;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
+
 public class GameWorldComponent extends JComponent {
-	
-	private boolean isPaused=false;
+
+	private boolean isPaused = false;
 
 	private GameWorld world;
 	private boolean hasShownNullErrorMessage = false;
@@ -96,7 +101,7 @@ public class GameWorldComponent extends JComponent {
 	 * this.world.getObjectList().add((GameObject) b); Thread th = new
 	 * Thread(b); th.start(); }
 	 */
-	
+
 	public void togglePause() {
 		isPaused = !isPaused;
 	}
@@ -137,17 +142,25 @@ public class GameWorldComponent extends JComponent {
 		} catch (IOException e) {
 			System.err.println("Error closing file.");
 		}
+		// System.out.println("ahhhh");
+		this.hero.moveTo(new Point2D.Double(50, 50));
 	}
 
 	public void getLevel(String fileName) throws FileNotFoundException {
 		int numBlocks = 0;
 		FileReader file = new FileReader(fileName);
-		if (levelNum == 1) {numBlocks = 22;}
-		if (levelNum == 2) {numBlocks = 22;}
-		if (levelNum == 3) {numBlocks=30;}
+		if (levelNum == 1) {
+			numBlocks = 22;
+		}
+		if (levelNum == 2) {
+			numBlocks = 22;
+		}
+		if (levelNum == 3) {
+			numBlocks = 30;
+		}
 
 		Scanner s = new Scanner(file);
-		for(int c = 0; c < numBlocks; c++) {
+		for (int c = 0; c < numBlocks; c++) {
 			try {
 				int x = s.nextInt();
 				int y = s.nextInt();
@@ -157,44 +170,36 @@ public class GameWorldComponent extends JComponent {
 					this.world.addGameObject(n);
 				}
 
-
 			} catch (IllegalArgumentException e) {
-				//System.err.println("Bad");
+				// System.err.println("Bad");
 			}
 		}
-		for(int i =0; i< 2; i++){
-			
+		for (int i = 0; i < 2; i++) {
+
 			try {
 				int x = s.nextInt();
 				int y = s.nextInt();
-				Wanderer wanderer = new Wanderer(this.world, new Point2D.Double(x*50, y*50));
+				Wanderer wanderer = new Wanderer(this.world, new Point2D.Double(x * 50, y * 50));
 				this.wanderers.add(wanderer);
 				for (Wanderer m : wanderers) {
 					this.world.addGameObject(m);
 				}
-				
-				
-
 
 			} catch (IllegalArgumentException e) {
 				System.err.println("Bad");
 			}
-			
 
 		}
-		for(int k=0; k<2; k++){
-			
+		for (int k = 0; k < 2; k++) {
+
 			try {
 				int x = s.nextInt();
 				int y = s.nextInt();
-			Seeker seeker = new Seeker(this.world, new Point2D.Double(x*50, y*50));
+				Seeker seeker = new Seeker(this.world, new Point2D.Double(x * 50, y * 50));
 				this.seekers.add(seeker);
 				for (Seeker m : seekers) {
 					this.world.addGameObject(m);
 				}
-				
-				
-
 
 			} catch (IllegalArgumentException e) {
 				System.err.println("Bad");
@@ -257,5 +262,30 @@ public class GameWorldComponent extends JComponent {
 			JOptionPane.showMessageDialog(null, message, "Null pointer exception", JOptionPane.ERROR_MESSAGE);
 		}
 	}
+
+	public class PauseHandler implements KeyListener {
+
+		@Override
+		public void keyPressed(KeyEvent e) {
+			if (e.getKeyCode() == KeyEvent.VK_P) {
+				GameWorldComponent.this.world.setIsPaused(true);
+			}
+			
+		}
+
+		@Override
+		public void keyReleased(KeyEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void keyTyped(KeyEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+	}
+
 
 }
