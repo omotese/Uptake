@@ -31,7 +31,9 @@ public class Hero extends GameObject {
 		this.dx = 0;
 		this.dy = 0;
 	}
-
+	public void setIsFaster(boolean isFaster){
+		this.isFaster= isFaster;
+	}
 	public void moveUp() {
 		if(isFaster==true)
 			this.dy=-10;
