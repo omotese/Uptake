@@ -73,7 +73,11 @@ public class Wanderer extends GameObject {
 		// TODO Auto-generated method stub.
 
 	}
-
+	
+	public Point2D reset(){
+		return new Point2D.Double(this.x, this.y);
+	}
+	
 	@Override
 	public double getDiameter() {
 		return size;
@@ -111,7 +115,7 @@ public class Wanderer extends GameObject {
 		collideWithWall(b);
 
 	}
-
+	
 	@Override
 	public void updateSize() {
 		// TODO Auto-generated method stub
