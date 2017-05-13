@@ -100,11 +100,6 @@ public class Hero extends GameObject {
 	}
 
 	@Override
-	public void collideWithMonster(Wanderer m) {
-		this.die();
-	}
-
-	@Override
 	public void collideWithWall(Wall w) {
 		this.x -= this.dx;
 		this.y -= this.dy;
@@ -152,6 +147,18 @@ public class Hero extends GameObject {
 	public void updateColor() {
 		// TODO Auto-generated method stub.
 		
+	}
+
+	@Override
+	public void collideWithWanderer(Wanderer m) {
+		// TODO Auto-generated method stub.
+		this.die();
+	}
+
+	@Override
+	public void collideWithSeeker(Seeker s) {
+		// TODO Auto-generated method stub.
+		this.die();
 	}
 
 }

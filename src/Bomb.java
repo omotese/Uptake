@@ -1,6 +1,5 @@
 import java.awt.Color;
 import java.awt.Shape;
-import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
@@ -62,11 +61,6 @@ public class Bomb extends GameObject {
 
 	}
 
-	@Override
-	public void collideWithMonster(Wanderer m) {
-		m.collideWithBomb(this);
-
-	}
 
 	@Override
 	public void collideWithWall(Wall w) {
@@ -98,6 +92,17 @@ public class Bomb extends GameObject {
 	public void updateColor() {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void collideWithWanderer(Wanderer m) {
+		m.collideWithBomb(this);
+	}
+
+	@Override
+	public void collideWithSeeker(Seeker s) {
+		s.collideWithBomb(this);
+		
 	}
 
 }

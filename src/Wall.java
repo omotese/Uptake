@@ -1,14 +1,7 @@
 import java.awt.Color;
-import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.geom.Point2D;
-import java.awt.geom.Point2D.Double;
 import java.awt.geom.Rectangle2D;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
 
 public class Wall extends GameObject {
 	private Color wallColor;
@@ -72,10 +65,10 @@ public class Wall extends GameObject {
 		h.collideWithWall(this);
 	}
 	
-	@Override
-	public void collideWithMonster(Wanderer m) {
-		m.collideWithWall(this);
-	}
+//	@Override
+//	public void collideWith(Wanderer m) {
+//		m.collideWithWall(this);
+//	}
 
 	@Override
 	public void collideWithWall(Wall w) {
@@ -91,6 +84,18 @@ public class Wall extends GameObject {
 
 	@Override
 	public void collideWithBreakable(BreakableWall b) {
+	}
+
+	@Override
+	public void collideWithWanderer(Wanderer m) {
+		// TODO Auto-generated method stub.
+		m.collideWithWall(this);
+	}
+
+	@Override
+	public void collideWithSeeker(Seeker s) {
+		// TODO Auto-generated method stub.
+		s.collideWithWall(this);
 	}
 	
 

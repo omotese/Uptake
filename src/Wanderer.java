@@ -85,16 +85,17 @@ public class Wanderer extends GameObject {
 
 	@Override
 	public void collide(GameObject m) {
-		m.collideWithMonster(this);
+		m.collideWithWanderer(this);
 	}
 
 	@Override
 	public void collideWithHero(Hero h) {
-		h.collideWithMonster(this);
+		h.collideWithWanderer(this);
 	}
 
 	@Override
-	public void collideWithMonster(Wanderer m) {
+	public void collideWithWanderer(Wanderer m) {
+		
 	}
 
 	@Override
@@ -139,6 +140,13 @@ public class Wanderer extends GameObject {
 	@Override
 	public void collideWithExplosion(Explosion e) {
 		this.die();
+		
+	}
+
+
+	@Override
+	public void collideWithSeeker(Seeker s) {
+		// TODO Auto-generated method stub.
 		
 	}
 
