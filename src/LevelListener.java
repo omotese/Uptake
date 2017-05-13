@@ -10,6 +10,8 @@ public class LevelListener implements KeyListener {
 		this.comp = gameWorldComponent;
 	}
 	
+
+	
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_U) {
@@ -18,6 +20,10 @@ public class LevelListener implements KeyListener {
 		
 		if (e.getKeyCode() == KeyEvent.VK_D) {
 			this.comp.levelDown();
+		}
+		
+		if(e.getKeyCode() == KeyEvent.VK_P) {
+			this.comp.togglePause();
 		}
 	}
 
