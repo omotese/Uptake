@@ -1,6 +1,5 @@
 import java.awt.Color;
 import java.awt.Shape;
-import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
@@ -8,10 +7,10 @@ public class Hero extends GameObject {
 	private Point2D centerPoint;
 	private double size;
 	private GameWorld world;
-	private int x;
-	private int y;
-	private int dx;
-	private int dy;
+	private double x;
+	private double y;
+	private double dx;
+	private double dy;
 
 	public Hero(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
@@ -30,21 +29,21 @@ public class Hero extends GameObject {
 	}
 
 	public void moveUp() {
-		this.dy = -3;
+		this.dy = -2.5;
 	}
 
 	public void moveDown() {
-		this.dy = 3;
+		this.dy = 2.5;
 
 	}
 
 	public void moveLeft() {
-		this.dx = -3;
+		this.dx = -2.5;
 
 	}
 
 	public void moveRight() {
-		this.dx = 3;
+		this.dx = 2.5;
 
 	}
 	
