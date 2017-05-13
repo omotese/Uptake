@@ -30,6 +30,10 @@ public class Seeker extends GameObject {
 	public Shape getShape() {
 		return new Rectangle2D.Double(x, y, this.size, this.size);
 	}
+	
+	public Point2D reset(){
+		return new Point2D.Double(this.x, this.y);
+	}
 
 	@Override
 	public void collide(GameObject o) {
