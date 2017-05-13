@@ -15,10 +15,12 @@ public class Seeker extends Monster {
 	public Seeker(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
 		this.world = world;
+		//this.centerPoint = centerPoint;
+				
 		this.x = (int) centerPoint.getX();
 		this.y = (int) centerPoint.getY();
-		this.dx=0;
-		this.dy=0;
+		this.dx=10;
+		this.dy=10;
 		
 	}
 
@@ -39,8 +41,8 @@ public class Seeker extends Monster {
 		this.x += this.dx;
 		this.y += this.dy;
 		System.out.println("x "+ this.x);
-		System.out.println("y " + this.y);
-		Point2D newPoint = new Point2D.Double(x, y);
+		//System.out.println("y " + this.y);
+		Point2D newPoint = new Point2D.Double(this.x, this.y);
 		this.setCenterPoint(newPoint);
 	}
 	
