@@ -46,8 +46,6 @@ public class Seeker extends Monster {
 				this.collide(this.world.getObjectList().get(i));
 			}
 		}
-
-
 	}
 	
 
