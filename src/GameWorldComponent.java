@@ -24,14 +24,14 @@ public class GameWorldComponent extends JComponent {
 	private static final long REPAINT_INTERVAL_MS = 1000 / FRAMES_PER_SECOND;
 	
 	private Hero hero;
-	private List<Monster> monsters;
+	private List<Wanderer> wanderers;
 	private int levelNum;
 	private List<BreakableWall> breakables = new ArrayList<BreakableWall>();
 
 	public GameWorldComponent(GameWorld world) {
 		this.world = world;
 		this.hero = new Hero(world, new Point2D.Double(50, 50));
-		this.monsters = new ArrayList<Monster>();
+		this.wanderers = new ArrayList<Wanderer>();
 		this.world.addGameObject(hero);
 		this.addWall();
 		this.levelNum = 1;
@@ -116,10 +116,10 @@ public class GameWorldComponent extends JComponent {
 			this.world.removeGameObject(n);
 		}
 		breakables.clear();
-		for(Monster m: monsters) {
+		for(Wanderer m: wanderers) {
 			this.world.removeGameObject(m);
 		}
-		monsters.clear();
+		wanderers.clear();
 		String levelString = "Level" + levelNum + ".txt";
 		try {
 			getLevel(levelString);
@@ -158,9 +158,9 @@ public class GameWorldComponent extends JComponent {
 			try {
 				int x = s.nextInt();
 				int y = s.nextInt();
-				Monster monster = new Monster(this.world, new Point2D.Double(x*50, y*50));
-				this.monsters.add(monster);
-				for (Monster m : monsters) {
+				Wanderer wanderer = new Wanderer(this.world, new Point2D.Double(x*50, y*50));
+				this.wanderers.add(wanderer);
+				for (Wanderer m : wanderers) {
 					this.world.addGameObject(m);
 				}
 				

@@ -73,7 +73,7 @@ public class Wall extends GameObject {
 	}
 	
 	@Override
-	public void collideWithMonster(Monster m) {
+	public void collideWithMonster(Wanderer m) {
 		m.collideWithWall(this);
 	}
 

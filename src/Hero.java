@@ -111,7 +111,7 @@ public class Hero extends GameObject {
 	}
 
 	@Override
-	public void collideWithMonster(Monster m) {
+	public void collideWithMonster(Wanderer m) {
 		this.die();
 	}
 

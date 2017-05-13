@@ -54,7 +54,7 @@ public class Explosion extends Bomb {
 	}
 	
 	@Override
-	public void collideWithMonster(Monster m) {
+	public void collideWithMonster(Wanderer m) {
 		m.collideWithExplosion(this);
 	}
 	
