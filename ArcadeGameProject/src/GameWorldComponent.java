@@ -3,11 +3,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Shape;
-import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 import java.awt.geom.Point2D;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -30,6 +26,7 @@ public class GameWorldComponent extends JComponent {
 	private Hero hero;
 	private List<Monster> monsters;
 	private List<Seeker> seekers;
+	private List<PowerUp> powerUps;
 	private int levelNum;
 	private List<BreakableWall> breakables = new ArrayList<BreakableWall>();
 
@@ -38,6 +35,7 @@ public class GameWorldComponent extends JComponent {
 		this.hero = new Hero(world, new Point2D.Double(50, 50));
 		this.monsters = new ArrayList<Monster>();
 		this.seekers = new ArrayList<Seeker>();
+		this.powerUps= new ArrayList<PowerUp>();
 		this.world.addGameObject(hero);
 		this.world.setHero(hero);
 		this.addWall();
@@ -200,6 +198,21 @@ public class GameWorldComponent extends JComponent {
 				this.seekers.add(seeker);
 				for (Seeker m : seekers) {
 					this.world.addGameObject(m);
+				}
+
+			} catch (IllegalArgumentException e) {
+				System.err.println("Bad");
+			}
+		}
+		for (int k = 0; k < 3; k++) {
+
+			try {
+				int x = s.nextInt();
+				int y = s.nextInt();
+				PowerUp power = new PowerUp(this.world, new Point2D.Double(x * 50, y * 50));
+				this.powerUps.add(power);
+				for (PowerUp p : powerUps) {
+					this.world.addGameObject(p);
 				}
 
 			} catch (IllegalArgumentException e) {

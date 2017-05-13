@@ -33,19 +33,32 @@ public class Hero extends GameObject {
 	public void moveUp() {
 		this.dy = -2.5;
 	}
+	public void moveUpFaster(){
+		this.dy= -3.5;
+	}
 
 	public void moveDown() {
 		this.dy = 2.5;
 
 	}
+	public void moveDownFaster() {
+		this.dy = 3.5;
 
+	}
 	public void moveLeft() {
 		this.dx = -2.5;
 
 	}
+	public void moveLeftFaster() {
+		this.dx = -3.5;
 
+	}
 	public void moveRight() {
 		this.dx = 2.5;
+
+	}
+	public void moveRightFaster() {
+		this.dx = 3.5;
 
 	}
 
@@ -158,6 +171,12 @@ public class Hero extends GameObject {
 	public void collideWithSeeker(Seeker s) {
 		// TODO Auto-generated method stub.
 		this.die();
+	}
+
+	@Override
+	public void collideWithPowerUp(PowerUp p) {
+		// TODO Auto-generated method stub.
+		
 	}
 
 }
