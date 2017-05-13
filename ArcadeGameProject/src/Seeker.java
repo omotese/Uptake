@@ -23,7 +23,7 @@ public class Seeker extends GameObject {
 
 	@Override
 	public Color getColor() {
-		return Color.MAGENTA;
+		return Color.GREEN;
 	}
 
 	@Override
