@@ -134,4 +134,22 @@ public class Hero extends GameObject {
 		// reset positions of living monsters too TODO
 	}
 
+	@Override
+	public void collideWithBomb(Bomb b) {
+		// TODO Auto-generated method stub.
+		
+	}
+
+	@Override
+	public void updateSize() {
+		// TODO Auto-generated method stub.
+		
+	}
+
+	@Override
+	public void updateColor() {
+		// TODO Auto-generated method stub.
+		
+	}
+
 }
