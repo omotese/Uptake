@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Shape;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+import java.util.Random;
 
 public class Seeker extends GameObject {
 	private Point2D centerPoint;
@@ -36,45 +37,59 @@ public class Seeker extends GameObject {
 	}
 
 	@Override
-	public void collide(GameObject o) {
+	public void collide(GameObject m) {
 		// TODO Auto-generated method stub.
-		
+		m.collideWithSeeker(this);
+
 	}
 
 	@Override
 	public void collideWithHero(Hero h) {
 		// TODO Auto-generated method stub.
-		
+		h.collideWithSeeker(this);
+
 	}
 
 	@Override
-	public void collideWithMonster(Wanderer m) {
+	public void collideWithSeeker(Seeker s) {
 		// TODO Auto-generated method stub.
-		
+
 	}
 
 	@Override
 	public void collideWithWall(Wall w) {
-		// TODO Auto-generated method stub.
-		
+		Random ran = new Random();
+		this.x -= this.dx;
+		this.y -= this.dy;
+		do {
+			this.dx = (ran.nextInt(3) - 1) ;
+			this.dy = (ran.nextInt(3) - 1) ;
+		} while (this.dx == 0 && this.dy == 0);
 	}
 
 	@Override
 	public void collideWithBomb(Bomb b) {
 		// TODO Auto-generated method stub.
+		Random ran = new Random();
+		this.x -= this.dx;
+		this.y -= this.dy;
+		do {
+			this.dx = (ran.nextInt(3) - 1) ;
+			this.dy = (ran.nextInt(3) - 1) ;
+		} while (this.dx == 0 && this.dy == 0);
 		
 	}
 
 	@Override
 	public void collideWithExplosion(Explosion e) {
 		// TODO Auto-generated method stub.
-		
+		this.die();
 	}
 
 	@Override
 	public void collideWithBreakable(BreakableWall b) {
-		// TODO Auto-generated method stub.
-		
+		collideWithWall(b);
+
 	}
 
 	@Override
@@ -109,6 +124,12 @@ public class Seeker extends GameObject {
 	@Override
 	public Point2D getCenterPoint() {
 		return this.centerPoint;
+	}
+
+	@Override
+	public void collideWithWanderer(Wanderer m) {
+		// TODO Auto-generated method stub.
+		
 	}
 
 }

@@ -4,7 +4,9 @@ public interface Collision {
 
 	abstract void collideWithHero(Hero h);
 	
-	abstract void collideWithMonster(Wanderer m);
+	abstract void collideWithWanderer(Wanderer m);
+	
+	abstract void collideWithSeeker(Seeker s);
 	
 	abstract void collideWithWall(Wall w);
 	
