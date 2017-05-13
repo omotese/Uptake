@@ -24,9 +24,10 @@ public class GameWorldComponent extends JComponent {
 
 	private static final int FRAMES_PER_SECOND = 30;
 	private static final long REPAINT_INTERVAL_MS = 1000 / FRAMES_PER_SECOND;
-	
+
 	private Hero hero;
 	private List<Wanderer> wanderers;
+	private List<Seeker> seekers;
 	private int levelNum;
 	private List<BreakableWall> breakables = new ArrayList<BreakableWall>();
 
@@ -34,6 +35,7 @@ public class GameWorldComponent extends JComponent {
 		this.world = world;
 		this.hero = new Hero(world, new Point2D.Double(50, 50));
 		this.wanderers = new ArrayList<Wanderer>();
+		this.seekers = new ArrayList<Seeker>();
 		this.world.addGameObject(hero);
 		this.addWall();
 		this.levelNum = 1;
@@ -73,7 +75,6 @@ public class GameWorldComponent extends JComponent {
 			}
 		};
 		new Thread(repainter).start();
-		
 
 	}
 
@@ -90,17 +91,15 @@ public class GameWorldComponent extends JComponent {
 
 	}
 	/*
-	public void startBomb(){
-		Runnable b = new Bomb(this.world,new Point2D.Double(this.x, this.y));
-		this.world.getObjectList().add((GameObject) b);
-		Thread th = new Thread(b);
-		th.start();
-	}*/
+	 * public void startBomb(){ Runnable b = new Bomb(this.world,new
+	 * Point2D.Double(this.x, this.y));
+	 * this.world.getObjectList().add((GameObject) b); Thread th = new
+	 * Thread(b); th.start(); }
+	 */
 	
 	public void togglePause() {
 		isPaused = !isPaused;
 	}
-
 
 	public void levelUp() {
 		if (levelNum >= 1 && levelNum < 3) {
@@ -122,10 +121,14 @@ public class GameWorldComponent extends JComponent {
 			this.world.removeGameObject(n);
 		}
 		breakables.clear();
-		for(Wanderer m: wanderers) {
-			this.world.removeGameObject(m);
+		for (Wanderer w : wanderers) {
+			this.world.removeGameObject(w);
 		}
 		wanderers.clear();
+		for (Seeker s : seekers) {
+			this.world.removeGameObject(s);
+		}
+		seekers.clear();
 		String levelString = "Level" + levelNum + ".txt";
 		try {
 			getLevel(levelString);
@@ -176,10 +179,28 @@ public class GameWorldComponent extends JComponent {
 			} catch (IllegalArgumentException e) {
 				System.err.println("Bad");
 			}
+			
 
 		}
+		while(s.hasNext()){
+			
+			try {
+				int x = s.nextInt();
+				int y = s.nextInt();
+			Seeker seeker = new Seeker(this.world, new Point2D.Double(x*50, y*50));
+				this.seekers.add(seeker);
+				for (Seeker m : seekers) {
+					this.world.addGameObject(m);
+				}
+				
+				
+
+
+			} catch (IllegalArgumentException e) {
+				System.err.println("Bad");
+			}
+		}
 	}
-	
 
 	public void addWall() {
 		ArrayList<Wall> walls = new ArrayList<Wall>();
@@ -205,10 +226,10 @@ public class GameWorldComponent extends JComponent {
 				walls.add(newWall);
 			}
 		}
-		for(Wall w: walls){
+		for (Wall w : walls) {
 			this.world.addGameObject(w);
 		}
-		
+
 	}
 
 	private void drawDrawable(Graphics2D g2, Drawable c) {
