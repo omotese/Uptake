@@ -35,10 +35,10 @@ public class Monster extends GameObject {
 	}
 
 
-	@Override
+	/*@Override
 	public Point2D getCenterPoint() {
 		return this.centerPoint;
-	}
+	}*/
 
 	@Override
 	public Color getColor() {
