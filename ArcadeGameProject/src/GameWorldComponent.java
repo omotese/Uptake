@@ -162,7 +162,7 @@ public class GameWorldComponent extends JComponent {
 				//System.err.println("Bad");
 			}
 		}
-		while(s.hasNext()){
+		for(int i =0; i< 2; i++){
 			
 			try {
 				int x = s.nextInt();
@@ -182,7 +182,7 @@ public class GameWorldComponent extends JComponent {
 			
 
 		}
-		while(s.hasNext()){
+		for(int k=0; k<2; k++){
 			
 			try {
 				int x = s.nextInt();
