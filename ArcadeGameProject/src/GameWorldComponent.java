@@ -16,6 +16,8 @@ import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
 public class GameWorldComponent extends JComponent {
+	
+	private boolean isPaused=false;
 
 	private GameWorld world;
 	private boolean hasShownNullErrorMessage = false;
@@ -61,7 +63,7 @@ public class GameWorldComponent extends JComponent {
 			public void run() {
 				// Periodically asks Java to repaint this component
 				try {
-					while (true) {
+					while (!isPaused) {
 						Thread.sleep(REPAINT_INTERVAL_MS);
 						repaint();
 					}
@@ -94,6 +96,10 @@ public class GameWorldComponent extends JComponent {
 		Thread th = new Thread(b);
 		th.start();
 	}*/
+	
+	public void togglePause() {
+		isPaused = !isPaused;
+	}
 
 
 	public void levelUp() {
