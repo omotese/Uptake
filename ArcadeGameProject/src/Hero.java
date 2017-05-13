@@ -11,15 +11,17 @@ public class Hero extends GameObject {
 	private double y;
 	private double dx;
 	private double dy;
+	private int lives;
 
 	public Hero(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
 		this.world = world;
 		this.size = 40;
-		this.y = (int) centerPoint.getY();
-		this.x = (int) centerPoint.getX();
+		this.y = centerPoint.getY();
+		this.x = centerPoint.getX();
 		this.dx = 0;
 		this.dy = 0;
+		this.lives = 3;
 
 	}
 
@@ -137,6 +139,14 @@ public class Hero extends GameObject {
 	public void collideWithBomb(Bomb b) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	@Override
+	public void die() {
+		this.y = 50;
+		this.x = 50;
+		this.lives--;
+		//reset positions of living monsters too
 	}
 
 	
