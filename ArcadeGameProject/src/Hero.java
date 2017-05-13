@@ -11,6 +11,7 @@ public class Hero extends GameObject {
 	private double y;
 	private double dx;
 	private double dy;
+	private boolean isFaster;
 	private int lives;
 
 	public Hero(GameWorld world, Point2D centerPoint) {
@@ -22,6 +23,7 @@ public class Hero extends GameObject {
 		this.dx = 0;
 		this.dy = 0;
 		this.lives = 3;
+		this.isFaster = false;
 
 	}
 
@@ -31,36 +33,31 @@ public class Hero extends GameObject {
 	}
 
 	public void moveUp() {
+		if(isFaster==true)
+			this.dy=-10;
 		this.dy = -2.5;
 	}
-	public void moveUpFaster(){
-		this.dy= -3.5;
-	}
+
 
 	public void moveDown() {
+		if(isFaster==true)
+			this.dy=10;
 		this.dy = 2.5;
-
 	}
-	public void moveDownFaster() {
-		this.dy = 3.5;
-
-	}
+	
 	public void moveLeft() {
+		if(isFaster==true)
+			this.dx=-10;
 		this.dx = -2.5;
 
 	}
-	public void moveLeftFaster() {
-		this.dx = -3.5;
-
-	}
 	public void moveRight() {
+		if(isFaster==true)
+			this.dx=10;
 		this.dx = 2.5;
 
 	}
-	public void moveRightFaster() {
-		this.dx = 3.5;
 
-	}
 
 	public void setBomb() {
 		Bomb b = new Bomb(this.world, new Point2D.Double(this.x, this.y));
@@ -175,7 +172,6 @@ public class Hero extends GameObject {
 
 	@Override
 	public void collideWithPowerUp(PowerUp p) {
-		// TODO Auto-generated method stub.
 		
 	}
 
