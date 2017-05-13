@@ -4,7 +4,7 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.util.Random;
 
-public class Wanderer extends GameObject {
+public class Monster extends GameObject {
 
 	private Point2D centerPoint;
 	private double size;
@@ -14,7 +14,7 @@ public class Wanderer extends GameObject {
 	private int dx;
 	private int dy;
 
-	public Wanderer(GameWorld world, Point2D centerPoint) {
+	public Monster(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
 		this.world = world;
 		this.x = (int) centerPoint.getX();
@@ -85,16 +85,16 @@ public class Wanderer extends GameObject {
 
 	@Override
 	public void collide(GameObject m) {
-		m.collideWithWanderer(this);
+		m.collideWithMonster(this);
 	}
 
 	@Override
 	public void collideWithHero(Hero h) {
-		h.collideWithWanderer(this);
+		h.collideWithMonster(this);
 	}
 
 	@Override
-	public void collideWithWanderer(Wanderer m) {
+	public void collideWithMonster(Monster m) {
 		
 	}
 

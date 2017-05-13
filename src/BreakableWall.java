@@ -33,7 +33,7 @@ public class BreakableWall extends Wall {
 	
 	
 	//Collisions
-	@Override
+	/*@Override
 	public void collide(GameObject m) {
 		m.collideWithBreakable(this);
 	}
@@ -43,12 +43,12 @@ public class BreakableWall extends Wall {
 	}
 	
 	@Override
-	public void collideWithWanderer(Wanderer m) {
+	public void collideWithMonster(Monster m) {
 		m.collideWithBreakable(this);
 	}
 	public void collideWithSeeker(Seeker s) {
 		s.collideWithBreakable(this);
-	}
+	}*/
 	@Override
 	public void collideWithExplosion(Explosion e) {
 		this.die();
