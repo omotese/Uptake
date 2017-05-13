@@ -87,7 +87,7 @@ public class Wall extends GameObject {
 	}
 
 	@Override
-	public void collideWithWanderer(Wanderer m) {
+	public void collideWithMonster(Monster m) {
 		// TODO Auto-generated method stub.
 		m.collideWithWall(this);
 	}

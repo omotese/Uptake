@@ -150,8 +150,7 @@ public class Hero extends GameObject {
 	}
 
 	@Override
-	public void collideWithWanderer(Wanderer m) {
-		// TODO Auto-generated method stub.
+	public void collideWithMonster(Monster m) {
 		this.die();
 	}
 
