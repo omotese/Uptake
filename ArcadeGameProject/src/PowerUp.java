@@ -9,6 +9,7 @@ public class PowerUp extends GameObject {
 	private GameWorld world;
 	private double x;
 	private double y;
+	private int fuse;
 	
 	public PowerUp(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
@@ -16,6 +17,7 @@ public class PowerUp extends GameObject {
 		this.world= world;
 		this.x= centerPoint.getX();
 		this.y = centerPoint.getY();
+		this.fuse = 15;
 	}
 	
 //	public Shape bombExpand(){
@@ -24,10 +26,7 @@ public class PowerUp extends GameObject {
 //	}
 	
 	public void speedHero(){
-		this.world.getHero().moveUpFaster();
-		this.world.getHero().moveDownFaster();
-		this.world.getHero().moveUpFaster();
-		this.world.getHero().moveUpFaster();
+		this.world.getHero().setIsFaster(true);
 		
 	}
 
@@ -103,8 +102,15 @@ public class PowerUp extends GameObject {
 
 	@Override
 	public void updatePosition() {
-		// TODO Auto-generated method stub.
+		this.updateFuse();
 
+	}
+	
+	public void updateFuse(){
+		this.fuse--;
+		if(fuse==0){
+			this.world.getHero().setIsFaster(true);
+		}
 	}
 
 	@Override
