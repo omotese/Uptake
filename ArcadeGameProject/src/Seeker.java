@@ -33,8 +33,37 @@ public class Seeker extends Monster {
 	
 	@Override
 	public void updatePosition() {
+		this.detectHero();
+		//System.out.println("dx "+this.dx);
+		//System.out.println("dy "+this.dy);
 		this.x += this.dx;
 		this.y += this.dy;
+		System.out.println("x "+ this.x);
+		System.out.println("y " + this.y);
+		Point2D newPoint = new Point2D.Double(x, y);
+		this.setCenterPoint(newPoint);
+	}
+	
+	public void detectHero(){
+		Point2D heroPosition = this.world.getHero().getCenterPoint();
+		
+		if(Math.abs(heroPosition.getX()-this.getCenterPoint().getX()) < 150 
+				&& (Math.abs(heroPosition.getY()-this.getCenterPoint().getY()) < 150)){
+			if(heroPosition.getX()<this.getCenterPoint().getX()){
+				this.dx = -1;
+			}else{
+				this.dx = 1;
+			}
+			if(heroPosition.getY()-this.getCenterPoint().getY()<0){
+				this.dy = -1;
+			}else{
+				this.dy = 1;
+			}
+		}else{
+				this.dx = 0;
+				this.dy = 0;
+			}
+			
 	}
 	
 	

@@ -20,12 +20,15 @@ public class GameWorld implements Temporal, Drawable {
 
 	private final Shape background;
 	private boolean isPaused = false;
+	
+	private Hero hero;
 
 	public GameWorld(int width, int height, Color color) {
 		this.width = width;
 		this.height = height;
 		this.backgroundColor = color;
 		this.background = new Rectangle2D.Double(0, 0, this.width, this.height);
+		this.hero = null;
 
 		Runnable tickTock = new Runnable() {
 			@Override
@@ -42,6 +45,14 @@ public class GameWorld implements Temporal, Drawable {
 		};
 		new Thread(tickTock).start();
 
+	}
+	
+	public void setHero(Hero hero) {
+		this.hero = hero;
+	}
+	
+	public Hero getHero(){
+		return this.hero;
 	}
 
 	@Override
