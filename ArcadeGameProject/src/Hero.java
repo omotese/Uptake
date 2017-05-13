@@ -48,9 +48,9 @@ public class Hero extends GameObject {
 		this.dx = 2.5;
 
 	}
-	
+
 	public void setBomb() {
-		Bomb b = new Bomb(this.world,new Point2D.Double(this.x, this.y));
+		Bomb b = new Bomb(this.world, new Point2D.Double(this.x, this.y));
 		this.world.addGameObject(b);
 	}
 
@@ -72,23 +72,11 @@ public class Hero extends GameObject {
 			if ((this.world.getObjectList().get(i) != this)
 					&& this.getShape().intersects((Rectangle2D) this.world.getObjectList().get(i).getShape())) {
 				this.collide(this.world.getObjectList().get(i));
-				//System.out.println("any colide");
+				// System.out.println("any colide");
 			}
 		}
 
 		this.setCenterPoint(myPoint);
-	}
-
-	@Override
-	public void updateSize() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void updateColor() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -136,19 +124,14 @@ public class Hero extends GameObject {
 	}
 
 	@Override
-	public void collideWithBomb(Bomb b) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	@Override
 	public void die() {
 		this.y = 50;
 		this.x = 50;
 		this.lives--;
-		//reset positions of living monsters too
+		if (this.lives == 0) {
+			// Restart? run main again? idk TODO
+		}
+		// reset positions of living monsters too TODO
 	}
-
-	
 
 }
