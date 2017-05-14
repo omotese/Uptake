@@ -19,20 +19,13 @@ public class Monster extends GameObject {
 		this.world = world;
 		this.x = (int) centerPoint.getX();
 		this.y = (int) centerPoint.getY();
-		Random ran = new Random();
-		if(ran.nextBoolean()){
-			this.dx = 1;
-		}else{
-			this.dx = -1;
-		}
-		if(ran.nextBoolean()){
-			this.dy = 1;
-		}else{
-			this.dy = -1;
+		this.dx=0;
+		this.dy=1;
 		
-		}
+		
 		this.size = 40;
 	}
+	
 
 	@Override
 	public Color getColor() {
