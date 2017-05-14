@@ -116,4 +116,15 @@ public class Seeker extends Monster {
 
 	}
 
+	@Override
+	public void collideWithExplosion(Explosion e) {
+		this.die();
+
+	}
+	
+	@Override
+	public void die() {
+		this.getWorld().removeGameObject(this);
+		this.getWorld().killAMonster();
+	}
 }
