@@ -35,7 +35,7 @@ public class GameWorldComponent extends JComponent {
 		this.hero = new Hero(world, new Point2D.Double(50, 50));
 		this.monsters = new ArrayList<Monster>();
 		this.seekers = new ArrayList<Seeker>();
-		this.powerUps= new ArrayList<PowerUp>();
+		this.powerUps = new ArrayList<PowerUp>();
 		this.world.addGameObject(hero);
 		this.world.setHero(hero);
 		this.addWall();
@@ -204,12 +204,12 @@ public class GameWorldComponent extends JComponent {
 				System.err.println("Bad");
 			}
 		}
-		for (int k = 0; k < 3; k++) {
+		for (int k = 0; k <= 3; k++) {
 
 			try {
 				int x = s.nextInt();
 				int y = s.nextInt();
-				PowerUp power = new PowerUp(this.world, new Point2D.Double(x * 50, y * 50));
+				PowerUp power = new PowerUp(this.world, new Point2D.Double(x * 50 + 5, y * 50 + 5));
 				this.powerUps.add(power);
 				for (PowerUp p : powerUps) {
 					this.world.addGameObject(p);
