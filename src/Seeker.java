@@ -15,46 +15,41 @@ public class Seeker extends Monster {
 	private int size;
 	private boolean movingX;
 
-
 	public Seeker(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
 		this.world = world;
-		this.x =  centerPoint.getX();
-		this.y =  centerPoint.getY();
+		this.x = centerPoint.getX();
+		this.y = centerPoint.getY();
 		this.startX = centerPoint.getX();
 		this.startY = centerPoint.getY();
-				
-		
-		this.dx=0;
-		this.dy=0;
+
+		this.dx = 0;
+		this.dy = 0;
 		this.size = 40;
-		
+
 	}
 
 	@Override
 	public Color getColor() {
 		return Color.GREEN;
 	}
-	
-	
-	public void reset(){
+
+	public void reset() {
 		x = startX;
 		y = startY;
 	}
-	
+
 	@Override
 	public void updatePosition() {
 		System.out.println("update position seeker");
-		movingX=!movingX;
+		movingX = !movingX;
 
 		this.detectHero();
-		
-		
-		if(movingX){
-		this.x += this.dx;
-		}
-		else{
-		this.y += this.dy;
+
+		if (movingX) {
+			this.x += this.dx;
+		} else {
+			this.y += this.dy;
 		}
 		Point2D newPoint = new Point2D.Double(this.x, this.y);
 		super.setCenterPoint(newPoint);
@@ -72,41 +67,38 @@ public class Seeker extends Monster {
 		return new Rectangle2D.Double(x, y, this.size, this.size);
 	}
 
-	
-
-	
-	public void detectHero(){
+	public void detectHero() {
 		Point2D heroPosition = this.world.getHero().getCenterPoint();
 
-		if(Math.abs(heroPosition.getX()-this.getCenterPoint().getX()) < 150
-				&& (Math.abs(heroPosition.getY()-this.getCenterPoint().getY()) < 150)){
-			if(heroPosition.getX()<this.getCenterPoint().getX()){
+		if (Math.abs(heroPosition.getX() - this.getCenterPoint().getX()) < 150
+				&& (Math.abs(heroPosition.getY() - this.getCenterPoint().getY()) < 150)) {
+			if (heroPosition.getX() < this.getCenterPoint().getX()) {
 				this.dx = -1;
-			}else{
+			} else {
 				this.dx = 1;
 			}
-			if(heroPosition.getY()-this.getCenterPoint().getY()<0){
+			if (heroPosition.getY() - this.getCenterPoint().getY() < 0) {
 				this.dy = -1;
-			}
-			else{
+			} else {
 				this.dy = 1;
 			}
 		}
-		System.out.println(x+" "+ y);	
+		System.out.println(x + " " + y);
 
-		System.out.println(dy+" "+ dx);	
+		System.out.println(dy + " " + dx);
 	}
+
 	@Override
 	public void collideWithWall(Wall w) {
-		
-		if(movingX){
+
+		if (movingX) {
 			this.x -= this.dx;
 			this.dx = 0;
+		} else {
+			this.y -= this.dy;
+
+			this.dy = 0;
 		}
-		else{
-		this.y -= this.dy;
-	
-		this.dy = 0;}
 	}
 
 	@Override
@@ -114,6 +106,5 @@ public class Seeker extends Monster {
 		collideWithWall(b);
 
 	}
-	
 
 }
