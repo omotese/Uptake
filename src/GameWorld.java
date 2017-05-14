@@ -8,7 +8,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 
 public class GameWorld implements Temporal, Drawable {
@@ -190,18 +189,17 @@ public class GameWorld implements Temporal, Drawable {
 			try {
 				int x = s.nextInt();
 				int y = s.nextInt();
-				Random ran = new Random();
-				if (ran.nextInt(3) == 0) {
-					SpeedUp speedPower = new SpeedUp(this, new Point2D.Double(x * 50 + 5, y * 50 + 5));
-					this.powerUps.add(speedPower);
+				if(k==0){
+				SpeedUp speedPower = new SpeedUp(this, new Point2D.Double(x * 50 + 5, y * 50 + 5));
+				this.powerUps.add(speedPower);
 				}
-				if (ran.nextInt(3) == 1) {
-					BombExpand bombPower = new BombExpand(this, new Point2D.Double(x * 50 + 5, y * 50 + 5));
-					this.powerUps.add(bombPower);
+				if(k==1){
+				BombExpand bombPower = new BombExpand(this, new Point2D.Double(x * 50 + 5, y * 50 + 5));
+				this.powerUps.add(bombPower);
 				}
-				if (ran.nextInt(3) == 2) {
-					MultiBomb multiBomb = new MultiBomb(this, new Point2D.Double(x * 50 + 5, y * 50 + 5));
-					this.powerUps.add(multiBomb);
+				if(k==2){
+				MultiBomb multiBomb = new MultiBomb(this, new Point2D.Double(x * 50 + 5, y * 50 + 5));
+				this.powerUps.add(multiBomb);
 				}
 				for (PowerUp p : powerUps) {
 					this.addGameObject(p);
