@@ -13,6 +13,7 @@ public class Hero extends GameObject {
 	private double dy;
 	private boolean isFaster;
 	private int lives;
+	private boolean hasExpandBombPowerUp;
 
 	public Hero(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
@@ -24,6 +25,7 @@ public class Hero extends GameObject {
 		this.dy = 0;
 		this.lives = 3;
 		this.isFaster = false;
+		this.hasExpandBombPowerUp=false;
 
 	}
 
@@ -41,6 +43,16 @@ public class Hero extends GameObject {
 		this.isFaster = isFaster;
 		// System.out.println("hero is set faster " + this.getIsFaster());
 	}
+	 
+
+	public boolean hasExpandBombPowerUp() {
+		return this.hasExpandBombPowerUp;
+	}
+	
+	public void setHasExpandBombPowerUp(boolean hasExpandBombPowerUp) {
+		this.hasExpandBombPowerUp = hasExpandBombPowerUp;
+	}
+	 
 
 	public boolean getIsFaster() {
 		return this.isFaster;
