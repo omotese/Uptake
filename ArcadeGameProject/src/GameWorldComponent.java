@@ -230,12 +230,12 @@ public class GameWorldComponent extends JComponent {
 				int y = s.nextInt();
 				Random ran = new Random();
 				if (ran.nextInt(2) == 0) {
-					SpeedUp power = new SpeedUp(this.world, new Point2D.Double(x * 50 + 5, y * 50 + 5));
-					this.powerUps.add(power);
+					SpeedUp speedPower = new SpeedUp(this.world, new Point2D.Double(x * 50 + 5, y * 50 + 5));
+					this.powerUps.add(speedPower);
 				}
 				if (ran.nextInt(2) == 1) {
-					BombExpand power = new BombExpand(this.world, new Point2D.Double(x * 50 + 5, y * 50 + 5));
-					this.powerUps.add(power);
+					BombExpand bombPower = new BombExpand(this.world, new Point2D.Double(x * 50 + 5, y * 50 + 5));
+					this.powerUps.add(bombPower);
 				}
 				
 				for (PowerUp p : powerUps) {
