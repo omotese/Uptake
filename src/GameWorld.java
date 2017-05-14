@@ -24,6 +24,7 @@ public class GameWorld implements Temporal, Drawable {
 
 	private final Shape background;
 	private boolean isPaused = false;
+	private int monstersLeft;
 	
 	private Hero hero;
 	private List<Bomb> bombList;
@@ -106,18 +107,21 @@ public class GameWorld implements Temporal, Drawable {
 			numMonsters = 2;
 			numSeekers = 2;
 			numPowerUps = 3;
+			monstersLeft = 4; 
 		}
 		if (levelNum == 2) {
 			numBlocks = 22;
 			numMonsters = 4;
 			numSeekers = 2;
 			numPowerUps = 3;
+			monstersLeft = 6;
 		}
 		if (levelNum == 3) {
 			numBlocks = 30;
 			numMonsters = 6;
 			numSeekers = 3;
 			numPowerUps = 3;
+			monstersLeft = 9;
 		}
 
 		Scanner s = new Scanner(file);
@@ -189,6 +193,13 @@ public class GameWorld implements Temporal, Drawable {
 			} catch (IllegalArgumentException e) {
 				System.err.println("Bad");
 			}
+		}
+	}
+	
+	public void killAMonster() {
+		this.monstersLeft--;
+		if(this.monstersLeft==0) {
+			levelUp();
 		}
 	}
 
@@ -301,20 +312,22 @@ public class GameWorld implements Temporal, Drawable {
 			System.err.println("Error closing file.");
 		}
 		// System.out.println("ahhhh");
-		this.hero.moveTo(new Point2D.Double(50, 50));
 	}
 
 
 	public void levelUp() {
 		if (levelNum >= 1 && levelNum < 3) {
 			this.levelNum++;
+
 			this.updateLevel();
+			
 		}
 	}
 
 	public void levelDown() {
 		if (levelNum > 1 && levelNum <= 3) {
 			this.levelNum--;
+
 			this.updateLevel();
 		}
 
