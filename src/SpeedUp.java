@@ -4,7 +4,7 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.util.Random;
 
-public class PowerUp extends GameObject {
+public class SpeedUp extends GameObject {
 	private Bomb myBomb;
 	private GameWorld world;
 	private double x;
@@ -14,7 +14,7 @@ public class PowerUp extends GameObject {
 	private int size;
 	
 	
-	public PowerUp(GameWorld world, Point2D centerPoint) {
+	public SpeedUp(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
 		// TODO Auto-generated constructor stub.
 		this.world= world;
@@ -149,7 +149,7 @@ public class PowerUp extends GameObject {
 	}
 
 	@Override
-	public void collideWithPowerUp(PowerUp p) {
+	public void collideWithPowerUp(SpeedUp p) {
 		// TODO Auto-generated method stub.
 		
 	}

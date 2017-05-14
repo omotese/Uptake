@@ -26,7 +26,7 @@ public class GameWorldComponent extends JComponent {
 	private Hero hero;
 	private List<Monster> monsters;
 	private List<Seeker> seekers;
-	private List<PowerUp> powerUps;
+	private List<SpeedUp> speedUps;
 	private int levelNum;
 	private List<BreakableWall> breakables = new ArrayList<BreakableWall>();
 
@@ -35,7 +35,7 @@ public class GameWorldComponent extends JComponent {
 		this.hero = new Hero(world, new Point2D.Double(50, 50));
 		this.monsters = new ArrayList<Monster>();
 		this.seekers = new ArrayList<Seeker>();
-		this.powerUps = new ArrayList<PowerUp>();
+		this.speedUps = new ArrayList<SpeedUp>();
 		this.world.addGameObject(hero);
 		this.world.setHero(hero);
 		this.addWall();
@@ -133,10 +133,10 @@ public class GameWorldComponent extends JComponent {
 			this.world.removeGameObject(s);
 		}
 		seekers.clear();
-		for (PowerUp p : powerUps) {
+		for (SpeedUp p : speedUps) {
 			this.world.removeGameObject(p);
 		}
-		powerUps.clear();
+		speedUps.clear();
 		
 		String levelString = "Level" + levelNum + ".txt";
 		try {
@@ -228,9 +228,9 @@ public class GameWorldComponent extends JComponent {
 			try {
 				int x = s.nextInt();
 				int y = s.nextInt();
-				PowerUp power = new PowerUp(this.world, new Point2D.Double(x * 50 + 5, y * 50 + 5));
-				this.powerUps.add(power);
-				for (PowerUp p : powerUps) {
+				SpeedUp power = new SpeedUp(this.world, new Point2D.Double(x * 50 + 5, y * 50 + 5));
+				this.speedUps.add(power);
+				for (SpeedUp p : speedUps) {
 					this.world.addGameObject(p);
 				}
 

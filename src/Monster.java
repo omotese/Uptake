@@ -145,7 +145,7 @@ public class Monster extends GameObject {
 	}
 
 	@Override
-	public void collideWithPowerUp(PowerUp p) {
+	public void collideWithPowerUp(SpeedUp p) {
 		// TODO Auto-generated method stub.
 		
 	}
