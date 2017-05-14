@@ -22,22 +22,6 @@ public class Bomb extends GameObject {
 		}
 		this.getWorld().bombExists = true;
 	}
-	public void setMySize(boolean mySize) {
-		this.mySize = mySize;
-	}
-	
-	public boolean getMySize() {
-		return this.mySize;
-	}
-	public void superBomb(){
-		this.mySize=true;
-		if(mySize==true){
-			System.out.println("This is my size"+ mySize);
-			maxSize= 300;
-		}else{
-			maxSize= 130;
-		}
-	}
 
 	@Override
 	public Color getColor() {
