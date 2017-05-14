@@ -7,6 +7,21 @@ public class BombExpand extends PowerUp {
 		super(world, centerPoint);
 	}
 	
+	
+	public void allowBig(){
+		this.getWorld().getHero().setHasExpandBombPowerUp(true);
+	}
+
+
+	@Override
+	public void collideWithHero(Hero h) {
+		// TODO Auto-generated method stub.
+		//Random rand= new Random();
+		allowBig();
+		this.fuseStart = true;
+		this.size = 0;
+	}
+	
 	public void expandBomb() {
 		for(Bomb b: this.getWorld().getBombList()){
 			b.setMySize(true);
@@ -24,16 +39,6 @@ public class BombExpand extends PowerUp {
 	@Override
 	public void collide(GameObject o) {
 		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void collideWithHero(Hero h) {
-		// TODO Auto-generated method stub
-		this.expandBomb();
-		System.out.println("now I am in collide");
-		this.fuseStart = true;
-		this.size = 0;
 
 	}
 
