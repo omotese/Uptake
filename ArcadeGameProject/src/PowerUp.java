@@ -45,7 +45,7 @@ public class PowerUp extends GameObject {
 	@Override
 	public Shape getShape() {
 		// TODO Auto-generated method stub.
-		return new Rectangle2D.Double(x,y, size, size);
+		return new Rectangle2D.Double(this.x,this.y, size, size);
 	}
 
 	@Override
