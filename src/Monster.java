@@ -127,8 +127,13 @@ public class Monster extends GameObject {
 	@Override
 	public void collideWithExplosion(Explosion e) {
 		this.die();
-		this.getWorld().killAMonster();
 
+	}
+	
+	@Override
+	public void die() {
+		this.getWorld().removeGameObject(this);
+		this.getWorld().killAMonster();
 	}
 
 	@Override
