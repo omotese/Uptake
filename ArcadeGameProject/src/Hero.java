@@ -26,7 +26,7 @@ public class Hero extends GameObject {
 		this.isFaster = false;
 
 	}
-	
+
 	public void reset() {
 		this.y = 50;
 		this.x = 50;
@@ -39,51 +39,47 @@ public class Hero extends GameObject {
 
 	public void setIsFaster(boolean isFaster) {
 		this.isFaster = isFaster;
-		//System.out.println("hero is set faster " + this.getIsFaster());
+		// System.out.println("hero is set faster " + this.getIsFaster());
 	}
-	
+
 	public boolean getIsFaster() {
 		return this.isFaster;
 	}
-	
 
 	public void moveUp() {
-		if (isFaster == true){
+		if (isFaster == true) {
 			this.dy = -5;
-		}else{
+		} else {
 			this.dy = -2.5;
 		}
-			
-		
+
 	}
 
 	public void moveDown() {
-		if (isFaster == true){
+		if (isFaster == true) {
 			this.dy = 5;
-		}else{
+		} else {
 			this.dy = 2.5;
 		}
-		
+
 	}
 
 	public void moveLeft() {
-		if (isFaster == true){
+		if (isFaster == true) {
 			this.dx = -5;
-		}else{
+		} else {
 			this.dx = -2.5;
 		}
-		
 
 	}
 
 	public void moveRight() {
-		if (isFaster == true){
+		if (isFaster == true) {
 			this.dx = 5;
-			//System.out.println("dx is " +dx);
-		}else{
+			// System.out.println("dx is " +dx);
+		} else {
 			this.dx = 2.5;
 		}
-		
 
 	}
 
@@ -164,7 +160,9 @@ public class Hero extends GameObject {
 		this.lives--;
 		this.getWorld().resetAllMonsters();
 		if (this.lives == 0) {
-			this.world.updateLevel();
+			this.lives = 3;
+			this.getWorld().restart();
+
 		}
 
 	}
