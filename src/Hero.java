@@ -162,10 +162,9 @@ public class Hero extends GameObject {
 		this.y = 50;
 		this.x = 50;
 		this.lives--;
+		this.getWorld().resetAllMonsters();
 		if (this.lives == 0) {
-			// I can totally restart the game but idk how to
-			// get rid of the window that it was already in. TODO
-			// Main.main(null);
+			this.world.updateLevel();
 		}
 
 	}
