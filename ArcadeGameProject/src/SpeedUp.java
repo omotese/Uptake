@@ -1,8 +1,5 @@
 import java.awt.Color;
-import java.awt.Shape;
 import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
-import java.util.Random;
 
 public class SpeedUp extends PowerUp {
 	
@@ -13,15 +10,9 @@ public class SpeedUp extends PowerUp {
 		
 	}
 	
-//	public Shape bombExpand(){
-//		Point2D bombLocation= myBomb.getCenterPoint();
-//		return new Rectangle2D.Double(bombLocation.getX(), bombLocation.getY(), 70, 70);
-//	}
 	
 	public void speedHero(){
-		//System.out.println("set is faster before " + this.world.getHero().getIsFaster());
-		this.world.getHero().setIsFaster(true);
-		//System.out.println("set is faster after " + this.world.getHero().getIsFaster());
+		this.getWorld().getHero().setIsFaster(true);
 	}
 
 	@Override
