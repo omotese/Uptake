@@ -28,8 +28,8 @@ public class Hero extends GameObject {
 	}
 	
 	public void reset() {
-		this.y = centerPoint.getY();
-		this.x = centerPoint.getX();
+		this.y = 50;
+		this.x = 50;
 	}
 
 	public void stopHero() {
