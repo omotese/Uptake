@@ -68,7 +68,7 @@ public class BombExpand extends PowerUp {
 	@Override
 	public void collideWithBomb(Bomb b) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override

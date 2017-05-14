@@ -73,6 +73,10 @@ public class Explosion extends Bomb {
 		b.collideWithExplosion(this);
 	}
 	
+	public void collideWithBomb(Bomb b){
+		b.collideWithExplosion(this);
+	}
+	
 	
 	
 

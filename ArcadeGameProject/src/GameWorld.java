@@ -16,7 +16,8 @@ public class GameWorld implements Temporal, Drawable {
 	private final int width;
 	private final int height;
 	private final Color backgroundColor;
-	public boolean bombExists = false;
+	public boolean bombExists;
+	private int bombCount;
 
 	private final List<GameObject> objectList = new ArrayList<GameObject>();
 	private final List<GameObject> objectToAdd = new ArrayList<GameObject>();
@@ -49,6 +50,7 @@ public class GameWorld implements Temporal, Drawable {
 		this.setHero(hero);
 		this.addWall();
 		this.levelNum = 1;
+		this.bombCount=0;
 
 		String levelString = "Level" + levelNum + ".txt";
 		try {
@@ -78,6 +80,8 @@ public class GameWorld implements Temporal, Drawable {
 
 	public void addBombList(Bomb bomb) {
 		this.bombList.add(bomb);
+		bombCount++;
+		System.out.println(bombCount);
 	}
 
 	public List<Bomb> getBombList() {
