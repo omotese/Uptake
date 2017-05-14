@@ -9,16 +9,20 @@ public class Monster extends GameObject {
 	private Point2D centerPoint;
 	private double size;
 	private GameWorld world;
-	private int x;
-	private int y;
-	private int dx;
-	private int dy;
+	private double x;
+	private double y;
+	private double dx;
+	private double dy;
+	private double startX;
+	private double startY;
 
 	public Monster(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
 		this.world = world;
-		this.x = (int) centerPoint.getX();
-		this.y = (int) centerPoint.getY();
+		this.x =  centerPoint.getX();
+		this.y =  centerPoint.getY();
+		this.startX = centerPoint.getX();
+		this.startY = centerPoint.getY();
 		this.dx=0;
 		this.dy=1;
 		
@@ -60,9 +64,11 @@ public class Monster extends GameObject {
 		// TODO Auto-generated method stub.
 
 	}
+
 	
-	public Point2D reset(){
-		return new Point2D.Double(this.x, this.y);
+	public void reset(){
+		x = startX;
+		y = startY;
 	}
 	
 	@Override
