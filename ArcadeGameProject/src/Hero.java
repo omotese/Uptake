@@ -98,9 +98,11 @@ public class Hero extends GameObject {
 	}
 
 	public void setBomb() {
+		if(this.world.bombExists==false){
 		Bomb b = new Bomb(this.world, new Point2D.Double(this.x, this.y));
 		this.world.addGameObject(b);
 		this.world.addBombList(b);
+		}
 	}
 
 	public Shape getShape() {
