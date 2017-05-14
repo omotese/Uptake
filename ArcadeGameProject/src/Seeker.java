@@ -2,7 +2,6 @@ import java.awt.Color;
 import java.awt.Shape;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
-import java.util.Random;
 
 public class Seeker extends Monster {
 	private Point2D centerPoint;
@@ -12,8 +11,6 @@ public class Seeker extends Monster {
 	private int dx;
 	private int dy;
 	private int size;
-	//private int cx;
-	//private int cy;
 	private boolean movingX;
 
 
@@ -33,13 +30,12 @@ public class Seeker extends Monster {
 		return Color.GREEN;
 	}
 	
-	/*public Point2D reset(){
+	public Point2D reset(){
 		return new Point2D.Double(this.x, this.y);
-	}*/
+	}
 	
 	@Override
 	public void updatePosition() {
-		System.out.println("update position seeker");
 		movingX=!movingX;
 
 		this.detectHero();
@@ -90,9 +86,6 @@ public class Seeker extends Monster {
 //				this.dx = 0;
 //				this.dy = 0;
 			}
-		System.out.println(x+" "+ y);	
-
-		System.out.println(dy+" "+ dx);	
 	}
 	@Override
 	public void collideWithWall(Wall w) {
@@ -105,8 +98,6 @@ public class Seeker extends Monster {
 		this.y -= this.dy;
 	
 		this.dy = 0;}
-		
-		//System.out.println("m+w " + dx + " " + dy);
 
 	}
 
