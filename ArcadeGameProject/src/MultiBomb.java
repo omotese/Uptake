@@ -9,7 +9,7 @@ public class MultiBomb extends PowerUp {
 	}
 	
 	public void multiBomb(){
-		this.getWorld().bombExists= false;
+		this.getWorld().getHero().setMultiBomb(true);
 	}
 	
 
