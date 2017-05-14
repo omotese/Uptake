@@ -33,10 +33,8 @@ public class Hero extends GameObject {
 	}
 
 	public void setIsFaster(boolean isFaster) {
-		
-		
 		this.isFaster = isFaster;
-		System.out.println("hero is set faster " + this.getIsFaster());
+		//System.out.println("hero is set faster " + this.getIsFaster());
 	}
 	
 	public boolean getIsFaster() {

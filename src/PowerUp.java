@@ -31,9 +31,9 @@ public class PowerUp extends GameObject {
 //	}
 	
 	public void speedHero(){
-		System.out.println("set is faster before " + this.world.getHero().getIsFaster());
+		//System.out.println("set is faster before " + this.world.getHero().getIsFaster());
 		this.world.getHero().setIsFaster(true);
-		System.out.println("set is faster after " + this.world.getHero().getIsFaster());
+		//System.out.println("set is faster after " + this.world.getHero().getIsFaster());
 	}
 
 	@Override
