@@ -194,7 +194,7 @@ public class Hero extends GameObject {
 	}
 
 	@Override
-	public void collideWithPowerUp(PowerUp p) {
+	public void collideWithPowerUp(SpeedUp p) {
 
 	}
 
