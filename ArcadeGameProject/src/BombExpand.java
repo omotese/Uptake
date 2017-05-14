@@ -8,7 +8,8 @@ public class BombExpand extends PowerUp {
 	}
 	
 	public void expandBomb() {
-		for(Bomb b: this.world.getBombList()){
+		for(Bomb b: this.getWorld().getBombList()){
+			b.setMySize(true);
 			b.superBomb();
 			System.out.println("bomb expand");
 		}
@@ -30,6 +31,7 @@ public class BombExpand extends PowerUp {
 	public void collideWithHero(Hero h) {
 		// TODO Auto-generated method stub
 		this.expandBomb();
+		System.out.println("now I am in collide");
 		this.fuseStart = true;
 		this.size = 0;
 
