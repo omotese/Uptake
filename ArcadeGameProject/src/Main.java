@@ -21,10 +21,10 @@ public class Main {
 	public static void main(String[] args) {
 		GameWorld world = new GameWorld(850, 650, Color.LIGHT_GRAY);
 		GameWorldComponent worldComponent = new GameWorldComponent(world);
-		
+
 		JFrame frame = new JFrame();
 		frame.setSize(850, 650);
-		
+
 		frame.add(worldComponent);
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
