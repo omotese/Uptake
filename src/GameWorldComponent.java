@@ -22,16 +22,11 @@ public class GameWorldComponent extends JComponent {
 	public GameWorldComponent(GameWorld world) {
 		this.world = world;
 
-
-
-
 		setPreferredSize(world.getSize());
 		setMaximumSize(world.getSize());
 
 		KeyListener level = new LevelListener(this.world);
 		this.addKeyListener(level);
-
-
 
 		KeyListener hl = new HeroListener(world.getHero(), this);
 		this.addKeyListener(hl);
@@ -56,8 +51,6 @@ public class GameWorldComponent extends JComponent {
 
 	}
 
-
-
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -70,13 +63,6 @@ public class GameWorldComponent extends JComponent {
 		}
 
 	}
-
-
-
-
-
-
-
 
 	private void drawDrawable(Graphics2D g2, Drawable c) {
 		Color color = c.getColor();
