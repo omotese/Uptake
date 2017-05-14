@@ -4,14 +4,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.event.KeyListener;
-import java.awt.geom.Point2D;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
 
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
@@ -24,40 +17,23 @@ public class GameWorldComponent extends JComponent {
 	private static final int FRAMES_PER_SECOND = 30;
 	private static final long REPAINT_INTERVAL_MS = 1000 / FRAMES_PER_SECOND;
 
-	private Hero hero;
-	private List<Monster> monsters;
-	private List<Seeker> seekers;
-	private List<PowerUp> powerUps;
-	private int levelNum;
-	private List<BreakableWall> breakables = new ArrayList<BreakableWall>();
+
 
 	public GameWorldComponent(GameWorld world) {
 		this.world = world;
-		this.hero = new Hero(world, new Point2D.Double(50, 50));
-		this.monsters = new ArrayList<Monster>();
-		this.seekers = new ArrayList<Seeker>();
-		this.powerUps = new ArrayList<PowerUp>();
-		this.world.addGameObject(hero);
-		this.world.setHero(hero);
-		this.addWall();
-		this.levelNum = 1;
+
+
+
 
 		setPreferredSize(world.getSize());
 		setMaximumSize(world.getSize());
 
-		KeyListener level = new LevelListener(this);
+		KeyListener level = new LevelListener(this.world);
 		this.addKeyListener(level);
 
-		String levelString = "Level" + levelNum + ".txt";
-		try {
-			getLevel(levelString);
-		} catch (FileNotFoundException e) {
-			System.err.println("File " + levelString + " not found.  Exiting.");
-		} catch (IOException e) {
-			System.err.println("Error closing file.");
-		}
 
-		KeyListener hl = new HeroListener(hero, this);
+
+		KeyListener hl = new HeroListener(world.getHero(), this);
 		this.addKeyListener(hl);
 		this.setFocusable(true);
 		this.requestFocus();
@@ -80,9 +56,7 @@ public class GameWorldComponent extends JComponent {
 
 	}
 
-	public Hero getHero() {
-		return this.hero;
-	}
+
 
 	@Override
 	protected void paintComponent(Graphics g) {
@@ -97,186 +71,12 @@ public class GameWorldComponent extends JComponent {
 
 	}
 
-	public void togglePause() {
-		if (!this.world.getIsPaused()) {
-			this.world.setIsPaused(true);
-		} else {
-			this.world.setIsPaused(false);
-		}
 
-	}
 
-	public void levelUp() {
-		if (levelNum >= 1 && levelNum < 3) {
-			this.levelNum++;
-			this.updateLevel();
-		}
-	}
 
-	public void levelDown() {
-		if (levelNum > 1 && levelNum <= 3) {
-			this.levelNum--;
-			this.updateLevel();
-		}
 
-	}
 
-	public void updateLevel() {
-		for (BreakableWall n : breakables) {
-			this.world.removeGameObject(n);
-		}
-		breakables.clear();
-		for (Monster w : monsters) {
-			this.world.removeGameObject(w);
-		}
-		monsters.clear();
-		for (Seeker s : seekers) {
-			this.world.removeGameObject(s);
-		}
-		seekers.clear();
-		for (PowerUp p : powerUps) {
-			this.world.removeGameObject(p);
-		}
-		powerUps.clear();
 
-		String levelString = "Level" + levelNum + ".txt";
-		try {
-			getLevel(levelString);
-		} catch (FileNotFoundException e) {
-			System.err.println("File " + levelString + " not found.  Exiting.");
-		} catch (IOException e) {
-			System.err.println("Error closing file.");
-		}
-		// System.out.println("ahhhh");
-		this.hero.moveTo(new Point2D.Double(50, 50));
-	}
-
-	public void getLevel(String fileName) throws FileNotFoundException {
-		int numBlocks = 0;
-		int numMonsters = 0;
-		int numSeekers = 0;
-		int numPowerUps = 0;
-		FileReader file = new FileReader(fileName);
-		if (levelNum == 1) {
-			numBlocks = 22;
-			numMonsters = 2;
-			numSeekers = 2;
-			numPowerUps = 3;
-		}
-		if (levelNum == 2) {
-			numBlocks = 22;
-			numMonsters = 4;
-			numSeekers = 2;
-			numPowerUps = 3;
-		}
-		if (levelNum == 3) {
-			numBlocks = 30;
-			numMonsters = 6;
-			numSeekers = 3;
-			numPowerUps = 3;
-		}
-
-		Scanner s = new Scanner(file);
-		for (int c = 0; c < numBlocks; c++) {
-			try {
-				int x = s.nextInt();
-				int y = s.nextInt();
-				BreakableWall newWall = new BreakableWall(this.world, new Point2D.Double(x * 50, y * 50));
-				this.breakables.add(newWall);
-				for (BreakableWall n : breakables) {
-					this.world.addGameObject(n);
-				}
-
-			} catch (IllegalArgumentException e) {
-				// System.err.println("Bad");
-			}
-		}
-		for (int i = 0; i < numMonsters; i++) {
-
-			try {
-				int x = s.nextInt();
-				int y = s.nextInt();
-				Monster monster = new Monster(this.world, new Point2D.Double(x * 50, y * 50));
-				this.monsters.add(monster);
-				for (Monster m : monsters) {
-					this.world.addGameObject(m);
-				}
-
-			} catch (IllegalArgumentException e) {
-				System.err.println("Bad");
-			}
-
-		}
-		for (int k = 0; k < numSeekers; k++) {
-
-			try {
-				int x = s.nextInt();
-				int y = s.nextInt();
-				Seeker seeker = new Seeker(this.world, new Point2D.Double(x * 50, y * 50));
-				this.seekers.add(seeker);
-				for (Seeker m : seekers) {
-					this.world.addGameObject(m);
-				}
-
-			} catch (IllegalArgumentException e) {
-				System.err.println("Bad");
-			}
-		}
-
-		for (int k = 0; k < numPowerUps; k++) {
-
-			try {
-				int x = s.nextInt();
-				int y = s.nextInt();
-				Random ran = new Random();
-				if (ran.nextInt(2) == 0) {
-					SpeedUp speedPower = new SpeedUp(this.world, new Point2D.Double(x * 50 + 5, y * 50 + 5));
-					this.powerUps.add(speedPower);
-				}
-				if (ran.nextInt(2) == 1) {
-					BombExpand bombPower = new BombExpand(this.world, new Point2D.Double(x * 50 + 5, y * 50 + 5));
-					this.powerUps.add(bombPower);
-				}
-				
-				for (PowerUp p : powerUps) {
-					this.world.addGameObject(p);
-				}
-
-			} catch (IllegalArgumentException e) {
-				System.err.println("Bad");
-			}
-		}
-	}
-
-	public void addWall() {
-		ArrayList<Wall> walls = new ArrayList<Wall>();
-		for (int i = 0; i < 13; i++) {
-			Wall newWall = new Wall(this.world, new Point2D.Double(0, 50 * i));
-			walls.add(newWall);
-		}
-		for (int j = 0; j < 16; j++) {
-			Wall newWall = new Wall(this.world, new Point2D.Double(50 * (j + 1), 0));
-			walls.add(newWall);
-		}
-		for (int k = 0; k < 15; k++) {
-			Wall newWall = new Wall(this.world, new Point2D.Double(50 * (k + 1), 600));
-			walls.add(newWall);
-		}
-		for (int j = 0; j < 12; j++) {
-			Wall newWall = new Wall(this.world, new Point2D.Double(800, 50 * (j + 1)));
-			walls.add(newWall);
-		}
-		for (int j = 0; j < 7; j++) {
-			for (int k = 0; k < 5; k++) {
-				Wall newWall = new Wall(this.world, new Point2D.Double(100 * (j + 1), (k + 1) * 100));
-				walls.add(newWall);
-			}
-		}
-		for (Wall w : walls) {
-			this.world.addGameObject(w);
-		}
-
-	}
 
 	private void drawDrawable(Graphics2D g2, Drawable c) {
 		Color color = c.getColor();

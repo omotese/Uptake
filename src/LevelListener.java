@@ -3,11 +3,11 @@ import java.awt.event.KeyListener;
 
 public class LevelListener implements KeyListener {
 
-	private GameWorldComponent comp;
+	private GameWorld world;
 	
-	public LevelListener( GameWorldComponent gameWorldComponent){
+	public LevelListener( GameWorld gameWorld){
 		
-		this.comp = gameWorldComponent;
+		this.world = gameWorld;
 	}
 	
 
@@ -15,15 +15,15 @@ public class LevelListener implements KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_U) {
-			this.comp.levelUp();
+			this.world.levelUp();
 			}
 		
 		if (e.getKeyCode() == KeyEvent.VK_D) {
-			this.comp.levelDown();
+			this.world.levelDown();
 		}
 		
 		if(e.getKeyCode() == KeyEvent.VK_P) {
-			this.comp.togglePause();
+			this.world.togglePause();
 		}
 	}
 
