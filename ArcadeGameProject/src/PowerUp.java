@@ -1,10 +1,9 @@
 import java.awt.Shape;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
-import java.util.Random;
 
 public abstract class PowerUp extends GameObject{
-	protected GameWorld world;
+	//protected GameWorld world;
 	protected double x;
 	protected double y;
 	protected int fuse;
@@ -15,7 +14,7 @@ public abstract class PowerUp extends GameObject{
 	public PowerUp(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
 		// TODO Auto-generated constructor stub.
-		this.world= world;
+		//this.world= world;
 		this.x= centerPoint.getX();
 		this.y = centerPoint.getY();
 		this.fuse = 3000;
@@ -43,7 +42,7 @@ public abstract class PowerUp extends GameObject{
 			this.fuse--;
 		}else{
 			this.fuseStart = false;
-			this.world.getHero().setIsFaster(false);
+			this.getWorld().getHero().setIsFaster(false);
 		}
 	}
 }
