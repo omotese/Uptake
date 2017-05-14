@@ -23,6 +23,7 @@ public class Bomb extends GameObject {
 		this.getWorld().bombExists = true;
 	}
 
+	
 	@Override
 	public Color getColor() {
 		return Color.WHITE;
@@ -53,6 +54,7 @@ public class Bomb extends GameObject {
 			System.out.println("max"+maxSize);
 			this.getWorld().addGameObject(exp);
 			this.die();
+			this.getWorld().bombExists=false;
 
 		} else {
 			size += .6;
@@ -84,13 +86,14 @@ public class Bomb extends GameObject {
 	@Override
 	public void collideWithExplosion(Explosion e) {
 		// TODO Auto-generated method stub
+		this.die();
 
 	}
 
 	@Override
 	public void collideWithBomb(Bomb b) {
 		// TODO Auto-generated method stub
-
+		this.die();
 	}
 
 	@Override
