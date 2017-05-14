@@ -6,8 +6,10 @@ import java.awt.geom.Rectangle2D;
 public class Seeker extends Monster {
 	private Point2D centerPoint;
 	private GameWorld world;
-	private int x;
-	private int y;
+	private double x;
+	private double y;
+	private double startX;
+	private double startY;
 	private int dx;
 	private int dy;
 	private int size;
@@ -17,8 +19,12 @@ public class Seeker extends Monster {
 	public Seeker(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
 		this.world = world;
-		this.x = (int) centerPoint.getX();
-		this.y = (int) centerPoint.getY();
+		this.x =  centerPoint.getX();
+		this.y =  centerPoint.getY();
+		this.startX = centerPoint.getX();
+		this.startY = centerPoint.getY();
+				
+		
 		this.dx=0;
 		this.dy=0;
 		this.size = 40;
@@ -30,12 +36,15 @@ public class Seeker extends Monster {
 		return Color.GREEN;
 	}
 	
-	public Point2D reset(){
-		return new Point2D.Double(this.x, this.y);
+	
+	public void reset(){
+		x = startX;
+		y = startY;
 	}
 	
 	@Override
 	public void updatePosition() {
+		System.out.println("update position seeker");
 		movingX=!movingX;
 
 		this.detectHero();
@@ -82,10 +91,10 @@ public class Seeker extends Monster {
 			else{
 				this.dy = 1;
 			}
-		}else{
-//				this.dx = 0;
-//				this.dy = 0;
-			}
+		}
+		System.out.println(x+" "+ y);	
+
+		System.out.println(dy+" "+ dx);	
 	}
 	@Override
 	public void collideWithWall(Wall w) {
@@ -98,7 +107,6 @@ public class Seeker extends Monster {
 		this.y -= this.dy;
 	
 		this.dy = 0;}
-
 	}
 
 	@Override
