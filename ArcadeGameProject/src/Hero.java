@@ -26,6 +26,11 @@ public class Hero extends GameObject {
 		this.isFaster = false;
 
 	}
+	
+	public void reset() {
+		this.y = centerPoint.getY();
+		this.x = centerPoint.getX();
+	}
 
 	public void stopHero() {
 		this.dx = 0;
