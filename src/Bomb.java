@@ -8,6 +8,7 @@ public class Bomb extends GameObject {
 	private double y;
 	private double size;
 	private double maxSize;
+	private boolean mySize;
 
 	public Bomb(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
@@ -16,11 +17,23 @@ public class Bomb extends GameObject {
 		this.y = Math.round((centerPoint.getY()) / 50) * 50 + 10;
 		this.maxSize = 130;
 		this.getWorld().bombExists = true;
+		this.mySize=false;
+	}
+	public void setMySize(boolean mySize) {
+		this.mySize = mySize;
 	}
 	
+	public boolean getMySize() {
+		return this.mySize;
+	}
 	public void superBomb(){
-		this.maxSize = 300;
-		System.out.println("set maxsize to "+maxSize);
+		this.mySize=true;
+		if(mySize==true){
+			System.out.println("This is my size"+ mySize);
+			maxSize= 300;
+		}else{
+			maxSize= 130;
+		}
 	}
 
 	@Override
@@ -35,8 +48,6 @@ public class Bomb extends GameObject {
 
 	@Override
 	public void updatePosition() {
-		//System.out.println(size);
-		//System.out.println(maxSize);
 		if (size <= maxSize) {
 			x -= .3;
 			y -= .3;
@@ -50,9 +61,9 @@ public class Bomb extends GameObject {
 
 	@Override
 	public void updateSize() {
-
 		if (size >= maxSize) {
 			Explosion exp = new Explosion(this.getWorld(), new Point2D.Double(x, y));
+			System.out.println("max"+maxSize);
 			this.getWorld().addGameObject(exp);
 			this.die();
 
