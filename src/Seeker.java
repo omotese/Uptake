@@ -41,7 +41,6 @@ public class Seeker extends Monster {
 
 	@Override
 	public void updatePosition() {
-		System.out.println("update position seeker");
 		movingX = !movingX;
 
 		this.detectHero();
@@ -83,9 +82,7 @@ public class Seeker extends Monster {
 				this.dy = 1;
 			}
 		}
-		System.out.println(x + " " + y);
-
-		System.out.println(dy + " " + dx);
+		
 	}
 
 	@Override
