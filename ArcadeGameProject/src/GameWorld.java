@@ -90,6 +90,15 @@ public class GameWorld implements Temporal, Drawable {
 	public Hero getHero(){
 		return this.hero;
 	}
+	
+	public void resetAllMonsters() {
+		for(Monster m: monsters) {
+			m.reset();
+		}
+		for(Seeker s: seekers) {
+			s.reset();
+		}
+	}
 
 	@Override
 	public Color getColor() {
@@ -311,7 +320,7 @@ public class GameWorld implements Temporal, Drawable {
 		} catch (IOException e) {
 			System.err.println("Error closing file.");
 		}
-		// System.out.println("ahhhh");
+		this.getHero().reset();
 	}
 
 
@@ -320,7 +329,7 @@ public class GameWorld implements Temporal, Drawable {
 			this.levelNum++;
 
 			this.updateLevel();
-			this.getHero().reset();
+
 		}
 	}
 
@@ -329,7 +338,7 @@ public class GameWorld implements Temporal, Drawable {
 			this.levelNum--;
 			
 			this.updateLevel();
-			this.getHero().reset();
+
 		}
 
 	}
