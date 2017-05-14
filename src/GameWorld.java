@@ -320,15 +320,16 @@ public class GameWorld implements Temporal, Drawable {
 			this.levelNum++;
 
 			this.updateLevel();
-			
+			this.getHero().reset();
 		}
 	}
 
 	public void levelDown() {
 		if (levelNum > 1 && levelNum <= 3) {
 			this.levelNum--;
-
+			
 			this.updateLevel();
+			this.getHero().reset();
 		}
 
 	}
