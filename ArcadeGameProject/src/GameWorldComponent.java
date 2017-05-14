@@ -10,6 +10,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 import javax.swing.JComponent;
@@ -26,7 +27,7 @@ public class GameWorldComponent extends JComponent {
 	private Hero hero;
 	private List<Monster> monsters;
 	private List<Seeker> seekers;
-	private List<SpeedUp> speedUps;
+	private List<PowerUp> powerUps;
 	private int levelNum;
 	private List<BreakableWall> breakables = new ArrayList<BreakableWall>();
 
@@ -35,7 +36,7 @@ public class GameWorldComponent extends JComponent {
 		this.hero = new Hero(world, new Point2D.Double(50, 50));
 		this.monsters = new ArrayList<Monster>();
 		this.seekers = new ArrayList<Seeker>();
-		this.speedUps = new ArrayList<SpeedUp>();
+		this.powerUps = new ArrayList<PowerUp>();
 		this.world.addGameObject(hero);
 		this.world.setHero(hero);
 		this.addWall();
@@ -133,11 +134,11 @@ public class GameWorldComponent extends JComponent {
 			this.world.removeGameObject(s);
 		}
 		seekers.clear();
-		for (SpeedUp p : speedUps) {
+		for (PowerUp p : powerUps) {
 			this.world.removeGameObject(p);
 		}
-		speedUps.clear();
-		
+		powerUps.clear();
+
 		String levelString = "Level" + levelNum + ".txt";
 		try {
 			getLevel(levelString);
@@ -152,29 +153,28 @@ public class GameWorldComponent extends JComponent {
 
 	public void getLevel(String fileName) throws FileNotFoundException {
 		int numBlocks = 0;
-		int numMonsters =0;
-		int numSeekers=0;
-		int numPowerUps=0;
+		int numMonsters = 0;
+		int numSeekers = 0;
+		int numPowerUps = 0;
 		FileReader file = new FileReader(fileName);
 		if (levelNum == 1) {
 			numBlocks = 22;
-			numMonsters= 2;
-			numSeekers=2;
-			numPowerUps=3;
+			numMonsters = 2;
+			numSeekers = 2;
+			numPowerUps = 3;
 		}
 		if (levelNum == 2) {
 			numBlocks = 22;
-			numMonsters= 4;
-			numSeekers=2;
-			numPowerUps=3;
+			numMonsters = 4;
+			numSeekers = 2;
+			numPowerUps = 3;
 		}
 		if (levelNum == 3) {
 			numBlocks = 30;
-			numMonsters= 6;
-			numSeekers=3;
-			numPowerUps=3;
+			numMonsters = 6;
+			numSeekers = 3;
+			numPowerUps = 3;
 		}
-		
 
 		Scanner s = new Scanner(file);
 		for (int c = 0; c < numBlocks; c++) {
@@ -222,15 +222,23 @@ public class GameWorldComponent extends JComponent {
 				System.err.println("Bad");
 			}
 		}
-		
-		for (int k = 0; k < numPowerUps ; k++) {
+
+		for (int k = 0; k < numPowerUps; k++) {
 
 			try {
 				int x = s.nextInt();
 				int y = s.nextInt();
-				SpeedUp power = new SpeedUp(this.world, new Point2D.Double(x * 50 + 5, y * 50 + 5));
-				this.speedUps.add(power);
-				for (SpeedUp p : speedUps) {
+				Random ran = new Random();
+				if (ran.nextInt(2) == 0) {
+					SpeedUp power = new SpeedUp(this.world, new Point2D.Double(x * 50 + 5, y * 50 + 5));
+					this.powerUps.add(power);
+				}
+				if (ran.nextInt(2) == 1) {
+					BombExpand power = new BombExpand(this.world, new Point2D.Double(x * 50 + 5, y * 50 + 5));
+					this.powerUps.add(power);
+				}
+				
+				for (PowerUp p : powerUps) {
 					this.world.addGameObject(p);
 				}
 

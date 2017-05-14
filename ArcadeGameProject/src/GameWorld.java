@@ -22,6 +22,7 @@ public class GameWorld implements Temporal, Drawable {
 	private boolean isPaused = false;
 	
 	private Hero hero;
+	private List<Bomb> bombList;
 
 	public GameWorld(int width, int height, Color color) {
 		this.width = width;
@@ -29,6 +30,7 @@ public class GameWorld implements Temporal, Drawable {
 		this.backgroundColor = color;
 		this.background = new Rectangle2D.Double(0, 0, this.width, this.height);
 		this.hero = null;
+		this.bombList =  new ArrayList<Bomb>();
 
 		Runnable tickTock = new Runnable() {
 			@Override
@@ -46,7 +48,12 @@ public class GameWorld implements Temporal, Drawable {
 		new Thread(tickTock).start();
 
 	}
-	
+	public void addBombList(Bomb bomb) {
+		this.bombList.add(bomb);
+	}
+	public List<Bomb> getBombList(){
+		return this.bombList;
+	}
 	public void setHero(Hero hero) {
 		this.hero = hero;
 	}

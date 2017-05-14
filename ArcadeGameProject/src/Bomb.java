@@ -17,6 +17,11 @@ public class Bomb extends GameObject {
 		this.maxSize = 130;
 		this.getWorld().bombExists = true;
 	}
+	
+	public void superBomb(){
+		this.maxSize = 300;
+		System.out.println("set maxsize to "+maxSize);
+	}
 
 	@Override
 	public Color getColor() {
@@ -30,7 +35,9 @@ public class Bomb extends GameObject {
 
 	@Override
 	public void updatePosition() {
-		if (!(size >= maxSize)) {
+		//System.out.println(size);
+		//System.out.println(maxSize);
+		if (size <= maxSize) {
 			x -= .3;
 			y -= .3;
 		}
