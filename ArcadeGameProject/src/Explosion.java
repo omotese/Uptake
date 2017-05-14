@@ -17,7 +17,7 @@ public class Explosion extends Bomb {
 		this.x=this.getCenterPoint().getX();
 		this.y=this.getCenterPoint().getY();
 		this.explosionColor = Color.pink;
-		this.fuse = 30;
+		this.fuse = 50;
 	}
 	
 	
