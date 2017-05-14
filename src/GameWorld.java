@@ -191,15 +191,18 @@ public class GameWorld implements Temporal, Drawable {
 				int x = s.nextInt();
 				int y = s.nextInt();
 				Random ran = new Random();
-				if (ran.nextInt(2) == 0) {
-					SpeedUp speedPower = new SpeedUp(this, new Point2D.Double(x * 50 + 5, y * 50 + 5));
-					this.powerUps.add(speedPower);
-				}
-				if (ran.nextInt(2) == 1) {
-					BombExpand bombPower = new BombExpand(this, new Point2D.Double(x * 50 + 5, y * 50 + 5));
-					this.powerUps.add(bombPower);
-				}
-
+//				if (ran.nextInt(2) == 0) {
+//					SpeedUp speedPower = new SpeedUp(this, new Point2D.Double(x * 50 + 5, y * 50 + 5));
+//					this.powerUps.add(speedPower);
+//				}
+//				if (ran.nextInt(2) == 1) {
+//					BombExpand bombPower = new BombExpand(this, new Point2D.Double(x * 50 + 5, y * 50 + 5));
+//					this.powerUps.add(bombPower);
+//				}
+//				if (ran.nextInt(2) == 2) {
+					MultiBomb multiBomb = new MultiBomb(this, new Point2D.Double(x * 50 + 5, y * 50 + 5));
+					this.powerUps.add(multiBomb);
+//				}
 				for (PowerUp p : powerUps) {
 					this.addGameObject(p);
 				}

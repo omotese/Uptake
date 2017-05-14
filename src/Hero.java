@@ -12,6 +12,7 @@ public class Hero extends GameObject {
 	private double dx;
 	private double dy;
 	private boolean isFaster;
+	private boolean hasMultiBomb;
 	private int lives;
 	private boolean hasExpandBombPowerUp;
 
@@ -25,6 +26,7 @@ public class Hero extends GameObject {
 		this.dy = 0;
 		this.lives = 3;
 		this.isFaster = false;
+		this.hasMultiBomb= false;
 		this.hasExpandBombPowerUp=false;
 
 	}
@@ -34,6 +36,7 @@ public class Hero extends GameObject {
 		this.x = 50;
 		this.isFaster = false;
 		this.hasExpandBombPowerUp = false;
+		this.hasMultiBomb= false;
 	}
 
 	public void stopHero() {
@@ -45,8 +48,13 @@ public class Hero extends GameObject {
 		this.isFaster = isFaster;
 		// System.out.println("hero is set faster " + this.getIsFaster());
 	}
-	 
+	public void setMultiBomb(boolean multiBomb) {
+		this.hasMultiBomb = multiBomb;
+	} 
 
+	public boolean hasMultiBomb() {
+		return this.hasMultiBomb;
+	}
 	public boolean hasExpandBombPowerUp() {
 		return this.hasExpandBombPowerUp;
 	}
@@ -102,6 +110,9 @@ public class Hero extends GameObject {
 		Bomb b = new Bomb(this.world, new Point2D.Double(this.x, this.y));
 		this.world.addGameObject(b);
 		this.world.addBombList(b);
+		}
+		if(hasMultiBomb){
+			this.world.bombExists=false;
 		}
 	}
 
@@ -213,8 +224,9 @@ public class Hero extends GameObject {
 	}
 
 	@Override
-	public void collideWithPowerUp(SpeedUp p) {
-
+	public void collideWithPowerUp(PowerUp p) {
+		// TODO Auto-generated method stub.
+		
 	}
 
 }

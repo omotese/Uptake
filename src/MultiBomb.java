@@ -7,12 +7,16 @@ public class MultiBomb extends PowerUp {
 		super(world, centerPoint);
 		
 	}
-
+	
+	public void multiBomb(){
+		this.getWorld().bombExists= false;
+	}
+	
 
 	@Override
 	public Color getColor() {
 		// TODO Auto-generated method stub.
-		return null;
+		return Color.black;
 	}
 
 	@Override
@@ -24,14 +28,10 @@ public class MultiBomb extends PowerUp {
 	@Override
 	public void collideWithHero(Hero h) {
 		// TODO Auto-generated method stub.
-
+		multiBomb();
+		this.size=0;
 	}
 
-	@Override
-	public void collideWithPowerUp(SpeedUp p) {
-		// TODO Auto-generated method stub.
-
-	}
 
 	@Override
 	public void collideWithMonster(Monster m) {
@@ -85,6 +85,12 @@ public class MultiBomb extends PowerUp {
 	public double getDiameter() {
 		// TODO Auto-generated method stub.
 		return 0;
+	}
+
+	@Override
+	public void collideWithPowerUp(PowerUp p) {
+		// TODO Auto-generated method stub.
+		
 	}
 
 }

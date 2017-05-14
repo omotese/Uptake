@@ -98,8 +98,9 @@ public class Wall extends GameObject {
 		s.collideWithWall(this);
 	}
 
+
 	@Override
-	public void collideWithPowerUp(SpeedUp p) {
+	public void collideWithPowerUp(PowerUp p) {
 		// TODO Auto-generated method stub.
 		
 	}

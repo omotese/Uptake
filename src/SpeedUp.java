@@ -36,11 +36,6 @@ public class SpeedUp extends PowerUp {
 		
 	}
 
-	@Override
-	public void collideWithPowerUp(SpeedUp p) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void collideWithMonster(Monster m) {
@@ -94,6 +89,13 @@ public class SpeedUp extends PowerUp {
 	public double getDiameter() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+
+	@Override
+	public void collideWithPowerUp(PowerUp p) {
+		// TODO Auto-generated method stub.
+		
 	}
 
 }
