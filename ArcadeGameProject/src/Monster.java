@@ -19,17 +19,15 @@ public class Monster extends GameObject {
 	public Monster(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
 		this.world = world;
-		this.x =  centerPoint.getX();
-		this.y =  centerPoint.getY();
+		this.x = centerPoint.getX();
+		this.y = centerPoint.getY();
 		this.startX = centerPoint.getX();
 		this.startY = centerPoint.getY();
-		this.dx=0;
-		this.dy=1;
-		
-		
+		this.dx = 0;
+		this.dy = 1;
+
 		this.size = 40;
 	}
-	
 
 	@Override
 	public Color getColor() {
@@ -56,7 +54,6 @@ public class Monster extends GameObject {
 			}
 		}
 
-
 	}
 
 	@Override
@@ -65,12 +62,11 @@ public class Monster extends GameObject {
 
 	}
 
-	
-	public void reset(){
+	public void reset() {
 		x = startX;
 		y = startY;
 	}
-	
+
 	@Override
 	public double getDiameter() {
 		return size;
@@ -88,7 +84,7 @@ public class Monster extends GameObject {
 
 	@Override
 	public void collideWithMonster(Monster m) {
-		
+
 	}
 
 	@Override
@@ -97,10 +93,10 @@ public class Monster extends GameObject {
 		this.x -= this.dx;
 		this.y -= this.dy;
 		do {
-			this.dx = (ran.nextInt(3) - 1) ;
-			this.dy = (ran.nextInt(3) - 1) ;
+			this.dx = (ran.nextInt(3) - 1);
+			this.dy = (ran.nextInt(3) - 1);
 		} while (this.dx == 0 && this.dy == 0);
-		//System.out.println("m+w " + dx + " " + dy);
+		// System.out.println("m+w " + dx + " " + dy);
 
 	}
 
@@ -109,13 +105,12 @@ public class Monster extends GameObject {
 		collideWithWall(b);
 
 	}
-	
+
 	@Override
 	public void updateSize() {
 		// TODO Auto-generated method stub
 
 	}
-
 
 	@Override
 	public void collideWithBomb(Bomb b) {
@@ -123,32 +118,29 @@ public class Monster extends GameObject {
 		this.x -= this.dx;
 		this.y -= this.dy;
 		do {
-			this.dx = (ran.nextInt(3) - 1) ;
-			this.dy = (ran.nextInt(3) - 1) ;
+			this.dx = (ran.nextInt(3) - 1);
+			this.dy = (ran.nextInt(3) - 1);
 		} while (this.dx == 0 && this.dy == 0);
-		
-	}
 
+	}
 
 	@Override
 	public void collideWithExplosion(Explosion e) {
 		this.die();
 		this.getWorld().killAMonster();
-		
-	}
 
+	}
 
 	@Override
 	public void collideWithSeeker(Seeker s) {
 		// TODO Auto-generated method stub.
-		
+
 	}
 
 	@Override
 	public void collideWithPowerUp(SpeedUp p) {
 		// TODO Auto-generated method stub.
-		
-	}
 
+	}
 
 }
