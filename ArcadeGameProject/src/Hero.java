@@ -32,6 +32,8 @@ public class Hero extends GameObject {
 	public void reset() {
 		this.y = 50;
 		this.x = 50;
+		this.isFaster = false;
+		this.hasExpandBombPowerUp = false;
 	}
 
 	public void stopHero() {
