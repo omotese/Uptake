@@ -10,6 +10,9 @@ public class PowerUp extends GameObject {
 	private double x;
 	private double y;
 	private int fuse;
+	private boolean fuseStart;
+	private int size;
+	
 	
 	public PowerUp(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
@@ -17,7 +20,9 @@ public class PowerUp extends GameObject {
 		this.world= world;
 		this.x= centerPoint.getX();
 		this.y = centerPoint.getY();
-		this.fuse = 15;
+		this.fuse = 3000;
+		this.fuseStart = false;
+		this.size = 40;
 	}
 	
 //	public Shape bombExpand(){
@@ -26,8 +31,9 @@ public class PowerUp extends GameObject {
 //	}
 	
 	public void speedHero(){
+		System.out.println("set is faster before " + this.world.getHero().getIsFaster());
 		this.world.getHero().setIsFaster(true);
-		
+		System.out.println("set is faster after " + this.world.getHero().getIsFaster());
 	}
 
 	@Override
@@ -39,12 +45,11 @@ public class PowerUp extends GameObject {
 	@Override
 	public Shape getShape() {
 		// TODO Auto-generated method stub.
-		return new Rectangle2D.Double(x,y, 40, 40);
+		return new Rectangle2D.Double(x,y, size, size);
 	}
 
 	@Override
 	public void collide(GameObject o) {
-		// TODO Auto-generated method stub.
 
 	}
 
@@ -53,7 +58,9 @@ public class PowerUp extends GameObject {
 		// TODO Auto-generated method stub.
 		Random rand= new Random();
 		speedHero();
-		this.die();
+		this.fuseStart = true;
+		this.size = 0;
+		//this.die();
 //		if(rand.nextInt(2)==1){
 //			bombExpand();
 //			this.die();
@@ -102,15 +109,25 @@ public class PowerUp extends GameObject {
 
 	@Override
 	public void updatePosition() {
-		this.updateFuse();
-
+		if(fuseStart){
+			this.updateFuse();
+			//System.out.println(fuse);
+		}
+		
 	}
 	
 	public void updateFuse(){
-		this.fuse--;
-		if(fuse==0){
-			this.world.getHero().setIsFaster(true);
+		//System.out.println("update fuse");
+		if(fuse > 0){
+			this.fuse--;
+		}else{
+			this.fuseStart = false;
+			this.world.getHero().setIsFaster(false);
 		}
+		
+		
+		
+		
 	}
 
 	@Override

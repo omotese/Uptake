@@ -17,7 +17,7 @@ public class Hero extends GameObject {
 	public Hero(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
 		this.world = world;
-		this.size = 40;
+		this.size = 30;
 		this.y = centerPoint.getY();
 		this.x = centerPoint.getX();
 		this.dx = 0;
@@ -33,32 +33,54 @@ public class Hero extends GameObject {
 	}
 
 	public void setIsFaster(boolean isFaster) {
+		
+		
 		this.isFaster = isFaster;
+		System.out.println("hero is set faster " + this.getIsFaster());
 	}
+	
+	public boolean getIsFaster() {
+		return this.isFaster;
+	}
+	
 
 	public void moveUp() {
-		if (isFaster == true)
-			this.dy = -10;
-		this.dy = -2.5;
+		if (isFaster == true){
+			this.dy = -5;
+		}else{
+			this.dy = -2.5;
+		}
+			
+		
 	}
 
 	public void moveDown() {
-		if (isFaster == true)
-			this.dy = 10;
-		this.dy = 2.5;
+		if (isFaster == true){
+			this.dy = 5;
+		}else{
+			this.dy = 2.5;
+		}
+		
 	}
 
 	public void moveLeft() {
-		if (isFaster == true)
-			this.dx = -10;
-		this.dx = -2.5;
+		if (isFaster == true){
+			this.dx = -5;
+		}else{
+			this.dx = -2.5;
+		}
+		
 
 	}
 
 	public void moveRight() {
-		if (isFaster == true)
-			this.dx = 10;
-		this.dx = 2.5;
+		if (isFaster == true){
+			this.dx = 5;
+			//System.out.println("dx is " +dx);
+		}else{
+			this.dx = 2.5;
+		}
+		
 
 	}
 
