@@ -12,8 +12,8 @@ public class Seeker extends Monster {
 	private int dx;
 	private int dy;
 	private int size;
-	private int cx;
-	private int cy;
+	//private int cx;
+	//private int cy;
 	private boolean movingX;
 
 
