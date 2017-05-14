@@ -24,8 +24,7 @@ public class BombExpand extends PowerUp {
 	
 	public void expandBomb() {
 		for(Bomb b: this.getWorld().getBombList()){
-			b.setMySize(true);
-			b.superBomb();
+
 			System.out.println("bomb expand");
 		}
 		
