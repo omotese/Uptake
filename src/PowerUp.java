@@ -36,14 +36,5 @@ public abstract class PowerUp extends GameObject{
 		
 	}
 	
-	public void updateFuse(){
-		//System.out.println("update fuse");
-		if(fuse > 0){
-			this.fuse--;
-			System.out.println(fuse);
-		}else{
-			this.fuseStart = false;
-			this.getWorld().getHero().setIsFaster(false);
-		}
-	}
+	public abstract void updateFuse();
 }

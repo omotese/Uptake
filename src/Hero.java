@@ -51,19 +51,19 @@ public class Hero extends GameObject {
 	public void setMultiBomb(boolean multiBomb) {
 		this.hasMultiBomb = multiBomb;
 	} 
-
-	public boolean hasMultiBomb() {
-		return this.hasMultiBomb;
-	}
-	public boolean hasExpandBombPowerUp() {
-		return this.hasExpandBombPowerUp;
-	}
 	
 	public void setHasExpandBombPowerUp(boolean hasExpandBombPowerUp) {
 		this.hasExpandBombPowerUp = hasExpandBombPowerUp;
 	}
-	 
-
+	
+	public boolean getHasMultiBomb() {
+		return this.hasMultiBomb;
+	}
+	
+	public boolean getHasExpandBombPowerUp() {
+		return this.hasExpandBombPowerUp;
+	}
+	
 	public boolean getIsFaster() {
 		return this.isFaster;
 	}
