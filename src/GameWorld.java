@@ -159,9 +159,7 @@ public class GameWorld implements Temporal, Drawable {
 				int y = s.nextInt();
 				Monster monster = new Monster(this, new Point2D.Double(x * 50, y * 50));
 				this.monsters.add(monster);
-				for (Monster m : monsters) {
-					this.addGameObject(m);
-				}
+				this.addGameObject(monster);
 
 			} catch (IllegalArgumentException e) {
 				System.err.println("Bad");
@@ -175,9 +173,7 @@ public class GameWorld implements Temporal, Drawable {
 				int y = s.nextInt();
 				Seeker seeker = new Seeker(this, new Point2D.Double(x * 50, y * 50));
 				this.seekers.add(seeker);
-				for (Seeker m : seekers) {
-					this.addGameObject(m);
-				}
+				this.addGameObject(seeker);
 
 			} catch (IllegalArgumentException e) {
 				System.err.println("Bad");
