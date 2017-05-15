@@ -29,6 +29,18 @@ public class SpeedUp extends PowerUp {
 		this.fuseStart = true;
 		this.size = 0;
 	}
+	
+	@Override
+	public void updateFuse(){
+		//System.out.println("update fuse");
+		if(fuse > 0){
+			this.fuse--;
+			System.out.println(fuse);
+		}else{
+			this.fuseStart = false;
+			this.getWorld().getHero().setIsFaster(false);
+		}
+	}
 
 	@Override
 	public void collide(GameObject o) {

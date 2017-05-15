@@ -19,7 +19,7 @@ public class Bomb extends GameObject {
 		this.hitExplosion = false;
 		
 		this.maxSize = 130;
-		if(this.getWorld().getHero().hasExpandBombPowerUp() == true) {
+		if(this.getWorld().getHero().getHasExpandBombPowerUp() == true) {
 			this.maxSize = 230;
 		}
 		this.getWorld().bombExists = true;

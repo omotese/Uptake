@@ -16,7 +16,7 @@ public class Explosion extends Bomb {
 		super(world, centerPoint);
 		this.world = world;
 		this.size = 130;
-		if(this.getWorld().getHero().hasExpandBombPowerUp() == true) {
+		if(this.getWorld().getHero().getHasExpandBombPowerUp() == true) {
 			this.size = 230;
 		}
 		this.x=this.getCenterPoint().getX();

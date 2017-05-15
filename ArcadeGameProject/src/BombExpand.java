@@ -29,6 +29,18 @@ public class BombExpand extends PowerUp {
 		}
 		
 	}
+	
+	@Override
+	public void updateFuse(){
+		//System.out.println("update fuse");
+		if(fuse > 0){
+			this.fuse--;
+			System.out.println(fuse);
+		}else{
+			this.fuseStart = false;
+			this.getWorld().getHero().setHasExpandBombPowerUp(false);
+		}
+	}
 
 	@Override
 	public Color getColor() {
