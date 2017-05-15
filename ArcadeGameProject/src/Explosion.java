@@ -10,9 +10,11 @@ public class Explosion extends Bomb {
 	private double y;
 	private Color explosionColor;
 	private int fuse;
+	private GameWorld world;
 
 	public Explosion(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
+		this.world = world;
 		this.size = 130;
 		if(this.getWorld().getHero().hasExpandBombPowerUp() == true) {
 			this.size = 230;
@@ -25,6 +27,13 @@ public class Explosion extends Bomb {
 	
 	
 	public void updateFuse(){
+		for (int i = 0; i < this.world.getBombList().size(); i++) {
+			if ((this.world.getBombList().get(i) != this)
+					&& this.getShape().intersects((Rectangle2D) this.world.getBombList().get(i).getShape())) {
+				this.collide(this.world.getBombList().get(i));
+				//System.out.println("any colide");
+			}
+		}
 		this.fuse--;
 		if(fuse<=0){
 			this.die();
@@ -48,6 +57,12 @@ public class Explosion extends Bomb {
 	@Override
 	public Color getColor(){
 		return this.explosionColor;
+	}
+	
+	@Override 
+	public void collide(GameObject o){
+		o.collideWithExplosion(this);
+		//System.out.println("ahhhh");
 	}
 	
 	
