@@ -315,6 +315,9 @@ public class GameWorld implements Temporal, Drawable {
 		for (PowerUp p : powerUps) {
 			this.removeGameObject(p);
 		}
+		for (Bomb b : bombs) {
+			this.removeGameObject(b);
+		}
 		powerUps.clear();
 
 		String levelString = "Level" + levelNum + ".txt";
