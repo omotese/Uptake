@@ -50,8 +50,9 @@ public class Bomb extends GameObject {
 	@Override
 	public void updateSize() {
 		if (size >= maxSize) {
+			
 			Explosion exp = new Explosion(this.getWorld(), new Point2D.Double(x, y));
-			System.out.println("max"+maxSize);
+			//System.out.println("max"+maxSize);
 			this.getWorld().addGameObject(exp);
 			this.die();
 			this.getWorld().bombExists=false;
@@ -85,7 +86,9 @@ public class Bomb extends GameObject {
 
 	@Override
 	public void collideWithExplosion(Explosion e) {
-		// TODO Auto-generated method stub
+		/*Explosion exp = new Explosion(this.getWorld(), new Point2D.Double(x, y));
+		this.getWorld().addGameObject(exp);*/
+		//System.out.println("bomb collide with explosion");
 		this.die();
 
 	}
