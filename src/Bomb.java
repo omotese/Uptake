@@ -52,7 +52,7 @@ public class Bomb extends GameObject {
 	@Override
 	public void updateSize() {
 		if (size >= maxSize || this.hitExplosion) {
-			
+			System.out.println(this.hitExplosion);
 			Explosion exp = new Explosion(this.getWorld(), new Point2D.Double(x, y));
 			//System.out.println("max"+maxSize);
 			this.getWorld().addGameObject(exp);
