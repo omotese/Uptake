@@ -17,7 +17,7 @@ public abstract class PowerUp extends GameObject{
 		//this.world= world;
 		this.x= centerPoint.getX();
 		this.y = centerPoint.getY();
-		this.fuse = 1000;
+		this.fuse = 2000;
 		this.fuseStart = false;
 		this.size = 40;
 	}
@@ -40,6 +40,7 @@ public abstract class PowerUp extends GameObject{
 		//System.out.println("update fuse");
 		if(fuse > 0){
 			this.fuse--;
+			System.out.println(fuse);
 		}else{
 			this.fuseStart = false;
 			this.getWorld().getHero().setIsFaster(false);
