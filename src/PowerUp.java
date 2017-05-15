@@ -17,7 +17,7 @@ public abstract class PowerUp extends GameObject{
 		//this.world= world;
 		this.x= centerPoint.getX();
 		this.y = centerPoint.getY();
-		this.fuse = 200;
+		this.fuse = 1000;
 		this.fuseStart = false;
 		this.size = 40;
 	}
