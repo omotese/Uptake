@@ -29,6 +29,7 @@ public class MultiBomb extends PowerUp {
 	public void collideWithHero(Hero h) {
 		// TODO Auto-generated method stub.
 		multiBomb();
+		this.fuseStart = true;
 		this.size=0;
 	}
 
