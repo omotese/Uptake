@@ -9,12 +9,14 @@ public class Bomb extends GameObject {
 	private double size;
 	private double maxSize;
 	private boolean mySize;
+	private boolean hitExplosion;
 
 	public Bomb(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
 		this.size = 30;
 		this.x = Math.round((centerPoint.getX()) / 50) * 50 + 10;
 		this.y = Math.round((centerPoint.getY()) / 50) * 50 + 10;
+		this.hitExplosion = false;
 		
 		this.maxSize = 130;
 		if(this.getWorld().getHero().hasExpandBombPowerUp() == true) {
@@ -49,7 +51,7 @@ public class Bomb extends GameObject {
 
 	@Override
 	public void updateSize() {
-		if (size >= maxSize) {
+		if (size >= maxSize || this.hitExplosion) {
 			
 			Explosion exp = new Explosion(this.getWorld(), new Point2D.Double(x, y));
 			//System.out.println("max"+maxSize);
@@ -89,6 +91,8 @@ public class Bomb extends GameObject {
 		/*Explosion exp = new Explosion(this.getWorld(), new Point2D.Double(x, y));
 		this.getWorld().addGameObject(exp);*/
 		//System.out.println("bomb collide with explosion");
+		this.hitExplosion = true;
+		//System.out.println("hitExplosion " + this.hitExplosion);
 		this.die();
 
 	}
