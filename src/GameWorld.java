@@ -315,7 +315,7 @@ public class GameWorld implements Temporal, Drawable {
 		for (PowerUp p : powerUps) {
 			this.removeGameObject(p);
 		}
-		for (Bomb b : bombs) {
+		for (Bomb b : bombList) {
 			this.removeGameObject(b);
 		}
 		powerUps.clear();
