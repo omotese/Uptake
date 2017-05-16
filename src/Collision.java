@@ -4,8 +4,6 @@ public interface Collision {
 
 	abstract void collideWithHero(Hero h);
 	
-	abstract void collideWithPowerUp(PowerUp p);
-	
 	abstract void collideWithMonster(Monster m);
 	
 	abstract void collideWithSeeker(Seeker s);
@@ -15,6 +13,7 @@ public interface Collision {
 	abstract void collideWithBomb(Bomb b);
 	
 	abstract void collideWithExplosion(Explosion e);
+
+	abstract void collideWithPowerUp(PowerUp p);
 	
-	abstract void collideWithBreakable(BreakableWall b);
 }
