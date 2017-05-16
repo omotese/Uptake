@@ -1,21 +1,13 @@
 import java.awt.Color;
 import java.awt.Shape;
-import java.awt.Transparency;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
 
 public class Bomb extends GameObject {
 	private double x;
 	private double y;
 	private double size;
 	private String name;
-	private Color color;
-
 	private double maxSize;
 	private boolean mySize;
 	private boolean hitExplosion;
@@ -26,7 +18,7 @@ public class Bomb extends GameObject {
 		this.size = 30;
 		this.maxSize = 130;
 		this.hitExplosion = false;
-		this.color = Color.WHITE;
+		setColor(Color.WHITE);
 
 		this.x = Math.round((this.getCenterPoint().getX()) / 50) * 50 + 10;
 		this.y = Math.round((this.getCenterPoint().getY()) / 50) * 50 + 10;

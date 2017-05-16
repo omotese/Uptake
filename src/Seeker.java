@@ -2,7 +2,6 @@ import java.awt.Color;
 import java.awt.Shape;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
-import java.util.Random;
 
 public class Seeker extends Monster {
 	private double x;
@@ -23,6 +22,7 @@ public class Seeker extends Monster {
 		this.dx = 0;
 		this.dy = 0;
 		this.size = 40;
+		setColor(Color.green);
 	}
 
 	// Drawable--------------------------------------

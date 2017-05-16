@@ -23,8 +23,9 @@ public class Hero extends GameObject {
 		this.dy = 0;
 		this.lives = 3;
 		this.isFaster = false;
-		this.hasMultiBomb= false;
-		this.hasExpandBombPowerUp=false;
+		this.hasMultiBomb = false;
+		this.hasExpandBombPowerUp = false;
+		setColor(Color.YELLOW);
 	}
 
 	public void reset() {
@@ -32,40 +33,40 @@ public class Hero extends GameObject {
 		this.x = 50;
 		this.isFaster = false;
 		this.hasExpandBombPowerUp = false;
-		this.hasMultiBomb= false;
+		this.hasMultiBomb = false;
 	}
 
 	public void stopHero() {
 		this.dx = 0;
 		this.dy = 0;
 	}
-	
-	//Setters and getters for powerup features' booleans-----------------------
+
+	// Setters and getters for powerup features' booleans-----------------------
 	public void setIsFaster(boolean isFaster) {
 		this.isFaster = isFaster;
 	}
-	
+
 	public void setMultiBomb(boolean multiBomb) {
 		this.hasMultiBomb = multiBomb;
-	} 
-	
+	}
+
 	public void setHasExpandBombPowerUp(boolean hasExpandBombPowerUp) {
 		this.hasExpandBombPowerUp = hasExpandBombPowerUp;
 	}
-	
+
 	public boolean getHasMultiBomb() {
 		return this.hasMultiBomb;
 	}
-	
+
 	public boolean getHasExpandBombPowerUp() {
 		return this.hasExpandBombPowerUp;
 	}
-	
+
 	public boolean getIsFaster() {
 		return this.isFaster;
 	}
-	
-	//Movement-------------------------------------------
+
+	// Movement-------------------------------------------
 	public void moveUp() {
 		if (isFaster == true) {
 			this.dy = -5;
@@ -102,85 +103,79 @@ public class Hero extends GameObject {
 		}
 
 	}
-	
-	
+
 	public void setBomb() {
-		if(this.getWorld().bombExists==false){
-		Bomb b = new Bomb(this.getWorld(), new Point2D.Double(this.x, this.y));
-		this.getWorld().addGameObject(b);
-		this.getWorld().addBombList(b);
+		if (this.getWorld().bombExists == false) {
+			Bomb b = new Bomb(this.getWorld(), new Point2D.Double(this.x, this.y));
+			this.getWorld().addGameObject(b);
+			this.getWorld().addBombList(b);
 		}
-		if(hasMultiBomb){
-			this.getWorld().bombExists=false;
+		if (hasMultiBomb) {
+			this.getWorld().bombExists = false;
 		}
-	}
-
-
-	@Override
-	public Color getColor() {
-		return Color.yellow;
 	}
 
 	@Override
 	public void updatePosition() {
+		this.detectCollision();
+
 		Point2D.Double myPoint = new Point2D.Double(x, y);
+		
 		this.x += this.dx;
 		this.y += this.dy;
 		
-
 		this.setCenterPoint(myPoint);
+		this.detectCollision();
 	}
-	
-	//Drawable--------------------------------------
-		@Override
-		public Shape getShape(){
-			Rectangle2D.Double myRect= new Rectangle2D.Double(x,y,this.size, this.size);
-			return myRect ;
-		}
-		
-		//Temporal--------------------------------------
-		@Override
-		public void die() {
-			this.y = 50;
-			this.x = 50;
-			this.lives--;
-			this.getWorld().resetAllMonsters();
-			if (this.lives == 0) {
-				this.lives = 3;
-				this.getWorld().restart();
 
-			}
+	// Drawable--------------------------------------
+	@Override
+	public Shape getShape() {
+		Rectangle2D.Double myRect = new Rectangle2D.Double(x, y, this.size, this.size);
+		return myRect;
+	}
+
+	// Temporal--------------------------------------
+	@Override
+	public void die() {
+		this.y = 50;
+		this.x = 50;
+		this.lives--;
+		this.getWorld().resetAllMonsters();
+		if (this.lives == 0) {
+			this.lives = 3;
+			this.getWorld().restart();
 
 		}
-		
-		//Relocatable------------------------------------
-		
-		//Collision--------------------------------------
-		@Override
-		public void collide(GameObject m) {
-			m.collideWithHero(this);
-		}
 
-		@Override
-		public void collideWithWall(Wall w) {
-			this.x -= this.dx;
-			this.y -= this.dy;
-			stopHero();
-		}
+	}
 
-		@Override
-		public void collideWithExplosion(Explosion e) {
-			this.die();
-		}
-		
-		@Override
-		public void collideWithMonster(Monster m) {
-			this.die();
-		}
+	// Collision--------------------------------------
+	@Override
+	public void collide(GameObject m) {
+		m.collideWithHero(this);
+	}
 
-		@Override
-		public void collideWithPowerUp(PowerUp p) {
-			
-		}
+	@Override
+	public void collideWithWall(Wall w) {
+		this.x -= this.dx;
+		this.y -= this.dy;
+		stopHero();
+	}
+
+	@Override
+	public void collideWithExplosion(Explosion e) {
+		this.die();
+	}
+
+	@Override
+	public void collideWithMonster(Monster m) {
+		this.die();
+	}
+
+	@Override
+	public void collideWithPowerUp(PowerUp p) {
+
+	}
 
 }
