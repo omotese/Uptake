@@ -17,6 +17,7 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 	private String name;
 	private Color color;
 	private int size;
+	private Rectangle2D shape;
 	
 
 	public GameObject(GameWorld world,Point2D centerPoint) {
@@ -26,6 +27,7 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 		this.isPaused = false;
 		this.color = null;
 		this.size = 0;
+		this.shape= new Rectangle2D.Double(this.centerPoint.getX(), this.centerPoint.getY(), this.size, this.size);
 	}
 	//super methods----------------------------------------
 		
@@ -57,9 +59,10 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 		return this.color;
 	}
 
+	
 	@Override
 	public Shape getShape() {
-		return null;
+		return this.shape;
 	}
 
 	@Override
