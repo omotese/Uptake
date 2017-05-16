@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 import java.util.List;
 
 import javax.swing.JComponent;
@@ -22,8 +23,8 @@ public class GameWorldComponent extends JComponent {
 	public GameWorldComponent(GameWorld world) {
 		this.world = world;
 
-		setPreferredSize(world.getSize());
-		setMaximumSize(world.getSize());
+		setPreferredSize(world.getDimension());
+		setMaximumSize(world.getDimension());
 
 		KeyListener level = new LevelListener(this.world);
 		this.addKeyListener(level);
@@ -75,10 +76,22 @@ public class GameWorldComponent extends JComponent {
 			showNullPointerMessage("shape", c);
 			return;
 		} else {
+			//Color co = new Color(50, 50, 50, 0);
 			g2.setColor(color);
 		}
-
 		g2.fill(shape);
+//		
+//		BufferedImage img = c.getImage();
+//		if (img == null) {
+//			showNullPointerMessage("img", c);
+//			return;
+//		} else {
+//			//Color co = new Color(50, 50, 50, 0);
+//			g2.setColor(color);
+//		}
+//		g2.drawImage(img, x, y, c, squareSize, null);
+
+		
 	}
 
 	private void showNullPointerMessage(String nullAttribute, Drawable d) {

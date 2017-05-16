@@ -3,6 +3,7 @@ import java.awt.Dimension;
 import java.awt.Shape;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class GameWorld implements Temporal, Drawable {
+public class GameWorld implements Temporal, Drawable{
 	private static final long UPDATE_INTERVAL_MS = 10;
 	private final int width;
 	private final int height;
@@ -76,6 +77,50 @@ public class GameWorld implements Temporal, Drawable {
 		new Thread(tickTock).start();
 
 	}
+	
+	public Color getColor() {
+		return this.backgroundColor;
+	}
+	
+	//Temporal-------------------------------------
+	@Override
+	public void timePassed() {
+		if (!this.isPaused) {
+			for (Temporal t : this.objectList) {
+				t.timePassed();
+			}
+		}
+		this.objectList.removeAll(this.objectToRemove);
+		this.objectToRemove.clear();
+		this.objectList.addAll(this.objectToAdd);
+		this.objectToAdd.clear();
+	}
+
+	@Override
+	public void die() {
+		// TODO Auto-generated method stub.
+
+	}
+	
+	@Override
+	public void updatePosition() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateSize() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateFuse() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	//---------------------------------------------
 
 	public void addBombList(Bomb bomb) {
 		this.bombList.add(bomb);
@@ -104,10 +149,6 @@ public class GameWorld implements Temporal, Drawable {
 		}
 	}
 
-	@Override
-	public Color getColor() {
-		return this.backgroundColor;
-	}
 
 	public void getLevel(String fileName) throws FileNotFoundException {
 		int numBlocks = 0;
@@ -251,38 +292,10 @@ public class GameWorld implements Temporal, Drawable {
 
 	public List<GameObject> getObjectList() {
 		return this.objectList;
-
 	}
 
-	@Override
 	public Shape getShape() {
 		return this.background;
-	}
-
-	public Point2D getCenterPoint() {
-		double x = this.width / 2;
-		double y = this.height / 2;
-		return new Point2D.Double(x, y);
-	}
-
-	@Override
-	public void timePassed() {
-		if (!this.isPaused) {
-			for (Temporal t : this.objectList) {
-				t.timePassed();
-			}
-		}
-		this.objectList.removeAll(this.objectToRemove);
-		this.objectToRemove.clear();
-		this.objectList.addAll(this.objectToAdd);
-		this.objectToAdd.clear();
-
-	}
-
-	@Override
-	public void die() {
-		// TODO Auto-generated method stub.
-
 	}
 
 	public void togglePause() {
@@ -365,9 +378,7 @@ public class GameWorld implements Temporal, Drawable {
 
 	}
 
-	public Dimension getSize() {
-		return new Dimension(this.width, this.height);
-	}
+	
 
 	public synchronized List<Drawable> getDrawableParts() {
 		return new ArrayList<Drawable>(this.objectList);
@@ -377,5 +388,23 @@ public class GameWorld implements Temporal, Drawable {
 		this.levelNum = 1;
 		updateLevel();
 	}
+	
+	public Dimension getDimension() {
+		return new Dimension(this.width, this.height);
+	}
+
+	@Override
+	public int getSize() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public BufferedImage getImage() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 
 }
