@@ -5,6 +5,7 @@ public class SpeedUp extends PowerUp {
 	
 	public SpeedUp(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
+		setColor(Color.orange);
 	}
 	
 	public void speedHero(){
@@ -21,10 +22,8 @@ public class SpeedUp extends PowerUp {
 	
 	@Override
 	public void updateFuse(){
-		//System.out.println("update fuse");
 		if(fuse > 0){
 			this.fuse--;
-			System.out.println(fuse);
 		}else{
 			this.fuseStart = false;
 			this.getWorld().getHero().setIsFaster(false);

@@ -6,7 +6,7 @@ public class MultiBomb extends PowerUp {
 
 	public MultiBomb(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
-		this.color = Color.BLACK;
+		setColor(Color.black);
 		
 	}
 	
@@ -19,7 +19,6 @@ public class MultiBomb extends PowerUp {
 
 	@Override
 	public void collideWithHero(Hero h) {
-		// TODO Auto-generated method stub.
 		multiBomb();
 		this.fuseStart = true;
 		this.size=0;
@@ -27,10 +26,8 @@ public class MultiBomb extends PowerUp {
 	
 	@Override
 	public void updateFuse(){
-		//System.out.println("update fuse");
 		if(fuse > 0){
 			this.fuse--;
-			System.out.println(fuse);
 		}else{
 			this.fuseStart = false;
 			this.getWorld().getHero().setMultiBomb(false);
