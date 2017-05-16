@@ -7,7 +7,6 @@ public class Explosion extends Bomb {
 	private int size;
 	private double x;
 	private double y;
-	private Color color;
 	private int fuse;
 
 	public Explosion(GameWorld world, Point2D centerPoint) {
@@ -18,7 +17,7 @@ public class Explosion extends Bomb {
 		}
 		this.x = this.getCenterPoint().getX();
 		this.y = this.getCenterPoint().getY();
-		this.color = Color.pink;
+		setColor(Color.pink);
 		this.fuse = 50;
 	}
 
