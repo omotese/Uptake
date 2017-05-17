@@ -29,11 +29,7 @@ public class HeroListener implements KeyListener {
 			myHero.setBomb();
 		}
 		
-		if(myHero.getHasDetonator()) {
-			if(e.getKeyCode() == KeyEvent.VK_SPACE) {
-				
-			}
-		}
+		
 	}
 
 	
