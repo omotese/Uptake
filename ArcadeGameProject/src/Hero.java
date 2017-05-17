@@ -8,10 +8,11 @@ public class Hero extends GameObject {
 	private double y;
 	private double dx;
 	private double dy;
+	private int lives;
 	private boolean isFaster;
 	private boolean hasMultiBomb;
-	private int lives;
 	private boolean hasExpandBomb;
+	private boolean hasDetonator;
 	
 	public Hero(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
@@ -24,6 +25,7 @@ public class Hero extends GameObject {
 		this.isFaster = false;
 		this.hasMultiBomb = false;
 		this.hasExpandBomb = false;
+		this.hasDetonator = false;
 		setColor(Color.YELLOW);
 	}
 
@@ -53,6 +55,10 @@ public class Hero extends GameObject {
 	public void setHasExpandBomb(boolean hasExpandBomb) {
 		this.hasExpandBomb = hasExpandBomb;
 	}
+	
+	public void setHasDetonator(boolean hasDetonator){
+		this.hasDetonator = hasDetonator;
+	}
 
 	public boolean getHasMultiBomb() {
 		return this.hasMultiBomb;
@@ -64,6 +70,10 @@ public class Hero extends GameObject {
 
 	public boolean getIsFaster() {
 		return this.isFaster;
+	}
+	
+	public boolean getHasDetonator() {
+		return this.hasDetonator;
 	}
 
 	// Movement-------------------------------------------
@@ -153,7 +163,6 @@ public class Hero extends GameObject {
 	// Collision--------------------------------------
 	@Override
 	public void collide(GameObject m) {
-		//System.out.println(m);
 		m.collideWithHero(this);
 	}
 
@@ -188,6 +197,11 @@ public class Hero extends GameObject {
 	@Override
 	public void collideWithMultiBomb(MultiBomb m) {
 		this.setHasExpandBomb(true);
+	}
+	
+	@Override
+	public void collideWithDetonator(Detonator d){
+		this.setHasDetonator(true);
 	}
 
 	@Override

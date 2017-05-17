@@ -53,8 +53,8 @@ public class Monster extends GameObject {
 
 	// Collision--------------------------------------
 	@Override
-	public void collide(GameObject m) {
-		m.collideWithMonster(this);
+	public void collide(GameObject o) {
+		o.collideWithMonster(this);
 	}
 
 	@Override

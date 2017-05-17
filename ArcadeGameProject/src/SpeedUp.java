@@ -14,7 +14,8 @@ public class SpeedUp extends PowerUp {
 		//System.out.println("speedup collide w/ hero");
 		h.collideWithSpeedUp(this);
 		this.setFuseStart(true);
-		this.die();
+		this.setSize(0);
+//		this.die();
 	}
 	
 	@Override

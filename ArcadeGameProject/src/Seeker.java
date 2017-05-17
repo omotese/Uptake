@@ -20,7 +20,7 @@ public class Seeker extends Monster {
 		this.startY = centerPoint.getY();
 		this.dx = 0;
 		this.dy = 0;
-		setColor(Color.green);
+		setColor(Color.BLACK);
 	}
 
 	// Drawable--------------------------------------
@@ -49,7 +49,6 @@ public class Seeker extends Monster {
 	// Collision--------------------------------------
 	@Override
 	public void collideWithWall(Wall w) {
-
 		if (movingX) {
 			this.x -= this.dx;
 			this.dx = 0;
