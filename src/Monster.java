@@ -97,4 +97,9 @@ public class Monster extends GameObject {
 		y = startY;
 	}
 
+	@Override
+	public String getName() {
+		return "monster";
+	}
+
 }

@@ -12,7 +12,7 @@ public class Explosion extends Bomb {
 	public Explosion(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
 		this.size = 130;
-		if (this.getWorld().getHero().getHasExpandBombPowerUp() == true) {
+		if (this.getWorld().getHero().getHasExpandBomb() == true) {
 			this.size = 230;
 		}
 		this.x = this.getCenterPoint().getX();

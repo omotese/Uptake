@@ -12,8 +12,8 @@ public class Hero extends GameObject {
 	private boolean isFaster;
 	private boolean hasMultiBomb;
 	private int lives;
-	private boolean hasExpandBombPowerUp;
-
+	private boolean hasExpandBomb;
+	
 	public Hero(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
 		this.size = 30;
@@ -24,7 +24,7 @@ public class Hero extends GameObject {
 		this.lives = 3;
 		this.isFaster = false;
 		this.hasMultiBomb = false;
-		this.hasExpandBombPowerUp = false;
+		this.hasExpandBomb = false;
 		setColor(Color.YELLOW);
 	}
 
@@ -32,7 +32,7 @@ public class Hero extends GameObject {
 		this.y = 50;
 		this.x = 50;
 		this.isFaster = false;
-		this.hasExpandBombPowerUp = false;
+		this.hasExpandBomb = false;
 		this.hasMultiBomb = false;
 	}
 
@@ -44,22 +44,23 @@ public class Hero extends GameObject {
 	// Setters and getters for powerup features' booleans-----------------------
 	public void setIsFaster(boolean isFaster) {
 		this.isFaster = isFaster;
+		//System.out.println("hero setisfaster"+this.getIsFaster());
 	}
 
 	public void setMultiBomb(boolean multiBomb) {
 		this.hasMultiBomb = multiBomb;
 	}
 
-	public void setHasExpandBombPowerUp(boolean hasExpandBombPowerUp) {
-		this.hasExpandBombPowerUp = hasExpandBombPowerUp;
+	public void setHasExpandBomb(boolean hasExpandBomb) {
+		this.hasExpandBomb = hasExpandBomb;
 	}
 
 	public boolean getHasMultiBomb() {
 		return this.hasMultiBomb;
 	}
 
-	public boolean getHasExpandBombPowerUp() {
-		return this.hasExpandBombPowerUp;
+	public boolean getHasExpandBomb() {
+		return this.hasExpandBomb;
 	}
 
 	public boolean getIsFaster() {
@@ -70,6 +71,7 @@ public class Hero extends GameObject {
 	public void moveUp() {
 		if (isFaster == true) {
 			this.dy = -5;
+			System.out.println("move up faster");
 		} else {
 			this.dy = -2.5;
 		}
@@ -117,7 +119,6 @@ public class Hero extends GameObject {
 
 	@Override
 	public void updatePosition() {
-		this.detectCollision();
 
 		Point2D.Double myPoint = new Point2D.Double(x, y);
 		
@@ -153,6 +154,7 @@ public class Hero extends GameObject {
 	// Collision--------------------------------------
 	@Override
 	public void collide(GameObject m) {
+		//System.out.println(m);
 		m.collideWithHero(this);
 	}
 
@@ -172,10 +174,27 @@ public class Hero extends GameObject {
 	public void collideWithMonster(Monster m) {
 		this.die();
 	}
+	
+	@Override
+	public void collideWithSpeedUp(SpeedUp s) {
+		this.setIsFaster(true);
+		System.out.println("hero collide w/ speedup");
+	}
+	
+	@Override
+	public void collideWithBombExpand(BombExpand b) {
+		this.setMultiBomb(true);
+	}
+	
+	@Override
+	public void collideWithMultiBomb(MultiBomb m) {
+		this.setHasExpandBomb(true);
+	}
 
 	@Override
-	public void collideWithPowerUp(PowerUp p) {
-
+	public String getName() {
+		return "hero";
 	}
+
 
 }

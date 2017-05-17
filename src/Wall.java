@@ -41,6 +41,12 @@ public class Wall extends GameObject {
 		// TODO Auto-generated method stub.
 		m.collideWithWall(this);
 	}
+
+
+	@Override
+	public String getName() {
+		return "wall";
+	}
 	
 
 

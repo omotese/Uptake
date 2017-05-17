@@ -14,24 +14,28 @@ public class MultiBomb extends PowerUp {
 		this.getWorld().getHero().setMultiBomb(true);
 	}
 	
-
-	
-
 	@Override
 	public void collideWithHero(Hero h) {
-		multiBomb();
-		this.fuseStart = true;
-		this.size=0;
+		h.collideWithMultiBomb(this);
+		this.setFuseStart(true);
+		this.die();
 	}
 	
 	@Override
 	public void updateFuse(){
-		if(fuse > 0){
-			this.fuse--;
-		}else{
-			this.fuseStart = false;
+		if (getFuse() > 0) {
+			this.setFuse(-1);;
+		} else {
+			this.setFuseStart(false);
 			this.getWorld().getHero().setMultiBomb(false);
 		}
+			
+		
+	}
+
+	@Override
+	public String getName() {
+		return "multibomb";
 	}
 
 }

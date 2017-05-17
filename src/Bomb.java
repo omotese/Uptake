@@ -7,14 +7,12 @@ public class Bomb extends GameObject {
 	private double x;
 	private double y;
 	private double size;
-	private String name;
 	private double maxSize;
 	private boolean mySize;
 	private boolean hitExplosion;
 
 	public Bomb(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
-		this.name = "bomb";
 		this.size = 30;
 		this.maxSize = 130;
 		this.hitExplosion = false;
@@ -25,7 +23,7 @@ public class Bomb extends GameObject {
 
 		//need to be moved to somewhere else
 		//created method increaseMaxSize
-		if (this.getWorld().getHero().getHasExpandBombPowerUp() == true) {
+		if (this.getWorld().getHero().getHasExpandBomb() == true) {
 			this.maxSize = 230;
 		}
 
@@ -33,6 +31,11 @@ public class Bomb extends GameObject {
 		this.getWorld().bombExists = true;
 	}
 
+	//super-----------------------------------------
+	@Override 
+	public String getName(){
+		return "bomb";
+	}
 	// Drawable--------------------------------------
 	@Override
 	public Shape getShape() {
