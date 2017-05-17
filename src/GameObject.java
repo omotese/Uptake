@@ -90,7 +90,6 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 	public void timePassed() {
 		if(!isPaused){
 			updateFuse();
-//			updateSize();
 			updatePosition();
 		}
 	}
