@@ -14,7 +14,6 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 	private Point2D centerPoint;
 	private boolean isPaused;
 	private GameWorld world;
-	private String name;
 	private Color color;
 	private int size;
 	private Rectangle2D shape;
@@ -23,7 +22,6 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 	public GameObject(GameWorld world,Point2D centerPoint) {
 		this.centerPoint= centerPoint;
 		this.world=world;
-		this.name = "";
 		this.isPaused = false;
 		this.color = null;
 		this.size = 0;
@@ -31,9 +29,7 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 	}
 	//super methods----------------------------------------
 		
-	public String getName(){
-		return this.name;
-	}
+	public abstract String getName();
 	
 	public void setColor(Color myColor) {
 		this.color = myColor;
@@ -147,10 +143,6 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 	}
 
 	@Override
-	public void collideWithPowerUp(PowerUp p) {
-	}
-
-	@Override
 	public void collideWithMonster(Monster m) {
 	}
 
@@ -169,4 +161,17 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 	@Override
 	public void collideWithExplosion(Explosion e) {
 	}
+	
+	@Override
+	public void collideWithBombExpand(BombExpand b) {
+	}
+	
+	@Override
+	public void collideWithMultiBomb(MultiBomb m) {
+	}
+	
+	@Override
+	public void collideWithSpeedUp(SpeedUp s) {
+	}
+	
 }

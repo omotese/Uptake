@@ -13,7 +13,10 @@ public interface Collision {
 	abstract void collideWithBomb(Bomb b);
 	
 	abstract void collideWithExplosion(Explosion e);
-
-	abstract void collideWithPowerUp(PowerUp p);
 	
+	abstract void collideWithSpeedUp(SpeedUp s);
+	
+	abstract void collideWithMultiBomb(MultiBomb m);
+	
+	abstract void collideWithBombExpand(BombExpand b);
 }

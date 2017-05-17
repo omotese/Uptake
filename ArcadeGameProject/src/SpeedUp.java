@@ -7,27 +7,32 @@ public class SpeedUp extends PowerUp {
 		super(world, centerPoint);
 		setColor(Color.orange);
 	}
-	
-	public void speedHero(){
-		this.getWorld().getHero().setIsFaster(true);
-	}
 
 
 	@Override
 	public void collideWithHero(Hero h) {
-		speedHero();
-		this.fuseStart = true;
-		this.size = 0;
+		//System.out.println("speedup collide w/ hero");
+		h.collideWithSpeedUp(this);
+		this.setFuseStart(true);
+		this.die();
 	}
 	
 	@Override
 	public void updateFuse(){
-		if(fuse > 0){
-			this.fuse--;
+		if(getFuse() > 0){
+			this.setFuse(-1);;
 		}else{
-			this.fuseStart = false;
+			this.setFuseStart(false);
+			//System.out.println("fuuuuuse");
 			this.getWorld().getHero().setIsFaster(false);
 		}
 	}
+
+
+	@Override
+	public String getName() {
+		return "speedUp";
+	}
+	
 
 }

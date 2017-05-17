@@ -8,15 +8,12 @@ public class BombExpand extends PowerUp {
 		setColor(Color.MAGENTA);
 	}
 
-	public void allowBig() {
-		this.getWorld().getHero().setHasExpandBombPowerUp(true);
-	}
 
 	@Override
 	public void collideWithHero(Hero h) {
-		allowBig();
-		this.fuseStart = true;
-		this.size = 0;
+		h.collideWithBombExpand(this);
+		this.setFuseStart(true);
+		this.die();
 	}
 
 	public void expandBomb() {
@@ -27,12 +24,18 @@ public class BombExpand extends PowerUp {
 
 	@Override
 	public void updateFuse() {
-		if (fuse > 0) {
-			this.fuse--;
+		if (getFuse() > 0) {
+			this.setFuse(-1);;
 		} else {
-			this.fuseStart = false;
-			this.getWorld().getHero().setHasExpandBombPowerUp(false);
+			this.setFuseStart(false);
+			this.getWorld().getHero().setHasExpandBomb(false);
 		}
+	}
+
+
+	@Override
+	public String getName() {
+		return "bombExpand";
 	}
 
 }

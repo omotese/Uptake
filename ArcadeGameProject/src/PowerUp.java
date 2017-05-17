@@ -3,11 +3,11 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 public abstract class PowerUp extends GameObject{
-	protected double x;
-	protected double y;
-	protected int fuse;
-	protected boolean fuseStart;
-	protected int size;
+	private double x;
+	private double y;
+	private int fuse;
+	private boolean fuseStart;
+	private int size;
 	
 	
 	public PowerUp(GameWorld world, Point2D centerPoint) {
@@ -29,6 +29,22 @@ public abstract class PowerUp extends GameObject{
 		if(fuseStart){
 			this.updateFuse();
 		}
-		
 	}
+	
+	public int getFuse(){
+		return this.fuse;
+	}
+	
+	public void setFuse(int addFuse){
+		this.fuse += addFuse;
+	}
+	
+	public void setFuseStart(boolean fuseStart){
+		this.fuseStart = fuseStart;
+	}
+	
+	public boolean getFuseStart() {
+		return this.fuseStart;
+	}
+	
 }
