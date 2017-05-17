@@ -64,21 +64,22 @@ public class GameWorldComponent extends JComponent {
 	}
 
 	private void drawDrawable(Graphics2D g2, Drawable c) {
-		Color color = c.getColor();
-		if (color == null) {
-			showNullPointerMessage("color", c);
-			return;
-		}
-		Shape shape = c.getShape();
-		if (shape == null) {
-			showNullPointerMessage("shape", c);
-			return;
-		} else {
-			//Color co = new Color(50, 50, 50, 0);
-			g2.setColor(color);
-		}
-		g2.fill(shape);
-//		
+//		Color color = c.getColor();
+//		if (color == null) {
+//			showNullPointerMessage("color", c);
+//			return;
+//		}
+//		Shape shape = c.getShape();
+//		if (shape == null) {
+//			showNullPointerMessage("shape", c);
+//			return;
+//		} else {
+//			//Color co = new Color(50, 50, 50, 0);
+//			g2.setColor(color);
+//		}
+//		g2.fill(shape);
+		c.drawImage(g2);
+		
 //		BufferedImage img = c.getImage();
 //		if (img == null) {
 //			showNullPointerMessage("img", c);

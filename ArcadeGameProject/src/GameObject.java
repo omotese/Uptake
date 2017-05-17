@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.Transparency;
 import java.awt.geom.Point2D;
@@ -62,15 +63,15 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 	}
 
 	@Override
-	public BufferedImage getImage() {
+	public void drawImage(Graphics2D g2) {
 		String fileName = "images/" + this.getName();
 		fileName += ".png";
-		BufferedImage img = new BufferedImage(this.getSize(), this.getSize(), Transparency.OPAQUE);
+		BufferedImage img;
 		
 		try {
 			img = ImageIO.read(new File(fileName));
+			g2.drawImage(img, (int)this.getCenterPoint().getX(), (int)this.getCenterPoint().getY(), this.getSize(), this.getSize(), null);
 		} catch (IOException e) {}
-		return img;
 		
 	}
 	
