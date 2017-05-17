@@ -24,6 +24,7 @@ public class MultiBomb extends PowerUp {
 		} else {
 			this.setFuseStart(false);
 			this.getWorld().getHero().setMultiBomb(false);
+			this.getWorld().getHero().setName("hero");
 		}
 		}	
 		
