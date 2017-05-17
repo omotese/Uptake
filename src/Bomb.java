@@ -19,7 +19,7 @@ public class Bomb extends GameObject {
 //		this.maxSize = 130;
 		this.hitExplosion = false;
 		setColor(Color.WHITE);
-		this.fuse = 100;
+		this.fuse = 200;
 
 		this.x = Math.round((this.getCenterPoint().getX()) / 50) * 50;
 		this.y = Math.round((this.getCenterPoint().getY()) / 50) * 50;
@@ -65,7 +65,8 @@ public class Bomb extends GameObject {
 	@Override
 	public void collideWithExplosion(Explosion e) {
 		//Explosion exp = new Explosion(this.getWorld(), new Point2D.Double(x,y)); this.getWorld().addGameObject(exp);
-		this.hitExplosion = true;
+//		this.hitExplosion = true;
+		this.createExplosion();
 		this.die();
 	}
 
