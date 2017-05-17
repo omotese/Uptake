@@ -42,10 +42,13 @@ public class GameListener implements KeyListener {
 		
 		if(this.world.getHero().getHasDetonator()) {
 			if(e.getKeyCode() == KeyEvent.VK_SPACE) {
-				for(Bomb b: this.world.getBombList()){
-					b.createExplosion();
-					b.die();
-				}
+				this.world.getLastBomb().createExplosion();
+				this.world.getLastBomb().die();
+//				for(Bomb b: this.world.getBombList()){
+//					b.createExplosion();
+//					b.die();
+//				}
+//				System.out.println("booom");
 				
 			}
 		}

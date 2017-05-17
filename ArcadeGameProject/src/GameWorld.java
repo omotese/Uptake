@@ -127,6 +127,10 @@ public class GameWorld implements Temporal, Drawable {
 		return this.bombList;
 	}
 	
+	public Bomb getLastBomb() {
+		return this.bombList.get(0);
+	}
+	
 	public void removeFromBombList(Bomb b) {
 		this.bombList.remove(b);
 	}
