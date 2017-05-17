@@ -178,11 +178,13 @@ public class Hero extends GameObject {
 	@Override
 	public void collideWithExplosion(Explosion e) {
 		this.die();
+		this.setName("hero");
 	}
 
 	@Override
 	public void collideWithMonster(Monster m) {
 		this.die();
+		this.setName("hero");
 	}
 	
 	@Override
