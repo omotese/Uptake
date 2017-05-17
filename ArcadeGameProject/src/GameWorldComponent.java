@@ -26,11 +26,9 @@ public class GameWorldComponent extends JComponent {
 		setPreferredSize(world.getDimension());
 		setMaximumSize(world.getDimension());
 
-		KeyListener level = new LevelListener(this.world);
+		KeyListener level = new GameListener(this.world);
 		this.addKeyListener(level);
-
-		KeyListener hl = new HeroListener(world.getHero(), this);
-		this.addKeyListener(hl);
+		
 		this.setFocusable(true);
 		this.requestFocus();
 
