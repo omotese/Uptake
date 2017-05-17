@@ -108,11 +108,6 @@ public class GameWorld implements Temporal, Drawable {
 
 	}
 
-	@Override
-	public void updateSize() {
-		// TODO Auto-generated method stub
-
-	}
 
 	@Override
 	public void updateFuse() {

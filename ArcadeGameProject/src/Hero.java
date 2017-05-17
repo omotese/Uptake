@@ -191,12 +191,12 @@ public class Hero extends GameObject {
 	
 	@Override
 	public void collideWithBombExpand(BombExpand b) {
-		this.setMultiBomb(true);
+		this.setHasExpandBomb(true);
 	}
 	
 	@Override
 	public void collideWithMultiBomb(MultiBomb m) {
-		this.setHasExpandBomb(true);
+		this.setMultiBomb(true);
 	}
 	
 	@Override
