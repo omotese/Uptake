@@ -5,7 +5,6 @@ import java.awt.geom.Rectangle2D;
 import java.util.Random;
 
 public class Monster extends GameObject {
-	private int size;
 	private double x;
 	private double y;
 	private double dx;
@@ -23,13 +22,13 @@ public class Monster extends GameObject {
 		this.dy = 1;
 		setColor(Color.RED);
 
-		this.size = 40;
+		this.setSize(40);
 	}
 
 	// Drawable--------------------------------------
 	@Override
 	public Shape getShape() {
-		return new Rectangle2D.Double(x, y, this.size, this.size);
+		return new Rectangle2D.Double(x, y, this.getSize(), this.getSize());
 	}
 
 	// Temporal--------------------------------------

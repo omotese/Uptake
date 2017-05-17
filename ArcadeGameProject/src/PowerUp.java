@@ -7,7 +7,6 @@ public abstract class PowerUp extends GameObject{
 	private double y;
 	private int fuse;
 	private boolean fuseStart;
-	private int size;
 	
 	
 	public PowerUp(GameWorld world, Point2D centerPoint) {
@@ -16,19 +15,12 @@ public abstract class PowerUp extends GameObject{
 		this.y = centerPoint.getY();
 		this.fuse = 2000;
 		this.fuseStart = false;
-		this.size = 40;
+		this.setSize(40);
 	}
 	
 	@Override
 	public Shape getShape() {
-		return new Rectangle2D.Double(this.x,this.y, size, size);
-	}
-
-	@Override
-	public void updatePosition() {
-		if(fuseStart){
-			this.updateFuse();
-		}
+		return new Rectangle2D.Double(this.x,this.y, getSize(), getSize());
 	}
 	
 	public int getFuse(){

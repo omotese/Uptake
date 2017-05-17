@@ -79,6 +79,11 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 		return this.size;
 	}
 	
+	@Override
+	public void setSize(int size){
+		this.size = size;
+	}
+	
 	//Temporal----------------------------------------
 
 	@Override

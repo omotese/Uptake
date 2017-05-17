@@ -14,6 +14,8 @@ public interface Drawable {
 	
 	int getSize();
 	
+	void setSize(int size);
+	
 	BufferedImage getImage();
 	
 

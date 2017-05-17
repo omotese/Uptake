@@ -4,7 +4,6 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 public class Hero extends GameObject {
-	private int size;
 	private double x;
 	private double y;
 	private double dx;
@@ -16,7 +15,7 @@ public class Hero extends GameObject {
 	
 	public Hero(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
-		this.size = 30;
+		this.setSize(30);
 		this.x = centerPoint.getX();
 		this.y = centerPoint.getY();
 		this.dx = 0;
@@ -132,7 +131,7 @@ public class Hero extends GameObject {
 	// Drawable--------------------------------------
 	@Override
 	public Shape getShape() {
-		Rectangle2D.Double myRect = new Rectangle2D.Double(x, y, this.size, this.size);
+		Rectangle2D.Double myRect = new Rectangle2D.Double(x, y, this.getSize(), this.getSize());
 		return myRect;
 	}
 
