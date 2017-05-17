@@ -25,6 +25,17 @@ public class LevelListener implements KeyListener {
 		if(e.getKeyCode() == KeyEvent.VK_P) {
 			this.world.togglePause();
 		}
+		
+		if(this.world.getHero().getHasDetonator()) {
+			if(e.getKeyCode() == KeyEvent.VK_SPACE) {
+				for(Bomb b: this.world.getBombList()){
+					b.createExplosion();
+					b.die();
+				}
+				
+			}
+		}
+		
 	}
 
 	@Override
