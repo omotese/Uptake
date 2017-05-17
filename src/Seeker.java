@@ -22,6 +22,10 @@ public class Seeker extends Monster {
 		this.dy = 0;
 		setColor(Color.BLACK);
 	}
+	@Override
+	public String getName() {
+		return "seeker";
+	}
 
 	// Drawable--------------------------------------
 	@Override

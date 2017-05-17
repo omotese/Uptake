@@ -37,7 +37,7 @@ public class BombExpand extends PowerUp {
 
 	@Override
 	public String getName() {
-		return "bombExpand";
+		return "bombexpand";
 	}
 
 }

@@ -16,7 +16,7 @@ public interface Drawable {
 	
 	void setSize(int size);
 	
-	BufferedImage getImage();
+	void drawImage(Graphics2D g2);
 	
 
 }

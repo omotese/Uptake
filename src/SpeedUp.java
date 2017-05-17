@@ -35,7 +35,7 @@ public class SpeedUp extends PowerUp {
 
 	@Override
 	public String getName() {
-		return "speedUp";
+		return "speedup";
 	}
 	
 
