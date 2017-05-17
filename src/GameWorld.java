@@ -395,7 +395,6 @@ public class GameWorld implements Temporal, Drawable{
 
 	@Override
 	public int getSize() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -403,6 +402,11 @@ public class GameWorld implements Temporal, Drawable{
 	public BufferedImage getImage() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void setSize(int size) {
+		
 	}
 
 	

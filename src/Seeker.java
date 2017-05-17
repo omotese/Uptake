@@ -10,7 +10,6 @@ public class Seeker extends Monster {
 	private double startY;
 	private int dx;
 	private int dy;
-	private int size;
 	private boolean movingX;
 
 	public Seeker(GameWorld world, Point2D centerPoint) {
@@ -21,14 +20,13 @@ public class Seeker extends Monster {
 		this.startY = centerPoint.getY();
 		this.dx = 0;
 		this.dy = 0;
-		this.size = 40;
 		setColor(Color.green);
 	}
 
 	// Drawable--------------------------------------
 	@Override
 	public Shape getShape() {
-		Rectangle2D.Double myRect = new Rectangle2D.Double(x, y, this.size, this.size);
+		Rectangle2D.Double myRect = new Rectangle2D.Double(x, y, this.getSize(), this.getSize());
 		return myRect;
 	}
 

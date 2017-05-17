@@ -6,14 +6,14 @@ import java.awt.geom.Rectangle2D;
 public class Bomb extends GameObject {
 	private double x;
 	private double y;
-	private double size;
 	private double maxSize;
 	private boolean mySize;
 	private boolean hitExplosion;
+	private double bombSize;
 
 	public Bomb(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
-		this.size = 30;
+		this.bombSize = 30;
 		this.maxSize = 130;
 		this.hitExplosion = false;
 		setColor(Color.WHITE);
@@ -39,14 +39,14 @@ public class Bomb extends GameObject {
 	// Drawable--------------------------------------
 	@Override
 	public Shape getShape() {
-		Rectangle2D.Double myRect = new Rectangle2D.Double(x, y, this.size, this.size);
+		Rectangle2D.Double myRect = new Rectangle2D.Double(x, y, this.bombSize, this.bombSize);
 		return myRect;
 	}
 	
 	// Temporal--------------------------------------
 	@Override
 	public void updateSize() {
-		if (size >= maxSize || this.hitExplosion) {
+		if (this.bombSize >= maxSize || this.hitExplosion) {
 			System.out.println(this.hitExplosion);
 			Explosion exp = new Explosion(this.getWorld(), new Point2D.Double(x, y));
 			// System.out.println("max"+maxSize);
@@ -55,14 +55,14 @@ public class Bomb extends GameObject {
 			this.getWorld().bombExists = false;
 
 		} else {
-			size += .6;
+			this.bombSize += .6;
 		}
 
 	}
 
 	@Override
 	public void updatePosition() {
-		if (size <= maxSize) {
+		if (this.bombSize <= maxSize) {
 			x -= .3;
 			y -= .3;
 		}

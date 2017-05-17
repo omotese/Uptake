@@ -23,13 +23,14 @@ public class MultiBomb extends PowerUp {
 	
 	@Override
 	public void updateFuse(){
+		if(this.getFuseStart()){
 		if (getFuse() > 0) {
-			this.setFuse(-1);;
+			this.setFuse(-1);
 		} else {
 			this.setFuseStart(false);
 			this.getWorld().getHero().setMultiBomb(false);
 		}
-			
+		}	
 		
 	}
 

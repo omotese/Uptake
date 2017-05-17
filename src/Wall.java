@@ -7,7 +7,6 @@ public class Wall extends GameObject {
 	private String name;
 	private double x;
 	private double y;
-	private int size;
 	
 	public Wall(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
@@ -15,14 +14,14 @@ public class Wall extends GameObject {
 		this.x= this.getCenterPoint().getX();
 		this.y= this.getCenterPoint().getY();
 		setColor(Color.gray);
-		this.size=50;
+		this.setSize(50);
 	}
 	
 
 	//Drawable--------------------------------------
 	@Override
 	public Shape getShape(){
-		Rectangle2D.Double myRect= new Rectangle2D.Double(x,y,this.size, this.size);
+		Rectangle2D.Double myRect= new Rectangle2D.Double(x,y,this.getSize(), this.getSize());
 		return myRect ;
 	}
 	

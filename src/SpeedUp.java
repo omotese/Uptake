@@ -19,13 +19,16 @@ public class SpeedUp extends PowerUp {
 	
 	@Override
 	public void updateFuse(){
-		if(getFuse() > 0){
-			this.setFuse(-1);;
-		}else{
-			this.setFuseStart(false);
-			//System.out.println("fuuuuuse");
-			this.getWorld().getHero().setIsFaster(false);
+		if(this.getFuseStart()){
+			if(getFuse() > 0){
+				this.setFuse(-1);
+				System.out.println(this.getFuse());
+			}else{
+				this.setFuseStart(false);
+				this.getWorld().getHero().setIsFaster(false);
+			}
 		}
+		
 	}
 
 
