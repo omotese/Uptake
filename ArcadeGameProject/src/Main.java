@@ -24,6 +24,7 @@ public class Main {
 
 		JFrame frame = new JFrame();
 		frame.setSize(850, 650);
+		frame.setTitle("BomberEmoji!");
 
 		frame.add(worldComponent);
 		frame.pack();

@@ -15,7 +15,6 @@ public class SpeedUp extends PowerUp {
 		h.collideWithSpeedUp(this);
 		this.setFuseStart(true);
 		this.setSize(0);
-//		this.die();
 	}
 	
 	@Override
@@ -27,6 +26,7 @@ public class SpeedUp extends PowerUp {
 			}else{
 				this.setFuseStart(false);
 				this.getWorld().getHero().setIsFaster(false);
+				this.getWorld().getHero().setName("hero");
 			}
 		}
 		

@@ -30,6 +30,7 @@ public class BombExpand extends PowerUp {
 		} else {
 			this.setFuseStart(false);
 			this.getWorld().getHero().setHasExpandBomb(false);
+			this.getWorld().getHero().setName("hero");
 		}
 		}
 	}

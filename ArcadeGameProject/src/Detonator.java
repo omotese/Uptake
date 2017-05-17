@@ -28,6 +28,7 @@ public class Detonator extends PowerUp {
 		} else {
 			this.setFuseStart(false);
 			this.getWorld().getHero().setHasDetonator(false);
+			this.getWorld().getHero().setName("hero");
 			}
 		}	
 		

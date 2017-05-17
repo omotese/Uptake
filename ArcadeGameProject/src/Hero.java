@@ -13,6 +13,7 @@ public class Hero extends GameObject {
 	private boolean hasMultiBomb;
 	private boolean hasExpandBomb;
 	private boolean hasDetonator;
+	private String name;
 	
 	public Hero(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
@@ -27,6 +28,7 @@ public class Hero extends GameObject {
 		this.hasExpandBomb = false;
 		this.hasDetonator = false;
 		setColor(Color.YELLOW);
+		this.name = "hero";
 	}
 
 	public void reset() {
@@ -186,27 +188,34 @@ public class Hero extends GameObject {
 	@Override
 	public void collideWithSpeedUp(SpeedUp s) {
 		this.setIsFaster(true);
-		System.out.println("hero collide w/ speedup");
+		this.setName("herospeedup");
 	}
 	
 	@Override
 	public void collideWithBombExpand(BombExpand b) {
 		this.setHasExpandBomb(true);
+		this.setName("herobombexpand");
 	}
 	
 	@Override
 	public void collideWithMultiBomb(MultiBomb m) {
 		this.setMultiBomb(true);
+		this.setName("heromultibomb");
 	}
 	
 	@Override
 	public void collideWithDetonator(Detonator d){
 		this.setHasDetonator(true);
+		this.setName("herodetonator");
 	}
 
 	@Override
 	public String getName() {
-		return "hero";
+		return this.name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
 	}
 
 
