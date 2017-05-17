@@ -1,17 +1,21 @@
 import java.awt.Color;
 import java.awt.geom.Point2D;
 
-public class MultiBomb extends PowerUp {
+public class Detonator extends PowerUp {
 
-	public MultiBomb(GameWorld world, Point2D centerPoint) {
+	public Detonator(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
-		setColor(Color.GREEN);
-		
+		setColor(Color.cyan);
+	}
+
+	@Override
+	public String getName() {
+		return "detonator";
 	}
 	
 	@Override
 	public void collideWithHero(Hero h) {
-		h.collideWithMultiBomb(this);
+		h.collideWithDetonator(this);
 		this.setFuseStart(true);
 		this.setSize(0);
 	}
@@ -23,15 +27,10 @@ public class MultiBomb extends PowerUp {
 			this.setFuse(-1);
 		} else {
 			this.setFuseStart(false);
-			this.getWorld().getHero().setMultiBomb(false);
-		}
+			this.getWorld().getHero().setHasDetonator(false);
+			}
 		}	
 		
-	}
-
-	@Override
-	public String getName() {
-		return "multibomb";
 	}
 
 }

@@ -19,4 +19,6 @@ public interface Collision {
 	abstract void collideWithMultiBomb(MultiBomb m);
 	
 	abstract void collideWithBombExpand(BombExpand b);
+	
+	abstract void collideWithDetonator(Detonator d);
 }

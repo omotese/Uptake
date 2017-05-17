@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class GameWorld implements Temporal, Drawable{
+public class GameWorld implements Temporal, Drawable {
 	private static final long UPDATE_INTERVAL_MS = 10;
 	private final int width;
 	private final int height;
@@ -50,7 +50,7 @@ public class GameWorld implements Temporal, Drawable{
 		this.setHero(hero);
 		this.addWall();
 		this.levelNum = 1;
-		this.bombCount=0;
+		this.bombCount = 0;
 
 		String levelString = "Level" + levelNum + ".txt";
 		try {
@@ -77,12 +77,12 @@ public class GameWorld implements Temporal, Drawable{
 		new Thread(tickTock).start();
 
 	}
-	
+
 	public Color getColor() {
 		return this.backgroundColor;
 	}
-	
-	//Temporal-------------------------------------
+
+	// Temporal-------------------------------------
 	@Override
 	public void timePassed() {
 		if (!this.isPaused) {
@@ -101,26 +101,26 @@ public class GameWorld implements Temporal, Drawable{
 		// TODO Auto-generated method stub.
 
 	}
-	
+
 	@Override
 	public void updatePosition() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void updateSize() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void updateFuse() {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
-	//---------------------------------------------
+
+	// ---------------------------------------------
 
 	public void addBombList(Bomb bomb) {
 		this.bombList.add(bomb);
@@ -149,7 +149,6 @@ public class GameWorld implements Temporal, Drawable{
 		}
 	}
 
-
 	public void getLevel(String fileName) throws FileNotFoundException {
 		int numBlocks = 0;
 		int numMonsters = 0;
@@ -160,21 +159,21 @@ public class GameWorld implements Temporal, Drawable{
 			numBlocks = 22;
 			numMonsters = 2;
 			numSeekers = 2;
-			numPowerUps = 3;
+			numPowerUps = 4;
 			monstersLeft = 4;
 		}
 		if (levelNum == 2) {
 			numBlocks = 22;
 			numMonsters = 4;
 			numSeekers = 2;
-			numPowerUps = 3;
+			numPowerUps = 4;
 			monstersLeft = 6;
 		}
 		if (levelNum == 3) {
 			numBlocks = 30;
 			numMonsters = 6;
 			numSeekers = 3;
-			numPowerUps = 3;
+			numPowerUps = 4;
 			monstersLeft = 9;
 		}
 
@@ -226,18 +225,23 @@ public class GameWorld implements Temporal, Drawable{
 			try {
 				int x = s.nextInt();
 				int y = s.nextInt();
-				if(k==0){
-				SpeedUp speedPower = new SpeedUp(this, new Point2D.Double(x * 50 + 5, y * 50 + 5));
-				this.powerUps.add(speedPower);
+				if (k == 0) {
+					SpeedUp speedPower = new SpeedUp(this, new Point2D.Double(x * 50 + 5, y * 50 + 5));
+					this.powerUps.add(speedPower);
 				}
-				if(k==1){
-				BombExpand bombPower = new BombExpand(this, new Point2D.Double(x * 50 + 5, y * 50 + 5));
-				this.powerUps.add(bombPower);
+				if (k == 1) {
+					BombExpand bombPower = new BombExpand(this, new Point2D.Double(x * 50 + 5, y * 50 + 5));
+					this.powerUps.add(bombPower);
 				}
-				if(k==2){
-				MultiBomb multiBomb = new MultiBomb(this, new Point2D.Double(x * 50 + 5, y * 50 + 5));
-				this.powerUps.add(multiBomb);
+				if (k == 2) {
+					MultiBomb multiBomb = new MultiBomb(this, new Point2D.Double(x * 50 + 5, y * 50 + 5));
+					this.powerUps.add(multiBomb);
 				}
+				if (k == 3) {
+					Detonator detonator = new Detonator(this, new Point2D.Double(x * 50 + 5, y * 50 + 5));
+					this.powerUps.add(detonator);
+				}
+
 				for (PowerUp p : powerUps) {
 					this.addGameObject(p);
 				}
@@ -251,7 +255,7 @@ public class GameWorld implements Temporal, Drawable{
 	public void killAMonster() {
 		System.out.println("(there were " + this.monstersLeft + " monsters left");
 
-		this.monstersLeft= this.monstersLeft -1;
+		this.monstersLeft = this.monstersLeft - 1;
 		System.out.println("now there are " + this.monstersLeft + " monsters left");
 		if (this.monstersLeft == 0) {
 			levelUp();
@@ -378,8 +382,6 @@ public class GameWorld implements Temporal, Drawable{
 
 	}
 
-	
-
 	public synchronized List<Drawable> getDrawableParts() {
 		return new ArrayList<Drawable>(this.objectList);
 	}
@@ -388,7 +390,7 @@ public class GameWorld implements Temporal, Drawable{
 		this.levelNum = 1;
 		updateLevel();
 	}
-	
+
 	public Dimension getDimension() {
 		return new Dimension(this.width, this.height);
 	}
@@ -406,9 +408,7 @@ public class GameWorld implements Temporal, Drawable{
 
 	@Override
 	public void setSize(int size) {
-		
-	}
 
-	
+	}
 
 }

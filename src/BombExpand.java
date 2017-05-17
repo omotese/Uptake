@@ -13,7 +13,7 @@ public class BombExpand extends PowerUp {
 	public void collideWithHero(Hero h) {
 		h.collideWithBombExpand(this);
 		this.setFuseStart(true);
-		this.die();
+		this.setSize(0);
 	}
 
 	public void expandBomb() {

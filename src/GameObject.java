@@ -179,4 +179,8 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 	public void collideWithSpeedUp(SpeedUp s) {
 	}
 	
+	@Override
+	public void collideWithDetonator(Detonator d){
+	}
+	
 }
