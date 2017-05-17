@@ -90,7 +90,7 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 	public void timePassed() {
 		if(!isPaused){
 			updateFuse();
-			updateSize();
+//			updateSize();
 			updatePosition();
 		}
 	}
@@ -115,11 +115,7 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 	public void updatePosition() {
 		
 	}
-	
-	@Override
-	public void updateSize() {
-		
-	}
+
 	
 	@Override
 	public void updateFuse() {

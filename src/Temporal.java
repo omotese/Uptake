@@ -9,7 +9,5 @@ public interface Temporal {
 	
 	void updatePosition();
 	
-	public void updateSize();
-	
 	public void updateFuse();
 }

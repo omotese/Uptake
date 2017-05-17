@@ -3,17 +3,17 @@ import java.awt.Shape;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
-public class Explosion extends Bomb {
+public class Explosion extends GameObject {
 	private double x;
 	private double y;
 	private int fuse;
 
 	public Explosion(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
-		this.setSize(130);
-		if (this.getWorld().getHero().getHasExpandBomb() == true) {
-			this.setSize(230);
-		}
+		this.setSize(50);
+//		if (this.getWorld().getHero().getHasExpandBomb() == true) {
+//			this.setSize(230);
+//		}
 		this.x = this.getCenterPoint().getX();
 		this.y = this.getCenterPoint().getY();
 		setColor(Color.pink);
@@ -58,6 +58,11 @@ public class Explosion extends Bomb {
 
 	public void collideWithBomb(Bomb b) {
 		b.collideWithExplosion(this);
+	}
+
+	@Override
+	public String getName() {
+		return "explosion";
 	}
 
 }
