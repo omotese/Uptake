@@ -10,8 +10,6 @@ public class GameListener implements KeyListener {
 		this.world = gameWorld;
 	}
 	
-
-	
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_UP) {

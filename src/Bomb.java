@@ -58,6 +58,12 @@ public class Bomb extends GameObject {
 		}
 	}
 	
+	@Override
+	public void die() {
+		this.getWorld().removeGameObject(this);
+		this.getWorld().removeFromBombList(this);
+	}
+	
 	// Relocatable------------------------------------
 
 	// Collision--------------------------------------
