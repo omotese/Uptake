@@ -4,12 +4,12 @@ import java.awt.event.KeyListener;
 public class GameListener implements KeyListener {
 
 	private GameWorld world;
-	
-	public GameListener( GameWorld gameWorld){
-		
+
+	public GameListener(GameWorld gameWorld) {
+
 		this.world = gameWorld;
 	}
-	
+
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_UP) {
@@ -24,43 +24,42 @@ public class GameListener implements KeyListener {
 		if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 			this.world.getHero().moveDown();
 		}
-		if(e.getKeyCode() == KeyEvent.VK_B) {
+		if (e.getKeyCode() == KeyEvent.VK_B) {
 			System.out.println("b pressed");
 			this.world.getHero().setBomb();
 		}
-		
+
 		if (e.getKeyCode() == KeyEvent.VK_U) {
 			this.world.levelUp();
-			}
-		
+		}
+
 		if (e.getKeyCode() == KeyEvent.VK_D) {
 			this.world.levelDown();
 		}
-		
-		if(e.getKeyCode() == KeyEvent.VK_P) {
+
+		if (e.getKeyCode() == KeyEvent.VK_P) {
 			this.world.togglePause();
 		}
-		
-		if(this.world.getHero().getHasDetonator()) {
-			if(e.getKeyCode() == KeyEvent.VK_SPACE) {
+
+		if (this.world.getHero().getHasDetonator()) {
+			if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 				this.world.getLastBomb().createExplosion();
 				this.world.getLastBomb().die();
-				
+
 			}
 		}
-		
+
 	}
 
 	@Override
 	public void keyReleased(KeyEvent arg0) {
 		this.world.getHero().stopHero();
-		
+
 	}
 
 	@Override
 	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub.
-		
+
 	}
 
 }

@@ -7,46 +7,35 @@ public class Wall extends GameObject {
 	private String name;
 	private double x;
 	private double y;
-	
+
 	public Wall(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
 		this.name = "wall";
-		this.x= this.getCenterPoint().getX();
-		this.y= this.getCenterPoint().getY();
+		this.x = this.getCenterPoint().getX();
+		this.y = this.getCenterPoint().getY();
 		setColor(Color.gray);
 		this.setSize(50);
 	}
-	
 
-	//Drawable--------------------------------------
 	@Override
-	public Shape getShape(){
-		Rectangle2D.Double myRect= new Rectangle2D.Double(x,y,this.getSize(), this.getSize());
-		return myRect ;
+	public Shape getShape() {
+		Rectangle2D.Double myRect = new Rectangle2D.Double(x, y, this.getSize(), this.getSize());
+		return myRect;
 	}
-	
-	//Temporal--------------------------------------
-	
-	//Relocatable------------------------------------
-	
-	//Collision--------------------------------------
+
 	@Override
 	public void collideWithHero(Hero h) {
 		h.collideWithWall(this);
 	}
-	
+
 	@Override
 	public void collideWithMonster(Monster m) {
-		// TODO Auto-generated method stub.
 		m.collideWithWall(this);
 	}
-
 
 	@Override
 	public String getName() {
 		return "wall";
 	}
-	
-
 
 }

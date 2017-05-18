@@ -28,7 +28,6 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 		this.shape = new Rectangle2D.Double(this.centerPoint.getX(), this.centerPoint.getY(), this.size, this.size);
 		loadImage();
 	}
-	// super methods----------------------------------------
 
 	public abstract String getName();
 
@@ -49,7 +48,6 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 		}
 	}
 
-	// Drawable----------------------------------------
 	@Override
 	public Color getColor() {
 		return this.color;
@@ -77,8 +75,6 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 		g2.drawImage(this.img, (int) this.getCenterPoint().getX(), (int) this.getCenterPoint().getY(), this.getSize(),
 				this.getSize(), null);
 
-		// g2.setColor(this.getColor());
-		// g2.fill(this.getShape());
 	}
 
 	@Override
@@ -90,8 +86,6 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 	public void setSize(int size) {
 		this.size = size;
 	}
-
-	// Temporal----------------------------------------
 
 	@Override
 	public void timePassed() {
@@ -126,7 +120,6 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 
 	}
 
-	// Relocatable----------------------------------------
 	@Override
 	public void setCenterPoint(Point2D centerPoint) {
 		this.centerPoint = centerPoint;
@@ -137,7 +130,6 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 		return this.centerPoint;
 	}
 
-	// Collision----------------------------------------
 	@Override
 	public void collide(GameObject o) {
 	}

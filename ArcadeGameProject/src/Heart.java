@@ -11,13 +11,13 @@ public class Heart extends GameObject {
 
 	@Override
 	public String getName() {
-//		System.out.println("get heart name");
 		return "lifeheart";
 	}
-	
+
 	@Override
 	public Shape getShape() {
-		return new Rectangle2D.Double(this.getCenterPoint().getX(), this.getCenterPoint().getY(), this.getSize(), this.getSize());
+		return new Rectangle2D.Double(this.getCenterPoint().getX(), this.getCenterPoint().getY(), this.getSize(),
+				this.getSize());
 	}
 
 }

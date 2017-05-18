@@ -25,13 +25,11 @@ public class Monster extends GameObject {
 		this.setSize(40);
 	}
 
-	// Drawable--------------------------------------
 	@Override
 	public Shape getShape() {
 		return new Rectangle2D.Double(x, y, this.getSize(), this.getSize());
 	}
 
-	// Temporal--------------------------------------
 	@Override
 	public void updatePosition() {
 		this.x += dx;
@@ -45,17 +43,9 @@ public class Monster extends GameObject {
 	public void die() {
 		this.getWorld().removeGameObject(this);
 		this.getWorld().removeFromMonsterList(this);
-//		try {
-//			this.getWorld().detectLevelUp();
-//		} catch (InterruptedException exception) {
-//			// TODO Auto-generated catch-block stub.
-//			exception.printStackTrace();
-//		}
+
 	}
 
-	// Relocatable------------------------------------
-
-	// Collision--------------------------------------
 	@Override
 	public void collide(GameObject o) {
 		o.collideWithMonster(this);
@@ -94,7 +84,6 @@ public class Monster extends GameObject {
 		this.die();
 	}
 
-	// --------------------------------------------------------
 	public void reset() {
 		x = startX;
 		y = startY;
