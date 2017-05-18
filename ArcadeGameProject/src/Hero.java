@@ -38,6 +38,7 @@ public class Hero extends GameObject {
 		this.isFaster = false;
 		this.hasExpandBomb = false;
 		this.hasMultiBomb = false;
+		this.hasDetonator = false;
 	}
 
 	public void stopHero() {
@@ -155,12 +156,11 @@ public class Hero extends GameObject {
 
 	@Override
 	public void die() {
-		this.y = 50;
-		this.x = 50;
 		this.lives--;
 		this.getWorld().removeGameObject(this.getWorld().getHearts().get(0));
 		this.getWorld().removeHeart();
 		this.getWorld().resetAllMonsters();
+		this.reset();
 		if (this.lives == 0) {
 			this.lives = 3;
 			this.getWorld().restart();
