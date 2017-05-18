@@ -21,4 +21,6 @@ public interface Collision {
 	abstract void collideWithBombExpand(BombExpand b);
 	
 	abstract void collideWithDetonator(Detonator d);
+	
+	abstract void collideWithLifeUp(LifeUp l);
 }

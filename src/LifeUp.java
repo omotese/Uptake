@@ -9,6 +9,7 @@ public class LifeUp extends PowerUp {
 	}
 
 	public void collideWithHero(Hero h) {
+		this.world.getHero().addLife();
 		
 	}
 	@Override

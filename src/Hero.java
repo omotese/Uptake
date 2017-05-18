@@ -15,7 +15,7 @@ public class Hero extends GameObject {
 	private boolean hasDetonator;
 	private boolean hasLifeUp;
 	private String name;
-	
+
 	public Hero(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
 		this.setSize(30);
@@ -28,7 +28,7 @@ public class Hero extends GameObject {
 		this.hasMultiBomb = false;
 		this.hasExpandBomb = false;
 		this.hasDetonator = false;
-		this.hasLifeUp= false;
+		this.hasLifeUp = false;
 		setColor(Color.YELLOW);
 		this.name = "hero";
 	}
@@ -49,7 +49,7 @@ public class Hero extends GameObject {
 	// Setters and getters for powerup features' booleans-----------------------
 	public void setIsFaster(boolean isFaster) {
 		this.isFaster = isFaster;
-		//System.out.println("hero setisfaster"+this.getIsFaster());
+		// System.out.println("hero setisfaster"+this.getIsFaster());
 	}
 
 	public void setMultiBomb(boolean multiBomb) {
@@ -59,13 +59,13 @@ public class Hero extends GameObject {
 	public void setHasExpandBomb(boolean hasExpandBomb) {
 		this.hasExpandBomb = hasExpandBomb;
 	}
-	
-	public void setHasDetonator(boolean hasDetonator){
+
+	public void setHasDetonator(boolean hasDetonator) {
 		this.hasDetonator = hasDetonator;
 	}
-	
-	public void setHasLifeUp(boolean hasLifeUp){
-		this.hasLifeUp= hasLifeUp;
+
+	public void setHasLifeUp(boolean hasLifeUp) {
+		this.hasLifeUp = hasLifeUp;
 	}
 
 	public boolean getHasMultiBomb() {
@@ -79,12 +79,12 @@ public class Hero extends GameObject {
 	public boolean getIsFaster() {
 		return this.isFaster;
 	}
-	
+
 	public boolean getHasDetonator() {
 		return this.hasDetonator;
 	}
-	
-	public boolean getHasLifeUp(){
+
+	public boolean getHasLifeUp() {
 		return this.hasLifeUp;
 	}
 
@@ -120,7 +120,6 @@ public class Hero extends GameObject {
 	public void moveRight() {
 		if (isFaster == true) {
 			this.dx = 5;
-			// System.out.println("dx is " +dx);
 		} else {
 			this.dx = 2.5;
 		}
@@ -138,14 +137,17 @@ public class Hero extends GameObject {
 		}
 	}
 
+	public void addLife(){
+		this.lives++;
+	}
 	@Override
 	public void updatePosition() {
 
 		Point2D.Double myPoint = new Point2D.Double(x, y);
-		
+
 		this.x += this.dx;
 		this.y += this.dy;
-		
+
 		this.setCenterPoint(myPoint);
 		this.detectCollision();
 	}
@@ -196,32 +198,32 @@ public class Hero extends GameObject {
 		this.die();
 		this.setName("hero");
 	}
-	
+
 	@Override
 	public void collideWithSpeedUp(SpeedUp s) {
 		this.setIsFaster(true);
 		this.setName("herospeedup");
 	}
-	
+
 	@Override
 	public void collideWithBombExpand(BombExpand b) {
 		this.setHasExpandBomb(true);
 		this.setName("herobombexpand");
 	}
-	
+
 	@Override
 	public void collideWithMultiBomb(MultiBomb m) {
 		this.setMultiBomb(true);
 		this.setName("heromultibomb");
 	}
-	
+
 	@Override
-	public void collideWithDetonator(Detonator d){
+	public void collideWithDetonator(Detonator d) {
 		this.setHasDetonator(true);
 		this.setName("herodetonator");
 	}
-	
-	public void collideWithLifeUp(LifeUp l){
+
+	public void collideWithLifeUp(LifeUp l) {
 		this.setHasLifeUp(true);
 		this.setName("herolifeup");
 	}
@@ -230,10 +232,9 @@ public class Hero extends GameObject {
 	public String getName() {
 		return this.name;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
-
 
 }
