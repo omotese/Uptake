@@ -99,7 +99,7 @@ public class GameWorld implements Temporal, Drawable {
 
 	public void setUpHearts() {
 		for (int i = 0; i < 3; i++) {
-			Heart h = new Heart(this, new Point2D.Double(400 + 50 * i, 0));
+			Heart h = new Heart(this, new Point2D.Double(550 + 50 * i, 0));
 			this.addGameObject(h);
 			this.addHeart(h);
 		}
