@@ -279,7 +279,7 @@ public class GameWorld implements Temporal, Drawable {
 		}
 	}
 
-	public void detectLevelUp() throws InterruptedException {
+	public void detectLevelUp() {
 		
 //		System.out.println("now there are " + this.monstersLeft + " monsters left");
 		if (this.monsters.size() == 0) {
