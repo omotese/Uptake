@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 /**
  * The main class for your arcade game.
@@ -25,7 +26,7 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		GameWorld world = new GameWorld(850, 650, Color.LIGHT_GRAY);
+		GameWorld world = new GameWorld(850, 750, Color.LIGHT_GRAY);
 		GameWorldComponent worldComponent = new GameWorldComponent(world);
 
 		JFrame frame = new JFrame();
@@ -40,8 +41,23 @@ public class Main {
 				JFrame helpPage = new JFrame();
 				helpPage.setSize(600, 200);
 				helpPage.setTitle("Game Instruction");
-				JLabel inst = new JLabel("baaah");
-				helpPage.add(inst);
+//				JTextArea t = new JTextArea();
+				String instruction = 
+						"<html>"+
+						"Press <, >, ^, v to move left, right, up and down" +"<br>"+ 
+						"Press B to drop a bomb" + "<br>"+
+						"Press P to pause" + "<br>" +
+						"Press space to trigger the bomb with detonator" + "<br>"+
+						"Press U to level up <br>"+
+						"Press D to level down <br>"+
+						"</html>";
+//				String[] lines = instruction.split("/n");
+				  JLabel label = new JLabel(instruction);
+				  helpPage.add(label);
+//				for (String line : lines) {
+//				    JLabel label = new JLabel(line);
+//				    helpPage.add(label);
+//				}
 				helpPage.pack();
 
 				if (help.getText().equals("Help")) {
@@ -60,7 +76,6 @@ public class Main {
 		});
 
 		JPanel panel = new JPanel();
-		// panel.add(worldComponent, BorderLayout.CENTER);
 		panel.add(help);
 
 		frame.add(worldComponent, BorderLayout.CENTER);

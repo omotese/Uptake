@@ -8,7 +8,9 @@ import java.awt.image.BufferedImage;
 import java.util.List;
 
 import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 public class GameWorldComponent extends JComponent {
 
@@ -60,7 +62,6 @@ public class GameWorldComponent extends JComponent {
 		for (Drawable c : drawableParts) {
 			drawDrawable(g2, c);
 		}
-
 	}
 
 	private void drawDrawable(Graphics2D g2, Drawable c) {
