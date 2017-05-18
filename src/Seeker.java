@@ -23,19 +23,18 @@ public class Seeker extends Monster {
 		this.dy = 0;
 		setColor(Color.BLACK);
 	}
+
 	@Override
 	public String getName() {
 		return "seeker";
 	}
 
-	// Drawable--------------------------------------
 	@Override
 	public Shape getShape() {
 		Rectangle2D.Double myRect = new Rectangle2D.Double(x, y, this.getSize(), this.getSize());
 		return myRect;
 	}
 
-	// Temporal--------------------------------------
 	@Override
 	public void updatePosition() {
 		movingX = !movingX;
@@ -49,9 +48,7 @@ public class Seeker extends Monster {
 		this.setCenterPoint(newPoint);
 		this.detectCollision();
 	}
-	// Relocatable------------------------------------
 
-	// Collision--------------------------------------
 	@Override
 	public void collideWithWall(Wall w) {
 		if (movingX) {
@@ -63,7 +60,7 @@ public class Seeker extends Monster {
 			this.dy = 0;
 		}
 	}
-	
+
 	@Override
 	public void collideWithBomb(Bomb b) {
 		Random ran = new Random();
@@ -76,7 +73,6 @@ public class Seeker extends Monster {
 
 	}
 
-	// -------------------------------------------------
 	public void detectHero() {
 		Point2D heroPosition = this.getWorld().getHero().getCenterPoint();
 

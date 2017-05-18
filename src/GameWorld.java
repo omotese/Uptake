@@ -59,9 +59,8 @@ public class GameWorld implements Temporal, Drawable {
 		this.bombExists = false;
 		setUpHearts();
 
-
 		String levelString = "Level" + levelNum + ".txt";
-		
+
 		try {
 			getLevel(levelString);
 		} catch (FileNotFoundException e) {
@@ -79,20 +78,17 @@ public class GameWorld implements Temporal, Drawable {
 						timePassed();
 					}
 				} catch (InterruptedException exception) {
-					// Stop when interrupted
 				}
 			}
 		};
 		new Thread(tickTock).start();
 
 	}
-	
 
-	
 	public void setBombExists(boolean bombExists) {
 		this.bombExists = bombExists;
 	}
-	
+
 	public boolean getBombExists() {
 		return this.bombExists;
 	}
@@ -100,16 +96,15 @@ public class GameWorld implements Temporal, Drawable {
 	public Color getColor() {
 		return this.backgroundColor;
 	}
-	
+
 	public void setUpHearts() {
-		for(int i =0; i<3; i++){
-			Heart h = new Heart(this, new Point2D.Double(400+50*i,0));
+		for (int i = 0; i < 3; i++) {
+			Heart h = new Heart(this, new Point2D.Double(400 + 50 * i, 0));
 			this.addGameObject(h);
 			this.addHeart(h);
 		}
 	}
 
-	// Temporal-------------------------------------
 	@Override
 	public void timePassed() {
 		if (!this.isPaused) {
@@ -126,16 +121,13 @@ public class GameWorld implements Temporal, Drawable {
 
 	@Override
 	public void die() {
-		// TODO Auto-generated method stub.
 
 	}
 
 	@Override
 	public void updatePosition() {
-		// TODO Auto-generated method stub
 
 	}
-
 
 	@Override
 	public void updateFuse() {
@@ -144,40 +136,42 @@ public class GameWorld implements Temporal, Drawable {
 	public void addHeart(Heart h) {
 		this.hearts.add(h);
 	}
+
 	public void removeHeart() {
 		this.hearts.remove(0);
 	}
+
 	public List<Heart> getHearts() {
 		return this.hearts;
 	}
-	
 
 	public void addBombList(Bomb bomb) {
 		this.bombList.add(bomb);
 		bombCount++;
 		System.out.println(bombCount);
 	}
-	
-	public void addMonsterList(Monster monster){
+
+	public void addMonsterList(Monster monster) {
 		this.monsters.add(monster);
 	}
-	
-	public List<Monster> getMonsterList(){
+
+	public List<Monster> getMonsterList() {
 		return this.monsters;
 	}
+
 	public List<Bomb> getBombList() {
 		return this.bombList;
 	}
-	
+
 	public Bomb getLastBomb() {
 		return this.bombList.get(0);
 	}
-	
+
 	public void removeFromBombList(Bomb b) {
 		this.bombList.remove(b);
 	}
-	
-	public void removeFromMonsterList(Monster m){
+
+	public void removeFromMonsterList(Monster m) {
 		this.monsters.remove(m);
 	}
 
@@ -203,14 +197,14 @@ public class GameWorld implements Temporal, Drawable {
 		int numMonsters = 0;
 		int numSeekers = 0;
 		int numPowerUps = 0;
-	
+
 		FileReader file = new FileReader(fileName);
 		if (levelNum == 1) {
 			numBlocks = 22;
 			numMonsters = 2;
 			numSeekers = 2;
 			numPowerUps = 5;
-			
+
 		}
 		if (levelNum == 2) {
 			numBlocks = 22;
@@ -237,7 +231,7 @@ public class GameWorld implements Temporal, Drawable {
 				}
 
 			} catch (IllegalArgumentException e) {
-				 System.err.println("Bad");
+				System.err.println("Bad");
 			}
 		}
 		for (int i = 0; i < numMonsters; i++) {
@@ -304,14 +298,9 @@ public class GameWorld implements Temporal, Drawable {
 	}
 
 	public void detectLevelUp() {
-		
-//		System.out.println("now there are " + this.monstersLeft + " monsters left");
 		if (this.monsters.size() == 0) {
-//			Thread.sleep(1000);
 			levelUp();
 		}
-
-//		System.out.println("there are " + this.monstersLeft + " monsters left)");
 	}
 
 	public void addWall() {
@@ -451,7 +440,6 @@ public class GameWorld implements Temporal, Drawable {
 		return 0;
 	}
 
-
 	@Override
 	public void setSize(int size) {
 
@@ -462,12 +450,13 @@ public class GameWorld implements Temporal, Drawable {
 		String fileName = "images/" + "background1";
 		fileName += ".png";
 		BufferedImage img;
-		
+
 		try {
 			img = ImageIO.read(new File(fileName));
 			g2.drawImage(img, 0, 0, this.width, this.height, null);
-		} catch (IOException e) {}
-		
+		} catch (IOException e) {
+		}
+
 	}
 
 }

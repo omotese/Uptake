@@ -11,22 +11,18 @@ public class Explosion extends GameObject {
 	public Explosion(GameWorld world, Point2D centerPoint) {
 		super(world, centerPoint);
 		this.setSize(50);
-//		if (this.getWorld().getHero().getHasExpandBomb() == true) {
-//			this.setSize(230);
-//		}
+
 		this.x = this.getCenterPoint().getX();
 		this.y = this.getCenterPoint().getY();
 		setColor(Color.pink);
 		this.fuse = 50;
 	}
 
-	// Drawable--------------------------------------
 	@Override
 	public Shape getShape() {
 		return new Rectangle2D.Double(x, y, getSize(), getSize());
 	}
 
-	// Temporal--------------------------------------
 	@Override
 	public void updateFuse() {
 		this.detectCollision();
@@ -35,10 +31,6 @@ public class Explosion extends GameObject {
 			this.die();
 		}
 	}
-
-	// Relocatable------------------------------------
-
-	// Collision--------------------------------------
 
 	@Override
 	public void collide(GameObject o) {
@@ -54,7 +46,6 @@ public class Explosion extends GameObject {
 	public void collideWithMonster(Monster m) {
 		m.collideWithExplosion(this);
 	}
-
 
 	public void collideWithBomb(Bomb b) {
 		b.collideWithExplosion(this);

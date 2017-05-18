@@ -45,10 +45,9 @@ public class Hero extends GameObject {
 		this.dy = 0;
 	}
 
-	// Setters and getters for powerup features' booleans-----------------------
 	public void setIsFaster(boolean isFaster) {
 		this.isFaster = isFaster;
-		// System.out.println("hero setisfaster"+this.getIsFaster());
+
 	}
 
 	public void setMultiBomb(boolean multiBomb) {
@@ -62,8 +61,6 @@ public class Hero extends GameObject {
 	public void setHasDetonator(boolean hasDetonator) {
 		this.hasDetonator = hasDetonator;
 	}
-
-
 
 	public boolean getHasMultiBomb() {
 		return this.hasMultiBomb;
@@ -81,7 +78,6 @@ public class Hero extends GameObject {
 		return this.hasDetonator;
 	}
 
-	// Movement-------------------------------------------
 	public void moveUp() {
 		if (isFaster == true) {
 			this.dy = -5;
@@ -126,22 +122,19 @@ public class Hero extends GameObject {
 			this.getWorld().addBombList(b);
 			this.getWorld().setBombExists(true);
 		}
-//		
-//		//--??????
-//		if (hasMultiBomb) {
-//			this.getWorld().setBombExists(false);;
-//		}
+
 	}
 
-	public void addLife(){
+	public void addLife() {
 		this.lives++;
-		int lastHeartX = (int) this.getWorld().getHearts().get(this.getWorld().getHearts().size()-1).getCenterPoint().getX();
-		Heart h = new Heart(this.getWorld(), new Point2D.Double(lastHeartX + 50,0));
+		int lastHeartX = (int) this.getWorld().getHearts().get(this.getWorld().getHearts().size() - 1).getCenterPoint()
+				.getX();
+		Heart h = new Heart(this.getWorld(), new Point2D.Double(lastHeartX + 50, 0));
 		this.getWorld().addGameObject(h);
 		this.getWorld().addHeart(h);
-		//System.out.println("my life"+this.lives);
+
 	}
-	
+
 	@Override
 	public void updatePosition() {
 
@@ -154,14 +147,12 @@ public class Hero extends GameObject {
 		this.detectCollision();
 	}
 
-	// Drawable--------------------------------------
 	@Override
 	public Shape getShape() {
 		Rectangle2D.Double myRect = new Rectangle2D.Double(x, y, this.getSize(), this.getSize());
 		return myRect;
 	}
 
-	// Temporal--------------------------------------
 	@Override
 	public void die() {
 		this.y = 50;
@@ -171,13 +162,12 @@ public class Hero extends GameObject {
 		this.getWorld().removeHeart();
 		this.getWorld().resetAllMonsters();
 		if (this.lives == 0) {
-			this.lives = 3;	
+			this.lives = 3;
 			this.getWorld().restart();
 		}
 
 	}
 
-	// Collision--------------------------------------
 	@Override
 	public void collide(GameObject m) {
 		m.collideWithHero(this);
@@ -189,7 +179,7 @@ public class Hero extends GameObject {
 		this.y -= this.dy;
 		stopHero();
 	}
-	
+
 	@Override
 	public void collideWithBomb(Bomb b) {
 		this.x -= this.dx;

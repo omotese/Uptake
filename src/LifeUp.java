@@ -13,10 +13,8 @@ public class LifeUp extends PowerUp {
 		this.setSize(0);
 	}
 
-	
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub.
 		return "extralife";
 	}
 

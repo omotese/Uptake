@@ -40,35 +40,26 @@ public class Main {
 				JFrame helpPage = new JFrame();
 				helpPage.setSize(600, 200);
 				helpPage.setTitle("Game Instruction");
-//				JTextArea t = new JTextArea();
-				String instruction = 
-						"<html>"+
-						"Press <, >, ^, v to move left, right, up and down" +"<br>"+ 
-						"Press B to drop a bomb" + "<br>"+
-						"Press P to pause" + "<br>" +
-						"Press space to trigger the bomb with detonator" + "<br>"+
-						"Press U to level up <br>"+
-						"Press D to level down <br>"+
-						"</html>";
-//				String[] lines = instruction.split("/n");
-				  JLabel label = new JLabel(instruction);
-				  helpPage.add(label);
-//				for (String line : lines) {
-//				    JLabel label = new JLabel(line);
-//				    helpPage.add(label);
-//				}
+				String instruction = "<html>" + "Press <, >, ^, v to move left, right, up and down" + "<br>"
+						+ "Press B to drop a bomb" + "<br>" + "Press P to pause" + "<br>"
+						+ "Press space to trigger the bomb with detonator" + "<br>" + "Press U to level up <br>"
+						+ "Press D to level down <br>" + "</html>";
+
+				JLabel label = new JLabel(instruction);
+				helpPage.add(label);
+
 				helpPage.pack();
 
 				if (help.getText().equals("Help")) {
 					world.togglePause();
 					help.setText("Resume");
 					helpPage.setVisible(true);
-				}else{
-				if (help.getText().equals("Resume")) {
-					help.setText("Help");
-					helpPage.setVisible(false);
-					world.togglePause();
-				}
+				} else {
+					if (help.getText().equals("Resume")) {
+						help.setText("Help");
+						helpPage.setVisible(false);
+						world.togglePause();
+					}
 				}
 			}
 
