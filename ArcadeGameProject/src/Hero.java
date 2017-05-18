@@ -13,6 +13,7 @@ public class Hero extends GameObject {
 	private boolean hasMultiBomb;
 	private boolean hasExpandBomb;
 	private boolean hasDetonator;
+	private boolean hasLifeUp;
 	private String name;
 	
 	public Hero(GameWorld world, Point2D centerPoint) {
@@ -27,6 +28,7 @@ public class Hero extends GameObject {
 		this.hasMultiBomb = false;
 		this.hasExpandBomb = false;
 		this.hasDetonator = false;
+		this.hasLifeUp= false;
 		setColor(Color.YELLOW);
 		this.name = "hero";
 	}
@@ -61,6 +63,10 @@ public class Hero extends GameObject {
 	public void setHasDetonator(boolean hasDetonator){
 		this.hasDetonator = hasDetonator;
 	}
+	
+	public void setHasLifeUp(boolean hasLifeUp){
+		this.hasLifeUp= hasLifeUp;
+	}
 
 	public boolean getHasMultiBomb() {
 		return this.hasMultiBomb;
@@ -76,6 +82,10 @@ public class Hero extends GameObject {
 	
 	public boolean getHasDetonator() {
 		return this.hasDetonator;
+	}
+	
+	public boolean getHasLifeUp(){
+		return this.hasLifeUp;
 	}
 
 	// Movement-------------------------------------------
@@ -209,6 +219,11 @@ public class Hero extends GameObject {
 	public void collideWithDetonator(Detonator d){
 		this.setHasDetonator(true);
 		this.setName("herodetonator");
+	}
+	
+	public void collideWithLifeUp(LifeUp l){
+		this.setHasLifeUp(true);
+		this.setName("herolifeup");
 	}
 
 	@Override

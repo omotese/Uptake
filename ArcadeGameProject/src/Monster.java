@@ -44,8 +44,6 @@ public class Monster extends GameObject {
 	@Override
 	public void die() {
 		this.getWorld().removeGameObject(this);
-
-		// what does this do?
 		this.getWorld().killAMonster();
 	}
 
