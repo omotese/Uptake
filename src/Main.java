@@ -1,6 +1,12 @@
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  * The main class for your arcade game.
@@ -26,7 +32,39 @@ public class Main {
 		frame.setSize(850, 650);
 		frame.setTitle("BomberEmoji!");
 
-		frame.add(worldComponent);
+		JButton help = new JButton("Help");
+		help.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JFrame helpPage = new JFrame();
+				helpPage.setSize(600, 200);
+				helpPage.setTitle("Game Instruction");
+				JLabel inst = new JLabel("baaah");
+				helpPage.add(inst);
+				helpPage.pack();
+
+				if (help.getText().equals("Help")) {
+					world.togglePause();
+					help.setText("Resume");
+					helpPage.setVisible(true);
+				}else{
+				if (help.getText().equals("Resume")) {
+					help.setText("Help");
+					helpPage.setVisible(false);
+					world.togglePause();
+				}
+				}
+			}
+
+		});
+
+		JPanel panel = new JPanel();
+		// panel.add(worldComponent, BorderLayout.CENTER);
+		panel.add(help);
+
+		frame.add(worldComponent, BorderLayout.CENTER);
+		frame.add(panel, BorderLayout.SOUTH);
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
