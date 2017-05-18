@@ -87,9 +87,7 @@ public class GameWorld implements Temporal, Drawable {
 
 	}
 	
-//	public int getLevelNum() {
-//		return this.levelNum;
-//	}
+
 	
 	public void setBombExists(boolean bombExists) {
 		this.bombExists = bombExists;
