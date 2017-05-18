@@ -7,7 +7,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 
 /**
  * The main class for your arcade game.
@@ -26,7 +25,7 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		GameWorld world = new GameWorld(850, 750, Color.LIGHT_GRAY);
+		GameWorld world = new GameWorld(850, 650, Color.LIGHT_GRAY);
 		GameWorldComponent worldComponent = new GameWorldComponent(world);
 
 		JFrame frame = new JFrame();
