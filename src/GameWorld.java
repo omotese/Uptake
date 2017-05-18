@@ -160,21 +160,21 @@ public class GameWorld implements Temporal, Drawable {
 			numBlocks = 22;
 			numMonsters = 2;
 			numSeekers = 2;
-			numPowerUps = 4;
+			numPowerUps = 5;
 			monstersLeft = 4;
 		}
 		if (levelNum == 2) {
 			numBlocks = 22;
 			numMonsters = 4;
 			numSeekers = 2;
-			numPowerUps = 4;
+			numPowerUps = 5;
 			monstersLeft = 6;
 		}
 		if (levelNum == 3) {
 			numBlocks = 30;
 			numMonsters = 6;
 			numSeekers = 3;
-			numPowerUps = 4;
+			numPowerUps = 5;
 			monstersLeft = 9;
 		}
 
@@ -242,7 +242,10 @@ public class GameWorld implements Temporal, Drawable {
 					Detonator detonator = new Detonator(this, new Point2D.Double(x * 50 + 5, y * 50 + 5));
 					this.powerUps.add(detonator);
 				}
-
+				if (k == 4) {
+					LifeUp lifeUp = new LifeUp(this, new Point2D.Double(x * 50 + 5, y * 50 + 5));
+					this.powerUps.add(lifeUp);
+				}
 				for (PowerUp p : powerUps) {
 					this.addGameObject(p);
 				}
