@@ -57,12 +57,8 @@ public class GameWorld implements Temporal, Drawable {
 		this.levelNum = 1;
 		this.bombCount = 0;
 		this.bombExists = false;
-		
-		for(int i =0; i<3; i++){
-			Heart h = new Heart(this, new Point2D.Double(30 + 70*i,680));
-			this.addGameObject(h);
-			this.addHeart(h);
-		}
+		setUpHearts();
+
 
 		String levelString = "Level" + levelNum + ".txt";
 		
@@ -106,6 +102,14 @@ public class GameWorld implements Temporal, Drawable {
 	public Color getColor() {
 		return this.backgroundColor;
 	}
+	
+	public void setUpHearts() {
+		for(int i =0; i<3; i++){
+			Heart h = new Heart(this, new Point2D.Double(400+50*i,0));
+			this.addGameObject(h);
+			this.addHeart(h);
+		}
+	}
 
 	// Temporal-------------------------------------
 	@Override
@@ -139,7 +143,6 @@ public class GameWorld implements Temporal, Drawable {
 	public void updateFuse() {
 	}
 
-	// ---------------------------------------------
 	public void addHeart(Heart h) {
 		this.hearts.add(h);
 	}
@@ -438,6 +441,7 @@ public class GameWorld implements Temporal, Drawable {
 	public void restart() {
 		this.levelNum = 1;
 		updateLevel();
+		setUpHearts();
 	}
 
 	public Dimension getDimension() {
