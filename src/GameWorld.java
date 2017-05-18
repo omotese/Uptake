@@ -57,8 +57,15 @@ public class GameWorld implements Temporal, Drawable {
 		this.levelNum = 1;
 		this.bombCount = 0;
 		this.bombExists = false;
+		
+		for(int i =0; i<3; i++){
+			Heart h = new Heart(this, new Point2D.Double(30 + 70*i,680));
+			this.addGameObject(h);
+			this.addHeart(h);
+		}
 
 		String levelString = "Level" + levelNum + ".txt";
+		
 		try {
 			getLevel(levelString);
 		} catch (FileNotFoundException e) {
