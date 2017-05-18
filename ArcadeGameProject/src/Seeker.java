@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Shape;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+import java.util.Random;
 
 public class Seeker extends Monster {
 	private double x;
@@ -61,6 +62,18 @@ public class Seeker extends Monster {
 
 			this.dy = 0;
 		}
+	}
+	
+	@Override
+	public void collideWithBomb(Bomb b) {
+		Random ran = new Random();
+		this.x -= this.dx;
+		this.y -= this.dy;
+		do {
+			this.dx = (ran.nextInt(3) - 1);
+			this.dy = (ran.nextInt(3) - 1);
+		} while (this.dx == 0 && this.dy == 0);
+
 	}
 
 	// -------------------------------------------------
