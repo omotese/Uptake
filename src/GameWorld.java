@@ -416,7 +416,6 @@ public class GameWorld implements Temporal, Drawable {
 
 	@Override
 	public void drawImage(Graphics2D g2) {
-		System.out.println("world draw");
 		String fileName = "images/" + "background1";
 		fileName += ".png";
 		BufferedImage img;
