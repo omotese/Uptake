@@ -15,7 +15,7 @@ public class LifeUp extends PowerUp {
 	@Override
 	public String getName() {
 		// TODO Auto-generated method stub.
-		return "lifeup";
+		return "extralife";
 	}
 
 }
