@@ -219,7 +219,7 @@ public class Hero extends GameObject {
 
 	public void collideWithLifeUp(LifeUp l) {
 		this.addLife();
-		this.setName("extralife");
+		this.setName("hero");
 	}
 
 	@Override

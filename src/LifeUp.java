@@ -10,7 +10,9 @@ public class LifeUp extends PowerUp {
 
 	public void collideWithHero(Hero h) {
 		h.collideWithLifeUp(this);
+		this.setSize(0);
 	}
+
 	
 	@Override
 	public String getName() {
