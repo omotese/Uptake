@@ -9,9 +9,9 @@ public class LifeUp extends PowerUp {
 	}
 
 	public void collideWithHero(Hero h) {
-		this.world.getHero().addLife();
-		
+		h.collideWithLifeUp(this);
 	}
+	
 	@Override
 	public String getName() {
 		// TODO Auto-generated method stub.

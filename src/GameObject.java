@@ -1,7 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Shape;
-import java.awt.Transparency;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
@@ -179,4 +178,7 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 	public void collideWithDetonator(Detonator d){
 	}
 	
+	public void collideWithLifeUp(LifeUp l){
+		
+	}
 }
