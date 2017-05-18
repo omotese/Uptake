@@ -35,6 +35,7 @@ public class GameWorld implements Temporal, Drawable {
 	private List<Monster> monsters;
 	private List<Seeker> seekers;
 	private List<PowerUp> powerUps;
+	private List<Heart> hearts;
 	private int levelNum;
 	private List<BreakableWall> breakables = new ArrayList<BreakableWall>();
 
@@ -49,6 +50,7 @@ public class GameWorld implements Temporal, Drawable {
 		this.monsters = new ArrayList<Monster>();
 		this.seekers = new ArrayList<Seeker>();
 		this.powerUps = new ArrayList<PowerUp>();
+		this.hearts = new ArrayList<Heart>();
 		this.addGameObject(hero);
 		this.setHero(hero);
 		this.addWall();
@@ -81,6 +83,10 @@ public class GameWorld implements Temporal, Drawable {
 		new Thread(tickTock).start();
 
 	}
+	
+//	public int getLevelNum() {
+//		return this.levelNum;
+//	}
 	
 	public void setBombExists(boolean bombExists) {
 		this.bombExists = bombExists;
@@ -127,6 +133,16 @@ public class GameWorld implements Temporal, Drawable {
 	}
 
 	// ---------------------------------------------
+	public void addHeart(Heart h) {
+		this.hearts.add(h);
+	}
+	public void removeHeart() {
+		this.hearts.remove(0);
+	}
+	public List<Heart> getHearts() {
+		return this.hearts;
+	}
+	
 
 	public void addBombList(Bomb bomb) {
 		this.bombList.add(bomb);
