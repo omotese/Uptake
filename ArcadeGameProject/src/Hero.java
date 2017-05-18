@@ -135,7 +135,7 @@ public class Hero extends GameObject {
 	public void addLife(){
 		this.lives++;
 		int lastHeartX = (int) this.getWorld().getHearts().get(this.getWorld().getHearts().size()-1).getCenterPoint().getX();
-		Heart h = new Heart(this.getWorld(), new Point2D.Double(lastHeartX + 70,700));
+		Heart h = new Heart(this.getWorld(), new Point2D.Double(lastHeartX + 70,650));
 		this.getWorld().addGameObject(h);
 		this.getWorld().addHeart(h);
 		//System.out.println("my life"+this.lives);
