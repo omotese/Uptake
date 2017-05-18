@@ -44,12 +44,13 @@ public class Monster extends GameObject {
 	@Override
 	public void die() {
 		this.getWorld().removeGameObject(this);
-		try {
-			this.getWorld().killAMonster();
-		} catch (InterruptedException exception) {
-			// TODO Auto-generated catch-block stub.
-			exception.printStackTrace();
-		}
+		this.getWorld().removeFromMonsterList(this);
+//		try {
+//			this.getWorld().detectLevelUp();
+//		} catch (InterruptedException exception) {
+//			// TODO Auto-generated catch-block stub.
+//			exception.printStackTrace();
+//		}
 	}
 
 	// Relocatable------------------------------------
