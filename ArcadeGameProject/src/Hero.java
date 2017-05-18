@@ -180,6 +180,13 @@ public class Hero extends GameObject {
 		this.y -= this.dy;
 		stopHero();
 	}
+	
+	@Override
+	public void collideWithBomb(Bomb b) {
+		this.x -= this.dx;
+		this.y -= this.dy;
+		stopHero();
+	}
 
 	@Override
 	public void collideWithExplosion(Explosion e) {
