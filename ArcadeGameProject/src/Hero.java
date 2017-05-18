@@ -29,6 +29,7 @@ public class Hero extends GameObject {
 		this.hasDetonator = false;
 		setColor(Color.YELLOW);
 		this.name = "hero";
+		loadImage();
 	}
 
 	public void reset() {
@@ -250,6 +251,7 @@ public class Hero extends GameObject {
 
 	public void setName(String name) {
 		this.name = name;
+		loadImage();
 	}
 
 }
