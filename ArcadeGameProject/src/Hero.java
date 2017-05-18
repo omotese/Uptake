@@ -119,14 +119,17 @@ public class Hero extends GameObject {
 	}
 
 	public void setBomb() {
-		if (this.getWorld().bombExists == false) {
+		if (!this.getWorld().getBombExists() || this.hasMultiBomb) {
 			Bomb b = new Bomb(this.getWorld(), new Point2D.Double(this.x, this.y));
 			this.getWorld().addGameObject(b);
 			this.getWorld().addBombList(b);
+			this.getWorld().setBombExists(true);
 		}
-		if (hasMultiBomb) {
-			this.getWorld().bombExists = false;
-		}
+//		
+//		//--??????
+//		if (hasMultiBomb) {
+//			this.getWorld().setBombExists(false);;
+//		}
 	}
 
 	public void addLife(){
