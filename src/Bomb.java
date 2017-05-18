@@ -20,9 +20,12 @@ public class Bomb extends GameObject {
 		this.hitExplosion = false;
 		setColor(Color.WHITE);
 		this.fuse = 200;
-
 		this.x = Math.round((this.getCenterPoint().getX()) / 50) * 50;
 		this.y = Math.round((this.getCenterPoint().getY()) / 50) * 50;
+		
+		this.setCenterPoint(new Point2D.Double(x,y));
+
+		
 
 		//need to be moved to somewhere else
 		//created method increaseMaxSize
