@@ -9,37 +9,38 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-
-public abstract class GameObject implements Drawable, Temporal, Relocatable, Collision{
+public abstract class GameObject implements Drawable, Temporal, Relocatable, Collision {
 	private Point2D centerPoint;
 	private boolean isPaused;
 	private GameWorld world;
 	private Color color;
 	private int size;
 	private Rectangle2D shape;
-	
+	private BufferedImage img;
 
-	public GameObject(GameWorld world,Point2D centerPoint) {
-		this.centerPoint= centerPoint;
-		this.world=world;
+	public GameObject(GameWorld world, Point2D centerPoint) {
+		this.centerPoint = centerPoint;
+		this.world = world;
 		this.isPaused = false;
 		this.color = null;
 		this.size = 0;
-		this.shape= new Rectangle2D.Double(this.centerPoint.getX(), this.centerPoint.getY(), this.size, this.size);
+
+		this.shape = new Rectangle2D.Double(this.centerPoint.getX(), this.centerPoint.getY(), this.size, this.size);
+		loadImage();
 	}
-	//super methods----------------------------------------
-		
+	// super methods----------------------------------------
+
 	public abstract String getName();
-	
+
 	public void setColor(Color myColor) {
 		this.color = myColor;
 	}
-	
+
 	public GameWorld getWorld() {
 		return this.world;
 	}
-	
-	public void detectCollision(){
+
+	public void detectCollision() {
 		for (int i = 0; i < this.getWorld().getObjectList().size(); i++) {
 			if ((this.getWorld().getObjectList().get(i) != this)
 					&& this.getShape().intersects((Rectangle2D) this.world.getObjectList().get(i).getShape())) {
@@ -47,53 +48,58 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 			}
 		}
 	}
-	
-	
-	//Drawable----------------------------------------
+
+	// Drawable----------------------------------------
 	@Override
 	public Color getColor() {
 		return this.color;
 	}
 
-	
 	@Override
 	public Shape getShape() {
 		return this.shape;
 	}
 
-	@Override
-	public void drawImage(Graphics2D g2) {
+	public void loadImage() {
 		String fileName = "images/" + this.getName();
 		fileName += ".png";
-		BufferedImage img;
-		
+
 		try {
-			img = ImageIO.read(new File(fileName));
-			g2.drawImage(img, (int)this.getCenterPoint().getX(), (int)this.getCenterPoint().getY(), this.getSize(), this.getSize(), null);
-		} catch (IOException e) {}
-		
+			this.img = ImageIO.read(new File(fileName));
+		} catch (IOException e) {
+		}
+
 	}
-	
+
+	@Override
+	public void drawImage(Graphics2D g2) {
+
+		g2.drawImage(this.img, (int) this.getCenterPoint().getX(), (int) this.getCenterPoint().getY(), this.getSize(),
+				this.getSize(), null);
+
+		// g2.setColor(this.getColor());
+		// g2.fill(this.getShape());
+	}
+
 	@Override
 	public int getSize() {
 		return this.size;
 	}
-	
+
 	@Override
-	public void setSize(int size){
+	public void setSize(int size) {
 		this.size = size;
 	}
-	
-	//Temporal----------------------------------------
+
+	// Temporal----------------------------------------
 
 	@Override
 	public void timePassed() {
-		if(!isPaused){
+		if (!isPaused) {
 			updateFuse();
 			updatePosition();
 		}
 	}
-
 
 	@Override
 	public boolean getIsPaused() {
@@ -104,36 +110,34 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 	public void setIsPaused(boolean isPaused) {
 		this.isPaused = isPaused;
 	}
-	
+
 	@Override
 	public void die() {
 		this.getWorld().removeGameObject(this);
 	}
-	
+
 	@Override
 	public void updatePosition() {
-		
+
 	}
 
-	
 	@Override
 	public void updateFuse() {
-		
+
 	}
-	
-	//Relocatable----------------------------------------
+
+	// Relocatable----------------------------------------
 	@Override
 	public void setCenterPoint(Point2D centerPoint) {
 		this.centerPoint = centerPoint;
 	}
-	
 
 	@Override
 	public Point2D getCenterPoint() {
 		return this.centerPoint;
 	}
-	
-	//Collision----------------------------------------
+
+	// Collision----------------------------------------
 	@Override
 	public void collide(GameObject o) {
 	}
@@ -161,24 +165,24 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 	@Override
 	public void collideWithExplosion(Explosion e) {
 	}
-	
+
 	@Override
 	public void collideWithBombExpand(BombExpand b) {
 	}
-	
+
 	@Override
 	public void collideWithMultiBomb(MultiBomb m) {
 	}
-	
+
 	@Override
 	public void collideWithSpeedUp(SpeedUp s) {
 	}
-	
+
 	@Override
-	public void collideWithDetonator(Detonator d){
+	public void collideWithDetonator(Detonator d) {
 	}
-	
-	public void collideWithLifeUp(LifeUp l){
-		
+
+	public void collideWithLifeUp(LifeUp l) {
+
 	}
 }
