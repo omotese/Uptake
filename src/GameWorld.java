@@ -4,7 +4,6 @@ import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
-import java.awt.image.BufferedImage;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -191,7 +190,7 @@ public class GameWorld implements Temporal, Drawable {
 				}
 
 			} catch (IllegalArgumentException e) {
-				// System.err.println("Bad");
+				 System.err.println("Bad");
 			}
 		}
 		for (int i = 0; i < numMonsters; i++) {
