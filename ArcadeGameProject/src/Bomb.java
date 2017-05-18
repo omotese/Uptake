@@ -34,7 +34,7 @@ public class Bomb extends GameObject {
 //		}
 
 		//should not be implemented here
-		this.getWorld().bombExists = true;
+//		this.getWorld().bombExists = true;
 	}
 
 	//super-----------------------------------------
@@ -53,18 +53,22 @@ public class Bomb extends GameObject {
 	
 	@Override
 	public void updateFuse() {
-		this.fuse--;
-		if(fuse <=0){
-			this.createExplosion();
-			this.die();
-			this.getWorld().bombExists = false;
+		if(!this.getWorld().getHero().getHasDetonator()){
+			this.fuse--;
+			if(fuse <=0){
+				this.createExplosion();
+				this.die();
+			}
 		}
+		
 	}
 	
 	@Override
 	public void die() {
 		this.getWorld().removeGameObject(this);
 		this.getWorld().removeFromBombList(this);
+		this.getWorld().setBombExists(false);
+
 	}
 	
 	// Relocatable------------------------------------
