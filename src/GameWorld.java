@@ -4,12 +4,16 @@ import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import javax.imageio.ImageIO;
 
 public class GameWorld implements Temporal, Drawable {
 	private static final long UPDATE_INTERVAL_MS = 10;
@@ -412,7 +416,15 @@ public class GameWorld implements Temporal, Drawable {
 
 	@Override
 	public void drawImage(Graphics2D g2) {
-		// TODO Auto-generated method stub
+		System.out.println("world draw");
+		String fileName = "images/" + "background1";
+		fileName += ".png";
+		BufferedImage img;
+		
+		try {
+			img = ImageIO.read(new File(fileName));
+			g2.drawImage(img, 0, 0, this.width, this.height, null);
+		} catch (IOException e) {}
 		
 	}
 
