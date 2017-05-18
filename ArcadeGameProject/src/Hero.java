@@ -172,7 +172,7 @@ public class Hero extends GameObject {
 		if (this.lives == 0) {
 			this.lives = 3;
 			for(int i =0; i<3; i++){
-				Heart h = new Heart(this.getWorld(), new Point2D.Double(30 + 70*i,700));
+				Heart h = new Heart(this.getWorld(), new Point2D.Double(30 + 70*i,650));
 				this.getWorld().addGameObject(h);
 				this.getWorld().addHeart(h);
 			}

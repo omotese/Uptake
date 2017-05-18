@@ -11,7 +11,7 @@ public class Heart extends GameObject {
 
 	@Override
 	public String getName() {
-		System.out.println("get heart name");
+//		System.out.println("get heart name");
 		return "heart";
 	}
 	
