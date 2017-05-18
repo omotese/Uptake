@@ -32,41 +32,41 @@ public class Main {
 		frame.setSize(850, 650);
 		frame.setTitle("BomberEmoji!");
 
-		JButton help = new JButton("Help");
-		help.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				JFrame helpPage = new JFrame();
-				helpPage.setSize(600, 200);
-				helpPage.setTitle("Game Instruction");
-				String instruction = "<html>" + "Press <, >, ^, v to move left, right, up and down" + "<br>"
-						+ "Press B to drop a bomb" + "<br>" + "Press P to pause" + "<br>"
-						+ "Press space to trigger the bomb with detonator" + "<br>" + "Press U to level up <br>"
-						+ "Press D to level down <br>" + "</html>";
-
-				JLabel label = new JLabel(instruction);
-				helpPage.add(label);
-
-				helpPage.pack();
-
-				if (help.getText().equals("Help")) {
-					world.togglePause();
-					help.setText("Resume");
-					helpPage.setVisible(true);
-				} else {
-					if (help.getText().equals("Resume")) {
-						help.setText("Help");
-						helpPage.setVisible(false);
-						world.togglePause();
-					}
-				}
-			}
-
-		});
+//		JButton help = new JButton("Help");
+//		help.addActionListener(new ActionListener() {
+//
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				JFrame helpPage = new JFrame();
+//				helpPage.setSize(600, 200);
+//				helpPage.setTitle("Game Instruction");
+//				String instruction = "<html>" + "Press <, >, ^, v to move left, right, up and down" + "<br>"
+//						+ "Press B to drop a bomb" + "<br>" + "Press P to pause" + "<br>"
+//						+ "Press space to trigger the bomb with detonator" + "<br>" + "Press U to level up <br>"
+//						+ "Press D to level down <br>" + "</html>";
+//
+//				JLabel label = new JLabel(instruction);
+//				helpPage.add(label);
+//
+//				helpPage.pack();
+//
+//				if (help.getText().equals("Help")) {
+//					world.togglePause();
+//					help.setText("Resume");
+//					helpPage.setVisible(true);
+//				} else {
+//					if (help.getText().equals("Resume")) {
+//						help.setText("Help");
+//						helpPage.setVisible(false);
+//						world.togglePause();
+//					}
+//				}
+//			}
+//
+//		});
 
 		JPanel panel = new JPanel();
-		panel.add(help);
+//		panel.add(help);
 
 		frame.add(worldComponent, BorderLayout.CENTER);
 		frame.add(panel, BorderLayout.SOUTH);
