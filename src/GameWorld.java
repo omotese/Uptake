@@ -29,7 +29,6 @@ public class GameWorld implements Temporal, Drawable {
 
 	private final Shape background;
 	private boolean isPaused = false;
-	private int monstersLeft;
 
 	private Hero hero;
 	private List<Bomb> bombList;
@@ -102,6 +101,7 @@ public class GameWorld implements Temporal, Drawable {
 			for (Temporal t : this.objectList) {
 				t.timePassed();
 			}
+			this.detectLevelUp();
 		}
 		this.objectList.removeAll(this.objectToRemove);
 		this.objectToRemove.clear();
@@ -133,7 +133,14 @@ public class GameWorld implements Temporal, Drawable {
 		bombCount++;
 		System.out.println(bombCount);
 	}
-
+	
+	public void addMonsterList(Monster monster){
+		this.monsters.add(monster);
+	}
+	
+	public List<Monster> getMonsterList(){
+		return this.monsters;
+	}
 	public List<Bomb> getBombList() {
 		return this.bombList;
 	}
@@ -144,6 +151,10 @@ public class GameWorld implements Temporal, Drawable {
 	
 	public void removeFromBombList(Bomb b) {
 		this.bombList.remove(b);
+	}
+	
+	public void removeFromMonsterList(Monster m){
+		this.monsters.remove(m);
 	}
 
 	public void setHero(Hero hero) {
@@ -168,27 +179,26 @@ public class GameWorld implements Temporal, Drawable {
 		int numMonsters = 0;
 		int numSeekers = 0;
 		int numPowerUps = 0;
+	
 		FileReader file = new FileReader(fileName);
 		if (levelNum == 1) {
 			numBlocks = 22;
 			numMonsters = 2;
 			numSeekers = 2;
 			numPowerUps = 5;
-			monstersLeft = 4;
+			
 		}
 		if (levelNum == 2) {
 			numBlocks = 22;
 			numMonsters = 4;
 			numSeekers = 2;
 			numPowerUps = 5;
-			monstersLeft = 6;
 		}
 		if (levelNum == 3) {
 			numBlocks = 30;
 			numMonsters = 6;
 			numSeekers = 3;
 			numPowerUps = 5;
-			monstersLeft = 9;
 		}
 
 		Scanner s = new Scanner(file);
@@ -269,17 +279,15 @@ public class GameWorld implements Temporal, Drawable {
 		}
 	}
 
-	public void killAMonster() throws InterruptedException {
-		System.out.println("(there were " + this.monstersLeft + " monsters left");
-
-		this.monstersLeft = this.monstersLeft - 1;
-		System.out.println("now there are " + this.monstersLeft + " monsters left");
-		if (this.monstersLeft == 0) {
-			Thread.sleep(1000);
+	public void detectLevelUp() throws InterruptedException {
+		
+//		System.out.println("now there are " + this.monstersLeft + " monsters left");
+		if (this.monsters.size() == 0) {
+//			Thread.sleep(1000);
 			levelUp();
 		}
 
-		System.out.println("there are " + this.monstersLeft + " monsters left)");
+//		System.out.println("there are " + this.monstersLeft + " monsters left)");
 	}
 
 	public void addWall() {
