@@ -25,6 +25,7 @@ public class GameListener implements KeyListener {
 			this.world.getHero().moveDown();
 		}
 		if(e.getKeyCode() == KeyEvent.VK_B) {
+			System.out.println("b pressed");
 			this.world.getHero().setBomb();
 		}
 		
@@ -44,11 +45,6 @@ public class GameListener implements KeyListener {
 			if(e.getKeyCode() == KeyEvent.VK_SPACE) {
 				this.world.getLastBomb().createExplosion();
 				this.world.getLastBomb().die();
-//				for(Bomb b: this.world.getBombList()){
-//					b.createExplosion();
-//					b.die();
-//				}
-//				System.out.println("booom");
 				
 			}
 		}
