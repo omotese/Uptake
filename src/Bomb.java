@@ -82,6 +82,7 @@ public class Bomb extends GameObject {
 		this.createExplosion();
 		this.die();
 	}
+	
 
 	@Override
 	public void collideWithMonster(Monster m) {
