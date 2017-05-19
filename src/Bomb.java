@@ -37,6 +37,9 @@ public class Bomb extends GameObject {
 		return myRect;
 	}
 
+	/**
+	 * TODO
+	 */
 	@Override
 	public void updateFuse() {
 		if (!this.getWorld().getHero().getHasDetonator()) {
@@ -73,6 +76,10 @@ public class Bomb extends GameObject {
 
 	}
 
+	/**
+	 * TODO Put here a description of what this method does.
+	 *
+	 */
 	public void createExplosion() {
 		Explosion mid = new Explosion(this.getWorld(), new Point2D.Double(x, y));
 		Explosion up = new Explosion(this.getWorld(), new Point2D.Double(x, y - 50));
