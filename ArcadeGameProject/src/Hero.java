@@ -92,7 +92,6 @@ public class Hero extends GameObject {
 	public void moveUp() {
 		if (isFaster == true) {
 			this.dy = -5;
-			System.out.println("move up faster");
 		} else {
 			this.dy = -2.5;
 		}
