@@ -1,6 +1,12 @@
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/**
+ * TODO Put here a description of what this class does.
+ *
+ * @author trenthe.
+ *         Created May 18, 2017.
+ */
 public class GameListener implements KeyListener {
 
 	private GameWorld world;
@@ -25,7 +31,6 @@ public class GameListener implements KeyListener {
 			this.world.getHero().moveDown();
 		}
 		if (e.getKeyCode() == KeyEvent.VK_B) {
-			System.out.println("b pressed");
 			this.world.getHero().setBomb();
 		}
 
