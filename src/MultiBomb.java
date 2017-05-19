@@ -22,6 +22,9 @@ public class MultiBomb extends PowerUp {
 		this.setSize(0);
 	}
 
+	/**
+	 * TODO
+	 */
 	@Override
 	public void updateFuse() {
 		if (this.getFuseStart()) {
