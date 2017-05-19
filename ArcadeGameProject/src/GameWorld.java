@@ -91,27 +91,23 @@ public class GameWorld implements Temporal, Drawable {
 
 	}
 
-/**
- * Getters and Setters
- */
 	public Color getColor() {
 		return this.backgroundColor;
 	}
 
 
-	public Shape getShape() {
-		return this.background;
+	@Override
+	public void die() {
+
 	}
 
-
 	@Override
-	public void setSize(int size) {
+	public void updatePosition() {
 
 	}
-	
+
 	@Override
-	public int getSize() {
-		return 0;
+	public void updateFuse() {
 	}
 
 	public void setUpHearts() {
@@ -187,10 +183,6 @@ public class GameWorld implements Temporal, Drawable {
 		return this.hero;
 	}
 
-/**
- * This portion of the code handles how we deal with our levels in the game.
- * 
- */
 
 	public void getLevel(String fileName) throws FileNotFoundException {
 		int numBlocks = 0;
@@ -296,7 +288,6 @@ public class GameWorld implements Temporal, Drawable {
 			}
 		}
 	}
-	
 	public void updateLevel() {
 		for (BreakableWall n : breakables) {
 			this.removeGameObject(n);
@@ -329,6 +320,7 @@ public class GameWorld implements Temporal, Drawable {
 		this.getHero().reset();
 	}
 
+
 	public void levelUp() {
 		if (levelNum >= 1 && levelNum < 3) {
 			this.levelNum++;
@@ -360,11 +352,16 @@ public class GameWorld implements Temporal, Drawable {
 		setUpHearts();
 	}
 	
-/**
- * This adds the outter wall to the Game World
- *
- */
-	
+	@Override
+	public int getSize() {
+		return 0;
+	}
+
+	@Override
+	public void setSize(int size) {
+
+	}
+
 	public void addWall() {
 		ArrayList<Wall> walls = new ArrayList<Wall>();
 		for (int i = 0; i < 13; i++) {
@@ -394,10 +391,24 @@ public class GameWorld implements Temporal, Drawable {
 		}
 
 	}
-	
-/**
- * This portion of the code deals with how the Game World is paused.
- */
+
+	public List<GameObject> getObjectList() {
+		return this.objectList;
+	}
+
+	public Shape getShape() {
+		return this.background;
+	}
+
+	public void togglePause() {
+		if (!this.getIsPaused()) {
+			this.setIsPaused(true);
+		} else {
+			this.setIsPaused(false);
+		}
+
+	}
+
 	@Override
 	public void setIsPaused(boolean isPaused) {
 		this.isPaused = isPaused;
@@ -407,15 +418,6 @@ public class GameWorld implements Temporal, Drawable {
 	@Override
 	public boolean getIsPaused() {
 		return this.isPaused;
-	}
-	
-	public void togglePause() {
-		if (!this.getIsPaused()) {
-			this.setIsPaused(true);
-		} else {
-			this.setIsPaused(false);
-		}
-
 	}
 
 	@Override
@@ -431,31 +433,16 @@ public class GameWorld implements Temporal, Drawable {
 		this.objectList.addAll(this.objectToAdd);
 		this.objectToAdd.clear();
 	}
-	
-	@Override
-	public void updatePosition() {
-
-	}
-
-	@Override
-	public void updateFuse() {
-	}
-	
-	
-	public void addGameObject(GameObject gameObject) {
-		this.objectToAdd.add(gameObject);
-
-	}
-	
-	public List<GameObject> getObjectList() {
-		return this.objectList;
-	}
 
 	public void removeGameObject(GameObject gameObject) {
 		this.objectToRemove.add(gameObject);
 	}
 
-	
+	public void addGameObject(GameObject gameObject) {
+		this.objectToAdd.add(gameObject);
+
+	}
+
 	public synchronized List<Drawable> getDrawableParts() {
 		return new ArrayList<Drawable>(this.objectList);
 	}
@@ -464,11 +451,6 @@ public class GameWorld implements Temporal, Drawable {
 
 	public Dimension getDimension() {
 		return new Dimension(this.width, this.height);
-	}
-
-	@Override
-	public void die() {
-
 	}
 
 	

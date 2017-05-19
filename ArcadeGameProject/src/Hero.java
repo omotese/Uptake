@@ -125,10 +125,6 @@ public class Hero extends GameObject {
 
 	}
 
-	/**
-	 * TODO Put here a description of what this method does.
-	 *
-	 */
 	public void setBomb() {
 		if (!this.getWorld().getBombExists() || this.hasMultiBomb) {
 			Bomb b = new Bomb(this.getWorld(), new Point2D.Double(this.x, this.y));
@@ -139,10 +135,6 @@ public class Hero extends GameObject {
 
 	}
 
-	/**
-	 * TODO Put here a description of what this method does.
-	 *
-	 */
 	public void addLife() {
 		this.lives++;
 		int lastHeartX = (int) this.getWorld().getHearts().get(this.getWorld().getHearts().size() - 1).getCenterPoint()
