@@ -9,10 +9,12 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-/*
- * The GameObject class contains all of the objects that will be drawn onto the GameWorld
+/**
+ * TODO Put here a description of what this class does.
+ *
+ * @author trenthe.
+ *         Created May 18, 2017.
  */
-
 public abstract class GameObject implements Drawable, Temporal, Relocatable, Collision {
 	private Point2D centerPoint;
 	private boolean isPaused;
