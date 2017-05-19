@@ -46,8 +46,8 @@ public class GameListener implements KeyListener {
 			this.world.togglePause();
 		}
 
-		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-			if (this.world.getHero().getHasDetonator()) {
+		if (this.world.getHero().getHasDetonator()) {
+			if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 				this.world.getLastBomb().createExplosion();
 				this.world.getLastBomb().die();
 
