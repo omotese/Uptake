@@ -4,9 +4,8 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 /**
- * TODO Put here a description of what this class does.
  *
- * @author trenthe.
+ * @author Explosions in the sky caught my eye. I watched them go by, bye.
  *         Created May 18, 2017.
  */
 public class Bomb extends GameObject {
