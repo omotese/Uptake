@@ -5,9 +5,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /**
- * TODO Put here a description of what this class does.
  *
- * @author trenthe. Created May 18, 2017.
+ * @author All the wild flowers that grow in my garden shall be free, flowing in the wind, without a care. Created May 18, 2017.
  */
 public class Main {
 
