@@ -96,19 +96,10 @@ public class GameWorld implements Temporal, Drawable {
 	}
 
 
-	@Override
-	public void die() {
-
+	public Shape getShape() {
+		return this.background;
 	}
 
-	@Override
-	public void updatePosition() {
-
-	}
-
-	@Override
-	public void updateFuse() {
-	}
 
 	public void setUpHearts() {
 		for (int i = 0; i < 3; i++) {
@@ -391,24 +382,7 @@ public class GameWorld implements Temporal, Drawable {
 		}
 
 	}
-
-	public List<GameObject> getObjectList() {
-		return this.objectList;
-	}
-
-	public Shape getShape() {
-		return this.background;
-	}
-
-	public void togglePause() {
-		if (!this.getIsPaused()) {
-			this.setIsPaused(true);
-		} else {
-			this.setIsPaused(false);
-		}
-
-	}
-
+	
 	@Override
 	public void setIsPaused(boolean isPaused) {
 		this.isPaused = isPaused;
@@ -418,6 +392,15 @@ public class GameWorld implements Temporal, Drawable {
 	@Override
 	public boolean getIsPaused() {
 		return this.isPaused;
+	}
+	
+	public void togglePause() {
+		if (!this.getIsPaused()) {
+			this.setIsPaused(true);
+		} else {
+			this.setIsPaused(false);
+		}
+
 	}
 
 	@Override
@@ -433,16 +416,31 @@ public class GameWorld implements Temporal, Drawable {
 		this.objectList.addAll(this.objectToAdd);
 		this.objectToAdd.clear();
 	}
+	
+	@Override
+	public void updatePosition() {
+
+	}
+
+	@Override
+	public void updateFuse() {
+	}
+	
+	
+	public void addGameObject(GameObject gameObject) {
+		this.objectToAdd.add(gameObject);
+
+	}
+	
+	public List<GameObject> getObjectList() {
+		return this.objectList;
+	}
 
 	public void removeGameObject(GameObject gameObject) {
 		this.objectToRemove.add(gameObject);
 	}
 
-	public void addGameObject(GameObject gameObject) {
-		this.objectToAdd.add(gameObject);
-
-	}
-
+	
 	public synchronized List<Drawable> getDrawableParts() {
 		return new ArrayList<Drawable>(this.objectList);
 	}
@@ -451,6 +449,11 @@ public class GameWorld implements Temporal, Drawable {
 
 	public Dimension getDimension() {
 		return new Dimension(this.width, this.height);
+	}
+
+	@Override
+	public void die() {
+
 	}
 
 	
