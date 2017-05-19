@@ -40,7 +40,7 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 		return this.world;
 	}
 
-	/*
+	/**
 	 * This method detects when a game object collides with another game object.
 	 * We loop through the objects in the world's list of objects and check to
 	 * see if they are intersecting.
@@ -54,11 +54,15 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 		}
 	}
 
-	/*
+	/**
 	 * Handles adding the images onto the specific characters
 	 */
 	public abstract String getName();
 
+	/**
+	 * TODO Put here a description of what this method does.
+	 *
+	 */
 	public void loadImage() {
 		String fileName = "images/" + this.getName();
 		fileName += ".png";
@@ -82,7 +86,7 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 				this.getSize(), null);
 	}
 
-	/*
+	/**
 	 * These are various getters and setters that we will use for the subclasses
 	 */
 	public void setColor(Color myColor) {
@@ -152,7 +156,7 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 		this.getWorld().removeGameObject(this);
 	}
 
-	/*
+	/**
 	 * These methods deal with the collisions that can occur in the game. Each
 	 * subclass overrides them with their own specific actions.
 	 */
