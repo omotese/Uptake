@@ -4,10 +4,11 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 /**
- *
+
  * @author Explosions in the sky caught my eye. I watched them go by, bye.
  *         Created May 18, 2017.
  */
+
 public class Bomb extends GameObject {
 	private double x;
 	private double y;
