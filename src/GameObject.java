@@ -29,8 +29,6 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 		loadImage();
 	}
 
-	public abstract String getName();
-
 
 	public GameWorld getWorld() {
 		return this.world;
@@ -51,8 +49,10 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 	}
 
 	/*
-	 * 
+	 * Handles adding the images onto the specific characters
 	 */
+	public abstract String getName();
+	
 	public void loadImage() {
 		String fileName = "images/" + this.getName();
 		fileName += ".png";
@@ -130,11 +130,6 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 	}
 
 	@Override
-	public void die() {
-		this.getWorld().removeGameObject(this);
-	}
-
-	@Override
 	public void updatePosition() {
 
 	}
@@ -142,6 +137,11 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 	@Override
 	public void updateFuse() {
 
+	}
+	
+	@Override
+	public void die() {
+		this.getWorld().removeGameObject(this);
 	}
 
 
