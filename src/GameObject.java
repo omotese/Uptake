@@ -9,6 +9,10 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+/*
+ * The GameObject class contains all of the objects that will be drawn onto the GameWorld
+ */
+
 public abstract class GameObject implements Drawable, Temporal, Relocatable, Collision {
 	private Point2D centerPoint;
 	private boolean isPaused;
@@ -26,9 +30,9 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 		this.size = 0;
 
 		this.shape = new Rectangle2D.Double(this.centerPoint.getX(), this.centerPoint.getY(), this.size, this.size);
+
 		loadImage();
 	}
-
 
 	public GameWorld getWorld() {
 		return this.world;
@@ -36,8 +40,8 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 
 	/*
 	 * This method detects when a game object collides with another game object.
-	 * We loop through the objects in the world's list of objects and check to see 
-	 * if they are intersecting.
+	 * We loop through the objects in the world's list of objects and check to
+	 * see if they are intersecting.
 	 */
 	public void detectCollision() {
 		for (int i = 0; i < this.getWorld().getObjectList().size(); i++) {
@@ -52,7 +56,7 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 	 * Handles adding the images onto the specific characters
 	 */
 	public abstract String getName();
-	
+
 	public void loadImage() {
 		String fileName = "images/" + this.getName();
 		fileName += ".png";
@@ -60,7 +64,7 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 		try {
 			this.img = ImageIO.read(new File(fileName));
 		} catch (IOException e) {
-			
+
 		}
 
 	}
@@ -72,14 +76,14 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 				this.getSize(), null);
 
 	}
-	
+
 	/*
 	 * These are various getters and setters that we will use for the subclasses
 	 */
 	public void setColor(Color myColor) {
 		this.color = myColor;
 	}
-	
+
 	@Override
 	public Color getColor() {
 		return this.color;
@@ -90,7 +94,6 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 		return this.shape;
 	}
 
-	
 	@Override
 	public int getSize() {
 		return this.size;
@@ -109,18 +112,18 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 	@Override
 	public Point2D getCenterPoint() {
 		return this.centerPoint;
-	}	
-	
+	}
+
 	@Override
 	public void setIsPaused(boolean isPaused) {
 		this.isPaused = isPaused;
-	}	
-	
+	}
+
 	@Override
 	public boolean getIsPaused() {
 		return isPaused;
 	}
-	
+
 	@Override
 	public void timePassed() {
 		if (!isPaused) {
@@ -138,16 +141,15 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 	public void updateFuse() {
 
 	}
-	
+
 	@Override
 	public void die() {
 		this.getWorld().removeGameObject(this);
 	}
 
-
 	/*
-	 * These methods deal with the collisions that can occur in the game. Each subclass overrides them with
-	 * their own specific actions.
+	 * These methods deal with the collisions that can occur in the game. Each
+	 * subclass overrides them with their own specific actions.
 	 */
 	@Override
 	public void collide(GameObject o) {
