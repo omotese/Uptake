@@ -15,6 +15,12 @@ import java.util.Scanner;
 
 import javax.imageio.ImageIO;
 
+/**
+ * TODO Put here a description of what this class does.
+ *
+ * @author trenthe.
+ *         Created May 18, 2017.
+ */
 public class GameWorld implements Temporal, Drawable {
 	private static final long UPDATE_INTERVAL_MS = 10;
 	private final int width;
