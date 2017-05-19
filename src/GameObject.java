@@ -72,9 +72,12 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 	@Override
 	public void drawImage(Graphics2D g2) {
 
-		g2.drawImage(this.img, (int) this.getCenterPoint().getX(), (int) this.getCenterPoint().getY(), this.getSize(),
+		g2.drawImage(
+				this.img, 
+				(int) this.getCenterPoint().getX(), 
+				(int) this.getCenterPoint().getY(), 
+				this.getSize(),
 				this.getSize(), null);
-
 	}
 
 	/*
