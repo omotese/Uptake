@@ -21,6 +21,11 @@ public class GameWorldComponent extends JComponent {
 	private static final int FRAMES_PER_SECOND = 30;
 	private static final long REPAINT_INTERVAL_MS = 1000 / FRAMES_PER_SECOND;
 
+	/**
+	 * TODO Put here a description of what this constructor does.
+	 *
+	 * @param world
+	 */
 	public GameWorldComponent(GameWorld world) {
 		this.world = world;
 
@@ -34,6 +39,9 @@ public class GameWorldComponent extends JComponent {
 		this.requestFocus();
 
 		Runnable repainter = new Runnable() {
+			/**
+			 * TODO
+			 */
 			@Override
 			public void run() {
 
@@ -51,6 +59,9 @@ public class GameWorldComponent extends JComponent {
 
 	}
 
+	/**
+	 * TODO
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -67,6 +78,12 @@ public class GameWorldComponent extends JComponent {
 		c.drawImage(g2);
 	}
 
+	/**
+	 * TODO Put here a description of what this method does.
+	 *
+	 * @param nullAttribute
+	 * @param d
+	 */
 	private void showNullPointerMessage(String nullAttribute, Drawable d) {
 		if (!this.hasShownNullErrorMessage) {
 			this.hasShownNullErrorMessage = true;
