@@ -91,6 +91,9 @@ public class GameWorld implements Temporal, Drawable {
 
 	}
 
+/**
+ * Getters and Setters
+ */
 	public Color getColor() {
 		return this.backgroundColor;
 	}
@@ -100,6 +103,16 @@ public class GameWorld implements Temporal, Drawable {
 		return this.background;
 	}
 
+
+	@Override
+	public void setSize(int size) {
+
+	}
+	
+	@Override
+	public int getSize() {
+		return 0;
+	}
 
 	public void setUpHearts() {
 		for (int i = 0; i < 3; i++) {
@@ -174,6 +187,10 @@ public class GameWorld implements Temporal, Drawable {
 		return this.hero;
 	}
 
+/**
+ * This portion of the code handles how we deal with our levels in the game.
+ * 
+ */
 
 	public void getLevel(String fileName) throws FileNotFoundException {
 		int numBlocks = 0;
@@ -279,6 +296,7 @@ public class GameWorld implements Temporal, Drawable {
 			}
 		}
 	}
+	
 	public void updateLevel() {
 		for (BreakableWall n : breakables) {
 			this.removeGameObject(n);
@@ -311,7 +329,6 @@ public class GameWorld implements Temporal, Drawable {
 		this.getHero().reset();
 	}
 
-
 	public void levelUp() {
 		if (levelNum >= 1 && levelNum < 3) {
 			this.levelNum++;
@@ -343,16 +360,11 @@ public class GameWorld implements Temporal, Drawable {
 		setUpHearts();
 	}
 	
-	@Override
-	public int getSize() {
-		return 0;
-	}
-
-	@Override
-	public void setSize(int size) {
-
-	}
-
+/**
+ * This adds the outter wall to the Game World
+ *
+ */
+	
 	public void addWall() {
 		ArrayList<Wall> walls = new ArrayList<Wall>();
 		for (int i = 0; i < 13; i++) {
@@ -383,6 +395,9 @@ public class GameWorld implements Temporal, Drawable {
 
 	}
 	
+/**
+ * This portion of the code deals with how the Game World is paused.
+ */
 	@Override
 	public void setIsPaused(boolean isPaused) {
 		this.isPaused = isPaused;
