@@ -1,4 +1,10 @@
 
+/**
+ * TODO Put here a description of what this class does.
+ *
+ * @author trenthe.
+ *         Created May 18, 2017.
+ */
 public interface Collision {
 	abstract void collide(GameObject o);
 
