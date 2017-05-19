@@ -3,6 +3,12 @@ import java.awt.Shape;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
+/**
+ * TODO Put here a description of what this class does.
+ *
+ * @author trenthe.
+ *         Created May 18, 2017.
+ */
 public class Hero extends GameObject {
 	private double x;
 	private double y;
@@ -32,6 +38,10 @@ public class Hero extends GameObject {
 		loadImage();
 	}
 
+	/**
+	 * Resets the hero to its starting position and removes any power ups
+	 *
+	 */
 	public void reset() {
 		this.y = 50;
 		this.x = 50;

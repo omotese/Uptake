@@ -1,6 +1,12 @@
 import java.awt.Color;
 import java.awt.geom.Point2D;
 
+/**
+ * TODO Put here a description of what this class does.
+ *
+ * @author trenthe.
+ *         Created May 18, 2017.
+ */
 public class LifeUp extends PowerUp {
 
 	public LifeUp(GameWorld world, Point2D centerPoint) {

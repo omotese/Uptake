@@ -7,6 +7,12 @@ import java.util.List;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
+/**
+ * TODO Put here a description of what this class does.
+ *
+ * @author trenthe.
+ *         Created May 18, 2017.
+ */
 public class GameWorldComponent extends JComponent {
 
 	private GameWorld world;

@@ -1,6 +1,12 @@
 import java.awt.Color;
 import java.awt.geom.Point2D;
 
+/**
+ * TODO Put here a description of what this class does.
+ *
+ * @author trenthe.
+ *         Created May 18, 2017.
+ */
 public class SpeedUp extends PowerUp {
 
 	public SpeedUp(GameWorld world, Point2D centerPoint) {
@@ -15,6 +21,9 @@ public class SpeedUp extends PowerUp {
 		this.setSize(0);
 	}
 
+	/**
+	 * TODO
+	 */
 	@Override
 	public void updateFuse() {
 		if (this.getFuseStart()) {
