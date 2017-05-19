@@ -91,39 +91,10 @@ public class GameWorld implements Temporal, Drawable {
 
 	}
 
-	public void setBombExists(boolean bombExists) {
-		this.bombExists = bombExists;
-	}
-
-	public boolean getBombExists() {
-		return this.bombExists;
-	}
-
 	public Color getColor() {
 		return this.backgroundColor;
 	}
 
-	public void setUpHearts() {
-		for (int i = 0; i < 3; i++) {
-			Heart h = new Heart(this, new Point2D.Double(550 + 50 * i, 0));
-			this.addGameObject(h);
-			this.addHeart(h);
-		}
-	}
-
-	@Override
-	public void timePassed() {
-		if (!this.isPaused) {
-			for (Temporal t : this.objectList) {
-				t.timePassed();
-			}
-			this.detectLevelUp();
-		}
-		this.objectList.removeAll(this.objectToRemove);
-		this.objectToRemove.clear();
-		this.objectList.addAll(this.objectToAdd);
-		this.objectToAdd.clear();
-	}
 
 	@Override
 	public void die() {
@@ -139,24 +110,50 @@ public class GameWorld implements Temporal, Drawable {
 	public void updateFuse() {
 	}
 
+	public void setUpHearts() {
+		for (int i = 0; i < 3; i++) {
+			Heart h = new Heart(this, new Point2D.Double(550 + 50 * i, 0));
+			this.addGameObject(h);
+			this.addHeart(h);
+		}
+	}
 	public void addHeart(Heart h) {
 		this.hearts.add(h);
 	}
-
-	public void removeHeart() {
-		this.hearts.remove(0);
-	}
+	
 
 	public List<Heart> getHearts() {
 		return this.hearts;
 	}
+	public void removeHeart() {
+		this.hearts.remove(0);
+	}
 
+	public void setBombExists(boolean bombExists) {
+		this.bombExists = bombExists;
+	}
+
+	public boolean getBombExists() {
+		return this.bombExists;
+	}
+	
 	public void addBombList(Bomb bomb) {
 		this.bombList.add(bomb);
 		bombCount++;
-		System.out.println(bombCount);
+	}
+	
+	public List<Bomb> getBombList() {
+		return this.bombList;
+	}
+	public Bomb getLastBomb() {
+		return this.bombList.get(0);
 	}
 
+	public void removeFromBombList(Bomb b) {
+		this.bombList.remove(b);
+	}
+	
+	
 	public void addMonsterList(Monster monster) {
 		this.monsters.add(monster);
 	}
@@ -165,28 +162,8 @@ public class GameWorld implements Temporal, Drawable {
 		return this.monsters;
 	}
 
-	public List<Bomb> getBombList() {
-		return this.bombList;
-	}
-
-	public Bomb getLastBomb() {
-		return this.bombList.get(0);
-	}
-
-	public void removeFromBombList(Bomb b) {
-		this.bombList.remove(b);
-	}
-
 	public void removeFromMonsterList(Monster m) {
 		this.monsters.remove(m);
-	}
-
-	public void setHero(Hero hero) {
-		this.hero = hero;
-	}
-
-	public Hero getHero() {
-		return this.hero;
 	}
 
 	public void resetAllMonsters() {
@@ -197,6 +174,15 @@ public class GameWorld implements Temporal, Drawable {
 			s.reset();
 		}
 	}
+
+	public void setHero(Hero hero) {
+		this.hero = hero;
+	}
+
+	public Hero getHero() {
+		return this.hero;
+	}
+
 
 	public void getLevel(String fileName) throws FileNotFoundException {
 		int numBlocks = 0;
@@ -302,11 +288,78 @@ public class GameWorld implements Temporal, Drawable {
 			}
 		}
 	}
+	public void updateLevel() {
+		for (BreakableWall n : breakables) {
+			this.removeGameObject(n);
+		}
+		breakables.clear();
+		for (Monster w : monsters) {
+			this.removeGameObject(w);
+		}
+		monsters.clear();
+		for (Seeker s : seekers) {
+			this.removeGameObject(s);
+		}
+		seekers.clear();
+		for (PowerUp p : powerUps) {
+			this.removeGameObject(p);
+		}
+		for (Bomb b : bombList) {
+			this.removeGameObject(b);
+		}
+		powerUps.clear();
+
+		String levelString = "Level" + levelNum + ".txt";
+		try {
+			getLevel(levelString);
+		} catch (FileNotFoundException e) {
+			System.err.println("File " + levelString + " not found.  Exiting.");
+		} catch (IOException e) {
+			System.err.println("Error closing file.");
+		}
+		this.getHero().reset();
+	}
+
+
+	public void levelUp() {
+		if (levelNum >= 1 && levelNum < 3) {
+			this.levelNum++;
+
+			this.updateLevel();
+
+		}
+	}
+
+	public void levelDown() {
+		if (levelNum > 1 && levelNum <= 3) {
+			this.levelNum--;
+
+			this.updateLevel();
+
+		}
+
+	}
 
 	public void detectLevelUp() {
 		if (this.monsters.size() == 0) {
 			levelUp();
 		}
+	}
+	
+	public void restart() {
+		this.levelNum = 1;
+		updateLevel();
+		setUpHearts();
+	}
+	
+	@Override
+	public int getSize() {
+		return 0;
+	}
+
+	@Override
+	public void setSize(int size) {
+
 	}
 
 	public void addWall() {
@@ -361,61 +414,24 @@ public class GameWorld implements Temporal, Drawable {
 		this.isPaused = isPaused;
 
 	}
-
-	public void updateLevel() {
-		for (BreakableWall n : breakables) {
-			this.removeGameObject(n);
-		}
-		breakables.clear();
-		for (Monster w : monsters) {
-			this.removeGameObject(w);
-		}
-		monsters.clear();
-		for (Seeker s : seekers) {
-			this.removeGameObject(s);
-		}
-		seekers.clear();
-		for (PowerUp p : powerUps) {
-			this.removeGameObject(p);
-		}
-		for (Bomb b : bombList) {
-			this.removeGameObject(b);
-		}
-		powerUps.clear();
-
-		String levelString = "Level" + levelNum + ".txt";
-		try {
-			getLevel(levelString);
-		} catch (FileNotFoundException e) {
-			System.err.println("File " + levelString + " not found.  Exiting.");
-		} catch (IOException e) {
-			System.err.println("Error closing file.");
-		}
-		this.getHero().reset();
-	}
-
-	public void levelUp() {
-		if (levelNum >= 1 && levelNum < 3) {
-			this.levelNum++;
-
-			this.updateLevel();
-
-		}
-	}
-
-	public void levelDown() {
-		if (levelNum > 1 && levelNum <= 3) {
-			this.levelNum--;
-
-			this.updateLevel();
-
-		}
-
-	}
-
+	
 	@Override
 	public boolean getIsPaused() {
 		return this.isPaused;
+	}
+
+	@Override
+	public void timePassed() {
+		if (!this.isPaused) {
+			for (Temporal t : this.objectList) {
+				t.timePassed();
+			}
+			this.detectLevelUp();
+		}
+		this.objectList.removeAll(this.objectToRemove);
+		this.objectToRemove.clear();
+		this.objectList.addAll(this.objectToAdd);
+		this.objectToAdd.clear();
 	}
 
 	public void removeGameObject(GameObject gameObject) {
@@ -431,26 +447,13 @@ public class GameWorld implements Temporal, Drawable {
 		return new ArrayList<Drawable>(this.objectList);
 	}
 
-	public void restart() {
-		this.levelNum = 1;
-		updateLevel();
-		setUpHearts();
-	}
+
 
 	public Dimension getDimension() {
 		return new Dimension(this.width, this.height);
 	}
 
-	@Override
-	public int getSize() {
-		return 0;
-	}
-
-	@Override
-	public void setSize(int size) {
-
-	}
-
+	
 	@Override
 	public void drawImage(Graphics2D g2) {
 		String fileName = "images/" + "background1";
