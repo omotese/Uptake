@@ -4,6 +4,12 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.util.Random;
 
+/**
+ * TODO Put here a description of what this class does.
+ *
+ * @author trenthe.
+ *         Created May 18, 2017.
+ */
 public class Seeker extends Monster {
 	private double x;
 	private double y;
@@ -35,6 +41,9 @@ public class Seeker extends Monster {
 		return myRect;
 	}
 
+	/**
+	 * Moves the hero with respect to the set dx and dy
+	 */
 	@Override
 	public void updatePosition() {
 		movingX = !movingX;
@@ -49,6 +58,9 @@ public class Seeker extends Monster {
 		this.detectCollision();
 	}
 
+	/**
+	 * TODO
+	 */
 	@Override
 	public void collideWithWall(Wall w) {
 		if (movingX) {
@@ -61,6 +73,9 @@ public class Seeker extends Monster {
 		}
 	}
 
+	/**
+	 * TODO
+	 */
 	@Override
 	public void collideWithBomb(Bomb b) {
 		Random ran = new Random();
@@ -73,6 +88,10 @@ public class Seeker extends Monster {
 
 	}
 
+	/**
+	 * TODO Put here a description of what this method does.
+	 *
+	 */
 	public void detectHero() {
 		Point2D heroPosition = this.getWorld().getHero().getCenterPoint();
 

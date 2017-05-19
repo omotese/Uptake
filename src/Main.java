@@ -5,15 +5,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /**
- * The main class for your arcade game.
- * 
- * You can design your game any way you like, but make the game start by running
- * main here.
- * 
- * Also don't forget to write javadocs for your classes and functions!
- * 
- * @author Lee, Joy, and Chloe
+ * TODO Put here a description of what this class does.
  *
+ * @author trenthe. Created May 18, 2017.
  */
 public class Main {
 

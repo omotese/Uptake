@@ -4,6 +4,11 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.util.Random;
 
+/**
+ * TODO Put here a description of what this class does.
+ *
+ * @author trenthe. Created May 18, 2017.
+ */
 public class Monster extends GameObject {
 	private double x;
 	private double y;
@@ -39,6 +44,9 @@ public class Monster extends GameObject {
 		this.detectCollision();
 	}
 
+	/**
+	 * Removes the monster from the list that the world keeps track of
+	 */
 	@Override
 	public void die() {
 		this.getWorld().removeGameObject(this);
@@ -56,19 +64,26 @@ public class Monster extends GameObject {
 		h.collideWithMonster(this);
 	}
 
+	/**
+	 *
+	 */
 	@Override
 	public void collideWithWall(Wall w) {
-		Random ran = new Random();
-		this.x -= this.dx;
-		this.y -= this.dy;
-		do {
-			this.dx = (ran.nextInt(3) - 1);
-			this.dy = (ran.nextInt(3) - 1);
-		} while (this.dx == 0 && this.dy == 0);
+		bounceBack();
 	}
+
 
 	@Override
 	public void collideWithBomb(Bomb b) {
+		bounceBack();
+
+	}
+
+	/**
+	 * bounces away from a thing it can't go through
+	 *
+	 */
+	public void bounceBack() {
 		Random ran = new Random();
 		this.x -= this.dx;
 		this.y -= this.dy;
@@ -76,7 +91,6 @@ public class Monster extends GameObject {
 			this.dx = (ran.nextInt(3) - 1);
 			this.dy = (ran.nextInt(3) - 1);
 		} while (this.dx == 0 && this.dy == 0);
-
 	}
 
 	@Override
