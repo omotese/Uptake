@@ -2,7 +2,7 @@ import java.awt.Color;
 import java.awt.geom.Point2D;
 
 /**
- * TODO Put here a description of what this class does.
+ * These walls can be blown up and removed by the bomb.
  *
  * @author trenthe.
  *         Created May 18, 2017.

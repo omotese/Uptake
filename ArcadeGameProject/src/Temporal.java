@@ -1,6 +1,6 @@
 
 /**
- * TODO Put here a description of what this class does.
+ * Keeps track of time in the game, to help with animation and honestly just making things happen.
  *
  * @author trenthe.
  *         Created May 18, 2017.

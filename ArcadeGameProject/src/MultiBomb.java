@@ -2,7 +2,7 @@ import java.awt.Color;
 import java.awt.geom.Point2D;
 
 /**
- * TODO Put here a description of what this class does.
+ * Power up allows the hero to drop multiple bombs at a time
  *
  * @author trenthe.
  *         Created May 18, 2017.
@@ -23,7 +23,7 @@ public class MultiBomb extends PowerUp {
 	}
 
 	/**
-	 * TODO
+	 * Keeps track of how long the hero has the power up
 	 */
 	@Override
 	public void updateFuse() {

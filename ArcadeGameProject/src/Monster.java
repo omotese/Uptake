@@ -5,7 +5,8 @@ import java.awt.geom.Rectangle2D;
 import java.util.Random;
 
 /**
- * TODO Put here a description of what this class does.
+ * Monster that can kill the hero or be killed by a bomb. The generic monster (we call them wanderers
+ * although I don't think that name ever appears in the code) moves randomly. Subclasses do otherwise.
  *
  * @author trenthe. Created May 18, 2017.
  */
@@ -64,14 +65,10 @@ public class Monster extends GameObject {
 		h.collideWithMonster(this);
 	}
 
-	/**
-	 *
-	 */
 	@Override
 	public void collideWithWall(Wall w) {
 		bounceBack();
 	}
-
 
 	@Override
 	public void collideWithBomb(Bomb b) {

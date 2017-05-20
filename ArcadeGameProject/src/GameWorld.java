@@ -16,10 +16,9 @@ import java.util.Scanner;
 import javax.imageio.ImageIO;
 
 /**
- * TODO Put here a description of what this class does.
+ * Keeps track of the game and the objects in it.
  *
- * @author trenthe.
- *         Created May 18, 2017.
+ * @author trenthe. Created May 18, 2017.
  */
 public class GameWorld implements Temporal, Drawable {
 	private static final long UPDATE_INTERVAL_MS = 10;
@@ -95,7 +94,6 @@ public class GameWorld implements Temporal, Drawable {
 		return this.backgroundColor;
 	}
 
-
 	@Override
 	public void die() {
 
@@ -110,6 +108,10 @@ public class GameWorld implements Temporal, Drawable {
 	public void updateFuse() {
 	}
 
+	/**
+	 * This sets up the original three life icons in the upper right.
+	 *
+	 */
 	public void setUpHearts() {
 		for (int i = 0; i < 3; i++) {
 			Heart h = new Heart(this, new Point2D.Double(550 + 50 * i, 0));
@@ -117,14 +119,15 @@ public class GameWorld implements Temporal, Drawable {
 			this.addHeart(h);
 		}
 	}
+
 	public void addHeart(Heart h) {
 		this.hearts.add(h);
 	}
-	
 
 	public List<Heart> getHearts() {
 		return this.hearts;
 	}
+
 	public void removeHeart() {
 		this.hearts.remove(0);
 	}
@@ -136,15 +139,16 @@ public class GameWorld implements Temporal, Drawable {
 	public boolean getBombExists() {
 		return this.bombExists;
 	}
-	
+
 	public void addBombList(Bomb bomb) {
 		this.bombList.add(bomb);
 		bombCount++;
 	}
-	
+
 	public List<Bomb> getBombList() {
 		return this.bombList;
 	}
+
 	public Bomb getLastBomb() {
 		return this.bombList.get(0);
 	}
@@ -152,8 +156,7 @@ public class GameWorld implements Temporal, Drawable {
 	public void removeFromBombList(Bomb b) {
 		this.bombList.remove(b);
 	}
-	
-	
+
 	public void addMonsterList(Monster monster) {
 		this.monsters.add(monster);
 	}
@@ -166,6 +169,10 @@ public class GameWorld implements Temporal, Drawable {
 		this.monsters.remove(m);
 	}
 
+	/**
+	 * Sends all of the monsters to their starting positions
+	 *
+	 */
 	public void resetAllMonsters() {
 		for (Monster m : monsters) {
 			m.reset();
@@ -183,7 +190,12 @@ public class GameWorld implements Temporal, Drawable {
 		return this.hero;
 	}
 
-
+	/**
+	 * This loads information from the level files to create the objects specified
+	 *
+	 * @param fileName
+	 * @throws FileNotFoundException
+	 */
 	public void getLevel(String fileName) throws FileNotFoundException {
 		int numBlocks = 0;
 		int numMonsters = 0;
@@ -218,9 +230,7 @@ public class GameWorld implements Temporal, Drawable {
 				int y = s.nextInt();
 				BreakableWall newWall = new BreakableWall(this, new Point2D.Double(x * 50, y * 50));
 				this.breakables.add(newWall);
-				for (BreakableWall n : breakables) {
-					this.addGameObject(n);
-				}
+				this.addGameObject(newWall);
 
 			} catch (IllegalArgumentException e) {
 				System.err.println("Bad");
@@ -288,6 +298,11 @@ public class GameWorld implements Temporal, Drawable {
 			}
 		}
 	}
+
+	/**
+	 * This handles switching levels without leaving remnants of the old level.
+	 *
+	 */
 	public void updateLevel() {
 		for (BreakableWall n : breakables) {
 			this.removeGameObject(n);
@@ -320,13 +335,10 @@ public class GameWorld implements Temporal, Drawable {
 		this.getHero().reset();
 	}
 
-
 	public void levelUp() {
 		if (levelNum >= 1 && levelNum < 3) {
 			this.levelNum++;
-
 			this.updateLevel();
-
 		}
 	}
 
@@ -345,13 +357,13 @@ public class GameWorld implements Temporal, Drawable {
 			levelUp();
 		}
 	}
-	
+
 	public void restart() {
 		this.levelNum = 1;
 		updateLevel();
 		setUpHearts();
 	}
-	
+
 	@Override
 	public int getSize() {
 		return 0;
@@ -362,6 +374,10 @@ public class GameWorld implements Temporal, Drawable {
 
 	}
 
+	/**
+	 * This sets up the grid of walls that is the same on every level.
+	 *
+	 */
 	public void addWall() {
 		ArrayList<Wall> walls = new ArrayList<Wall>();
 		for (int i = 0; i < 13; i++) {
@@ -400,6 +416,10 @@ public class GameWorld implements Temporal, Drawable {
 		return this.background;
 	}
 
+	/**
+	 * This pauses and unpauses the game.
+	 *
+	 */
 	public void togglePause() {
 		if (!this.getIsPaused()) {
 			this.setIsPaused(true);
@@ -414,24 +434,28 @@ public class GameWorld implements Temporal, Drawable {
 		this.isPaused = isPaused;
 
 	}
-	
+
 	@Override
 	public boolean getIsPaused() {
 		return this.isPaused;
 	}
 
+	/**
+	 * This does all the things that need to be done nearly constantly
+	 */
 	@Override
 	public void timePassed() {
+
+		this.objectList.removeAll(this.objectToRemove);
+		this.objectToRemove.clear();
+		this.objectList.addAll(this.objectToAdd);
+		this.objectToAdd.clear();
 		if (!this.isPaused) {
 			for (Temporal t : this.objectList) {
 				t.timePassed();
 			}
 			this.detectLevelUp();
 		}
-		this.objectList.removeAll(this.objectToRemove);
-		this.objectToRemove.clear();
-		this.objectList.addAll(this.objectToAdd);
-		this.objectToAdd.clear();
 	}
 
 	public void removeGameObject(GameObject gameObject) {
@@ -447,13 +471,13 @@ public class GameWorld implements Temporal, Drawable {
 		return new ArrayList<Drawable>(this.objectList);
 	}
 
-
-
 	public Dimension getDimension() {
 		return new Dimension(this.width, this.height);
 	}
 
-	
+	/**
+	 * draws the image of an object on the game
+	 */
 	@Override
 	public void drawImage(Graphics2D g2) {
 		String fileName = "images/" + "background1";

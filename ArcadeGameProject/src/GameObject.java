@@ -10,7 +10,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 /**
- * TODO Put here a description of what this class does.
+ * This is the abstract class for all game objects like walls, monsters, hero, and power ups.
  *
  * @author trenthe.
  *         Created May 18, 2017.
@@ -54,13 +54,11 @@ public abstract class GameObject implements Drawable, Temporal, Relocatable, Col
 		}
 	}
 
-	/**
-	 * Handles adding the images onto the specific characters
-	 */
 	public abstract String getName();
 
 	/**
-	 * TODO Put here a description of what this method does.
+	 * This loads the image from a file, all of which we editted to have as few colors and 
+	 * take up as little space as possible. 
 	 *
 	 */
 	public void loadImage() {

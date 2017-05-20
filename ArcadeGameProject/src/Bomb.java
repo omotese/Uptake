@@ -4,7 +4,7 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 /**
- * TODO Put here a description of what this class does.
+ * Bombs are dropped by the hero to and produce explosions when they detonate.
  *
  * @author trenthe.
  *         Created May 18, 2017.
@@ -37,9 +37,6 @@ public class Bomb extends GameObject {
 		return myRect;
 	}
 
-	/**
-	 * TODO
-	 */
 	@Override
 	public void updateFuse() {
 		if (!this.getWorld().getHero().getHasDetonator()) {
@@ -77,7 +74,7 @@ public class Bomb extends GameObject {
 	}
 
 	/**
-	 * TODO Put here a description of what this method does.
+	 * This creates explosions that kill characters on those squares.
 	 *
 	 */
 	public void createExplosion() {

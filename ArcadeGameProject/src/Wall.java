@@ -4,7 +4,7 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 /**
- * TODO Put here a description of what this class does.
+ * These are the walls in the game, through which neither the hero nor the monsters can move.
  *
  * @author trenthe.
  *         Created May 18, 2017.

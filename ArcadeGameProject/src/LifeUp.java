@@ -2,7 +2,7 @@ import java.awt.Color;
 import java.awt.geom.Point2D;
 
 /**
- * TODO Put here a description of what this class does.
+ * This power up gives the hero an extra life.
  *
  * @author trenthe.
  *         Created May 18, 2017.

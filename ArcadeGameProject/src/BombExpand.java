@@ -2,7 +2,7 @@ import java.awt.Color;
 import java.awt.geom.Point2D;
 
 /**
- * TODO Put here a description of what this class does.
+ * This power up extends the blast radius of the bomb.
  *
  * @author trenthe.
  *         Created May 18, 2017.
@@ -19,17 +19,10 @@ public class BombExpand extends PowerUp {
 		h.collideWithBombExpand(this);
 		this.setFuseStart(true);
 		this.setSize(0);
-	}
-
-	public void expandBomb() {
-		for (Bomb b : this.getWorld().getBombList()) {
-		}
 
 	}
 
-	/**
-	 * TODO
-	 */
+
 	@Override
 	public void updateFuse() {
 		if (this.getFuseStart()) {

@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /**
- * TODO Put here a description of what this class does.
+ * Starts the game and sets up the window for it
  *
  * @author trenthe. Created May 18, 2017.
  */

@@ -2,7 +2,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 /**
- * TODO Put here a description of what this class does.
+ * These listeners handle player input.
  *
  * @author trenthe.
  *         Created May 18, 2017.

@@ -1,6 +1,6 @@
 
 /**
- * TODO Put here a description of what this class does.
+ * This class keeps track of different objects running into each other.
  *
  * @author trenthe.
  *         Created May 18, 2017.

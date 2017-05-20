@@ -4,7 +4,7 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 /**
- * TODO Put here a description of what this class does.
+ * These explosions can kill a character if they occupy the same space.
  *
  * @author trenthe.
  *         Created May 18, 2017.
@@ -29,9 +29,7 @@ public class Explosion extends GameObject {
 		return new Rectangle2D.Double(x, y, getSize(), getSize());
 	}
 
-	/**
-	 * TODO
-	 */ 
+
 	@Override
 	public void updateFuse() {
 		this.detectCollision();

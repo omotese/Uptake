@@ -8,7 +8,7 @@ import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
 /**
- * TODO Put here a description of what this class does.
+ * This class handles drawing the objects on the screen.
  *
  * @author trenthe.
  *         Created May 18, 2017.
