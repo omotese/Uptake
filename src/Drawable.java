@@ -4,7 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.Shape;
 
 /**
- * TODO Put here a description of what this class does.
+ * Drawable objects can be drawn on the game screen, so this handles some of the things needed to draw them.
  *
  * @author trenthe.
  *         Created May 18, 2017.

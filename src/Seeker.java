@@ -5,7 +5,7 @@ import java.awt.geom.Rectangle2D;
 import java.util.Random;
 
 /**
- * TODO Put here a description of what this class does.
+ * This monster follows the hero if the hero gets close to it. 
  *
  * @author trenthe.
  *         Created May 18, 2017.
@@ -59,7 +59,7 @@ public class Seeker extends Monster {
 	}
 
 	/**
-	 * TODO
+	 * If this monster bumps into a wall, it chooses a different direction to move in.
 	 */
 	@Override
 	public void collideWithWall(Wall w) {
@@ -73,9 +73,6 @@ public class Seeker extends Monster {
 		}
 	}
 
-	/**
-	 * TODO
-	 */
 	@Override
 	public void collideWithBomb(Bomb b) {
 		Random ran = new Random();
@@ -89,7 +86,7 @@ public class Seeker extends Monster {
 	}
 
 	/**
-	 * TODO Put here a description of what this method does.
+	 * This is how the seeker monster knows to follow the hero.
 	 *
 	 */
 	public void detectHero() {

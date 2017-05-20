@@ -3,7 +3,7 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 /**
- * TODO Put here a description of what this class does.
+ * Generic power up that the hero could get
  *
  * @author trenthe.
  *         Created May 18, 2017.

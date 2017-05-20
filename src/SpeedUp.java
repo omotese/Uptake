@@ -2,7 +2,7 @@ import java.awt.Color;
 import java.awt.geom.Point2D;
 
 /**
- * TODO Put here a description of what this class does.
+ * This power up makes the hero move faster.
  *
  * @author trenthe.
  *         Created May 18, 2017.
@@ -22,14 +22,13 @@ public class SpeedUp extends PowerUp {
 	}
 
 	/**
-	 * TODO
+	 * Fuses control the amount of time the hero is allowed to have a power up.
 	 */
 	@Override
 	public void updateFuse() {
 		if (this.getFuseStart()) {
 			if (getFuse() > 0) {
 				this.setFuse(-1);
-				System.out.println(this.getFuse());
 			} else {
 				this.setFuseStart(false);
 				this.getWorld().getHero().setIsFaster(false);

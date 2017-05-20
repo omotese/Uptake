@@ -4,7 +4,7 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 /**
- * TODO Put here a description of what this class does.
+ * The hero moves around the board and can be killed by monsters or the bombs it drops
  *
  * @author trenthe.
  *         Created May 18, 2017.
@@ -135,6 +135,10 @@ public class Hero extends GameObject {
 
 	}
 
+	/**
+	 * Gives the hero another life and displays that life as a heart
+	 *
+	 */
 	public void addLife() {
 		this.lives++;
 		int lastHeartX = (int) this.getWorld().getHearts().get(this.getWorld().getHearts().size() - 1).getCenterPoint()
