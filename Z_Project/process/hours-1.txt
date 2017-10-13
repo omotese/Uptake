@@ -1,0 +1,19 @@
+Chase Horne
+
+1.0 8/4 class lecture on tkinter
+1.5 8/4 working through tkinter excersises
+
+0.5 8/8 finished tkinter
+1.0 8/8 trello and watching videos/looking at class questions
+
+1.0 8/9 watching video and doing subsequent work
+0.5 8/9 starting menu and thinking about what it should be
+
+1.5 8/12 added key event based movement after learning how it works
+0.5 8/12 researched morse code and began by making input and window
+
+1.5 8/15 planned some things out for gui and worked on morse code
+
+1.5 8/17 finished morse code and planned for gui to involve others code
+
+1.0 8/18 testing robot over skype and preperations

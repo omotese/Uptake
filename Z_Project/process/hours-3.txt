@@ -1,0 +1,8 @@
+Jacob Pluta
+1.0 - 8/4 - Met with the entire class and group to dicuss project.
+3.0 - 8/4 - Worked on tKinter practice problems.
+1.0 - 8/8 - Finished tKinter practice problems.
+3.0 - 8/9 - Created diractions for the robot to travel.
+1.5 - 8/11 - Modified directions for the robot.
+3.0 - 8/15 - Began implementation of the tweet function.
+5.5 - 8/16 - Completed the tweet function.

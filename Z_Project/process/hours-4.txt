@@ -1,0 +1,29 @@
+Dakota Jassmin Rostron
+
+Sprint 1:  Thursday, August 4 to Wednesday, August 10.
+
+0.5 hour 8/4 Met in whole group to discuss the process 
+1.0 hour 8/4 Did the Tkinter Practice exercise 
+1.0 hour 8/7 Experimented with more Tkinter
+1.0 hour 8/8 Did the 1st 3 of the Kickoff Videos
+1.0 hour 8/8 Finished the Kickoff Video, Updated Python to 35, and selected 
+remote control for Sprint 1
+1.0 hour 8/9 Finished Video for Session 21 and added Connect to Robot Code 
+and changed m0 but have not commit until teammates approval. 
+1.0 hour 8/9 Read and discuss robot functions
+1.0 hour 8/10 Updated movement functions for robot and added speed entry
+
+Sprint 2:  Wednesday, August 10 to Monday, August 15.
+
+2.0 hours 8/11 Started Fictitious Bio 
+2.0 hours 8/11 Added questions and answers to bio
+
+Sprint 3:  Monday, August 15 to Friday, August 19.
+
+1.0 hour 8/16 Started Canvas and able to draw different color lines
+2.0 hours 8/16 Added different shapes to the canvas
+0.5 hour 8/16 Started to add function that changes the size of shapes
+0.5 hour 8/16 Finish add the function which changes the size of shapes
+0.5 hour 8/18 Add tweepy to m4
+0.5 hour 8/19 Finish instructions on Canvas
+1.5 hour 8/19 Organize layout of buttons, entrys, and labels
